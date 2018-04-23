@@ -1,0 +1,15 @@
+<html>  
+    <head>  
+    </head>  
+    <body>  
+        <ul>
+            {{with .Files}}  
+                {{range .}}
+                    <li>
+                        {{.Name}}<a href={{.Name}} download={{.Id}}>点击下载</a>  
+                    </li>
+                {{end}}  
+            {{end}} 
+        </ul>  
+    </body>
+</html>  
