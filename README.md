@@ -1,0 +1,2 @@
+# future
+go project
