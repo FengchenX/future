@@ -6,8 +6,15 @@
         <title>W3Cschool教程(w3cschool.cn)</title>
     </head>
     <body>
-        <canvas id="myCanvas" width="200" height="100" style="border:10px dotted #000000; background:#ddd;">
-            宁的浏览器不支持HTML5 canvas 标签
+        <canvas id="myCanvas" width="200" height="100" style="border:1px solid blue">
+            您的浏览器不支持HTML5 canvas 标签
         </canvas>
+        <script>
+            var c = document.getElementById("myCanvas");
+            var ctx = c.getContext("2d");
+            ctx.moveTo(0,0); 
+            ctx.lineTo(200,100);
+            ctx.stroke();
+        </script>
     </body>
 </html>
