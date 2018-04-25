@@ -23,9 +23,6 @@ func NewData(tp, key string) *Data {
 	return &d
 }
 
-func(d *Data) Close() {
-	d.Close()
-}
 
 //insert
 func(d *Data) Insert(query string, args ...interface{}) {
