@@ -17,6 +17,7 @@ func main() {
 	var c = child{key:20}
 	c.base=base{i:30}
 	f1(c)
+	f2()
 }
 
 var logSingleton *_Logger
@@ -58,4 +59,40 @@ type i interface{
 
 func f1(a i) {
 	a.say()
+}
+
+//interface 组合
+type a interface {
+	addOne()
+}
+type b interface {
+	subOne()
+}
+
+type c interface {
+	a
+	b
+}
+
+type myint int
+
+func(m *myint) addOne() {
+	*m = *m + 1
+}
+
+func(m *myint) subOne() {
+	*m = *m - 1
+}
+
+func f2() {
+	var A myint
+	var d c
+	d=&A
+	d.addOne()
+	d.addOne()
+	fmt.Println(A)
+	var e b
+	e=&A
+	e.subOne()
+	fmt.Println(A)
 }
