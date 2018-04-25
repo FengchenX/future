@@ -10,7 +10,8 @@ func main() {
 	//TypeValue()
 	//Set()
 	//refOpStruct()
-	f3()
+	refChangeStruct()
+	//sliceAppend()
 }
 
 
@@ -106,7 +107,8 @@ func refChangeStruct() {
     }
 
     s.Field(0).SetInt(25)
-    s.Field(1).SetString("nicky")
+	s.Field(1).SetString("nicky")
+	s.FieldByName("B").SetString("wudi")
     fmt.Println(t)
 }
 
@@ -143,18 +145,40 @@ func f2() {
 	fmt.Println(i)
 }
 
-func f3() {
-	var i interface{}
-	var t = []test{
-		{"uio", "kk", "oo"},
-		{"dd", "ee", "qq"},
-		{"ww", "cc", "zz"},
+//反射包终极操作，很多知识点在这,关于slice操作
+func sliceAppend() {
+	var ps []struct{
+		Name string  //反射时字段需要大写
+		Age int
+		Grade int
 	}
 
-	var t1 []test
-	i=t1
-	tpy := reflect.TypeOf(i)
-	fmt.Println(t)
-	fmt.Println(tpy)
-	fmt.Println(tpy.Elem())
+	SearchAll:= func(x interface{}) {
+		pp:=[][]interface{}{}    //[]struct数据，，我们要想办法给x
+		for i:=0;i<10;i++ {
+			var dest []interface{}	
+			var name = "nio"
+			var age = 23
+			var grade = 5
+			dest = append(dest,name,age,grade)
+			pp = append(pp,dest)
+		}
+		val := reflect.ValueOf(x) //获取value指针
+		typ := reflect.TypeOf(x)  //得到指针类型
+		strtyp :=typ.Elem().Elem()                //想要得到struct类型 指针类型取值是.Elem()
+
+		for _,row := range pp {
+			oneptr := reflect.New(strtyp)
+			for j,elem := range row {
+				oneptr.Elem().Field(j).Set(reflect.ValueOf(elem))
+			}
+			val2 := reflect.Append(val.Elem(),oneptr.Elem())   //
+			val.Elem().Set(val2)
+		}
+	}
+
+	SearchAll(&ps)     //这地方有个slice大坑，slice是按引用进行传递的，，但是传递完之后对之前已存在的内存进行修改是有效的，如果一旦调用了append，新append部分并不会对传递前slice产生效果,需要传递指针
+	for _,i := range ps {
+		fmt.Println(i.Name,i.Age,i.Grade)
+	}
 }
