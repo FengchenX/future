@@ -1,6 +1,7 @@
 package data 
 
 import (
+	"reflect"
 	"log"
 	"database/sql"
 	_ "github.com/go-sql-driver/mysql"
@@ -72,16 +73,40 @@ func(d *Data) Delete(query string, args ...interface{}) {
 }
 
 //search
-func(d *Data) SearchAll(x interface{}, query string, args ...interface{}) {
-	rows,err := d.Query(query,args)	
+func(d *Data) SearchAll(x interface{}, query string) {
+	rows,err := d.Query(query)	
 	if err != nil {
 		log.Fatal(err)
 	}
-	p := [][]interface{}{}
+
+	typ := reflect.TypeOf(x)
+	val := reflect.ValueOf(x)
+
+	strtyp := typ.Elem().Elem()
 	for rows.Next() {
-		var dest []interface{}
-		rows.Scan(dest...)
-		p=append(p,dest)
+		oneptr := reflect.New(strtyp)
+		var pp  []interface{}
+		
+		//下面这一部分很重要不然不能从数据库中取得出数据
+		for i:=0;i<oneptr.Elem().NumField();i++ {
+			switch oneptr.Elem().Field(i).Kind() {
+			case reflect.Int:
+				var a int
+				pp = append(pp,&a)
+			case reflect.String:
+				var a string
+				pp = append(pp,&a)
+			case reflect.Bool:
+				var a bool
+				pp = append(pp,&a)
+			}
+		}
+		rows.Scan(pp...)
+
+		for i:=0;i<len(pp);i++ {
+			oneptr.Elem().Field(i).Set(reflect.ValueOf(pp[i]).Elem())
+		}
+		temp := reflect.Append(val.Elem(),oneptr.Elem())
+		val.Elem().Set(temp)
 	}
-	
 }

@@ -10,7 +10,8 @@ func main() {
 	//slice2()
 	//Map()
 	//slice3()
-	slice4()
+	//slice4()
+	//slice6()
 }
 
 //slice 一些需要注意的坑
@@ -52,11 +53,13 @@ func f4(args ...int) {
 	}
 }
 
-func slice3() {
+func slice4() {
 	var a []int
 	f4(a...)  
 	fmt.Println(a) //[] 可变参数满足和slice一样性质
 }
+
+
 
 func f5(args ...*int) {
 	for i:=0;i<10;i++{
@@ -64,11 +67,37 @@ func f5(args ...*int) {
 	}
 }
 
-func slice4() {
+func slice5() {
 	var a []*int
 	f5(a...)
 	fmt.Println(a) //[] 使用可变参数是千万不要再append
 }
+
+func f6(args ...int) {
+	for i:=0;i<len(args);i++ {
+		args[i]= args[i] +10
+	}
+}
+
+func slice6() {
+	var a =[]int{1,2,3}
+	f6(a...)
+	fmt.Println(a)  //[11 12 13]
+}
+
+/* 不能拿空接口去取值
+func f7(args ...interface{}) {
+	for i:=0;i<len(args);i++ {
+		reflect.ValueOf(args).Index(i).SetInt(int64(i))
+	}
+}
+
+func slice7() {
+	var a = make([]interface{},7)
+	f7(a)
+	fmt.Println(a)
+}
+*/
 
 func f3(x map[string]int) {
 	x["uio"] = 10
