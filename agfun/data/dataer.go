@@ -77,11 +77,11 @@ func(d *Data) SearchAll(x interface{}, query string, args ...interface{}) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	p := x.([]interface{})
-
+	p := [][]interface{}{}
 	for rows.Next() {
 		var dest []interface{}
 		rows.Scan(dest...)
 		p=append(p,dest)
 	}
+	
 }

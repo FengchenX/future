@@ -8,7 +8,9 @@ import (
 func main() {
 	//slice()
 	//slice2()
-	Map()
+	//Map()
+	//slice3()
+	slice4()
 }
 
 //slice 一些需要注意的坑
@@ -42,6 +44,30 @@ func f2(x *[]int) {
 		*x = append(*x,i)
 	}
 
+}
+
+func f4(args ...int) {
+	for i:=0;i<10;i++{
+		args = append(args,i)
+	}
+}
+
+func slice3() {
+	var a []int
+	f4(a...)  
+	fmt.Println(a) //[] 可变参数满足和slice一样性质
+}
+
+func f5(args ...*int) {
+	for i:=0;i<10;i++{
+		args=append(args,&i)
+	}
+}
+
+func slice4() {
+	var a []*int
+	f5(a...)
+	fmt.Println(a) //[] 使用可变参数是千万不要再append
 }
 
 func f3(x map[string]int) {
