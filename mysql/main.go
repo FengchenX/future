@@ -158,7 +158,7 @@ user:password@tcp(localhost:5555)/dbname?charset=utf8
 
 /**增删改查sql语句
 insert into userinfo (uid,username,department,created) values(?,?,?,?)
-delet from userinfo where uid = ?
+delete from userinfo where uid = ?
 update userinfo set username = ? where uid =?
 select * from userinfo where uid = ?
 

@@ -25,6 +25,7 @@ func NewData(tp, key string) *Data {
 
 
 //insert
+//insert into tabname (uid,name) values(?,?)
 func(d *Data) Insert(query string, args ...interface{}) {
 	insert,err := d.Prepare(query)
 	if err != nil {
@@ -40,6 +41,7 @@ func(d *Data) Insert(query string, args ...interface{}) {
 }
 
 //update
+//update tabname set username = ? where uid = ?
 func(d *Data) Update(query string, args ...interface{}) {
 	update,err := d.Prepare(query)
 	if err != nil {
@@ -55,6 +57,7 @@ func(d *Data) Update(query string, args ...interface{}) {
 }
 
 //delete
+//delete from tabname where uid = ?
 func(d *Data) Delete(query string, args ...interface{}) {
 	delete, err := d.Prepare(query)
 	if err != nil {
@@ -70,6 +73,7 @@ func(d *Data) Delete(query string, args ...interface{}) {
 }
 
 //search
+//SELECT * FROM tabname
 func(d *Data) SearchAll(x interface{}, query string) {
 	rows,err := d.Query(query)	
 	if err != nil {
@@ -106,4 +110,18 @@ func(d *Data) SearchAll(x interface{}, query string) {
 		temp := reflect.Append(val.Elem(),oneptr.Elem())
 		val.Elem().Set(temp)
 	}
+}
+
+//清空表
+//truncate table tabname
+func(d *Data) TrunTable(query string) {
+	trun,err := d.Prepare(query) 
+	if err != nil {
+		log.Fatal(err)
+	}
+	tx,err := d.Begin()
+	if err != nil {
+		log.Fatal(err)
+	}
+	tx.Stmt(trun).Exec()
 }
