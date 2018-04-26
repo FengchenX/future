@@ -91,6 +91,7 @@ func f7(args ...interface{}) {
 	val := reflect.ValueOf(args)
 	fmt.Println(val.Len())
 	for i:=0;i<val.Len();i++{
+		//val.Index(i).SetInt(int64(i))  //会报错，因为val.Index(i) 是interface{}类型，不能使用setint
 		val.Index(i).Set(reflect.ValueOf(i))
 	}
 }

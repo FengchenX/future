@@ -9,8 +9,8 @@ func main() {
 	//TypeOf()
 	//TypeValue()
 	//Set()
-	refOpStruct()
-	//refChangeStruct()
+	//refOpStruct()
+	refChangeStruct()
 	//sliceAppend()
 }
 
@@ -114,7 +114,13 @@ func refChangeStruct() {
     s.Field(0).SetInt(25)
 	s.Field(1).SetString("nicky")
 	s.FieldByName("B").SetString("wudi")
-    fmt.Println(t)
+	fmt.Println(t)
+	
+	t1 := T{28,"nice"}
+	val := reflect.ValueOf(t1)
+	val.Field(0).SetInt(29)   //error，反射的set值必须是对指针进行的不然报错
+	//val.Field(0).Set(reflect.ValueOf(10))
+	fmt.Println(t1)
 }
 
 type test struct {
