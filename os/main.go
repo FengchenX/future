@@ -2,11 +2,12 @@
 package main
 
 import (
+	"flag"
 	"strings"
 	"fmt"
 	"log"
 	"os"
-
+	"os/exec"
 )
 
 func main() {
@@ -16,10 +17,14 @@ func main() {
 	//osStat()
 	//osMakeDir()
 	//osRename()
-	osCreate()
+	//osCreate()
+	Delete()
 }
+
+var f1path *string = flag.String("f1path", "./mkDir/file.go", "Use -f1path <filesource>")
 func osOpen() {
-	file, err := os.Open("./feng/alg/os/file.go")
+	flag.Parse()	
+	file, err := os.Open(*f1path)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -32,7 +37,8 @@ func osOpen() {
 }
 
 func osStat() {
-	fileInfo, err := os.Stat("./feng/alg/os/file.go")
+	flag.Parse()
+	fileInfo, err := os.Stat(*f1path)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -40,8 +46,10 @@ func osStat() {
 	fmt.Println(fileInfo.Size()) //文件字节数
 }
 
+var newDir *string = flag.String("newDir", "./mkDir", "Use -newDir <dir path>")
 func osMakeDir() {
-	if err:=os.Mkdir("./feng/alg/os/mkDir",os.ModeDir); err != nil {
+	flag.Parse()
+	if err:=os.Mkdir(*newDir, os.ModeDir); err != nil {
 		log.Fatal(err)
 	}
 }
@@ -63,4 +71,14 @@ func osCreate() {
 	}
 	reader:=strings.NewReader("hello, world!")
 	reader.WriteTo(file)
+}
+//删除文件
+var path *string = flag.String("path", "","Use -path <filename>")
+func Delete() {
+	flag.Parse()
+	cmd := exec.Command("powershell","rm", *path)
+	err := cmd.Run()
+	if err != nil {
+		log.Fatal(err)
+	}
 }

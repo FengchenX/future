@@ -3,6 +3,7 @@
 package main
 
 import (
+	"flag"
 	"io/ioutil"
 	"encoding/json"
 	"fmt"
@@ -99,4 +100,14 @@ func execShutdown() {
 	}
 }
 
+//删除文件
+var path *string = flag.String("path", "","Use -path <filename>")
+func Delete() {
+	flag.Parse()
+	cmd := exec.Command("powershell","rm", *path)
+	err := cmd.Run()
+	if err != nil {
+		log.Fatal(err)
+	}
+}
 
