@@ -5,6 +5,8 @@ import (
 	"reflect"
 )
 
+//slice 组成ptr len cap
+
 func main() {
 	//slice()
 	//slice2()
@@ -12,7 +14,10 @@ func main() {
 	//slice3()
 	//slice4()
 	//slice6()
-	slice7()
+	//slice7()
+	//slice8()
+	//slice10()
+	slice11()
 }
 
 //slice 一些需要注意的坑
@@ -112,4 +117,33 @@ func Map() {
 	var a = make(map[string]int)
 	f3(a)
 	fmt.Println(a)  //map[kk:20 uio:10] 彻底改了，和slice不同
+}
+
+func slice8() {
+	a := make([]int, 0, 10)
+	b := append(a, 1)
+	_ = append(a, 2)
+	fmt.Println(b[0])  //2
+}
+
+func slice9() {
+	a := make([]int, 10, 20)
+	b := a[5:]
+	fmt.Println(len(b),cap(b))   //5, 15
+}
+
+func slice10() {
+	a := []int{1, 2, 3, 4, 5}
+	f10(a[0:2])
+	fmt.Println(a)    //[1, 2, 0, 4, 5]
+}
+
+func f10(a []int) {
+	_ = append(a, 0)
+}
+
+func slice11() {
+	a := []int{1, 2, 3, 4, 5}
+	f10(a[0:2:2])
+	fmt.Println(a)
 }
