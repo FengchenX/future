@@ -29,7 +29,7 @@ func f2(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var p = PP{10,"uio",true}	
+	var p = PP{10,"uio",true}
 	temp.Execute(w,p)
 }
 
