@@ -9,8 +9,8 @@ func main() {
 	//TypeOf()
 	//TypeValue()
 	//Set()
-	//refOpStruct()
-	refChangeStruct()
+	refOpStruct()
+	//refChangeStruct()
 	//sliceAppend()
 }
 
@@ -71,6 +71,10 @@ func (n NotknownType) String() string {
 	return n.S1 + " & " + n.S2 + " & " + n.S3
 }
 
+func(n NotknownType) Say() {
+	fmt.Println("uio")
+}
+
 var secret interface{} = NotknownType{"Go", "C", "Python"}
 
 func refOpStruct() {
@@ -87,7 +91,8 @@ func refOpStruct() {
     }
 
     results := value.Method(0).Call(nil)
-    fmt.Println(results) // [Go & C & Python]
+	fmt.Println(results) // [Go & C & Python]
+	fmt.Println(value.NumMethod())
 }
 
 type T struct {
