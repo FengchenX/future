@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-
+	"reflect"
 )
 
 func main() {
@@ -12,6 +12,7 @@ func main() {
 	//slice3()
 	//slice4()
 	//slice6()
+	slice7()
 }
 
 //slice 一些需要注意的坑
@@ -85,19 +86,21 @@ func slice6() {
 	fmt.Println(a)  //[11 12 13]
 }
 
-/* 不能拿空接口去取值
+/* 拿空接口去取值*/
 func f7(args ...interface{}) {
-	for i:=0;i<len(args);i++ {
-		reflect.ValueOf(args).Index(i).SetInt(int64(i))
+	val := reflect.ValueOf(args)
+	fmt.Println(val.Len())
+	for i:=0;i<val.Len();i++{
+		val.Index(i).Set(reflect.ValueOf(i))
 	}
 }
 
 func slice7() {
-	var a = make([]interface{},7)
-	f7(a)
-	fmt.Println(a)
+	var A = make([]interface{},7)
+	f7(A...)
+	fmt.Println(A)
 }
-*/
+
 
 func f3(x map[string]int) {
 	x["uio"] = 10
