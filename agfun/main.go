@@ -10,18 +10,21 @@ import (
 
 
 func main() {
-	
+	http.HandleFunc("/",func(w http.ResponseWriter, r *http.Request){
+		fmt.Println("URL**************",r.URL.Path)
+	})
+
 	http.HandleFunc("/index", agfun)
-	http.HandleFunc("/login", login)
-
+	http.HandleFunc("/template/login", login)
+	http.HandleFunc("/test", test)
 	
-
-
 	
-	http.HandleFunc("/statics/",func(w http.ResponseWriter, r *http.Request){
+	http.HandleFunc("/static/",func(w http.ResponseWriter, r *http.Request){
+		fmt.Println("static*************",r.URL.Path)
 		http.ServeFile(w,r,"./view/"+r.URL.Path[1:])
 	})
 	
+
 	err := http.ListenAndServe(":8000",nil)
 	if err != nil {
 		log.Fatal(err)
@@ -34,7 +37,7 @@ func main() {
 /**网站首页*/
 func agfun(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("visit first index")	
-	t, _ := template.ParseFiles("./view/templates/index.html")
+	t, _ := template.ParseFiles("./view/template/index.html")
 	t.Execute(w, nil)
 }
 
@@ -53,5 +56,14 @@ func login(w http.ResponseWriter, r *http.Request) {
 		
 
 	}
+}
+
+func test(w http.ResponseWriter, r *http.Request) {
+	t, err := template.ParseFiles("view/a.html")
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	t.Execute(w, nil)
 }
 
