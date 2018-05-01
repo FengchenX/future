@@ -37,7 +37,7 @@ func main() {
 /**网站首页*/
 func agfun(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("visit first index")	
-	t, _ := template.ParseFiles("./view/template/index.html")
+	t, _ := template.ParseFiles("./view/index.html")
 	t.Execute(w, nil)
 }
 
