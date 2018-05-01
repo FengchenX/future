@@ -8,20 +8,33 @@ import (
 	"html/template"
 )
 
+
 func main() {
 	
 	http.HandleFunc("/index", agfun)
 	http.HandleFunc("/login", login)
+
+	
+
+
+	
+	http.HandleFunc("/statics/",func(w http.ResponseWriter, r *http.Request){
+		http.ServeFile(w,r,"./view/"+r.URL.Path[1:])
+	})
+	
 	err := http.ListenAndServe(":8000",nil)
 	if err != nil {
 		log.Fatal(err)
 	}
 }
 
+
+
+
 /**网站首页*/
 func agfun(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("visit first index")	
-	t, _ := template.ParseFiles("./view/agfun.html")
+	t, _ := template.ParseFiles("./view/index.html")
 	t.Execute(w, nil)
 }
 
@@ -38,6 +51,7 @@ func login(w http.ResponseWriter, r *http.Request) {
 	} else {
 		//验证密码登录部分
 		
+
 	}
 }
 
