@@ -15,7 +15,7 @@ func main() {
 	})
 
 	http.HandleFunc("/index", agfun)
-	http.HandleFunc("/template/login", login)
+	http.HandleFunc("/login", login)
 	http.HandleFunc("/test", test)
 	
 	
