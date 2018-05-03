@@ -198,7 +198,7 @@ h3 {
   border-bottom: 1px solid white;
 }
 footer {
-  margin-top: -3.5em;
+  margin-top: 5em;
   padding-top: 10em;
   background-image:-moz-linear-gradient( -45deg, rgb(255,91,127) 0%, rgb(255,213,86) 100%);
   background-image: -webkit-linear-gradient( -45deg, rgb(255,91,127) 0%, rgb(255,213,86) 100%);

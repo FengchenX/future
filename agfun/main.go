@@ -18,6 +18,7 @@ func main() {
 	http.HandleFunc("/login", login)
 	http.HandleFunc("/test", test)
 
+	//文件系统的路由
 	http.Handle("/css/", http.FileServer(http.Dir("./template")))
 	http.Handle("/js/", http.FileServer(http.Dir("./template")))
 	http.Handle("/images/", http.FileServer(http.Dir("./template")))
