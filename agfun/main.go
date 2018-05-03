@@ -18,29 +18,6 @@ func main() {
 	http.HandleFunc("/login", login)
 	http.HandleFunc("/test", test)
 
-	/*
-	http.HandleFunc("/css/",func(w http.ResponseWriter, r *http.Request){
-		fmt.Println("css**************",r.URL.Path)
-		//w.Header().Set("Content-Type", "text/css")当css显示有问题时试试这个
-		file:= "./view/" + r.URL.Path[1:]
-		f,err := os.Open(file)
-		if err!= nil {
-			log.Fatal(err)
-		}
-		defer f.Close()
-		http.ServeFile(w,r,file)
-	})
-	http.HandleFunc("/js/",func(w http.ResponseWriter, r *http.Request){
-		fmt.Println("js**************",r.URL.Path)
-		http.ServeFile(w,r,"./view/"+r.URL.Path[1:])
-	})
-	
-	http.HandleFunc("/images/",func(w http.ResponseWriter, r *http.Request){
-		fmt.Println("images**************",r.URL.Path)
-		http.ServeFile(w,r,"./view/"+r.URL.Path[1:])
-	})
-	*/
-
 	http.Handle("/css/", http.FileServer(http.Dir("./template")))
 	http.Handle("/js/", http.FileServer(http.Dir("./template")))
 	http.Handle("/images/", http.FileServer(http.Dir("./template")))
@@ -77,8 +54,7 @@ func login(w http.ResponseWriter, r *http.Request) {
 }
 
 func test(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("a*******************a")
-	t, err := template.ParseFiles("./template/a.html")
+	t, err := template.ParseFiles("./template/rendered-index.html")
 	if err != nil {
 		fmt.Println(err)
 		return
