@@ -2,6 +2,7 @@
 package main
 
 import (
+	"os"
 	"log"
 	"fmt"
 	"net/http"
@@ -18,15 +19,16 @@ func main() {
 	http.HandleFunc("/login", login)
 	http.HandleFunc("/test", test)
 
-	/*
-	http.HandleFunc("/static/",func(w http.ResponseWriter, r *http.Request){
-		fmt.Println("static******************",r.URL.Path)
-		http.ServeFile(w,r,"./"+r.URL.Path[1:])	
-	})
-	*/
 	http.HandleFunc("/css/",func(w http.ResponseWriter, r *http.Request){
 		fmt.Println("css**************",r.URL.Path)
-		http.ServeFile(w,r,"./view/"+r.URL.Path[1:])
+    	w.Header().Set("Content-Type", "text/css")
+		file:= "./view/" + r.URL.Path[1:]
+		f,err := os.Open(file)
+		if err!= nil {
+			log.Fatal(err)
+		}
+		defer f.Close()
+		http.ServeFile(w,r,file)
 	})
 	http.HandleFunc("/js/",func(w http.ResponseWriter, r *http.Request){
 		fmt.Println("js**************",r.URL.Path)
@@ -70,7 +72,7 @@ func login(w http.ResponseWriter, r *http.Request) {
 
 func test(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("a*******************a")
-	t, err := template.ParseFiles("./view/rendered-index.html")
+	t, err := template.ParseFiles("./view/a.html")
 	if err != nil {
 		fmt.Println(err)
 		return
