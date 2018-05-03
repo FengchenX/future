@@ -41,9 +41,10 @@ func main() {
 	})
 	*/
 
-	http.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("./template"))))
-	http.Handle("/js/", http.StripPrefix("/js/", http.FileServer(http.Dir("./template"))))
-	http.Handle("/images/", http.StripPrefix("/images/", http.FileServer(http.Dir("./template"))))
+	http.Handle("/css/", http.FileServer(http.Dir("./template")))
+	http.Handle("/js/", http.FileServer(http.Dir("./template")))
+	http.Handle("/images/", http.FileServer(http.Dir("./template")))
+	
 	
 	err := http.ListenAndServe(":8000",nil)
 	if err != nil {
