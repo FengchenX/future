@@ -17,22 +17,32 @@ func main() {
 	http.HandleFunc("/index", agfun)
 	http.HandleFunc("/login", login)
 	http.HandleFunc("/test", test)
-	
-	
+
+	/*
 	http.HandleFunc("/static/",func(w http.ResponseWriter, r *http.Request){
-		fmt.Println("static*************",r.URL.Path)
+		fmt.Println("static******************",r.URL.Path)
+		http.ServeFile(w,r,"./"+r.URL.Path[1:])	
+	})
+	*/
+	http.HandleFunc("/css/",func(w http.ResponseWriter, r *http.Request){
+		fmt.Println("css**************",r.URL.Path)
+		http.ServeFile(w,r,"./view/"+r.URL.Path[1:])
+	})
+	http.HandleFunc("/js/",func(w http.ResponseWriter, r *http.Request){
+		fmt.Println("js**************",r.URL.Path)
 		http.ServeFile(w,r,"./view/"+r.URL.Path[1:])
 	})
 	
+	http.HandleFunc("/images/",func(w http.ResponseWriter, r *http.Request){
+		fmt.Println("images**************",r.URL.Path)
+		http.ServeFile(w,r,"./view/"+r.URL.Path[1:])
+	})
 
 	err := http.ListenAndServe(":8000",nil)
 	if err != nil {
 		log.Fatal(err)
 	}
 }
-
-
-
 
 /**网站首页*/
 func agfun(w http.ResponseWriter, r *http.Request) {
@@ -45,7 +55,7 @@ func agfun(w http.ResponseWriter, r *http.Request) {
 func login(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 	if r.Method=="GET" {
-		t,err := template.ParseFiles("view/login.html")
+		t,err := template.ParseFiles("./view/login.html")
 		if err != nil {
 			fmt.Println(err)
 			return
@@ -59,7 +69,8 @@ func login(w http.ResponseWriter, r *http.Request) {
 }
 
 func test(w http.ResponseWriter, r *http.Request) {
-	t, err := template.ParseFiles("view/a.html")
+	fmt.Println("a*******************a")
+	t, err := template.ParseFiles("./view/rendered-index.html")
 	if err != nil {
 		fmt.Println(err)
 		return
