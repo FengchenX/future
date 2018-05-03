@@ -2,7 +2,6 @@
 package main
 
 import (
-	"os"
 	"log"
 	"fmt"
 	"net/http"
@@ -19,6 +18,7 @@ func main() {
 	http.HandleFunc("/login", login)
 	http.HandleFunc("/test", test)
 
+	/*
 	http.HandleFunc("/css/",func(w http.ResponseWriter, r *http.Request){
 		fmt.Println("css**************",r.URL.Path)
 		//w.Header().Set("Content-Type", "text/css")当css显示有问题时试试这个
@@ -39,7 +39,12 @@ func main() {
 		fmt.Println("images**************",r.URL.Path)
 		http.ServeFile(w,r,"./view/"+r.URL.Path[1:])
 	})
+	*/
 
+	http.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("./template"))))
+	http.Handle("/js/", http.StripPrefix("/js/", http.FileServer(http.Dir("./template"))))
+	http.Handle("/images/", http.StripPrefix("/images/", http.FileServer(http.Dir("./template"))))
+	
 	err := http.ListenAndServe(":8000",nil)
 	if err != nil {
 		log.Fatal(err)
@@ -49,7 +54,7 @@ func main() {
 /**网站首页*/
 func agfun(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("visit first index")	
-	t, _ := template.ParseFiles("./view/index.html")
+	t, _ := template.ParseFiles("./template/index.html")
 	t.Execute(w, nil)
 }
 
@@ -57,7 +62,7 @@ func agfun(w http.ResponseWriter, r *http.Request) {
 func login(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 	if r.Method=="GET" {
-		t,err := template.ParseFiles("./view/login.html")
+		t,err := template.ParseFiles("./template/login.html")
 		if err != nil {
 			fmt.Println(err)
 			return
@@ -72,7 +77,7 @@ func login(w http.ResponseWriter, r *http.Request) {
 
 func test(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("a*******************a")
-	t, err := template.ParseFiles("./view/rendered-index.html")
+	t, err := template.ParseFiles("./template/a.html")
 	if err != nil {
 		fmt.Println(err)
 		return
