@@ -21,7 +21,7 @@ func main() {
 
 	http.HandleFunc("/css/",func(w http.ResponseWriter, r *http.Request){
 		fmt.Println("css**************",r.URL.Path)
-    	w.Header().Set("Content-Type", "text/css")
+		//w.Header().Set("Content-Type", "text/css")当css显示有问题时试试这个
 		file:= "./view/" + r.URL.Path[1:]
 		f,err := os.Open(file)
 		if err!= nil {
@@ -72,7 +72,7 @@ func login(w http.ResponseWriter, r *http.Request) {
 
 func test(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("a*******************a")
-	t, err := template.ParseFiles("./view/a.html")
+	t, err := template.ParseFiles("./view/rendered-index.html")
 	if err != nil {
 		fmt.Println(err)
 		return
