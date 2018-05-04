@@ -6,8 +6,17 @@ import (
 	"fmt"
 	"net/http"
 	"html/template"
+	_ "github.com/feng/future/agfun/memory"
+	"github.com/feng/future/agfun/session"
 )
 
+var globalSessions *session.Manager
+
+func init(){
+	globalSessions, _ = session.NewSessionManager("memory", "gosessionid", 3600)
+	
+	go globalSessions.GC()
+}
 
 func main() {
 	http.HandleFunc("/",func(w http.ResponseWriter, r *http.Request){
@@ -39,6 +48,7 @@ func agfun(w http.ResponseWriter, r *http.Request) {
 
 //登录处理器
 func login(w http.ResponseWriter, r *http.Request) {
+	sess := globalSessions.SessionStart(w, r)	
 	r.ParseForm()
 	if r.Method=="GET" {
 		t,err := template.ParseFiles("./template/login.html")
@@ -49,12 +59,14 @@ func login(w http.ResponseWriter, r *http.Request) {
 		t.Execute(w, nil)
 	} else {
 		//验证密码登录部分
-		
+		sess.Set("username", r.Form["username"])
 
 	}
 }
 
 func test(w http.ResponseWriter, r *http.Request) {
+	sess := globalSessions.SessionStart(w,r)
+	sess.Set("username", "feng")
 	t, err := template.ParseFiles("./template/rendered-index.html")
 	if err != nil {
 		fmt.Println(err)
