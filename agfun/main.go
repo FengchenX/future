@@ -58,7 +58,7 @@ func login(w http.ResponseWriter, r *http.Request) {
 		}
 		t.Execute(w, nil)
 	} else {
-		//验证密码登录部分
+		//验证密码登录部分通过之后才set
 		sess.Set("username", r.Form["username"])
 
 	}
