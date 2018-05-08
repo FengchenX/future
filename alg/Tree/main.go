@@ -68,3 +68,8 @@ func TreeSuccessor(x *Tree) *Tree {
 	}
 	return y
 }
+
+func TreeInsert(T *Tree, z *Tree) {
+	//y := nil
+	//x := T.root
+}
