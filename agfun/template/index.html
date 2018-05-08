@@ -5,7 +5,7 @@
     <title>Agfun</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="css/styles.css">
+    <link rel="stylesheet" type="text/css" href="css/offcanvas.css">
     <script src="js/bootstrap.min.js"></script>
 </head>
 <body>
@@ -26,6 +26,11 @@
                 <li class="active"><a href="#">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://localhost:8000/login">登陆</a></li>
+                <li><a href="../navbar-static-top/">Static top</a></li>
+                <li class="active"><a href="./">Fixed top <span class="sr-only">(current)</span></a></li>
             </ul>
             </div><!-- /.nav-collapse -->
         </div><!-- /.container -->
@@ -98,35 +103,11 @@
         </div><!--/.container-->
     </main>
      <!-- Site Footer -->
-     <footer>
-        <div class="footer-content">
-                <ul class="footer-social">
-                    <li>
-                        <a href="#">
-                            <img class="social-default" src="images/social-facebook.png">
-                            <img class="social-hover" src="images/social-facebook-hover.png">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <img class="social-default" src="images/social-pinterest.png">
-                            <img class="social-hover" src="images/social-pinterest-hover.png">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <img class="social-default" src="images/social-twitter.png">
-                            <img class="social-hover" src="images/social-twitter-hover.png">
-                        </a>
-                    </li>
-                </ul>
-                <div class="footer-info">
-                    <p class="footer-credit">Website design by <a href="#">Serge Vasil</a></p>
-                    <p class="footer-disclaimer">Any reference to associated logos is for demonstration purposes only and is not intended to refer to any actual organization or event.</p>
-                    <p class="footer-legal">&copy; 2016 Adobe Systems Incorporated. All rights reserved.</p>
-                </div>
-            </div>
-        </footer>
+    <footer class="footer">
+        <div class="container">
+          <p class="text-muted">Place sticky footer content here.</p>
+        </div>
+    </footer>
 
 </body>
 </html>

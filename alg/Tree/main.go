@@ -24,7 +24,7 @@ key <= right.key
 
 type Tree struct {
 	key int
-	left, right *Tree
+	left, right, p *Tree
 }
 
 func InorderTreeWalk(x *Tree) {
@@ -56,4 +56,15 @@ func TreeMaximum(x *Tree) *Tree {
 		x = x.right
 	}
 	return x
+}
+func TreeSuccessor(x *Tree) *Tree {
+	if x.right!=nil {
+		return TreeSuccessor(x.right)
+	}
+	y := x.p	
+	for y != nil && x == y.right {
+		x= y
+		y=y.p
+	}
+	return y
 }

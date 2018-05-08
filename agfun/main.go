@@ -8,6 +8,7 @@ import (
 	"html/template"
 	_ "github.com/feng/future/agfun/memory"
 	"github.com/feng/future/agfun/session"
+	//"github.com/feng/future/agfun/data"
 )
 
 var globalSessions *session.Manager
@@ -48,6 +49,7 @@ func agfun(w http.ResponseWriter, r *http.Request) {
 
 //登录处理器
 func login(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("login******************login")
 	sess := globalSessions.SessionStart(w, r)	
 	r.ParseForm()
 	if r.Method=="GET" {
@@ -58,6 +60,10 @@ func login(w http.ResponseWriter, r *http.Request) {
 		}
 		t.Execute(w, nil)
 	} else {
+		username := r.Form["username"][0]
+		password := r.Form["password"][0]
+		fmt.Println(username,password)
+
 		//验证密码登录部分通过之后才set
 		sess.Set("username", r.Form["username"])
 
