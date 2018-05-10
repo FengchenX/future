@@ -145,5 +145,5 @@ func f10(a []int) {
 func slice11() {
 	a := []int{1, 2, 3, 4, 5}
 	f10(a[0:2:2])
-	fmt.Println(a)
+	fmt.Println(a) //[1,2,3,4,5]
 }
