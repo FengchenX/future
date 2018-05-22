@@ -1,0 +1,40 @@
+//--------------------------------------------------------------
+// name  : 状态码
+//---------------------------------------------------------------
+syntax = "proto3";                  // protobuf3 系列必须在前面加前缀
+package protocol;                   // 统一package
+option cc_generic_services = true;  // 开启grpc
+
+enum Status {
+    Success            = 0;    // 成功
+
+    UsernameOrPwdError    = 10001; // 用户名或者密码错误
+    UsernameEmpty         = 10002; // 用户名为空
+    RegistError           = 10003; // 注册失败
+    PwdEmpty              = 10004; // 密码为空
+    PhoneRegisted         = 10005; // 手机已经注册
+    PhoneNumberError      = 10006; // 不是手机号码
+    WechatLoingFailReAuth = 10007; // 微信登录失败，请重新授权
+    GetWechatUserInfoFail = 10008; // 获取微信用户数据失败
+
+    ManageContractFail = 20001; // 管理合约失败
+    FindContractFail   = 20002; // 查询合约失败
+    UndateContractFail = 20003; // 修改合约失败
+    AddContractFail    = 20004; // 增加合约失败
+    DelContractFail    = 20005; // 删除合约失败
+
+    SetSchedueFail     = 30001; // 发布排班失败
+    GetSchedueFail     = 30002; // 查询排班失败
+    FindJobFail        = 30003; // 申请工作失败
+    JobLimitFail       = 30004; // 工作已被申请
+    GetContentFail     = 30005; // 获取订单失败
+    SetContentFail     = 30006; // 发布订单失败
+    GetBalanceFail     = 30007; // 获取收入失败
+    RoleNotFitFail     = 30008; // 获取收入失败
+    HasAppliedJobFail  = 30009; // 获取收入失败
+    LoginFail          = 30010; // 登录失败
+    GetAllIncomeFail   = 30011; // 获取用户收入详情失败
+    AlreadyApply       = 30012; // 已经申请过
+    ApplyFull          = 30013; // 申请人数已满
+    ReqNotFull         = 30014; // 信息不完整
+}

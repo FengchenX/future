@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.znfz.assur.znfz_android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:name=".android.common.app.ZnfzApplication"
+        tools:replace="android:icon"
+        android:theme="@style/AppTheme">
+
+        <!--<activity android:name=".android.test.listview_test.TwoLevelListViewSortActivity">-->
+        <!-- <activity android:name=".android.test.grpc_interface_test.TestInterfaceActivity">-->
+        <!--<activity android:name=".android.main.MainActivity">-->
+        <!--<activity android:name=".android.main.LoginActivity">-->
+        <!-- <activity android:name=".android.test.frament_viewpage_test.FramentViewPageActivity">-->
+        <!--<activity android:name=".android.test.web3j_test.Web3jActivity"></activity>-->
+
+        <activity android:name=".android.main.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+
+        <activity android:name=".android.test.grpc_interface_test.TestInterfaceActivity"/>
+        <activity android:name=".android.main.RegisterActivity"></activity>
+        <activity android:name=".android.main.CreateUserActivity"></activity>
+        <!--<activity android:name=".android.main.LoginActivity"></activity>-->
+        <activity android:name=".android.main.publisher.activity.PublisherHomeActivity"></activity>
+        <activity android:name=".android.main.applicant.activity.ApplicantHomeActivity"></activity>
+        <activity android:name=".android.main.publisher.activity.AddOrderActivity"></activity>
+        <activity android:name=".android.main.publisher.activity.AddSchedulingActivity"></activity>
+        <activity android:name=".android.main.publisher.activity.AddEmployeeActivity"></activity>
+        <activity android:name=".android.main.publisher.activity.OrderListActivity"></activity>
+        <!--<activity android:name=".android.test.web3j_test.Web3jActivity"></activity>-->
+        <activity android:name=".android.main.applicant.activity.ApplicantMyInfoActivity"/>
+        <activity android:name=".android.main.applicant.activity.OrderDetailActivity"/>
+        <activity android:name=".android.main.applicant.activity.DetailActivity"/>
+        <activity android:name=".android.main.applicant.activity.ApplicantMyFriendActivity"/>
+        <activity android:name=".android.main.applicant.activity.ApplicantAddNewFrinedActivity"/>
+        <activity android:name=".android.main.publisher.activity.publisherJobInformationActivity"/>
+        <activity android:name=".android.main.publisher.activity.ScheduleListActivity"/>
+        <activity android:name=".android.main.publisher.activity.PublisherAddEmployeeActivity"/>
+        
+
+
+
+
+
+    </application>
+
+</manifest>

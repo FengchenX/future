@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <include layout="@layout/toobar_view"/>
+
+
+    <LinearLayout
+        android:id="@+id/login_ll_content"
+        android:layout_marginTop="@dimen/d50"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/d50"
+        android:layout_marginRight="@dimen/d50"
+        android:orientation="vertical">
+        
+        <ImageView
+            android:layout_marginTop="@dimen/d50"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_login_head"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/d20"
+            android:text="正稻餐饮"
+            android:gravity="center"
+            android:textSize="@dimen/d20"
+            android:textColor="@color/gray"/>
+        
+        
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d50"
+            android:layout_marginTop="@dimen/d50"
+            android:background="@drawable/bg_login_phone"
+
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/d20"
+                android:layout_height="@dimen/d30"
+                android:layout_marginLeft="20dp"
+                android:gravity="left"
+                android:padding="@dimen/d3"
+                android:src="@drawable/ic_login_user"
+                android:layout_gravity="center_vertical"/>
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="20dp"
+                android:background="@color/gray"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/d15"/>
+
+            <EditText
+                android:id="@+id/login_et_userphone"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/login_userphone_hint"
+                android:textSize="@dimen/d15"
+                android:background="@null"
+                android:inputType="number"
+                android:cursorVisible="false"
+                android:layout_marginLeft="@dimen/d15"
+                android:layout_marginRight="20dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/login_btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="@dimen/d30"
+        android:layout_below="@+id/login_ll_content"
+        android:text="@string/login_login_button"
+        android:textColor="@color/white"
+        android:background="@drawable/button_shape_corners_blue"
+        android:layout_marginRight="50dp"
+        android:layout_marginLeft="50dp" />
+
+
+</RelativeLayout>

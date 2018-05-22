@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="center_vertical"
+    android:layout_gravity="center_vertical"
+    android:minHeight="@dimen/d45">
+
+    <TextView
+        android:id="@+id/tv_job_name"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:textColor="@color/text_grey"
+        android:gravity="center_vertical"
+        android:textSize="@dimen/d15"
+        android:layout_marginLeft="@dimen/d15"
+        android:layout_alignParentLeft="true"
+        android:text="厨师"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:gravity="center_vertical"
+        android:layout_marginRight="@dimen/d15"
+        android:drawableRight="@mipmap/to_right"/>
+</RelativeLayout>

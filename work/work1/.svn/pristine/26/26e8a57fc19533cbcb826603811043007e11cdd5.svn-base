@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_znfz_normal"
+    android:orientation="vertical">
+
+    <include layout="@layout/toobar_view" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/d40"
+            android:layout_marginLeft="@dimen/d15"
+            android:gravity="center"
+            android:text="@string/order_time"
+            android:textColor="@color/text_grey" />
+
+        <TextView
+            android:id="@+id/tv_order_time_show"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/d40"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@+id/tv_time"
+            android:gravity="center"
+            android:text="2018-05-14 14:30"
+            android:textColor="@color/text_grey" />
+
+        <TextView
+            android:id="@+id/tv_order_table"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/d40"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="@dimen/d15"
+            android:gravity="center"
+            android:text="@string/order_time"
+            android:textColor="@color/text_grey" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_money"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/d40"
+            android:layout_marginLeft="@dimen/d15"
+            android:gravity="center"
+            android:text="@string/order_money"
+            android:textColor="@color/text_grey" />
+
+        <TextView
+            android:id="@+id/tv_order_money_show"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/d40"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:text="¥ 268.00"
+            android:textColor="@color/red" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_company_commission"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/d40"
+            android:layout_marginLeft="@dimen/d15"
+            android:gravity="center"
+            android:text="@string/company_commission"
+            android:textColor="@color/text_grey" />
+
+        <TextView
+            android:id="@+id/tv_company_commission_show"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/d40"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:text="¥ 32.16"
+            android:textColor="@color/text_grey" />
+
+        <TextView
+            android:id="@+id/tv_company_commission_percent"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/d40"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="@dimen/d15"
+            android:gravity="center"
+            android:text="12%"
+            android:textColor="@color/text_grey" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/d2"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d45"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/d10"
+            android:text="@string/commission_allocation_details"
+            android:textSize="@dimen/d15" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/order_detail_personnel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/d10"
+            android:layout_marginRight="@dimen/d10"
+            android:background="@color/transparent"
+            android:dividerHeight="@dimen/d10" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d45"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/d10"
+            android:text="@string/order_detail_menu"
+            android:textSize="@dimen/d15" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/order_detail_menu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/d10"
+            android:layout_marginRight="@dimen/d10"
+            android:background="@color/transparent"
+            android:dividerHeight="@dimen/d10" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/d45">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/text_grey"
+            android:textSize="@dimen/d15"
+            android:text="@string/order_detail_money_total" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/text_grey"
+            android:textSize="@dimen/d15"
+            android:text="" />
+
+    </RelativeLayout>
+</LinearLayout>

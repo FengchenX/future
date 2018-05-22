@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_znfz_normal">
+
+    <include layout="@layout/toobar_view" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/applicant_my_friend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_toolbar"
+        android:background="@color/white" />
+
+    <ImageView
+        android:id="@+id/img_no_friend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:src="@mipmap/applicant_no_friend"
+        android:visibility="gone"
+        />
+
+    <Button
+        android:id="@+id/btn_job_detail_apply_immediately"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/d10"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="@dimen/d40"
+        android:background="@drawable/button_shape_corners_blue"
+        android:text="@string/applicant_add_friend"
+        android:textColor="@color/white" />
+</RelativeLayout>

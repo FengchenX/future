@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_znfz_normal"
+        android:orientation="vertical">
+
+        <include layout="@layout/toobar_view" />
+
+        <TextView
+            android:id="@+id/tv_chef"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d35"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/d10"
+            android:text="@string/job_details_chef"
+            android:textColor="@color/black"
+            android:textSize="@dimen/d15" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d35"
+            android:background="@color/white"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_icon"
+                android:layout_width="@dimen/d15"
+                android:layout_height="@dimen/d15"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/d10"
+                android:background="@mipmap/trick"
+                android:gravity="center"
+                android:text="@string/job_details_trick"
+                android:textColor="@color/white"
+                android:textSize="@dimen/d10" />
+
+            <TextView
+                android:id="@+id/tv_jod_detail_trick"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/d35"
+                android:layout_toRightOf="@+id/tv_icon"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/d10"
+                android:text="1人"
+                android:textColor="@color/text_grey" />
+
+            <TextView
+                android:id="@+id/tv_center"
+                android:layout_width="@dimen/d15"
+                android:layout_height="@dimen/d15"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:background="@mipmap/commission"
+                android:gravity="center"
+                android:text="@string/job_details_commission"
+                android:textColor="@color/white"
+                android:textSize="@dimen/d10" />
+
+            <TextView
+                android:id="@+id/tv_jod_detail_commission"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/d35"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@+id/tv_center"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/d10"
+                android:text="40%"
+                android:textColor="@color/text_grey" />
+
+            <TextView
+                android:layout_width="@dimen/d15"
+                android:layout_height="@dimen/d15"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/d5"
+                android:layout_toLeftOf="@+id/jod_detail_address"
+                android:background="@mipmap/address"
+                android:gravity="center"
+                android:text="@string/job_details_address"
+                android:textColor="@color/white"
+                android:textSize="@dimen/d10" />
+
+            <TextView
+                android:id="@+id/jod_detail_address"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/d35"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="@dimen/d10"
+                android:gravity="center"
+                android:text="南山区"
+                android:textColor="@color/text_grey" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d35"
+            android:background="@color/white"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="@dimen/d15"
+                android:layout_height="@dimen/d15"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/d10"
+                android:layout_marginRight="@dimen/d5"
+                android:layout_toLeftOf="@+id/jod_detail_address"
+                android:background="@mipmap/time"
+                android:gravity="center"
+                android:text="@string/job_details_time"
+                android:textColor="@color/white"
+                android:textSize="@dimen/d10" />
+
+            <TextView
+                android:id="@+id/jod_detail_time"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/d35"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="@dimen/d10"
+                android:gravity="center"
+                android:text="2018-05-01 09:30-18:30"
+                android:textColor="@color/text_grey" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d45"
+            android:layout_marginTop="@dimen/d5"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/d10"
+            android:text="@string/job_details"
+            android:textColor="@color/black"
+            android:textSize="@dimen/d15" />
+
+        <TextView
+            android:id="@+id/tv_job_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:paddingLeft="@dimen/d10"
+            android:paddingRight="@dimen/d10"
+            android:text="在水平中心放置一个占位 view，内容为空
+在占位 view 的两侧各放置一个 view，并设置它们与占位 view 的 margin
+为了显示更加清楚，我给 占位 view 和两侧的 view 都设置了背景，具体使用时可以去掉。布局文件如下："
+            android:textColor="@color/text_grey"
+            android:textSize="@dimen/d12" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d45"
+            android:layout_marginTop="@dimen/d5"
+            android:background="@color/white">
+
+            <ImageView
+                android:layout_width="@dimen/d25"
+                android:layout_height="@dimen/d25"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/d10"
+                android:src="@mipmap/applicant_company" />
+
+            <TextView
+                android:id="@+id/tv_job_detail_company"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/d10"
+                android:text="深圳市正道食品有限公司"
+                android:textColor="@color/text_grey"
+                android:textSize="@dimen/d15" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_job_detail_address"
+            android:layout_width="match_parent"
+            android:textSize="@dimen/d15"
+            android:layout_marginTop="@dimen/d2"
+            android:textColor="@color/text_grey"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/d10"
+            android:text="工作地点:广东省南山区86号"
+            android:layout_height="@dimen/d35" />
+
+
+
+        <Button
+            android:id="@+id/btn_job_detail_apply_immediately"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="@dimen/d40"
+            android:layout_below="@+id/login_ll_content"
+            android:text="@string/job_apply_immediately"
+            android:textColor="@color/white"
+            android:background="@drawable/button_shape_corners_blue"
+            android:layout_marginRight="50dp"
+            android:layout_marginLeft="50dp" />
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <!-- 角色 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/d15"
+            android:layout_marginLeft="@dimen/d15"
+            android:layout_marginRight="@dimen/d15"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="@dimen/d20"
+                android:layout_height="@dimen/d20"
+                android:background="@drawable/ic_role"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/d10"
+                android:textSize="@dimen/d15"
+                android:text="@string/publisher_add_scheduling_role_text"/>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d45"
+            android:layout_marginTop="@dimen/d15"
+            android:layout_marginLeft="@dimen/d15"
+            android:layout_marginRight="@dimen/d15"
+            android:layout_marginBottom="@dimen/d15"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:background="@drawable/bg_rectangular_frame"
+            android:orientation="horizontal">
+            <EditText
+                android:id="@+id/publish_add_scheduling_et_role"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/d45"
+                android:paddingLeft="@dimen/d10"
+                android:gravity="left|center"
+                android:enabled="false"
+                android:textColor="@color/black"
+                android:background="@color/transparent"
+                android:hint="@string/publisher_add_scheduling_role_hint"
+                android:textSize="@dimen/d15"
+                android:layout_toLeftOf="@+id/publish_add_scheduling_iv_role"/>
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/d10"
+                android:layout_marginBottom="@dimen/d10"
+                android:background="@color/gray"
+                android:layout_toLeftOf="@+id/publish_add_scheduling_iv_role"
+                android:visibility="gone"/>
+
+            <ImageView
+                android:id="@+id/publish_add_scheduling_iv_role"
+                android:layout_width="@dimen/d40"
+                android:layout_height="match_parent"
+                android:padding="@dimen/d10"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ic_choice_down"
+                android:visibility="gone"/>
+        </RelativeLayout>
+
+
+        <!-- 角色人数 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/d10"
+            android:layout_marginLeft="@dimen/d15"
+            android:layout_marginRight="@dimen/d15"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="@dimen/d20"
+                android:layout_height="@dimen/d20"
+                android:background="@drawable/ic_people"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/d10"
+                android:textSize="@dimen/d15"
+                android:text="@string/publisher_add_scheduling_rolenum_text"/>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d45"
+            android:layout_marginTop="@dimen/d15"
+            android:layout_marginLeft="@dimen/d15"
+            android:layout_marginRight="@dimen/d15"
+            android:layout_marginBottom="@dimen/d15"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:background="@drawable/bg_rectangular_frame"
+            android:orientation="horizontal">
+            <EditText
+                android:id="@+id/publish_add_scheduling_et_rolenum"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/d45"
+                android:paddingLeft="@dimen/d10"
+                android:gravity="left|center"
+                android:enabled="false"
+                android:textColor="@color/black"
+                android:background="@color/transparent"
+                android:hint="@string/publisher_add_scheduling_rolenum_hint"
+                android:textSize="@dimen/d15"
+                android:layout_toLeftOf="@+id/publish_add_scheduling_iv_rolenumselect"/>
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/d10"
+                android:layout_marginBottom="@dimen/d10"
+                android:background="@color/gray"
+                android:layout_toLeftOf="@+id/publish_add_scheduling_iv_rolenumselect"/>
+
+            <ImageView
+                android:id="@+id/publish_add_scheduling_iv_rolenumselect"
+                android:layout_width="@dimen/d40"
+                android:layout_height="match_parent"
+                android:padding="@dimen/d10"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ic_choice_down"/>
+        </RelativeLayout>
+
+
+
+        <!-- 佣金比例 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/d10"
+            android:layout_marginLeft="@dimen/d15"
+            android:layout_marginRight="@dimen/d15"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="@dimen/d20"
+                android:layout_height="@dimen/d20"
+                android:background="@drawable/ic_money"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/d10"
+                android:textSize="@dimen/d15"
+                android:text="@string/publisher_add_scheduling_per_text"/>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d45"
+            android:layout_marginTop="@dimen/d15"
+            android:layout_marginLeft="@dimen/d15"
+            android:layout_marginRight="@dimen/d15"
+            android:layout_marginBottom="@dimen/d15"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:background="@drawable/bg_rectangular_frame"
+            android:orientation="horizontal">
+            <EditText
+                android:id="@+id/publish_add_scheduling_et_per"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/d45"
+                android:paddingLeft="@dimen/d10"
+                android:gravity="left|center"
+                android:enabled="false"
+                android:textColor="@color/black"
+                android:background="@color/transparent"
+                android:hint="@string/publisher_add_scheduling_per_hint"
+                android:textSize="@dimen/d15"
+                android:layout_toLeftOf="@+id/publish_add_scheduling_iv_perselect"/>
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/d10"
+                android:layout_marginBottom="@dimen/d10"
+                android:background="@color/gray"
+                android:layout_toLeftOf="@+id/publish_add_scheduling_iv_perselect"/>
+
+            <ImageView
+                android:id="@+id/publish_add_scheduling_iv_perselect"
+                android:layout_width="@dimen/d40"
+                android:layout_height="match_parent"
+                android:padding="@dimen/d10"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ic_choice_down"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

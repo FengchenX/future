@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/d50"
+    android:id="@+id/Rll_friend_item"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/img_check_friend"
+        android:layout_width="@dimen/d20"
+        android:layout_height="@dimen/d20"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/d15"
+        android:gravity="center_vertical"
+        android:background="@mipmap/friend_uncheck"
+        android:visibility="gone" />
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/iv_my_friend_image_small"
+        android:layout_width="@dimen/d35"
+        android:layout_height="@dimen/d35"
+        android:layout_gravity="center_vertical"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/d15"
+        android:layout_toRightOf="@+id/img_check_friend"
+        android:background="@mipmap/applicant_my_friend"
+        fresco:roundAsCircle="true" />
+
+    <TextView
+        android:id="@+id/tv_friend_name"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/d10"
+        android:layout_toRightOf="@+id/iv_my_friend_image_small"
+        android:gravity="center_vertical"
+        android:text="王小明"
+        android:textColor="@color/text_grey"
+        android:textSize="@dimen/d15" />
+
+    <TextView
+        android:id="@+id/tv_friend_phone_number"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="20dp"
+        android:gravity="center_vertical"
+        android:text="1302564852"
+        android:textColor="@color/text_grey"
+        android:textSize="@dimen/d15" />
+</RelativeLayout>

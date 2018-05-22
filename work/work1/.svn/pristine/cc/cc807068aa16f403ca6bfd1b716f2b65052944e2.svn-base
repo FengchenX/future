@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="wrap_content">
+
+        <!-- 经理 -->
+        <LinearLayout
+            android:id="@+id/publisher_order_list_item_ll_manager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/publisher_order_list_item_rolemoneydetail"
+            android:layout_marginTop="@dimen/d10"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/publisher_order_role_list_item_role"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:layout_marginLeft="@dimen/publish_order_item_left_right_marging"
+                android:textSize="@dimen/d15"
+                android:text="@string/user_role_manager"/>
+
+            <TextView
+                android:id="@+id/publisher_order_role_list_item_num"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="@dimen/d15"
+                android:visibility="gone"
+                android:text="1人"/>
+
+            <TextView
+                android:id="@+id/publisher_order_role_list_item_per"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="@dimen/d15"
+                android:text="40%"/>
+
+            <TextView
+                android:id="@+id/publisher_order_role_list_item_money"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:layout_marginRight="@dimen/publish_order_item_left_right_marging"
+                android:textSize="@dimen/d15"
+                android:text="120.00"/>
+
+        </LinearLayout>
+
+
+</RelativeLayout>

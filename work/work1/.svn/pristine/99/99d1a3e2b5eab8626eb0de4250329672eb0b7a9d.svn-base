@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="wrap_content">
+
+    <!-- 第一部分：公司 -->
+    <RelativeLayout
+        android:id="@+id/publisher_scheduling_list_item_rl_company"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/publish_scheduling_item_left_right_marging"
+        >
+
+        <ImageView
+            android:id="@+id/publisher_scheduling_list_item_iv"
+            android:layout_width="@dimen/d20"
+            android:layout_centerVertical="true"
+            android:layout_height="@dimen/d20"
+            android:background="@drawable/ic_company_default"/>
+
+        <TextView
+            android:id="@+id/publisher_scheduling_tv_item_companyname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/d30"
+            android:textColor="@color/black"
+            android:textSize="@dimen/d15"
+            android:text="公司名称"/>
+
+    </RelativeLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/alpha_gray"
+        android:alpha="0.5"
+        android:layout_below="@+id/publisher_scheduling_list_item_rl_company"
+        />
+
+    <!-- 第二部分：上班时间 -->
+    <RelativeLayout
+        android:id="@+id/publisher_scheduling_list_item_rl_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/d8"
+        android:layout_below="@+id/publisher_scheduling_list_item_rl_company"
+        android:padding="@dimen/publish_scheduling_item_left_right_marging_two">
+
+
+        <TextView
+            android:id="@+id/publisher_scheduling_tv_item_time_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/d30"
+            android:textColor="@color/black"
+            android:textSize="@dimen/d15"
+            android:text="上班时间"/>
+
+        <TextView
+            android:id="@+id/publisher_scheduling_tv_item_time_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/black"
+            android:textSize="@dimen/d15"
+            android:layout_marginRight="@dimen/d8"
+            android:text="2018-04-16 14:30-18:00"/>
+
+    </RelativeLayout>
+
+    <!-- 第三部分：比例分配 -->
+    <RelativeLayout
+        android:id="@+id/publisher_scheduling_list_item_rl_per"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/publisher_scheduling_list_item_rl_time"
+        android:padding="@dimen/publish_scheduling_item_left_right_marging_two">
+
+
+        <TextView
+            android:id="@+id/publisher_scheduling_tv_item_per_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/d30"
+            android:textColor="@color/black"
+            android:textSize="@dimen/d15"
+            android:text="比例分配"/>
+
+        <TextView
+            android:id="@+id/publisher_scheduling_tv_item_per_value_store"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/black"
+            android:textSize="@dimen/d15"
+            android:layout_marginRight="@dimen/d8"
+            android:text="门店(88%)"/>
+
+        <TextView
+            android:id="@+id/publisher_scheduling_tv_item_per_value_company"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="@dimen/d15"
+            android:layout_marginRight="@dimen/d15"
+            android:layout_toLeftOf="@+id/publisher_scheduling_tv_item_per_value_store"
+            android:text="公司(12%)"/>
+
+    </RelativeLayout>
+
+    <!-- 第四部分：查看详情 -->
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/publisher_scheduling_list_item_rl_per"
+        android:gravity="center"
+        android:layout_marginLeft="@dimen/d40">
+
+        <RelativeLayout
+            android:id="@+id/publisher_scheduling_list_item_rl_btn_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp">
+            <TextView
+                android:id="@+id/publisher_scheduling_tv_item_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray"
+                android:layout_centerVertical="true"
+                android:textSize="@dimen/d15"
+                android:text="查看详情"/>
+
+            <ImageView
+                android:id="@+id/publisher_scheduling_iv_item_detail_arrow"
+                android:layout_width="@dimen/d20"
+                android:layout_height="@dimen/d10"
+                android:textColor="@color/gray"
+                android:layout_toRightOf="@+id/publisher_scheduling_tv_item_detail"
+                android:textSize="@dimen/d15"
+                android:layout_marginLeft="@dimen/d15"
+                android:paddingRight="@dimen/d10"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_arrow_right"/>
+
+        </RelativeLayout>
+
+
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/publisher_scheduling_role_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/d10"
+            android:layout_marginLeft="@dimen/d0"
+            android:layout_marginRight="@dimen/d10"
+            android:layout_marginBottom="@dimen/d10"
+            android:background="@color/transparent"
+            android:layout_below="@+id/publisher_scheduling_list_item_rl_btn_detail"
+            android:dividerHeight="@dimen/d5"
+            android:visibility="gone"
+            />
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

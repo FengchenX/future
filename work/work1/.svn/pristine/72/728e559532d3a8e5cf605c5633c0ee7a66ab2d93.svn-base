@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/rl_item_content"
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:layout_height="@dimen/d35">
+
+        <TextView
+            android:id="@+id/item_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center|left"
+            android:text="name"
+            android:layout_marginRight="@dimen/d15"
+            android:layout_marginLeft="@dimen/d15"
+            />
+
+        <ImageView
+            android:id="@+id/item_icon"
+            android:layout_width="@dimen/d15"
+            android:layout_height="@dimen/d30"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/d15"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_arrow_right"
+            />
+    </RelativeLayout>
+
+
+
+
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/lv_second"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/d0"
+        android:layout_marginBottom="@dimen/d0"
+        android:background="@color/bg_znfz_normal"
+        android:dividerHeight="@dimen/d10"
+        android:layout_below="@+id/rl_item_content"
+        />
+
+
+</RelativeLayout>

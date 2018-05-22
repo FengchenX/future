@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_marginRight="@dimen/d10"
+    android:layout_marginLeft="@dimen/d10"
+    android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/publisher_income_detail_list_item_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/d10"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/publisher_income_detail_list_item_iv"
+                android:layout_width="@dimen/d10"
+                android:layout_height="@dimen/d10"
+                android:layout_marginLeft="@dimen/publish_order_item_left_right_marging"
+                android:background="@drawable/ic_red_round"/>
+
+            <TextView
+                android:id="@+id/publisher_income_detail_list_item_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginLeft="@dimen/d15"
+                android:textSize="@dimen/d16"
+                android:textColor="@color/black"
+                android:text="@string/publisher_income_detail_item_title"/>
+
+        </LinearLayout>
+
+
+
+    <TextView
+        android:id="@+id/publisher_income_detail_list_item_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginLeft="@dimen/d40"
+        android:layout_below="@+id/publisher_income_detail_list_item_ll"
+        android:textSize="@dimen/d16"
+        android:textColor="@color/gray"
+        android:layout_marginTop="@dimen/d10"
+        android:layout_marginBottom="@dimen/d10"
+        android:text="2018-03-22"/>
+
+    <TextView
+        android:id="@+id/publisher_income_detail_list_item_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginLeft="@dimen/d40"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/d15"
+        android:layout_alignParentRight="true"
+        android:textSize="@dimen/d18"
+        android:textColor="@color/black"
+        android:layout_marginTop="@dimen/d10"
+        android:layout_marginBottom="@dimen/d10"
+        android:text="+ 8.00"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@+id/publisher_income_detail_list_item_time"
+        android:background="@color/alpha_black"></View>
+
+</RelativeLayout>

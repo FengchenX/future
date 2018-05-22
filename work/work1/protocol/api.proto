@@ -1,0 +1,512 @@
+//--------------------------------------------------------------
+// name  : api接口协议
+// rule1 : 所有带有"C"前缀的协议为客户端向服务端发送
+// rule2 : 所有带有"S"前缀的协议为服务端向客户端发送
+//---------------------------------------------------------------
+syntax = "proto3";                  // protobuf3 系列必须在前面加前缀
+package protocol;                   // 统一package
+//option cc_generic_services = true;  // 开启grpc
+import "obj.proto";              // pb中必须注明引用的pb
+
+// api rpc 服务
+service ApiService {
+  rpc SayHello (Req) returns (Resp) {};                                      // 测试服务
+
+
+  // 注册 绑定 登录
+  rpc Register (ReqRegister) returns (RespRegister) {};                        // 1.1.用户注册服务
+  rpc Bind (ReqBand) returns (RespBand) {};                                    // 1.2.用户绑定服务
+  rpc GetBind (ReqLogin) returns (RespLogin) {};                               // 1.3.查询绑定服务（phone）
+  rpc GetAccount (ReqCheckAccount)returns (RespCheckAccount) {};               // 1.4.查询账户服务（address）
+  rpc GetEthBalance(ReqGetEthBalance)returns (RespGetEthBalance){};            // 1.5.获取以太坊的余额
+
+
+  // 排班 申请工作
+  rpc SetSchedule (ReqScheduling) returns (RespScheduling) {};                // 2.1.发布排班服务 // todo地点 终止时间 详细地址
+  rpc GetSchedule (ReqGetSchedue) returns (RespGetSchedue){};                 // 2.2.查询排班服务(按公司)
+  rpc GetCanJoin (ReqGetSchedue) returns (RespGetSchedue){};                  // 2.3.查询排班服务(按时间)
+  rpc GetApply(ReqGetStaff) returns (RespGetStaff){};                         // 2.4.查询申请情况
+  rpc GetJob (ReqGetCanApply) returns (RespGetCanApply) {};                   // 2.5.查询可申请的工作
+  rpc ApplyJob (ReqFindJob) returns (RespFindJob) {};                         // 2.6.申请工作服务
+  rpc HistoryJoin(ReqHistoryJoin) returns (RespHistoryJoin){};                // 2.7.参加工作历史
+  rpc CheckIsOkApplication (ReqCheckIsOkApplication) returns (RespCheckIsOkApplication) {}; // 2.8.检查是否申请工作成功
+
+
+  // 收入
+  rpc Pay (ReqPay) returns (RespPay) {};                                           // 3.1. 确认存证并付款
+  rpc GetAllOrderBySchedule (ReqGetAllOrder)returns (RespGetAllOrder) {};          // 3.2. 查詢排班下所有訂單
+  rpc GetContent(ReqGetContent) returns (RespGetContent) {};                       // 3.3. 查询订单服务（查询存证）
+  rpc GetAllIncome (ReqGetAllIncome) returns (RespGetAllIncome) {};                // 3.4. 获取用户历史收入详情（所有）
+  rpc GetIncomeBySchedule(ReqGetIncomeBySchedule)returns(RespGetIncomeBySchedule); // 3.5.根据排班信息获取用户收入详情
+
+
+  // 查询
+  rpc GetBalance(ReqGetBalance) returns (RespGetBalance) {};                            // 4.1.查询某一班的总收入
+  rpc GetAllMoney (ReqGetAllMoney) returns (RespGetAllMoney) {};                        // 4.2.查询用户在某一公司所有收入
+  rpc GetNowJobAddress(ReqGetNowJobAddr) returns (RespGetNowJobAddr) {};                // 4.3.获取当前排班
+
+  // 用人白名单
+  rpc AddWhiteList(ReqAddWhite) returns (RespAddWhite) {};                               // 5.1.添加用人白名单
+  rpc GetWhiteList(ReqGetWhite) returns (RespGetWhite) {};                               // 5.2.根据账户地址查询用人白名单
+  rpc DelWhiteList(ReqDelWhite) returns (RespDelWhite) {};                               // 5.3.删除用人白名单
+
+  // 三方
+    rpc ThreeSetOrder(ReqThreeSetOrder) returns (RespThreeSetOrder) {};                  // 6.1.三方存证
+    rpc ThreeSetBill (ReqThreeSetBill) returns (RespThreeSetBill) {};                    // 6.2.三方支付
+
+  // 无用
+  rpc ManageContract (ReqManageContract) returns (RespManageContract) {};    // *.管理合约服务
+  rpc CheckContract (ReqCheckContract) returns (RespCheckContract) {};       // *.查询合约服务
+
+  // 配置服务
+  rpc ReloadConfig (CReloadConfig) returns (SReloadConfig) {};
+  rpc ReloadDeploy (CReloadDeploy) returns (SReloadDeploy) {};
+}
+
+// **********************************************第二期新增的*************************************************//
+//  排班
+//      rpc GetNowJobAddress(ReqGetNowJobAddr) returns (RespGetNowJobAddr) {};     // 4.3.获取当前排班
+// 用人白名单
+//      rpc AddWhiteList(ReqAddWhite) returns (RespAddWhite) {};                   // 5.1.添加用人白名单
+//      rpc GetWhiteList(ReqGetWhite) returns (RespGetWhite) {};                   // 5.2.根据账户地址查询用人白名单
+//      rpc DelWhiteList(ReqDelWhite) returns (RespDelWhite) {};                   // 5.3.删除用人白名单
+//  三方
+//      rpc ThreeSetOrder(ReqThreeSetOrder) returns (RespThreeSetOrder) {};        // 6.1.三方存证
+//     rpc ThreeSetBill (ReqThreeSetBill) returns (RespThreeSetBill) {};          // 6.2.三方支付
+//
+// **********************************************第二期修改的*************************************************//
+//  排班
+//  rpc SetSchedule (ReqScheduling) returns (RespScheduling) {};                // 2.1.发布排班服务
+//  rpc ApplyJob (ReqFindJob) returns (RespFindJob) {};                         // 2.6.申请工作服务
+//  其他你编译不通过的话问我 :P
+
+
+
+//客户端 三方支付
+message ReqThreeSetBill{
+    string  UserAddress      = 1;  // 用户地址
+    string  PassWord         = 2;  // 用户秘钥
+    string  AccountDescribe  = 3;  // 用户私钥
+    double  Money            = 4;  // 付款数
+    string  JobAddress       = 5;  // 排班地址
+    string  CompanyName      = 6;  // 公司名
+    string  SubCompanyName   = 7;  // 分公司名
+}
+
+//客户端 三方支付
+message RespThreeSetBill{
+  uint32 StatusCode          = 1; // 状态码
+}
+
+//客户端 三方存证
+message ReqThreeSetOrder{
+    string  UserAddress     = 1; // 用户地址
+    string  PassWord        = 2; // 用户秘钥
+    string  AccountDescribe  = 3; // 用户私钥
+    string  OrderId         = 4; // 订单ID
+    Order   Content         = 5; // 订单内容（json字符串也是可以的）
+    double  Money           = 6; // 价格
+    string  JobAddress      = 7; // 订单地址
+}
+
+//客户端 三方存证
+message RespThreeSetOrder{
+  uint32 StatusCode          = 1; // 状态码
+}
+
+//客户端 删除用人白名单
+message ReqDelWhite{
+    string   UserAddress        = 1;   // 用户地址
+    string   PassWord           = 2;   // 用户密码
+    string   AccountDescribe    = 3;   // 用户私钥
+    string   AdderAddress       = 4;   // 添加的用户
+}
+
+//客户端 删除用人白名单
+message RespDelWhite{
+  uint32 StatusCode          = 1; // 状态码
+}
+
+
+//客户端 根据账户地址查询用人白名单
+message ReqGetWhite{
+    string   UserAddress        = 1;   // 用户地址
+    string   PassWord           = 2;   // 用户密码
+    string   AccountDescribe    = 3;   // 用户私钥
+    string   AdderAddress       = 4;   // 添加的用户
+}
+
+//客户端 根据账户地址查询用人白名单
+message RespGetWhite{
+  uint32 StatusCode          = 1; // 状态码
+  repeated Friend Friends    = 2; // 账户地址
+}
+
+//客户端 添加用人白名单
+message ReqAddWhite{
+    string   UserAddress        = 1;   // 用户地址
+    string   PassWord           = 2;   // 用户密码
+    string   AccountDescribe    = 3;   // 用户私钥
+    string   AdderAddress       = 4;   // 添加的用户
+    string   Phone              = 5;
+    string   Name               = 6;
+}
+
+//客户端 添加用人白名单
+message RespAddWhite{
+  uint32 StatusCode          = 1; // 状态码
+}
+
+// 测试用
+message Req {
+  string name = 1;
+}
+
+// 测试用
+message Resp {
+  string message = 1;
+}
+
+//客户端 获取以太坊的余额
+message ReqGetEthBalance{
+    string UserAddress = 1;
+}
+
+// 服务端 获取以太坊的余额
+message RespGetEthBalance{
+  uint32 StatusCode          = 1; // 状态码
+  string Balance             = 2; // 余额，后面有18个0
+}
+
+
+// 客户端 注册
+message ReqRegister{
+  string PassWord = 1;     // 用户密码
+}
+
+// 服务端 注册
+message RespRegister{
+  uint32 StatusCode          = 1; // 状态码
+  string UserAddress         = 2; // 用户地址
+  string PassWord            = 3; // 用户密码
+  string AccountDescribe     = 4; // 用户私钥
+}
+
+// 客户端 绑定
+message ReqBand{
+  string Name               = 1 ;    // 用户名
+  string UserAddress        = 2;     // 用户地址
+  string PassWord           = 3;     // 用户密码
+  string Phone              = 4;     // 注册手机号
+  string AccountDescribe    = 5;     // 用户私钥
+}
+
+// 服务端 绑定
+message RespBand{
+  uint32 StatusCode         = 1; // 状态码
+}
+
+// 客户端 查询账户
+message ReqCheckAccount{
+  string UserAddress   = 1; // 查询用户地址
+}
+
+// 服务端 查询账户
+message RespCheckAccount{
+  uint32 StatusCode      = 1;     // 状态码
+  string Name            = 2;     // 用户名
+  string Role            = 3;     // 用户身份
+  string PassWord        = 4;     // 用户密码
+  string Phone           = 5;     // 注册手机号
+  string AccountDescribe = 6;     // 用户私钥
+}
+
+// 客户端 发布排班
+message ReqScheduling{
+    string   UserAddress         = 1;  // 用户地址
+    string   PassWord            = 2;  // 用户密码
+    string   AccountDescribe     = 3;  // 用户私钥
+    string   Company             = 4;  // 工作单位
+    repeated Job Jobs            = 5;  // 发布的工作
+    int64    TimeStamp           = 6;  // 工作时间（暂定日期）
+    string   PayAccount          = 7;  // 支付地址
+    string   ManagerPayee        = 8;  // 管理费的收款地址
+    int64    ManagerRatio        = 9;  // 管理费的固定比例
+    string   StoresNumber       = 10;  // 门店编号
+    string	 Postscript         = 11;  // 备注信息
+    uint32   MyRatio            = 12;  // 我拥有的分账比例
+}
+
+// 服务端 发布排班
+message RespScheduling{
+  uint32 StatusCode = 1; // 状态码
+  string JobAddress    = 2; // 合约地址
+}
+
+// 客户端 申请工作
+message ReqFindJob{
+    string UserAddress      = 1; // 用户地址
+    string  PassWord        = 2; // 用户秘钥
+    string AccountDescribe  = 3; // 用户私钥
+    Job    MyJob            = 4; // 申请的工作
+}
+
+// 服务端 申请工作
+message RespFindJob{
+  uint32 StatusCode = 1; // 状态码
+  string HashCode   = 2; // 哈希（其实没用）
+}
+
+// 客户端 确认存证并付款
+message ReqPay{
+    string  UserAddress      = 1;  // 用户地址
+    string  PassWord         = 2;  // 用户秘钥
+    string  AccountDescribe  = 3;  // 用户私钥
+    uint64  Money            = 4;  // 付款数
+    Order   Content          = 5;  // 订单内容（json字符串也是可以的）
+    string  JobAddress       = 6;  // 排班地址
+}
+
+// 服务端 确认存证并付款
+message RespPay{
+  uint32 StatusCode = 1; // 状态码
+  uint32 OrderId    = 2; // 订单ids
+  string HashCode   = 3; // 哈希
+}
+
+// 客户端 客户下单
+message ReqSetContent{
+    string  UserAddress     = 1; // 用户地址
+    string  PassWord        = 2; // 用户秘钥
+    string AccountDescribe  = 3; // 用户私钥
+    string  OrderId         = 4; // 订单ID
+    Order   Content         = 5; // 订单内容（json字符串也是可以的）
+    string  JobAddress      = 6; // 订单地址
+}
+
+// 服务端 客户下单
+message RespSetContent{
+  uint32 StatusCode = 1; // 状态码
+  string OrderId    = 2; // 返回的訂單號
+}
+
+// 客户端 客户查单
+message ReqGetContent{
+    string  UserAddress = 1; // 用户地址
+    string  OrderId     = 2; // 订单ID
+    string  JobAddress  = 3; // 订单地址
+}
+
+// 服务端 客户查单
+message RespGetContent{
+  uint32 StatusCode = 1; // 状态码
+  Order  content    = 2; // 下单时的信息
+}
+
+// 服务端 查询可申请的工作
+message ReqGetCanApply{
+    string UserAddress = 1; // 用户地址
+    string CompanyName = 2; // 公司名或者是发布者名
+    string TimeStamp   = 3; // 时间戳
+}
+
+// 客户端 查询可申请的工作
+message RespGetCanApply{
+    uint32 StatusCode            = 1; // 状态码
+    repeated Job Jobs            = 2; // 返回可申请的岗位数组
+}
+
+// 客户端 查询排班
+message ReqGetSchedue{
+    string UserAddress = 1; // 用户地址
+    string CompanyName = 2; // 公司名或者是发布者名
+    string TimeStamp   = 3; // 时间戳
+}
+
+// 服务端 查询排班
+message RespGetSchedue{
+    uint32 StatusCode            = 1; // 状态码
+    repeated Schedule Schedules  = 2; // 返回排班数组
+}
+
+// 请求查询某一排班的收入
+message ReqGetBalance{
+    string UserAddress           = 1; // 用户地址
+    string SchedueAddress        = 2; // 排班地址
+}
+
+// 请求查询某一排班的收入
+message RespGetBalance{
+    uint32 StatusCode             = 1; // 状态码
+    uint64 Money                  = 2; // 收取的钱
+}
+
+// ----请求查询工作是否申请成功
+message ReqCheckIsOkApplication{
+    string UserAddress               = 1; //用户地址
+    string JobAddress                = 2; //工作地址
+}
+
+message RespCheckIsOkApplication{
+    uint32 StatusCode                = 1; //状态码
+    bool isApplied                   = 2; //是否成功
+}
+
+// 客户端 管理合约(占时没用)
+message ReqManageContract{
+    string   UserAddress    = 1; // 管理者地址
+    uint64   ContractHash   = 2; // 合约哈希
+    repeated string Pre     = 3; // 更改前
+    repeated string After   = 4; // 更改后
+}
+
+// 服务端 管理合约(占时没用)
+message RespManageContract{
+  uint32 StatusCode = 1; // 状态码
+  string HashCode   = 2; // 哈希
+}
+
+// 客户端 查询合约
+message ReqCheckContract{
+    string   Address        = 1; // 合约地址
+    string   Key            = 2; // 查询key
+}
+
+// 服务端 查询合约
+message RespCheckContract{
+  uint32 StatusCode = 1; // 状态码
+  string HashCode   = 2; // 哈希
+}
+
+// 客户端 查询合约
+message ReqGetStaff{
+    string   UserAddress       = 1; // 管理者地址
+    string   JobAddress        = 2; // 合约地址
+}
+
+// 服务端 查询合约
+message RespGetStaff{
+ uint32   StatusCode             = 1; // 状态码
+ repeated scheduleStaff Staffs   = 2; // 申请人
+}
+
+// 客户端 登录服务
+message ReqLogin{
+    string   Phone            = 1; // 用户电话号码
+}
+
+// 服务端 登录服务
+message Login{
+    uint32 StatusCode             = 1; // 状态码
+    string Name                   = 2; // 用户名
+    string Role                   = 3; // 用户身份
+    string PassWord               = 4; // 用户密码
+    string Phone                  = 5; // 注册手机号
+    string Address                = 6; // 用户地址
+    string AccountDescribe        = 7; // 用户私钥
+}
+message RespLogin{
+    uint32 StatusCode             = 1; // 状态码
+    repeated Login Logins         = 2; // 历史注册信息
+}
+
+// 客户端 查詢排班下所有訂單
+message ReqGetAllOrder{
+    string   UserAddress       = 1; // 用戶地址
+    string   JobAddress        = 2; // 排班合约地址
+}
+
+// 服务端 查詢排班下所有訂單
+message RespGetAllOrder{
+    uint32   StatusCode             = 1; // 状态码
+    repeated Order Orders           = 2; // 訂單詳情
+    double   Sum                    = 3; // 订单总价
+}
+
+// 客户端 查询用户在某一公司所有收入
+message ReqGetAllMoney{
+    string   CompanyName           = 1; // 公司名
+    string   UserAddress           = 2; // 用戶地址
+}
+
+// 服务端 查詢排班下所有訂單
+message RespGetAllMoney{
+    uint32   StatusCode             = 1; // 状态码
+    double   Sum                    = 2; // 订单总价
+}
+
+// 客户端 用户申请工作历史
+message ReqHistoryJoin{
+    string   UserAddress       = 1; // 用户地址
+    string   Company           = 2; // 公司名称
+}
+
+// 服务端 用户申请工作历史
+message RespHistoryJoin{
+    uint32   StatusCode             = 1; // 状态码
+    repeated Job Jobs               = 2; //工作详情
+}
+
+// 客户端 获取用户收入明细
+message ReqGetAllIncome{
+    string   CompanyName           = 1; // 公司名
+    string   UserAddress           = 2; // 用戶地址
+}
+
+// 服务端 获取用户收入明细
+message RespGetAllIncome{
+    uint32   StatusCode             = 1; // 状态码
+    repeated Order Orders           = 2; // 订单
+}
+
+
+// 客户端 根据排班信息获取玩家收入详情
+message ReqGetIncomeBySchedule{
+    string   CompanyName           = 1; // 公司名
+    string   UserAddress           = 2; // 用戶地址
+    string   TimeStamp             = 3; // 时间戳
+}
+
+// 服务端 根据排班信息获取玩家收入详情
+message RespGetIncomeBySchedule{
+    uint32   StatusCode             = 1; // 状态码
+    repeated Order Orders           = 2; // 订单
+}
+
+// 客户端 获取当前排班
+message ReqGetNowJobAddr{
+    string   CompanyName           = 1; // 公司名
+    string   SubCompanyName        = 2; // 子公司名
+    string   TimeStamp             = 3; // 时间戳
+    string   JobAddress            = 4; // 测试用
+}
+
+// 服务端 获取当前排班
+message RespGetNowJobAddr{
+    uint32   StatusCode             = 1; // 状态码
+    string   JobAddr                = 2; // 工作地址
+}
+
+message CReloadConfig{
+    uint32 Operate_timeout = 1; // 用户操作超时，单位秒
+    string LocalAddress    = 2; // 本机地址
+    string Port            = 3; // 端口
+    string  AccAddress     = 4; // acc地址
+    string EthAddress      = 5; // eth地址
+    string IpcDir          = 6;
+    string ServerId        = 7;
+    string ManagerKey      = 8;
+    string ManagerPhrase   = 9;
+    string KeyDir          = 10;
+}
+
+message SReloadConfig{
+}
+
+message CReloadDeploy{
+    string Address = 1;
+    string Account = 2;
+}
+
+message SReloadDeploy{
+}
