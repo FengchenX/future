@@ -1,9 +1,0 @@
-Operate_timeout = 0
-LocalAddress = ""
-Port = ""
-AccAddress = ""
-EthAddress = ""
-IpcDir = ""
-ServerId = ""
-ManagerKey = ""
-ManagerPhrase = ""
