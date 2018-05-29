@@ -13,7 +13,7 @@ import (
 
 
 func main() {
-	var a []int = []int{1,2,3}	
+	var a = []int{1,2,3}	
 
 	f1(a)
 	fmt.Println(a)
