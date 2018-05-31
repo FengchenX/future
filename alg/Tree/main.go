@@ -96,3 +96,7 @@ func TreeInsert(T *Tree, z *TreeNode) {
 		y.right = z
 	}
 }
+
+func Transplant(T *Tree, u, v *TreeNode) {
+	
+}
