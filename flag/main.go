@@ -11,6 +11,6 @@ func main() {
 	fmt.Println(*count) //使用命名 go run main.go -path uio -count 56,输出 uio  56
 }
 
-var in *string = flag.String("path" ,".", "Use -path <filesource>")
-var count *int = flag.Int("count", 10, "Use -count <counters>")
+var in = flag.String("path" ,".", "Use -path <filesource>")
+var count = flag.Int("count", 10, "Use -count <counters>")
 
