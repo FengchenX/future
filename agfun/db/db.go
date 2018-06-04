@@ -1,64 +1,56 @@
 package db
 
 import (
-	_ "github.com/go-sql-driver/mysql"
 	"github.com/golang/glog"
 	"github.com/jinzhu/gorm"
+	//引入gorm
 	_ "github.com/jinzhu/gorm/dialects/mysql"
-	"sync"
 	"time"
+	"github.com/feng/future/agfun/config"
 )
 
-var DbClient *Db
-var AutoMigrate = false
-
-type Db struct {
-	addr   string       // the addr of db server
-	Lock   sync.RWMutex // lock
-	Client *gorm.DB     // mysql client
+func init() {
+	stdAddr := config.Conf().MysqlStr
+	stdDB = NewDB(stdAddr)
+	go timer(stdAddr)
 }
 
-func InitDb(addr string) {
-	glog.Infoln("starting db")
-	mydb := &Db{}
-	mydb.addr = addr
+var stdDB *DB
+
+//DB 数据库
+type DB struct {
+	*gorm.DB     // mysql client
+	addr   string       // the addr of db server
+}
+
+//NewDB addr:数据库地址和密码"user:password@/dbname?charset=utf8&parseTime=True&loc=Local"
+func NewDB(addr string) *DB {
+	glog.Infoln("NewDB****start")	
+	var temp = &DB{}
+	temp.addr = addr
 	db, err := gorm.Open("mysql", addr)
 	if err != nil {
-		glog.Errorln("db initing fail", err)
-		return
+		glog.Fatalln("NewDB*******Init Fail", err)
 	}
-	err = db.DB().Ping()
-	if err != nil {
-		glog.Errorln("db ping fail", err)
-		return
-	} else {
-		glog.Infoln("connecting db success!")
-	}
-	mydb.Client = db
-	DbClient = mydb
-
-	db.DB().SetMaxIdleConns(10)
-	db.DB().SetMaxOpenConns(100)
-	db.LogMode(false)
-
-	AutoMigrate = true
-
-	go timer1(addr)
+	glog.Infoln("NewDB********success")
+	temp.DB=db
+	return temp	
 }
 
-func (this *Db) CreateTable(models interface{}) {
-	this.Client.CreateTable(models)
+//CreateTable 创建表
+func (db *DB) CreateTable(models interface{}) {
+	db.CreateTable(models)
 }
 
-func timer1(addr string) {
+func timer(addr string) {
 	timer1 := time.NewTicker(5 * time.Second)
 	for {
 		select {
 		case <-timer1.C:
-			err := DbClient.Client.DB().Ping()
+			err := stdDB.DB.DB().Ping()
 			if err != nil {
 				glog.Errorln("mysql connect fail,err:", err)
-				InitDb(addr)
+				stdDB = NewDB(addr)
 			}
 		}
 	}
