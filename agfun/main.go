@@ -6,26 +6,18 @@ import (
 	"fmt"
 	"net/http"
 	"html/template"
-	_ "github.com/feng/future/agfun/memory"
-	"github.com/feng/future/agfun/session"
 	//"github.com/feng/future/agfun/data"
+	"github.com/feng/future/agfun/control"
 )
 
-var globalSessions *session.Manager
-
-func init(){
-	globalSessions, _ = session.NewSessionManager("memory", "gosessionid", 3600)
-	
-	go globalSessions.GC()
-}
 
 func main() {
 	http.HandleFunc("/",func(w http.ResponseWriter, r *http.Request){
 		fmt.Println("URL**************",r.URL.Path)
 	})
 
-	http.HandleFunc("/index", agfun)
-	http.HandleFunc("/login", login)
+	http.HandleFunc("/index", control.Agfun)
+	http.HandleFunc("/login", control.Login)
 	http.HandleFunc("/test", test)
 
 	//文件系统的路由
@@ -40,39 +32,10 @@ func main() {
 	}
 }
 
-/**网站首页*/
-func agfun(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("visit first index")	
-	t, _ := template.ParseFiles("./template/index.html")
-	t.Execute(w, nil)
-}
-
-//登录处理器
-func login(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("login******************login")
-	sess := globalSessions.SessionStart(w, r)	
-	r.ParseForm()
-	if r.Method=="GET" {
-		t,err := template.ParseFiles("./template/login.html")
-		if err != nil {
-			fmt.Println(err)
-			return
-		}
-		t.Execute(w, nil)
-	} else {
-		username := r.Form["username"][0]
-		password := r.Form["password"][0]
-		fmt.Println(username,password)
-
-		//验证密码登录部分通过之后才set
-		sess.Set("username", r.Form["username"])
-
-	}
-}
 
 func test(w http.ResponseWriter, r *http.Request) {
-	sess := globalSessions.SessionStart(w,r)
-	sess.Set("username", "feng")
+	//sess := globalSessions.SessionStart(w,r)
+	//sess.Set("username", "feng")
 	t, err := template.ParseFiles("./template/rendered-index.html")
 	if err != nil {
 		fmt.Println(err)
