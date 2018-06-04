@@ -2,15 +2,15 @@ package models
 
 import "github.com/jinzhu/gorm"
 
-// token key with emai
+//ThreeKey token key with emai
 var ThreeKey = "ehpos"
 
-// order message three_party
+//Order order message three_party
 type Order struct {
 	gorm.Model
 	Time          int64 // Time 为当前消息发送的 unix 时间戳
 	Token         string // Token为md5后的字符串
-	OrderId      int64   // 订单id(订单的唯一id)
+	OrderID      int64   // 订单id(订单的唯一id)
 	CreateTime   string  // 创建时间
 	Company      string  // 公司名
 	BranchShop   string  // 分店名
@@ -18,10 +18,10 @@ type Order struct {
 	Price        float64 // 订单价格
 }
 
-// order message
+//OrderSave order message
 type OrderSave struct {
 	gorm.Model
-	OrderId      int64                    // 订单id(订单的唯一id)
+	OrderID      int64                    // 订单id(订单的唯一id)
 	CreateTime   string                   // 创建时间
 	Company      string                   // 公司名
 	BranchShop   string                   // 分店名
@@ -29,7 +29,7 @@ type OrderSave struct {
 	Price        float64                  // 订单价格
 }
 
-// dish message
+//Dish dish message
 type Dish struct {
 	//gorm.Model
 	DishName  string // 菜品名字
@@ -37,12 +37,12 @@ type Dish struct {
 	DishPrice string // 菜品价格（ = 单价 * 数量）
 }
 
-// message
+//Bill message
 type Bill struct {
 	gorm.Model
 	Time          int64  // Time 为当前消息发送的 unix 时间戳
 	Token         string // Token为md5后的字符串
-	OrderId      int64   // 订单id（与Order.OrderId对应）
+	OrderID      int64   // 订单id（与Order.OrderId对应）
 	Company      string  // 公司名
 	BranchShop   string  // 分店名
 	CreateTime   string  // 支付时间

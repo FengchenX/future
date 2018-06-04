@@ -2,8 +2,9 @@ package models
 
 import "time"
 
+//Company 公司
 type Company struct {
-	ID               uint      "gorm:PRIMARY KEY"
+	ID               uint      `gorm:"PRIMARY KEY"`
 	CompanyName      string    `gorm:"not null"`
 	CompanyBanchName string    `gorm:"not null"`
 	CompanyPassWord  string    `gorm:"not null"`
