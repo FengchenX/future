@@ -33,14 +33,14 @@ func main() {
 
 //TestA 主表
 type TestA struct {
-	ID uint `gorm:"primary_key"`
+	ID uint `gorm:"primary_key" json:"-"`
 	Name string
 	Age string
 }
 
 //TestB 详情表
 type TestB struct {
-	ID uint `gorm:"primary_key"`
+	ID uint `gorm:"primary_key" json:"-"`
 	AID uint `gorm:"not null;unique"`
 	Addr string
 }
