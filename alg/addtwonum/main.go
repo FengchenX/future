@@ -11,13 +11,17 @@ func main() {
 	l1 := &ListNode{1, nil}
 	l12 := &ListNode{2, nil}
 	l13 := &ListNode{3, nil}
+	l14 := &ListNode{4, nil}
 	l1.Next = l12
 	l12.Next = l13
+	l13.Next = l14
 	l2 := &ListNode{4, nil}
 	l22 := &ListNode{5, nil}
 	l23 := &ListNode{6, nil}
+	l24 := &ListNode{7, nil}
 	l2.Next = l22
 	l22.Next = l23
+	l23.Next = l24
 
 	temp := addTwoNumbers(l1, l2)
 	for temp != nil {
