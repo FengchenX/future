@@ -1,15 +1,11 @@
-
-
-
-
 package main
+
 import (
 	//"strings"
 	//"time"
+	"database/sql"
 	"fmt"
 	_ "github.com/go-sql-driver/mysql"
-	"database/sql"
-	
 )
 
 /**
@@ -36,7 +32,7 @@ func main() {
 	//插入数据
 	stmt, err := db.Prepare("INSERT userinfo SET username=?,departname=?,created=?")
 	checkErr(err)
-	res,err := stmt.Exec("astaxie", "研发部门","2012-12-09")
+	res, err := stmt.Exec("astaxie", "研发部门", "2012-12-09")
 	checkErr(err)
 	id, err := res.LastInsertId()
 	checkErr(err)
@@ -45,10 +41,10 @@ func main() {
 	//更新数据
 	stmt, err = db.Prepare("update userinfo set username=? where uid=?")
 	checkErr(err)
-	res, err = stmt.Exec("astaxieupdate",id)
+	res, err = stmt.Exec("astaxieupdate", id)
 	checkErr(err)
 
-	affect, err:=res.RowsAffected()
+	affect, err := res.RowsAffected()
 	checkErr(err)
 	fmt.Println(affect)
 
@@ -61,7 +57,7 @@ func main() {
 		var username string
 		var department string
 		var created string
-		err=rows.Scan(&uid,&username,&department,&created)
+		err = rows.Scan(&uid, &username, &department, &created)
 		checkErr(err)
 		fmt.Println(uid)
 		fmt.Println(username)
@@ -79,8 +75,7 @@ func main() {
 	fmt.Println(affect)
 	db.Close()
 
-
-/**更新时间示例
+	/**更新时间示例
 	update,err := db.Prepare("update userinfo set created=? where uid=?")
 	checkErr(err)
 	t:=time.Now()
@@ -105,46 +100,45 @@ func main() {
 		fmt.Println(created)
 	}
 	db.Close()
-*/
+	*/
 
-/*
-for {
-	//准备一个删除状态
-	del,err:=db.Prepare("truncate table userinfo");
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-	//准备一个任务
-	if tx, err := db.Begin(); err != nil {
-		fmt.Println(err)
-		del.Close()
-	} else {
-		tx.Stmt(del).Exec()		
-		insert,err := db.Prepare("insert into userinfo (username,departname,created) values(?,?,?)");
-		if err != nil {
-			fmt.Println(err)
-			return
-		}
-		for _,row:=range []struct{
-			username string 
-			department string 
-			created string}{
-				{"feng","yafa","2014-5-6"},
-				{"chen","faya","2018-2-3"},
-				{"xx","fyd","2017-6-25"},
-			} {
-			tx.Stmt(insert).Exec(row.username,row.department,row.created)	
-		}
-		insert.Close()
-		
-		tx.Commit()
-		del.Close()
-	}
-}
-*/	
-}
+	/*
+	   for {
+	   	//准备一个删除状态
+	   	del,err:=db.Prepare("truncate table userinfo");
+	   	if err != nil {
+	   		fmt.Println(err)
+	   		return
+	   	}
+	   	//准备一个任务
+	   	if tx, err := db.Begin(); err != nil {
+	   		fmt.Println(err)
+	   		del.Close()
+	   	} else {
+	   		tx.Stmt(del).Exec()
+	   		insert,err := db.Prepare("insert into userinfo (username,departname,created) values(?,?,?)");
+	   		if err != nil {
+	   			fmt.Println(err)
+	   			return
+	   		}
+	   		for _,row:=range []struct{
+	   			username string
+	   			department string
+	   			created string}{
+	   				{"feng","yafa","2014-5-6"},
+	   				{"chen","faya","2018-2-3"},
+	   				{"xx","fyd","2017-6-25"},
+	   			} {
+	   			tx.Stmt(insert).Exec(row.username,row.department,row.created)
+	   		}
+	   		insert.Close()
 
+	   		tx.Commit()
+	   		del.Close()
+	   	}
+	   }
+	*/
+}
 
 func checkErr(err error) {
 	if err != nil {

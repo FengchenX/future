@@ -1,14 +1,12 @@
-
 package main
 
 import (
 	"fmt"
 	"unicode/utf8"
-
 )
 
 func main() {
-	//utf8DecodeRune()	
+	//utf8DecodeRune()
 	//utf8DecodeLastRune()
 	//utf8DecodeLastRuneInString()
 	//utf8FullRune()
@@ -16,19 +14,18 @@ func main() {
 	utf8RuneCount()
 }
 
-
 func utf8DecodeRune() {
 	b := []byte("Hello, 世界")
 	for len(b) > 0 {
 		r, size := utf8.DecodeRune(b)
-		fmt.Printf("%c,%v\n",r, size)
+		fmt.Printf("%c,%v\n", r, size)
 		b = b[size:]
 	}
 }
 
 func utf8DecodeLastRune() {
 	p := []byte("Hello, 世界")
-	for len(p) >0 {
+	for len(p) > 0 {
 		r, size := utf8.DecodeLastRune(p)
 		fmt.Printf("%c,%v\n", r, size)
 		p = p[:len(p)-size]
@@ -39,7 +36,7 @@ func utf8DecodeLastRuneInString() {
 	str := "Hello, 世界"
 	for len(str) > 0 {
 		r, size := utf8.DecodeLastRuneInString(str)
-		fmt.Printf("%c,%v\n",r,size)
+		fmt.Printf("%c,%v\n", r, size)
 		str = str[:len(str)-size]
 	}
 }
@@ -48,13 +45,13 @@ func utf8DecodeRuneInString() {
 	str := "Hello, 世界"
 	for len(str) > 0 {
 		r, size := utf8.DecodeRuneInString(str)
-		fmt.Printf("%c, %v",r,size)
+		fmt.Printf("%c, %v", r, size)
 		str = str[size:]
 	}
 }
 
 func utf8FullRune() {
-	var buf = []byte{228, 184,150}
+	var buf = []byte{228, 184, 150}
 	fmt.Println(utf8.FullRune(buf))
 	fmt.Println(utf8.FullRune(buf[:2]))
 }
@@ -71,13 +68,11 @@ func utf8RuneCount() {
 	fmt.Println(utf8.RuneCount(buf))
 }
 
-
 func utf8RuneCountInString() {
 	str := "Hello, 世界"
 	fmt.Println(len(str))
 	fmt.Println(utf8.RuneCountInString(str))
 }
-
 
 func utf8RuneLen() {
 	fmt.Println(utf8.RuneLen('a'))

@@ -1,14 +1,8 @@
-
-
-
 package main
-
 
 import (
 	"fmt"
-
 )
-
 
 func main() {
 
@@ -20,10 +14,8 @@ key <= right.key
 二叉树性质
 */
 
-
-
 type TreeNode struct {
-	key int
+	key            int
 	left, right, p *TreeNode
 }
 
@@ -38,7 +30,7 @@ func InorderTreeWalk(x *TreeNode) {
 func TreeSearch(x *TreeNode, key int) *TreeNode {
 	if x == nil || key == x.key {
 		return x
-	} 
+	}
 	if key < x.key {
 		return TreeSearch(x.left, key)
 	} else {
@@ -60,21 +52,21 @@ func TreeMaximum(x *TreeNode) *TreeNode {
 
 //查找后继
 func TreeSuccessor(x *TreeNode) *TreeNode {
-	if x.right!=nil {
+	if x.right != nil {
 		return TreeSuccessor(x.right)
 	}
-	y := x.p	
+	y := x.p
 	for y != nil && x == y.right {
-		x= y
-		y=y.p
+		x = y
+		y = y.p
 	}
 	return y
 }
 
 type Tree struct {
 	root *TreeNode
-
 }
+
 //插入
 func TreeInsert(T *Tree, z *TreeNode) {
 	var y *TreeNode
@@ -98,5 +90,5 @@ func TreeInsert(T *Tree, z *TreeNode) {
 }
 
 func Transplant(T *Tree, u, v *TreeNode) {
-	
+
 }

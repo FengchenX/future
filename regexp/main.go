@@ -1,10 +1,9 @@
-
 package main
 
 import (
 	"fmt"
 	"regexp"
-
+	"strings"
 )
 
 /**
@@ -34,60 +33,66 @@ $              匹配文本结尾，标志m为真时，还匹配行尾
 \z             匹配文本结尾
 */
 
-
 func main() {
-/*
-	var validID = regexp.MustCompile(`^[a-z]+\[[0-9]+\]$`)
-	fmt.Println(validID.MatchString("adam[23]"))
-	fmt.Println(validID.MatchString("eve[7]"))
-	fmt.Println(validID.MatchString("Job[48]"))
-	fmt.Println(validID.MatchString("snakey"))
-*/
+	/*
+		var validID = regexp.MustCompile(`^[a-z]+\[[0-9]+\]$`)
+		fmt.Println(validID.MatchString("adam[23]"))
+		fmt.Println(validID.MatchString("eve[7]"))
+		fmt.Println(validID.MatchString("Job[48]"))
+		fmt.Println(validID.MatchString("snakey"))
+	*/
 	//regexpMatchString()
 	//regexpFindAllString()
 	//regexpFindAllStringSubmatch()
-	regexpTest()
-
+	//regexpTest()
+	replaceAllString()
 }
 
 func regexpMatchString() {
-	matched, err := regexp.MatchString("foo.*","seafood")
-	fmt.Println(matched,err)
-	matched, err = regexp.MatchString("bar.*","seafood")
+	matched, err := regexp.MatchString("foo.*", "seafood")
 	fmt.Println(matched, err)
-	matched, err = regexp.MatchString("a(b","seafood")
-	fmt.Println(matched,err)
+	matched, err = regexp.MatchString("bar.*", "seafood")
+	fmt.Println(matched, err)
+	matched, err = regexp.MatchString("a(b", "seafood")
+	fmt.Println(matched, err)
 }
 func regexpFindAllString() {
 	re := regexp.MustCompile("a.")
 	fmt.Println(re.FindAllString("paranormal", -1))
-	fmt.Println(re.FindAllString("paranormal",2))
+	fmt.Println(re.FindAllString("paranormal", 2))
 	fmt.Println(re.FindAllString("graal", -1))
 	fmt.Println(re.FindAllString("none", -1))
 }
 func regexpFindAllStringSubmatch() {
 	re := regexp.MustCompile("a(x*)b")
-	fmt.Printf("%q\n",re.FindAllStringSubmatch("-ab-",-1))
-	fmt.Printf("%q\n",re.FindAllStringSubmatch("-axxb-",-1))
-	fmt.Printf("%q\n",re.FindAllStringSubmatch("-ab-axb-",-1))
-	fmt.Printf("%q\n",re.FindAllStringSubmatch("-axxb-ab-",-1))
+	fmt.Printf("%q\n", re.FindAllStringSubmatch("-ab-", -1))
+	fmt.Printf("%q\n", re.FindAllStringSubmatch("-axxb-", -1))
+	fmt.Printf("%q\n", re.FindAllStringSubmatch("-ab-axb-", -1))
+	fmt.Printf("%q\n", re.FindAllStringSubmatch("-axxb-ab-", -1))
 }
 func regexpFindString() {
 	re := regexp.MustCompile("fo.?")
-	fmt.Printf("%q\n",re.FindString("seafood"))
-	fmt.Printf("%q\n",re.FindString("meat"))
+	fmt.Printf("%q\n", re.FindString("seafood"))
+	fmt.Printf("%q\n", re.FindString("meat"))
 }
 
+func replaceAllString() {
+	str := " AND send_pay_date >= ? AND uio AND yrtwewii"
+	reg, _ := regexp.Compile(`(?i:^\s*and)`)
+	str = reg.ReplaceAllString(strings.Trim(str, " "), "")
+	//str = strings.TrimPrefix(str, " AND ")
+	fmt.Println(str)
+}
 
 func regexpTest() {
-/*
-下面是抓取url正则表达式，第二个测试很好用
-([/w-]+/.)+[/w-]+.([^a-z])(/[/w-: ./?%&=]*)?|[a-zA-Z/-/.][/w-]+.([^a-z])(/[/w-: ./?%&=]*)?
-(https?|ftp|file)://[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]
-*/
+	/*
+	   下面是抓取url正则表达式，第二个测试很好用
+	   ([/w-]+/.)+[/w-]+.([^a-z])(/[/w-: ./?%&=]*)?|[a-zA-Z/-/.][/w-]+.([^a-z])(/[/w-: ./?%&=]*)?
+	   (https?|ftp|file)://[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]
+	*/
 
 	var re = regexp.MustCompile(`(https?|ftp|file)://[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]`)
-	var str = "http://www.runoob.com:80/html/html-tutorial.html****http://www.runoob.com:80/html/html-tutorial.html";
+	var str = "http://www.runoob.com:80/html/html-tutorial.html****http://www.runoob.com:80/html/html-tutorial.html"
 	fmt.Println(re.FindAllStringSubmatch(str, -1))
 
 	var re2 = regexp.MustCompile("[a-zA-Z0-9]*&[a-zA-Z0-9]*/[a-z]*")

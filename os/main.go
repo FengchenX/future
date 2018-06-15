@@ -1,18 +1,17 @@
-
 package main
 
 import (
 	"flag"
-	"strings"
 	"fmt"
 	"log"
 	"os"
 	"os/exec"
+	"strings"
 )
 
 func main() {
 	//osOpen()
-	name,_ := os.Hostname() //返回主机名
+	name, _ := os.Hostname() //返回主机名
 	fmt.Println(name)
 	//osStat()
 	//osMakeDir()
@@ -22,8 +21,9 @@ func main() {
 }
 
 var f1path *string = flag.String("f1path", "./mkDir/file.go", "Use -f1path <filesource>")
+
 func osOpen() {
-	flag.Parse()	
+	flag.Parse()
 	file, err := os.Open(*f1path)
 	if err != nil {
 		log.Fatal(err)
@@ -42,23 +42,24 @@ func osStat() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println(fileInfo.ModTime())  //最后修改时间
-	fmt.Println(fileInfo.Size()) //文件字节数
+	fmt.Println(fileInfo.ModTime()) //最后修改时间
+	fmt.Println(fileInfo.Size())    //文件字节数
 }
 
 var newDir *string = flag.String("newDir", "./mkDir", "Use -newDir <dir path>")
+
 func osMakeDir() {
 	flag.Parse()
-	if err:=os.Mkdir(*newDir, os.ModeDir); err != nil {
+	if err := os.Mkdir(*newDir, os.ModeDir); err != nil {
 		log.Fatal(err)
 	}
 }
 
 func osRename() {
 	//修改一个文件名字，移动一个文件
-	old:="./feng/alg/os/file.go"
-	new:= "./feng/alg/os/mkDir/file.go"
-	if err:= os.Rename(old,new); err != nil {
+	old := "./feng/alg/os/file.go"
+	new := "./feng/alg/os/mkDir/file.go"
+	if err := os.Rename(old, new); err != nil {
 		log.Fatal(err)
 	}
 }
@@ -69,14 +70,16 @@ func osCreate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	reader:=strings.NewReader("hello, world!")
+	reader := strings.NewReader("hello, world!")
 	reader.WriteTo(file)
 }
+
 //删除文件
-var path *string = flag.String("path", "","Use -path <filename>")
+var path *string = flag.String("path", "", "Use -path <filename>")
+
 func Delete() {
 	flag.Parse()
-	cmd := exec.Command("powershell","rm", *path)
+	cmd := exec.Command("powershell", "rm", *path)
 	err := cmd.Run()
 	if err != nil {
 		log.Fatal(err)

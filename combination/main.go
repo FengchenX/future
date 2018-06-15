@@ -1,21 +1,17 @@
-
-
-
-
 package main
+
 import (
 	"fmt"
-	"os"
-	"log"
 	"io"
-	
+	"log"
+	"os"
 )
 
 func main() {
-	logSingleton=newLog(os.Stderr,"",log.LstdFlags)
+	logSingleton = newLog(os.Stderr, "", log.LstdFlags)
 	logSingleton.Println("feng")
-	var c = child{key:20}
-	c.base=base{i:30}
+	var c = child{key: 20}
+	c.base = base{i: 30}
 	f1(c)
 	f2()
 }
@@ -30,11 +26,10 @@ type _Logger struct {
 
 func newLog(out io.Writer, prefix string, flag int) *_Logger {
 	var myLg _Logger
-	myLg.key=0
-	myLg.Logger=log.New(out,prefix,flag)
+	myLg.key = 0
+	myLg.Logger = log.New(out, prefix, flag)
 	return &myLg
 }
-
 
 type base struct {
 	i int
@@ -53,7 +48,7 @@ func (c child) say() {
 	fmt.Println("I am child")
 }
 
-type i interface{
+type i interface {
 	say()
 }
 
@@ -76,23 +71,23 @@ type c interface {
 
 type myint int
 
-func(m *myint) addOne() {
+func (m *myint) addOne() {
 	*m = *m + 1
 }
 
-func(m *myint) subOne() {
+func (m *myint) subOne() {
 	*m = *m - 1
 }
 
 func f2() {
 	var A myint
 	var d c
-	d=&A
+	d = &A
 	d.addOne()
 	d.addOne()
 	fmt.Println(A)
 	var e b
-	e=&A
+	e = &A
 	e.subOne()
 	fmt.Println(A)
 }

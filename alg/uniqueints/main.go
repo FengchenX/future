@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-
 )
 
 func main() {
@@ -11,17 +10,17 @@ func main() {
 }
 
 func uniqueInts(A []int) []int {
-	if len(A)==0||len(A)==1 {
+	if len(A) == 0 || len(A) == 1 {
 		a := make([]int, 0)
 		a = append(a, A...)
 		return a
 	}
-	for i:=1; i<len(A); i++ {
+	for i := 1; i < len(A); i++ {
 		key := A[i]
-		for j:=i-1; j>=0; j-- {
-			if key==A[j] {
+		for j := i - 1; j >= 0; j-- {
+			if key == A[j] {
 				A = append(A[:i], A[i+1:]...)
-				i = i-1
+				i = i - 1
 				break
 			}
 		}

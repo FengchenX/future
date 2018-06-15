@@ -2,10 +2,10 @@ package main
 
 import (
 	"fmt"
-	"os"
-	"io/ioutil"
-	"github.com/golang/protobuf/proto"
 	"github.com/feng/future/protobuf"
+	"github.com/golang/protobuf/proto"
+	"io/ioutil"
+	"os"
 )
 
 func main() {
@@ -14,8 +14,8 @@ func main() {
 }
 
 func write() {
-	p1:=&protobuf.Person{
-		Id: 1,
+	p1 := &protobuf.Person{
+		Id:   1,
 		Name: "小张",
 		Phones: []*protobuf.Phone{
 			{protobuf.PhoneType_HOME, "111111111111"},
@@ -23,7 +23,7 @@ func write() {
 		},
 	}
 	p2 := &protobuf.Person{
-		Id: 2,
+		Id:   2,
 		Name: "小王",
 		Phones: []*protobuf.Phone{
 			{protobuf.PhoneType_HOME, "333333333333"},
@@ -38,14 +38,14 @@ func write() {
 	//编码数据
 	data, _ := proto.Marshal(book)
 	//把数据写入文件
-	ioutil.WriteFile("./test.txt",data,os.ModePerm)
+	ioutil.WriteFile("./test.txt", data, os.ModePerm)
 }
 func read() {
 	//读取数据
-	data,_:=ioutil.ReadFile("./test.txt")
+	data, _ := ioutil.ReadFile("./test.txt")
 	book := &protobuf.ContactBook{}
 	//解码数据
-	proto.Unmarshal(data,book)
+	proto.Unmarshal(data, book)
 	for _, v := range book.Persons {
 		fmt.Println(v.Id, v.Name)
 		for _, vv := range v.Phones {

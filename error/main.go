@@ -1,10 +1,8 @@
-
 package main
 
 import (
-	"fmt"
 	"errors"
-
+	"fmt"
 )
 
 func main() {

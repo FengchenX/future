@@ -2,16 +2,16 @@ package memory
 
 import (
 	"container/list"
-	"time"
-	"sync"
 	"fmt"
 	"github.com/feng/future/agfun/session"
+	"sync"
+	"time"
 )
 
 type SessionStore struct {
-	sid string //session id 唯一标示
-	timeAccessed time.Time //最后访问时间
-	value map[interface{}]interface{} //session 里面存储的值
+	sid          string                      //session id 唯一标示
+	timeAccessed time.Time                   //最后访问时间
+	value        map[interface{}]interface{} //session 里面存储的值
 }
 
 func (st *SessionStore) Set(key, value interface{}) error {
@@ -36,11 +36,10 @@ func (st *SessionStore) SessionID() string {
 	return st.sid
 }
 
-
 type Provider struct {
-	lock sync.Mutex //用来锁
+	lock     sync.Mutex               //用来锁
 	sessions map[string]*list.Element //用来存储在内存
-	list *list.List //用来做 gc
+	list     *list.List               //用来做 gc
 }
 
 func (provider *Provider) SessionInit(sid string) (session.Session, error) {
@@ -80,7 +79,7 @@ func (provider *Provider) SessionGC(maxLifeTime int64) {
 			break
 		}
 		if (element.Value.(*SessionStore).timeAccessed.Unix() + maxLifeTime) <
-		time.Now().Unix() {
+			time.Now().Unix() {
 			provider.list.Remove(element)
 			delete(provider.sessions, element.Value.(*SessionStore).sid)
 		} else {

@@ -1,9 +1,9 @@
 package control
 
 import (
-	"net/http"
 	"fmt"
 	"html/template"
+	"net/http"
 	//引用memory包
 	_ "github.com/feng/future/agfun/memory"
 	"github.com/feng/future/agfun/session"
@@ -11,15 +11,15 @@ import (
 
 var globalSessions *session.Manager
 
-func init(){
+func init() {
 	globalSessions, _ = session.NewSessionManager("memory", "gosessionid", 3600)
-	
+
 	go globalSessions.GC()
 }
 
 //Agfun 网站首页
 func Agfun(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("visit first index")	
+	fmt.Println("visit first index")
 	t, _ := template.ParseFiles("./template/index.html")
 	t.Execute(w, nil)
 }
@@ -27,10 +27,10 @@ func Agfun(w http.ResponseWriter, r *http.Request) {
 //Login 登录处理器
 func Login(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("login******************login")
-	sess := globalSessions.SessionStart(w, r)	
+	sess := globalSessions.SessionStart(w, r)
 	r.ParseForm()
-	if r.Method=="GET" {
-		t,err := template.ParseFiles("./template/login.html")
+	if r.Method == "GET" {
+		t, err := template.ParseFiles("./template/login.html")
 		if err != nil {
 			fmt.Println(err)
 			return
@@ -39,7 +39,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	} else {
 		username := r.Form["username"][0]
 		password := r.Form["password"][0]
-		fmt.Println(username,password)
+		fmt.Println(username, password)
 
 		//验证密码登录部分通过之后才set
 		sess.Set("username", r.Form["username"])

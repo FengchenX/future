@@ -8,8 +8,8 @@ var ThreeKey = "ehpos"
 //Order order message three_party
 type Order struct {
 	gorm.Model
-	Time          int64 // Time 为当前消息发送的 unix 时间戳
-	Token         string // Token为md5后的字符串
+	Time         int64   // Time 为当前消息发送的 unix 时间戳
+	Token        string  // Token为md5后的字符串
 	OrderID      int64   // 订单id(订单的唯一id)
 	CreateTime   string  // 创建时间
 	Company      string  // 公司名
@@ -21,12 +21,12 @@ type Order struct {
 //OrderSave order message
 type OrderSave struct {
 	gorm.Model
-	OrderID      int64                    // 订单id(订单的唯一id)
-	CreateTime   string                   // 创建时间
-	Company      string                   // 公司名
-	BranchShop   string                   // 分店名
-	OrderContent string `sql:"type:text"` // 订单明细（json string）
-	Price        float64                  // 订单价格
+	OrderID      int64   // 订单id(订单的唯一id)
+	CreateTime   string  // 创建时间
+	Company      string  // 公司名
+	BranchShop   string  // 分店名
+	OrderContent string  `sql:"type:text"` // 订单明细（json string）
+	Price        float64 // 订单价格
 }
 
 //Dish dish message
@@ -40,8 +40,8 @@ type Dish struct {
 //Bill message
 type Bill struct {
 	gorm.Model
-	Time          int64  // Time 为当前消息发送的 unix 时间戳
-	Token         string // Token为md5后的字符串
+	Time         int64   // Time 为当前消息发送的 unix 时间戳
+	Token        string  // Token为md5后的字符串
 	OrderID      int64   // 订单id（与Order.OrderId对应）
 	Company      string  // 公司名
 	BranchShop   string  // 分店名

@@ -4,9 +4,9 @@ import (
 	"github.com/golang/glog"
 	"github.com/jinzhu/gorm"
 	//引入gorm
+	"github.com/feng/future/agfun/config"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"time"
-	"github.com/feng/future/agfun/config"
 )
 
 func init() {
@@ -19,13 +19,13 @@ var stdDB *DB
 
 //DB 数据库
 type DB struct {
-	*gorm.DB     // mysql client
-	addr   string       // the addr of db server
+	*gorm.DB        // mysql client
+	addr     string // the addr of db server
 }
 
 //NewDB addr:数据库地址和密码"user:password@/dbname?charset=utf8&parseTime=True&loc=Local"
 func NewDB(addr string) *DB {
-	glog.Infoln("NewDB****start")	
+	glog.Infoln("NewDB****start")
 	var temp = &DB{}
 	temp.addr = addr
 	db, err := gorm.Open("mysql", addr)
@@ -33,8 +33,8 @@ func NewDB(addr string) *DB {
 		glog.Fatalln("NewDB*******Init Fail", err)
 	}
 	glog.Infoln("NewDB********success")
-	temp.DB=db
-	return temp	
+	temp.DB = db
+	return temp
 }
 
 //CreateTable 创建表

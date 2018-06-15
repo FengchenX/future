@@ -1,10 +1,7 @@
-
-
 package main
 
 import (
 	"fmt"
-
 )
 
 func main() {
@@ -32,7 +29,7 @@ func main() {
 
 // ListNode 链表节点
 type ListNode struct {
-	Val int
+	Val  int
 	Next *ListNode
 }
 
@@ -42,7 +39,7 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 
 	var list *ListNode
 	var head *ListNode
-	for i:=0; i<listLen(lx); i++ {
+	for i := 0; i < listLen(lx); i++ {
 		val := nodei(lx, i).Val + nodei(ly, i).Val
 		node := &ListNode{val, nil}
 		if i == 0 {
@@ -66,7 +63,7 @@ func reverList(list *ListNode) *ListNode {
 		temp = temp.Next
 	}
 	temp.Next = list
-	list.Next = nil 
+	list.Next = nil
 	return x
 }
 
@@ -83,12 +80,8 @@ func nodei(list *ListNode, i int) *ListNode {
 	if i >= listLen(list) {
 		return nil
 	}
-	for j:=0; j != i; j++ {
+	for j := 0; j != i; j++ {
 		list = list.Next
 	}
 	return list
 }
-
-
-
-

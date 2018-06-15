@@ -1,14 +1,16 @@
 package config
 
 import (
-	"errors"
 	"bytes"
+	"errors"
 	"github.com/BurntSushi/toml"
 	"github.com/golang/glog"
 	"io/ioutil"
 	"os"
 )
+
 const file = "./conf/config.toml"
+
 func init() {
 	if err := ParseToml(file); err != nil {
 		glog.Fatalln(err)
@@ -56,7 +58,7 @@ func ParseToml(file string) error {
 		}
 		ioutil.WriteFile(file, buf.Bytes(), os.ModeType)
 		return errors.New("配置文件不存在")
-	}	
+	}
 	var temp Config
 	if _, err := toml.DecodeFile(file, &temp); err != nil {
 		glog.Errorln("ParseToml******解析配置文件错误", err)

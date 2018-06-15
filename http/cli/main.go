@@ -1,12 +1,10 @@
-
 package main
 
 import (
 	//"io/ioutil"
-	"net/url"
 	"log"
 	"net/http"
-
+	"net/url"
 )
 
 func main() {
@@ -23,7 +21,7 @@ func main() {
 
 	var vs url.Values
 	vs = make(url.Values)
-	vs.Add("key","Rust")
-	vs.Add("id","go")
-	_, err = http.PostForm("http://localhost:8000/PostForm",vs);
+	vs.Add("key", "Rust")
+	vs.Add("id", "go")
+	_, err = http.PostForm("http://localhost:8000/PostForm", vs)
 }

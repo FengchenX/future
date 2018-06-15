@@ -1,23 +1,21 @@
-
 package session
 
 import (
-	"net/url"
-	"net/http"
-	"encoding/base64"
-	"io"
-	"fmt"
-	"time"
-	"sync"
 	"crypto/rand"
+	"encoding/base64"
+	"fmt"
+	"io"
+	"net/http"
+	"net/url"
+	"sync"
+	"time"
 )
 
 type Manager struct {
-	cookieName string
-	lock sync.Mutex
-	provider Provider
+	cookieName  string
+	lock        sync.Mutex
+	provider    Provider
 	maxLifeTime int64
-
 }
 
 type Provider interface {
@@ -37,7 +35,7 @@ type Session interface {
 func NewSessionManager(provideName, cookieName string, maxLifeTime int64) (*Manager, error) {
 	provide, ok := provides[provideName]
 	if !ok {
-		return nil, fmt.Errorf("session: unknown provide %q (forgotten import?",provideName)
+		return nil, fmt.Errorf("session: unknown provide %q (forgotten import?", provideName)
 	}
 	return &Manager{cookieName: cookieName, provider: provide, maxLifeTime: maxLifeTime}, nil
 }
@@ -54,7 +52,7 @@ func Register(name string, provide Provider) {
 	provides[name] = provide
 }
 
-func(manager *Manager) sessionId() string {
+func (manager *Manager) sessionId() string {
 	b := make([]byte, 32)
 	if _, err := io.ReadFull(rand.Reader, b); err != nil {
 		return ""
@@ -62,7 +60,7 @@ func(manager *Manager) sessionId() string {
 	return base64.URLEncoding.EncodeToString(b)
 }
 
-func(manager *Manager) SessionStart(w http.ResponseWriter, r *http.Request) (session Session) {
+func (manager *Manager) SessionStart(w http.ResponseWriter, r *http.Request) (session Session) {
 	manager.lock.Lock()
 	defer manager.lock.Unlock()
 	cookie, err := r.Cookie(manager.cookieName)
@@ -78,7 +76,7 @@ func(manager *Manager) SessionStart(w http.ResponseWriter, r *http.Request) (ses
 	return session
 }
 
-func (manager *Manager) SessionDestroy(w http.ResponseWriter, r *http.Request){
+func (manager *Manager) SessionDestroy(w http.ResponseWriter, r *http.Request) {
 	cookie, err := r.Cookie(manager.cookieName)
 	if err != nil || cookie.Value == "" {
 		return
@@ -88,7 +86,7 @@ func (manager *Manager) SessionDestroy(w http.ResponseWriter, r *http.Request){
 		manager.provider.SessionDestroy(cookie.Value)
 		expiration := time.Now()
 		cookie := http.Cookie{Name: manager.cookieName, Path: "/",
-		HttpOnly: true, Expires: expiration, MaxAge: -1}
+			HttpOnly: true, Expires: expiration, MaxAge: -1}
 		http.SetCookie(w, &cookie)
 	}
 }
@@ -97,5 +95,5 @@ func (manager *Manager) GC() {
 	manager.lock.Lock()
 	defer manager.lock.Unlock()
 	manager.provider.SessionGC(manager.maxLifeTime)
-	time.AfterFunc(time.Duration(manager.maxLifeTime), func(){ manager.GC() })
+	time.AfterFunc(time.Duration(manager.maxLifeTime), func() { manager.GC() })
 }

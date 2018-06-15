@@ -17,5 +17,5 @@ func main() {
 
 	//时间戳转日期
 	dataTimeStr := time.Unix(sr, 0).Format(timeLayout) //设置时间戳 使用模板格式化为日期字符串
-	fmt.Println(dataTimeStr)  
+	fmt.Println(dataTimeStr)
 }

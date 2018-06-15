@@ -1,22 +1,23 @@
 package main
 
 import (
-	"net"
 	"fmt"
-	"google.golang.org/grpc"
 	"github.com/feng/future/grpc/protocol"
 	"golang.org/x/net/context"
+	"google.golang.org/grpc"
+	"io"
 	"log"
+	"net"
 )
 
 func main() {
 	grpcSvr := grpc.NewServer()
 	l, err := net.Listen("tcp", "127.0.0.1:8080")
 	if err != nil {
-		log.Fatalln(err)	
+		log.Fatalln(err)
 	}
 	mySvr := mySvr{}
-	protocol.RegisterRouteGuideServer(grpcSvr,&mySvr )
+	protocol.RegisterRouteGuideServer(grpcSvr, &mySvr)
 	if err = grpcSvr.Serve(l); err != nil {
 		log.Fatalln(err)
 	}
@@ -30,13 +31,13 @@ var feats = []protocol.Feature{
 }
 
 //简单rpc
-func(svr *mySvr) GetFeature(ctx context.Context, point *protocol.Point) (*protocol.Feature, error) {
+func (svr *mySvr) GetFeature(ctx context.Context, point *protocol.Point) (*protocol.Feature, error) {
 	fmt.Println(point.Latitude, point.Longitude)
 	return &protocol.Feature{}, nil
 }
 
 //服务端流式rpc
-func(svr *mySvr) ListFeatures(rect *protocol.Rectangle, stream protocol.RouteGuide_ListFeaturesServer) error {
+func (svr *mySvr) ListFeatures(rect *protocol.Rectangle, stream protocol.RouteGuide_ListFeaturesServer) error {
 	fmt.Println("list******", *rect)
 	for _, feat := range feats {
 		stream.Send(&feat)
@@ -45,11 +46,19 @@ func(svr *mySvr) ListFeatures(rect *protocol.Rectangle, stream protocol.RouteGui
 }
 
 //客户端流式rpc
-func(svr *mySvr) RecordRoute(protocol.RouteGuide_RecordRouteServer) error {
-	return nil
+func (svr *mySvr) RecordRoute(stream protocol.RouteGuide_RecordRouteServer) error {
+	fmt.Println("客户端流")
+	for {
+		p, err := stream.Recv()
+		if err == io.EOF {
+			fmt.Println("svr******", *p)
+			return stream.SendAndClose(&protocol.RouteSummary{})
+		}
+		return nil
+	}
 }
 
 //双向流式rpc
-func(svr *mySvr) RouteChat(protocol.RouteGuide_RouteChatServer) error {
+func (svr *mySvr) RouteChat(protocol.RouteGuide_RouteChatServer) error {
 	return nil
 }

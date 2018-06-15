@@ -1,53 +1,49 @@
-
-
-
-
-
 package main
 
 import (
-	"flag"
-	"path/filepath"
 	"bytes"
+	"encoding/json"
+	"flag"
 	"fmt"
 	"io"
-	"strings"
-	"encoding/json"
 	"io/ioutil"
 	"log"
 	"os"
-
+	"path/filepath"
+	"strings"
 )
+
 //json使用是结构体字段变量必须大写才能被识别
 
-var in *string = flag.String("path",".","Use -path <filesource>")
+var in *string = flag.String("path", ".", "Use -path <filesource>")
 
 var jsonStream string
+
 //此时控制台应处于github.com目录下
 func getCurDir() string {
 	dir, err := filepath.Abs(filepath.Dir(*in))
 	if err != nil {
 		log.Fatal(err)
 	}
-	return strings.Replace(dir,"\\","/",-1)
+	return strings.Replace(dir, "\\", "/", -1)
 }
 func init() {
 	flag.Parse()
-	
-	filepath:=getCurDir()
-	
+
+	filepath := getCurDir()
+
 	fmt.Println(filepath)
-	f,err:=os.Open(filepath+"/"+"file.txt")
+	f, err := os.Open(filepath + "/" + "file.txt")
 	if err != nil {
 		log.Println(err)
 	}
 	defer f.Close()
-	b,err:=ioutil.ReadAll(f)
-	jsonStream=string(b)
+	b, err := ioutil.ReadAll(f)
+	jsonStream = string(b)
 
 }
 func main() {
-	
+
 	//jsonNewDecoder()
 	//jsonIndent()
 	//jsonMarshal()
@@ -57,48 +53,50 @@ func main() {
 type Message struct {
 	Name, Text string
 }
+
 func jsonNewDecoder() {
-	dec:= json.NewDecoder(strings.NewReader(jsonStream))	
+	dec := json.NewDecoder(strings.NewReader(jsonStream))
 	for {
 		var m Message
-		if err:=dec.Decode(&m); err == io.EOF {
+		if err := dec.Decode(&m); err == io.EOF {
 			break
 		} else if err != nil {
 			log.Fatal(err)
 		}
-		fmt.Printf("%s: %s\n",m.Name,m.Text)
+		fmt.Printf("%s: %s\n", m.Name, m.Text)
 	}
 }
 
-
 type Road struct {
-	Name string
+	Name   string
 	Number int
 }
+
 func jsonIndent() {
-	roads:=[]Road{
-		{"Diamond Fork",29},
-		{"Sheep Creek",51},
+	roads := []Road{
+		{"Diamond Fork", 29},
+		{"Sheep Creek", 51},
 	}
 	b, err := json.Marshal(roads)
 	if err != nil {
 		log.Fatal(err)
 	}
 	var out bytes.Buffer
-	json.Indent(&out,b,"=","\t")
+	json.Indent(&out, b, "=", "\t")
 	out.WriteTo(os.Stdout)
 }
 
 type ColorGroup struct {
-	ID int
-	Name string
+	ID     int
+	Name   string
 	Colors []string
 }
+
 func jsonMarshal() {
 	group := ColorGroup{
-		ID: 1,
-		Name: "Reds",
-		Colors: []string{"Crimson", "Red", "Ruby", "Maroon" },
+		ID:     1,
+		Name:   "Reds",
+		Colors: []string{"Crimson", "Red", "Ruby", "Maroon"},
 	}
 	b, err := json.Marshal(group)
 	if err != nil {
@@ -118,7 +116,7 @@ type RGB struct {
 	B uint8
 }
 type YCbCr struct {
-	Y uint8
+	Y  uint8
 	Cb int8
 	Cr int8
 }

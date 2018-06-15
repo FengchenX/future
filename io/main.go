@@ -1,16 +1,14 @@
-
-
 package main
 
 import (
-	"bytes"
 	"bufio"
-	"strings"
+	"bytes"
 	"fmt"
-	"os"
 	"io"
-
+	"os"
+	"strings"
 )
+
 func main() {
 	//ioreader()
 	//ioReaderAt()
@@ -19,7 +17,7 @@ func main() {
 	ioCopy()
 }
 func ReadFrom(reader io.Reader, num int) ([]byte, error) {
-	p:= make([]byte, num)
+	p := make([]byte, num)
 	n, err := reader.Read(p)
 	if n > 0 {
 		return p[:n], nil
@@ -28,7 +26,7 @@ func ReadFrom(reader io.Reader, num int) ([]byte, error) {
 }
 
 func ioreader() {
-	data, err := ReadFrom(os.Stdin,11)
+	data, err := ReadFrom(os.Stdin, 11)
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -36,13 +34,13 @@ func ioreader() {
 }
 
 func ioReaderAt() {
-	reader:=strings.NewReader("Go语言学习园地")
-	p:= make([]byte, 6)
-	n, err:= reader.ReadAt(p,2)
+	reader := strings.NewReader("Go语言学习园地")
+	p := make([]byte, 6)
+	n, err := reader.ReadAt(p, 2)
 	if err != nil {
 		panic(err)
 	}
-	fmt.Printf("%s, %d\n", p,n)
+	fmt.Printf("%s, %d\n", p, n)
 }
 
 func ioWriteAt() {
@@ -69,22 +67,21 @@ func ioReadFrom() {
 	writer.Flush()
 }
 
-
 func ioCopy() {
-	
+
 	file, err := os.Open("./feng/alg/io/writeAt.txt")
 	if err != nil {
 		panic(err)
 	}
 	defer file.Close()
 	var b []byte
-	var buf = bytes.NewBuffer(b)//b在这之后不能用了
-	
-	_,err =io.Copy(buf,file)
+	var buf = bytes.NewBuffer(b) //b在这之后不能用了
+
+	_, err = io.Copy(buf, file)
 	if err != nil {
 		fmt.Println(err)
 	}
-	s:=string(buf.Bytes())
+	s := string(buf.Bytes())
 	fmt.Println(s)
-	
+
 }

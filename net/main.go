@@ -1,21 +1,20 @@
-
 package main
 
 import (
-	"fmt"
 	"bufio"
+	"fmt"
 	"log"
 	"net"
-
 )
+
 func main() {
-	ln, err := net.Listen("tcp",":8080")
+	ln, err := net.Listen("tcp", ":8080")
 	if err != nil {
 		log.Fatal(err)
 	}
 	defer ln.Close()
 	for {
-		conn,err := ln.Accept()
+		conn, err := ln.Accept()
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -23,10 +22,9 @@ func main() {
 	}
 }
 
-
 func handleConnect(conn net.Conn) {
-	//todo 
-	scanner:=bufio.NewScanner(conn)
+	//todo
+	scanner := bufio.NewScanner(conn)
 	for scanner.Scan() {
 		fmt.Println(scanner.Text())
 		conn.Write([]byte("hello,world\n"))
