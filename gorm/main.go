@@ -39,6 +39,10 @@ func main() {
 	for _, v := range as {
 		fmt.Println(v.Age)
 	}
+	fmt.Println("*********************************")
+	var ta TestA
+	db.Where("rflag = ?", true).First(&ta)
+	fmt.Println(ta)
 }
 
 //TestA 主表
@@ -47,6 +51,7 @@ type TestA struct {
 	Name      string
 	Age       string
 	OrderType int64
+	Rflag 	  bool
 }
 
 //TestB 详情表

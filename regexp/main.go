@@ -45,7 +45,8 @@ func main() {
 	//regexpFindAllString()
 	//regexpFindAllStringSubmatch()
 	//regexpTest()
-	replaceAllString()
+	//replaceAllString()
+	replacellString2()
 }
 
 func regexpMatchString() {
@@ -78,10 +79,24 @@ func regexpFindString() {
 
 func replaceAllString() {
 	str := " AND send_pay_date >= ? AND uio AND yrtwewii"
-	reg, _ := regexp.Compile(`(?i:^\s*and)`)
+	reg, _ := regexp.Compile(`(?i:^\s*and)`) //忽略大小写 and | AND
 	str = reg.ReplaceAllString(strings.Trim(str, " "), "")
 	//str = strings.TrimPrefix(str, " AND ")
 	fmt.Println(str)
+}
+
+func replacellString2() {
+	re := regexp.MustCompile("a(x*)b")
+	fmt.Println(re.ReplaceAllString("-ab-axxb-", "T"))
+
+	fmt.Println(re.ReplaceAllString("-ab-axxb-", "$1"))
+	fmt.Println(re.ReplaceAllString("-ab-axxb-", "$1W"))
+	fmt.Println(re.ReplaceAllString("-ab-axxb-", "${1}W"))
+
+	// 查找以 hello 开头（忽略大小写），以 Go 结尾的字符串
+	text := "Hello 世界！123 Go"
+	reg := regexp.MustCompile(`(?i:^hello).*Go`)
+	fmt.Println(reg.FindAllString(text, -1))
 }
 
 func regexpTest() {
