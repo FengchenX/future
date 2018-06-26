@@ -8,11 +8,13 @@ import (
 )
 
 func main() {
+
 	db, err := gorm.Open("mysql", "root:root@tcp(39.108.80.66:3306)/test_order?charset=utf8&parseTime=true&loc=Local")
 	defer db.Close()
 	if err != nil {
 		log.Fatalln(err)
 	}
+	/*
 	//db.CreateTable(&TestA{}, &TestB{})
 	//分页查询
 	//连表查询
@@ -29,7 +31,7 @@ func main() {
 		Age  string
 		Addr string
 	}
-	//连表查的时候按条件查询时一定要指定表名，不然两个表有相同字段会报错
+	//连表查的时候按条件查询时一定要指定表名，不然两个表有相同字段会报错 where 的时候条件可以为 ""
 	db.Table("test_as").Joins("left join test_bs on test_as.id = test_bs.a_id").Select("test_as.name, test_as.age, test_bs.addr").
 		Where("test_as.name = ?", "a1").Limit(size).Offset((num - 1) * size).Find(&abs)
 	fmt.Println(abs)
@@ -42,7 +44,13 @@ func main() {
 	fmt.Println("*********************************")
 	var ta TestA
 	db.Where("rflag = ?", true).First(&ta)
-	fmt.Println(ta)
+	fmt.Println(ta)*/
+
+	//db.CreateTable(&UserTest{}, &Profile{})
+
+	var profile Profile
+	db.Model(&UserTest{ProfileID: 3}).Related(&profile)
+	fmt.Println(profile)
 }
 
 //TestA 主表
@@ -69,4 +77,17 @@ func f1(db *gorm.DB, model interface{}, out interface{}, str string, args ...int
 func f2(db *gorm.DB, model interface{}, out interface{}, str string, args ...interface{}) {
 	//注意这个地方需要...
 	f1(db, model, out, str, args...)
+}
+
+
+// `User`属于`Profile`, `ProfileID`为外键
+type UserTest struct {
+	gorm.Model
+	Profile   Profile
+	ProfileID int
+}
+  
+type Profile struct {
+	gorm.Model
+	Name string
 }
