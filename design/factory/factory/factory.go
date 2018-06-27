@@ -50,7 +50,7 @@ func (PenFactory) ProduceBrushPen() pen {
 }
 
 type operationer interface {
-	operation(a, b float64) float64
+	Operation(a, b float64) float64
 }
 
 type add struct {
@@ -69,19 +69,19 @@ type div struct {
 
 }
 
-func (a *add) operation(x, y float64) float64 {
+func (a *add) Operation(x, y float64) float64 {
 	return x + y
 }
 
-func (s *sub) operation(x, y float64) float64 {
+func (s *sub) Operation(x, y float64) float64 {
 	return x - y
 }
 
-func (m *mul) operation(x, y float64) float64 {
+func (m *mul) Operation(x, y float64) float64 {
 	return x * y
 }
 
-func (d *div) operation(x, y float64) float64 {
+func (d *div) Operation(x, y float64) float64 {
 	return x / y
 }
 
@@ -91,7 +91,16 @@ type OperationFactory struct {
 
 func (of OperationFactory) Produce(typ string) operationer {
 	switch typ {
-	case "add":
-		return 
+	case "+":
+		return new(add)
+	case "-":
+		return new(sub)
+	case "*":
+		return new(mul)
+	case "/":
+		return new(div)
+	default:
+		return nil
 	}
 }
+
