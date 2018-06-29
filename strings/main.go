@@ -13,8 +13,8 @@ func main() {
 	//stringsIndexFunc()
 	//stringsMap()
 	//stringsSplit()
-	//stringsTrim()
-	stringsTrimSpace()
+	stringsTrim()
+	//stringsTrimSpace()
 }
 
 func stringsContains() {
@@ -143,6 +143,8 @@ func stringsToLower() {
 //Trim 只修剪开头和结尾中间不管, 而且是去除cutset包含的rune都去掉
 func stringsTrim() {
 	fmt.Printf("[%q]", strings.Trim(" !!! Achtung! Achtung! !!!", "! "))
+
+	fmt.Println(strings.Trim("     uiosfdfsfsf         ", " "))
 }
 
 func stringsTrimPrefix() {

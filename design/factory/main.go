@@ -20,7 +20,7 @@ func main() {
 	f(bp)
 
 
-	var u = factory.User{"xxxx", 29}
+	u := factory.User{ "xxxx", 29 }
 	var fac factory.AccessFactory
 
 	var absfactory factory.DBAbsFactory

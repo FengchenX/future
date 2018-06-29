@@ -9,7 +9,7 @@ import (
 
 func main() {
 
-	db, err := gorm.Open("mysql", "root:root@tcp(39.108.80.66:3306)/test_order?charset=utf8&parseTime=true&loc=Local")
+	db, err := gorm.Open("mysql", "root:root@tcp(39.108.80.66:3306)/finance?charset=utf8&parseTime=true&loc=Local")
 	defer db.Close()
 	if err != nil {
 		log.Fatalln(err)
@@ -46,11 +46,19 @@ func main() {
 	db.Where("rflag = ?", true).First(&ta)
 	fmt.Println(ta)*/
 
+	//外键知识
 	//db.CreateTable(&UserTest{}, &Profile{})
 
-	var profile Profile
-	db.Model(&UserTest{ProfileID: 3}).Related(&profile)
-	fmt.Println(profile)
+	// var profile Profile
+	// db.Model(&UserTest{ProfileID: 3}).Related(&profile)
+	// fmt.Println(profile)
+
+	//排序分页
+	//db.CreateTable(&TestD{})
+
+	var td []TestD
+	db.Order("order_time desc").Find(&td)
+	fmt.Println("td*****************", td)
 }
 
 //TestA 主表
@@ -90,4 +98,17 @@ type UserTest struct {
 type Profile struct {
 	gorm.Model
 	Name string
+}
+
+
+type TestC struct {
+	ID uint `gorm:"primary_key" json:"-"`
+	Name string
+	OrderTime int
+}
+
+type TestD struct {
+	ID uint `gorm:"primary_key" json:"-"`
+	Name string
+	OrderTime string
 }
