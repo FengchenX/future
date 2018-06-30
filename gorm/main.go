@@ -11,7 +11,8 @@ import (
 select *
 from expenses_bills
 -- join user_bills on user_bills.bill_id = expenses_bills.id
--- where 
+-- where
+-- order by column desc 
 limit 2,1
 
 */
