@@ -7,6 +7,15 @@ import (
 	"log"
 )
 
+/*
+select *
+from expenses_bills
+-- join user_bills on user_bills.bill_id = expenses_bills.id
+-- where 
+limit 2,1
+
+*/
+
 func main() {
 
 	db, err := gorm.Open("mysql", "root:root@tcp(39.108.80.66:3306)/finance?charset=utf8&parseTime=true&loc=Local")

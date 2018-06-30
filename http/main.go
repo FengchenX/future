@@ -9,6 +9,10 @@ import (
 func main() {
 	http.HandleFunc("/", foo)
 	http.HandleFunc("/PostForm", myPostForm)
+	http.HandleFunc("/api/heroes", func(w http.ResponseWriter, r *http.Request){
+		fmt.Println("hello angular")
+		w.Write([]byte("angular feng test"))
+	})
 	err := http.ListenAndServe(":8000", nil)
 	if err != nil {
 		log.Fatal(err)
