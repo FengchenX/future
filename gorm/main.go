@@ -69,6 +69,8 @@ func main() {
 	var td []TestD
 	db.Order("order_time desc").Find(&td)
 	fmt.Println("td*****************", td)
+
+
 }
 
 //TestA 主表
@@ -122,3 +124,4 @@ type TestD struct {
 	Name string
 	OrderTime string
 }
+

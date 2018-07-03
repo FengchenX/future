@@ -26,6 +26,8 @@ CREATE TABLE `userdetail` (
 */
 
 func main() {
+
+/**  普通增删改查
 	db, err := sql.Open("mysql", "root:feng@/test?charset=utf8")
 	checkErr(err)
 
@@ -74,6 +76,8 @@ func main() {
 	checkErr(err)
 	fmt.Println(affect)
 	db.Close()
+	
+*/
 
 	/**更新时间示例
 	update,err := db.Prepare("update userinfo set created=? where uid=?")
@@ -102,7 +106,7 @@ func main() {
 	db.Close()
 	*/
 
-	/*
+	/**
 	   for {
 	   	//准备一个删除状态
 	   	del,err:=db.Prepare("truncate table userinfo");
@@ -138,6 +142,26 @@ func main() {
 	   	}
 	   }
 	*/
+
+	db, err := sql.Open("mysql", "root:root@tcp(39.108.80.66:3306)/finance?charset=utf8&parseTime=true&loc=Local")
+	checkErr(err)
+
+	stmt, err := db.Prepare("select * from users where user_name = adimn")
+	checkErr(err)
+	rows, err := stmt.Query()
+	checkErr(err)
+	for rows.Next() {
+		// columns, err := rows.Columns()
+		// checkErr(err)
+		// fmt.Println(columns)
+		var id uint
+		var user_name string
+		var password string
+		var authority string
+		rows.Scan(&id, &user_name, &password, &authority)
+		fmt.Println(id, user_name, password, authority)
+	}
+
 }
 
 func checkErr(err error) {
