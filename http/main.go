@@ -1,9 +1,12 @@
 package main
 
 import (
+	"github.com/tealeg/xlsx"
 	"fmt"
 	"log"
 	"net/http"
+	"strings"
+	"os"
 )
 
 func main() {
@@ -32,4 +35,37 @@ func myPostForm(w http.ResponseWriter, r *http.Request) {
 	id := r.Form.Get("id")   //123
 	fmt.Println(key, id)
 	fmt.Println(r.Form.Encode())
+}
+
+/**处理下载文件*/
+func DealStaticFiles(w http.ResponseWriter, r *http.Request) {
+
+	var xf *xlsx.File
+	var sheet *xlsx.Sheet
+	var row *xlsx.Row
+	var cell *xlsx.Cell
+
+	xf = xlsx.NewFile()
+	sheet, err := xf.AddSheet("Sheet1")
+	if err != nil {
+		fmt.Println(err)
+	}
+	
+
+	//访问的url路径里包含logDir
+	if strings.HasPrefix(r.URL.Path, "/test1") {
+
+
+		file := "test1.xlsx"
+		fmt.Println(file)
+		f, err := os.Open(file)
+		if err != nil && os.IsNotExist(err) {
+			fmt.Fprintln(w, "File not exist")
+			return
+		}
+		defer f.Close()
+		http.ServeFile(w, r, file) //将文件内容写到客户端
+	} else {
+		fmt.Fprintln(w, "Hello world")
+	}
 }
