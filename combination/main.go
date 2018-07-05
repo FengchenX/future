@@ -5,6 +5,7 @@ import (
 	"io"
 	"log"
 	"os"
+	"encoding/json"
 )
 
 func main() {
@@ -14,6 +15,27 @@ func main() {
 	c.base = base{i: 30}
 	f1(c)
 	f2()
+	fmt.Println("********************************")
+	//多重继承测试
+	var tt testC
+
+	tt.A = "aaaa"
+	tt.B =20
+	tt.C = "ccccc" 
+	tt.D = "ddddd"
+	buf, err := json.Marshal(tt)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	var yy struct {
+		A string
+		B int
+		C string
+		D string
+	}
+
+	json.Unmarshal(buf, &yy)
+	fmt.Printf("%v\n", yy)
 }
 
 var logSingleton *_Logger
@@ -90,4 +112,19 @@ func f2() {
 	e = &A
 	e.subOne()
 	fmt.Println(A)
+}
+
+type testA struct {
+	A string
+	B int
+}
+
+type testB struct {
+	C string
+	D string
+}
+
+type testC struct {
+	testA
+	testB
 }
