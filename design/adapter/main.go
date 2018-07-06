@@ -1,6 +1,10 @@
 package main
 
-import "github.com/feng/future/design/adapter/adapter"
+import (
+	"fmt"
+
+	"github.com/feng/future/design/adapter/adapter"
+)
 
 func main() {
 	//adapter.AdapterTest()
@@ -21,6 +25,12 @@ func main() {
 	ym.Player("姚明")
 	f2(&ym)
 
+	fmt.Println("**************************")
+	var mb adapter.MountainBike
+
+	var adg adapter.AdapterBikeToGoxiang
+	adg.IBike = mb
+	f3(adg)
 }
 
 func f(battery adapter.IReBattery) {
@@ -28,8 +38,12 @@ func f(battery adapter.IReBattery) {
 	battery.Charge()
 }
 
-
 func f2(player adapter.IPlayer) {
 	player.Attack()
 	player.Defense()
+}
+
+func f3(bike adapter.IGoxiangBike) {
+	bike.UnLock()
+	bike.Drive()
 }
