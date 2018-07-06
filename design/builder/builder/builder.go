@@ -117,3 +117,9 @@ func (MealBuilder) MealOne() (meal *Meal) {
 	meal.AddItem(new(FriedChicken), new(Beer))
 	return
 }
+
+func (mb MealBuilder) MealTwo(food1, food2, drink Item) *Meal {
+	meal := new(Meal)
+	meal.AddItem(food1, food2, drink)
+	return meal
+}
