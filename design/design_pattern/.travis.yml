@@ -1,13 +1,7 @@
 language: go
-
-go:
-  - 1.6
-
-install:
-  - go get golang.org/x/tools/cmd/cover
-  - go get github.com/mattn/goveralls
-
+go: 
+ - 1.5.1
+ - release
+ - tip
 script:
-  - go build  github.com/BPing/golang_design_pattern/pattern
-
-
+ - go test -v ./...
