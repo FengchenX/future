@@ -57,15 +57,17 @@ func write() {
     row1.SetHeightCM(1)
     cell = row1.AddCell()
     cell.Value = "狗子"
-    cell = row1.AddCell()
-    cell.Value = "18"
+	cell = row1.AddCell()
+	cell.SetInt(18)	
+    //cell.Value = "18"
 
     row2 = sheet.AddRow()
     row2.SetHeightCM(1)
     cell = row2.AddCell()
     cell.Value = "蛋子"
     cell = row2.AddCell()
-    cell.Value = "28"
+	//cell.Value = "28"
+	cell.SetInt(28)
 
     err = file.Save("test_write.xlsx")
     if err != nil {
