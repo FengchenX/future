@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"reflect"
+	"encoding/json"
+	"log"
 )
 
 func main() {
@@ -10,8 +12,9 @@ func main() {
 	//TypeValue()
 	//Set()
 	//refOpStruct()
-	refChangeStruct()
+	//refChangeStruct()
 	//sliceAppend()
+	jsonRef()
 }
 
 func TypeOf() {
@@ -189,4 +192,25 @@ func sliceAppend() {
 	for _, i := range ps {
 		fmt.Println(i.Name, i.Age, i.Grade)
 	}
+}
+
+func jsonRef() {
+	p := struct {
+		Name string
+		Age int
+	} {
+		Name: "uio",
+		Age: 27,
+	}
+	var f = func(obj interface{}) {
+		v := reflect.ValueOf(obj)
+		p := v.Elem()
+		p.FieldByName("Name").SetString("qwer")
+		buf, err := json.Marshal(p.Interface())
+		if err != nil {
+			log.Fatal(err)			
+		}
+		fmt.Println(string(buf))
+	}	
+	f(&p)
 }
