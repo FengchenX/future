@@ -9,7 +9,9 @@ import (
 func main() {
 	//normal()
 	//args()
-	fbool()
+	//fbool()
+	//sortset()
+	sortset1()
 }
 
 func normal() {
@@ -49,6 +51,7 @@ func args() {
 	p1.Body = "Hello"
 	
 	if _, err := conn.Do("HMSET", redis.Args{}.Add("id1").AddFlat(&p1)...); err != nil {
+
 		fmt.Println(err)
 		return
 	}
@@ -89,3 +92,74 @@ func fbool() {
 	exists, _ := redis.Bool(c.Do("EXISTS", "foo"))
 	fmt.Printf("%#v\n", exists)
 }
+
+func sortset() {
+	c, err := redis.Dial("tcp", "127.0.0.1:6379")	
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	defer c.Close()
+
+	for i, member := range []string{"red", "blue", "green"} {
+		c.Do("ZADD", "zset", i, member)
+	}	
+	c.Do("ZADD", "zset", 1, "uio")
+	resp, err := c.Do("ZCARD", "zset")
+	if err != nil {
+		log.Fatal(err)
+	}
+	count, err := redis.Int(resp, err)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println(count)
+
+	resp, err = c.Do("ZCOUNT", "zset", 1, 1)
+	count, err = redis.Int(resp, err)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println(count)
+}
+func sortset1() {
+	c, err := redis.Dial("tcp", "127.0.0.1:6379")
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer c.Close()
+
+	//c.Do("DEL", "myset")
+	// temp := book {
+	// 	Title: "uio",
+	// 	Author: "uuu",
+	// 	Body: "qqqqqqqqqqqqq",
+	// }
+	// if _, err := c.Do("ZADD", "myset", 0, redis.Args{}.AddFlat(&temp)); err != nil {
+	// 	log.Fatal(err)
+	// }
+	// // resp, err := c.Do("ZCARD", "myset")
+	// // count, err := redis.Int(resp, err)
+	// // if err != nil {
+	// // 	log.Fatal(err)
+	// // }
+	// // fmt.Println(count)
+	// resp, err := c.Do("ZRANGE", "myset", 0, -1)
+	// values, err := redis.Values(resp, err)
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+	// var bs []book
+	// if err := redis.ScanStruct(values, &bs); err != nil {
+	// 	log.Fatal(err)
+	// }
+	// fmt.Println(bs)
+}
+
+type book struct {
+	Title string
+	Author string
+	Body string
+}
+
+

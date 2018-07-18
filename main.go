@@ -1,7 +1,8 @@
 package main
 
 import (
-	"fmt"
+	"flag"
+	"github.com/golang/glog"
 )
 
 func main() {
@@ -11,9 +12,20 @@ func main() {
 	// fmt.Println(a)
 	// f2(&a)
 	// fmt.Println(a)
-	num := 89.46
-	fmt.Println(int(num*10000))
-	fmt.Println(int(num*100*100))
+	// num := 89.46
+	// fmt.Println(int(num*10000))
+	// fmt.Println(int(num*100*100))
+	defer glog.Flush()
+	flag.Parse()
+	p := Point {
+		x: 10,
+		y: 20,
+	}
+	glog.Infoln(p)
+}
+type Point struct {
+	x int
+	y int
 }
 
 // func f1(x interface{}) {
