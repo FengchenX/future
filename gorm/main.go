@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	//"fmt"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"log"
@@ -35,7 +35,7 @@ HAVING COUNT(name)>1;
 
 func main() {
 
-	db, err := gorm.Open("mysql", "root:root@tcp(39.108.80.66:3306)/finance?charset=utf8&parseTime=true&loc=Local")
+	db, err := gorm.Open("mysql", "root:root@tcp(39.108.80.66:3306)/test_order?charset=utf8&parseTime=true&loc=Local")
 	defer db.Close()
 	if err != nil {
 		log.Fatalln(err)
@@ -82,12 +82,34 @@ func main() {
 	//排序分页
 	//db.CreateTable(&TestD{})
 
-	var td []TestD
-	db.Order("order_time desc").Find(&td)
-	fmt.Println("td*****************", td)
+	// var td []TestD
+	// db.Order("order_time desc").Find(&td)
+	// fmt.Println("td*****************", td)
 
-
+	//切片插入 不支持
+	// var p = []Persons{
+	// 	{
+	// 		Name: "5555555555",
+	// 		Age: 90,
+	// 	},
+	// 	{
+	// 		Name: "5555555555",
+	// 		Age: 90,
+	// 	},
+	// }
+	// if mydb := db.Create(&p); mydb.Error != nil {
+	// 	log.Fatal(mydb.Error)
+	// }
+	var ps []Persons
+	db.Find(&ps)
+	for _, p := range ps {
+		p.Name = "test"
+		p.Age = 0
+		db.Model(&p).Updates(Persons{Name: "test", Age: 10})
+	}
 }
+
+
 
 //TestA 主表
 type TestA struct {
@@ -141,3 +163,8 @@ type TestD struct {
 	OrderTime string
 }
 
+type Persons struct {
+	Id uint `gorm:"primary_key" json:"-"`
+	Name string
+	Age int
+}

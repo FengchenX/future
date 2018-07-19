@@ -1,8 +1,8 @@
 package main
 
 import (
-	"flag"
-	"github.com/golang/glog"
+	"fmt"
+	"time"
 )
 
 func main() {
@@ -15,18 +15,23 @@ func main() {
 	// num := 89.46
 	// fmt.Println(int(num*10000))
 	// fmt.Println(int(num*100*100))
-	defer glog.Flush()
-	flag.Parse()
-	p := Point {
-		x: 10,
-		y: 20,
+	var a = 10
+	t := time.NewTicker(5*time.Second)
+	for {
+		select {
+		case <- t.C:
+			fmt.Println("tick befor")
+			if a == 10 {
+				continue
+			}
+			fmt.Println("tick after")
+		default:
+			fmt.Println("default")
+			time.Sleep(3*time.Second)
+		}
 	}
-	glog.Infoln(p)
 }
-type Point struct {
-	x int
-	y int
-}
+
 
 // func f1(x interface{}) {
 // 	v := x.([]int)
