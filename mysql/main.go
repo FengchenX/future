@@ -39,6 +39,43 @@ CREATE TABLE `timestampTest` (
 
 */
 
+/*
+select *
+from expenses_bills
+-- join user_bills on user_bills.bill_id = expenses_bills.id
+-- where
+-- order by column desc 
+limit 2,1
+
+
+select * 
+from persons p
+where p.name in (
+select name
+from persons
+group by name 
+having count(name)>1
+)
+
+
+//查询大于一次的数据
+select * 
+from persons 
+group by name 
+HAVING COUNT(name)>1;
+*/
+/**增删改查sql语句
+insert into userinfo (uid,username,department,created) values(?,?,?,?)
+delete from userinfo where uid = ?
+update userinfo set username = ? where uid =?
+select * from userinfo where uid = ?
+
+
+select [column], [column]
+form [table]
+where [column] = ?
+*/
+
 func main() {
 
 /**  普通增删改查
@@ -188,17 +225,6 @@ func checkErr(err error) {
 user:password@tcp(localhost:5555)/dbname?charset=utf8
 */
 
-/**增删改查sql语句
-insert into userinfo (uid,username,department,created) values(?,?,?,?)
-delete from userinfo where uid = ?
-update userinfo set username = ? where uid =?
-select * from userinfo where uid = ?
-
-
-select [column], [column]
-form [table]
-where [column] = ?
-*/
 
 /**标准库操作数据库实例
 updateMoney, err := db.Prepare("UPDATE balance SET money=money+? WHERE id=?")
