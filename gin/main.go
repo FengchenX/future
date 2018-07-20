@@ -13,7 +13,7 @@ func main() {
 	})
 	
 	router.POST("/test", func(c *gin.Context){
-		
+		c.String(http.StatusOK, "test")
 	})
     router.Run(":8000")
 }
