@@ -15,10 +15,42 @@ func NewStartCommand(mb *MotherBoard) *StartCommand {
 	}
 }
 func (c *StartCommand) Execute() {
-	//c.mb.
+	c.mb.Start()
 }
 
 type MotherBoard struct{}
 func (*MotherBoard) Start() {
 	fmt.Print("system starting\n")
+}
+func (*MotherBoard) Reboot() {
+	fmt.Print("system rebooting\n")
+}
+
+type RebootCommand struct {
+	mb *MotherBoard
+}
+func NewRebootCommand(mb *MotherBoard) *RebootCommand {
+	return &RebootCommand{
+		mb: mb,
+	}
+}
+func (c *RebootCommand) Execute() {
+	c.mb.Reboot()
+}
+
+type Box struct {
+	buttion1 Command
+	buttion2 Command
+}
+func NewBox(buttion1, buttion2 Command) *Box {
+	return &Box{
+		buttion1: buttion1,
+		buttion2: buttion2,
+	}
+}
+func (b *Box) PressButtion1() {
+	b.buttion1.Execute()
+}
+func (b *Box) PressButtion2() {
+	b.buttion2.Execute()
 }

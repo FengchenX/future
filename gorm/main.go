@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	//"fmt"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
@@ -78,11 +79,14 @@ func main() {
 	// }
 	var ps []Persons
 	db.Find(&ps)
+	tx := db.Begin()
 	for _, p := range ps {
-		p.Name = "test"
-		p.Age = 0
-		db.Model(&p).Updates(Persons{Name: "test", Age: 10})
+		if err := tx.Model(&p).Update("read", 1).Error; err != nil {
+			fmt.Println(err)
+		}
 	}
+	tx.Commit()
+	//db.AutoMigrate(&Persons{})
 }
 
 
@@ -143,4 +147,5 @@ type Persons struct {
 	Id uint `gorm:"primary_key" json:"-"`
 	Name string
 	Age int
+	Read bool
 }
