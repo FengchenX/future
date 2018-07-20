@@ -22,6 +22,20 @@ CREATE TABLE `userdetail` (
 	`profile` TEXT NULL,
 	PRIMARY KEY (`uid`)
 )
+--创建测试表
+CREATE TABLE `timestampTest` (
+  	`id` int(11) NOT NULL AUTO_INCREMENT,
+   	`name` varchar(20) DEFAULT NULL,
+  	`create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	`last_modify_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+
+10 --检测默认值，插入测试数据
+11 INSERT INTO timestampTest (name) VALUES ('aa'),('bb'),('cc');
+12 
+13 --检测自动更新，更新某条数据
+14 UPDATE timestampTest SET name = 'ab' WHERE id = 1;
 
 */
 
