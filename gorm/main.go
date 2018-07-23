@@ -49,21 +49,37 @@ func main() {
 
 	//外键知识
 	db.AutoMigrate(&User{}, &Profile{})
+	// profiles := []Profile {
+	// 	{
+	// 		Name: "uio",
+	// 		UserID: 1,
+	// 	},
+	// 	{
+	// 		Name: "qwe",
+	// 		UserID: 1,
+	// 	},
+	// }
+	// user := User{
+	// 	//Refer: 1,
+	// 	Profiles: profiles,
+	// }
+	// db.Create(&user)
+	user := User{}
+	db.Create(&user)
 	profiles := []Profile {
 		{
-			Name: "uio",
-			UserID: 1,
+			Name: "wer",
+			UserID: user.ID,
 		},
 		{
-			Name: "qwe",
-			UserID: 1,
+			Name: "tyuu",
+			UserID: user.ID,
 		},
 	}
-	user := User{
-		Refer: 1,
-		Profiles: profiles,
+	//db.Create(&profiles)
+	for _, v := range profiles {
+		db.Create(&v)
 	}
-	db.Create(&user)
 	//排序分页
 	//db.CreateTable(&TestD{})
 
@@ -145,7 +161,7 @@ type Profile struct {
 type User struct {
 	gorm.Model
 	Refer   uint
-	Profiles []Profile `gorm:"ForeignKey:UserID;AssociationForeignKey:Refer"`
+	Profiles []Profile `gorm:"ForeignKey:UserID;AssociationForeignKey:ID"`
 }
 
 
