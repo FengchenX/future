@@ -16,10 +16,10 @@ func main() {
 	// fmt.Println(int(num*10000))
 	// fmt.Println(int(num*100*100))
 	var a = 10
-	t := time.NewTicker(5*time.Second)
+	t := time.NewTicker(5 * time.Second)
 	for {
 		select {
-		case <- t.C:
+		case <-t.C:
 			fmt.Println("tick befor")
 			if a == 10 {
 				continue
@@ -27,11 +27,10 @@ func main() {
 			fmt.Println("tick after")
 		default:
 			fmt.Println("default")
-			time.Sleep(3*time.Second)
+			time.Sleep(3 * time.Second)
 		}
 	}
 }
-
 
 // func f1(x interface{}) {
 // 	v := x.([]int)

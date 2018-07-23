@@ -1,8 +1,6 @@
 package main
 
 import (
-	"fmt"
-	//"fmt"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"log"
@@ -12,7 +10,7 @@ import (
 
 func main() {
 
-	db, err := gorm.Open("mysql", "root:root@tcp(39.108.80.66:3306)/test_order?charset=utf8&parseTime=true&loc=Local")
+	db, err := gorm.Open("mysql", "launch:root@tcp(192.168.83.79:3306)/mytest?charset=utf8&parseTime=true&loc=Local")
 	defer db.Close()
 	if err != nil {
 		log.Fatalln(err)
@@ -50,12 +48,22 @@ func main() {
 	fmt.Println(ta)*/
 
 	//外键知识
-	//db.CreateTable(&UserTest{}, &Profile{})
-
-	// var profile Profile
-	// db.Model(&UserTest{ProfileID: 3}).Related(&profile)
-	// fmt.Println(profile)
-
+	db.AutoMigrate(&User{}, &Profile{})
+	profiles := []Profile {
+		{
+			Name: "uio",
+			UserID: 1,
+		},
+		{
+			Name: "qwe",
+			UserID: 1,
+		},
+	}
+	user := User{
+		Refer: 1,
+		Profiles: profiles,
+	}
+	db.Create(&user)
 	//排序分页
 	//db.CreateTable(&TestD{})
 
@@ -77,16 +85,26 @@ func main() {
 	// if mydb := db.Create(&p); mydb.Error != nil {
 	// 	log.Fatal(mydb.Error)
 	// }
-	var ps []Persons
-	db.Find(&ps)
-	tx := db.Begin()
-	for _, p := range ps {
-		if err := tx.Model(&p).Update("read", 1).Error; err != nil {
-			fmt.Println(err)
-		}
-	}
-	tx.Commit()
-	//db.AutoMigrate(&Persons{})
+	// var ps []Persons
+	// db.Find(&ps)
+	// tx := db.Begin()
+	// for _, p := range ps {
+	// 	if err := tx.Model(&p).Update("read", 1).Error; err != nil {
+	// 		fmt.Println(err)
+	// 	}
+	// }
+	// tx.Commit()
+	// db.AutoMigrate(&Persons{})
+
+	//gorm select * 测试
+	// var p []Per
+	// mydb := db.Select("*").
+	// 		Table("persons").
+	// 		Find(&p)
+	// if mydb.Error != nil {
+	// 	log.Fatal(err)
+	// }
+	// fmt.Println(p)
 }
 
 
@@ -118,16 +136,16 @@ func f2(db *gorm.DB, model interface{}, out interface{}, str string, args ...int
 }
 
 
-// `User`属于`Profile`, `ProfileID`为外键
-type UserTest struct {
-	gorm.Model
-	Profile   Profile
-	ProfileID int
-}
-  
 type Profile struct {
 	gorm.Model
-	Name string
+	Name   string
+	UserID uint
+}
+  
+type User struct {
+	gorm.Model
+	Refer   uint
+	Profiles []Profile `gorm:"ForeignKey:UserID;AssociationForeignKey:Refer"`
 }
 
 
@@ -148,4 +166,8 @@ type Persons struct {
 	Name string
 	Age int
 	Read bool
+}
+
+type Per struct {
+	Persons
 }
