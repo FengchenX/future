@@ -64,22 +64,22 @@ func main() {
 	// 	Profiles: profiles,
 	// }
 	// db.Create(&user)
-	user := User{}
-	db.Create(&user)
-	profiles := []Profile {
-		{
-			Name: "wer",
-			UserID: user.ID,
-		},
-		{
-			Name: "tyuu",
-			UserID: user.ID,
-		},
-	}
-	//db.Create(&profiles)
-	for _, v := range profiles {
-		db.Create(&v)
-	}
+	// user := User{}
+	// db.Create(&user)
+	// profiles := []Profile {
+	// 	{
+	// 		Name: "wer",
+	// 		UserID: user.ID,
+	// 	},
+	// 	{
+	// 		Name: "tyuu",
+	// 		UserID: user.ID,
+	// 	},
+	// }
+	// for _, v := range profiles {
+	// 	db.Create(&v)
+	// }
+	
 	//排序分页
 	//db.CreateTable(&TestD{})
 
