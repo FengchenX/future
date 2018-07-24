@@ -48,7 +48,7 @@ func main() {
 	fmt.Println(ta)*/
 
 	//外键知识
-	db.AutoMigrate(&User{}, &Profile{})
+	// db.AutoMigrate(&User{}, &Profile{})
 	// profiles := []Profile {
 	// 	{
 	// 		Name: "uio",
