@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"log"
@@ -78,7 +79,7 @@ func main() {
 	// }
 	// for _, v := range profiles {
 	// 	db.Create(&v)
-	// }
+	// 
 	
 	//排序分页
 	//db.CreateTable(&TestD{})
@@ -121,6 +122,34 @@ func main() {
 	// 	log.Fatal(err)
 	// }
 	// fmt.Println(p)
+
+	//gorm delete
+	// db.AutoMigrate(&Persons{})
+	// if mydb := db.Delete(Persons{}); mydb.Error != nil {
+	// 	log.Fatal(mydb.Error)
+	// }
+
+	//gorm 增
+	db.AutoMigrate(&TestA{})
+	a := TestA {
+		Name: "xya",
+		Age: 12,
+		OrderType: 0,
+		Rflag: true,
+	}
+	if isNew := db.NewRecord(a); isNew {
+		fmt.Println("是新纪录")
+	} else {
+		fmt.Println("不是新纪录")
+	}
+	if mydb := db.Create(&a); mydb.Error != nil {
+		log.Fatal(mydb.Error)
+	}
+	if isNew := db.NewRecord(a); isNew {
+		fmt.Println("是新纪录")
+	} else {
+		fmt.Println("不是新纪录")
+	}
 }
 
 
@@ -129,7 +158,7 @@ func main() {
 type TestA struct {
 	ID        uint `gorm:"primary_key" json:"-"`
 	Name      string
-	Age       string
+	Age       int
 	OrderType int64
 	Rflag 	  bool
 }
@@ -154,13 +183,15 @@ func f2(db *gorm.DB, model interface{}, out interface{}, str string, args ...int
 
 type Profile struct {
 	gorm.Model
+	//ID uint
 	Name   string
 	UserID uint
 }
   
 type User struct {
 	gorm.Model
-	Refer   uint
+	//ID uint
+	//Refer   uint
 	Profiles []Profile `gorm:"ForeignKey:UserID;AssociationForeignKey:ID"`
 }
 
