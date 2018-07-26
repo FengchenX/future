@@ -183,14 +183,12 @@ func f2(db *gorm.DB, model interface{}, out interface{}, str string, args ...int
 
 type Profile struct {
 	gorm.Model
-	//ID uint
 	Name   string
 	UserID uint
 }
   
 type User struct {
 	gorm.Model
-	//ID uint
 	//Refer   uint
 	Profiles []Profile `gorm:"ForeignKey:UserID;AssociationForeignKey:ID"`
 }
