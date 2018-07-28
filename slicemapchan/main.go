@@ -17,7 +17,8 @@ func main() {
 	//slice7()
 	//slice8()
 	//slice10()
-	slice11()
+	//slice11()
+	map1()
 }
 
 //slice 一些需要注意的坑
@@ -143,4 +144,20 @@ func slice11() {
 	a := []int{1, 2, 3, 4, 5}
 	f10(a[0:2:2])
 	fmt.Println(a) //[1,2,3,4,5]
+}
+
+func map1() {
+	var a map[string][]string
+	a = make(map[string][]string)
+	b := []string{"uio", "wer"}
+	if _, ok := a["1"]; ok {
+		fmt.Println("you")
+	} else {
+		fmt.Println("meiyou")
+		a["1"] = b
+		if list, ok := a["1"]; ok {
+			fmt.Println("有")
+			fmt.Println(list)
+		}
+	}
 }

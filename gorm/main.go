@@ -130,26 +130,30 @@ func main() {
 	// }
 
 	//gorm 增
-	db.AutoMigrate(&TestA{})
-	a := TestA {
-		Name: "xya",
-		Age: 12,
-		OrderType: 0,
-		Rflag: true,
-	}
-	if isNew := db.NewRecord(a); isNew {
-		fmt.Println("是新纪录")
-	} else {
-		fmt.Println("不是新纪录")
-	}
-	if mydb := db.Create(&a); mydb.Error != nil {
-		log.Fatal(mydb.Error)
-	}
-	if isNew := db.NewRecord(a); isNew {
-		fmt.Println("是新纪录")
-	} else {
-		fmt.Println("不是新纪录")
-	}
+	// db.AutoMigrate(&TestA{})
+	// a := TestA {
+	// 	Name: "xya",
+	// 	Age: 12,
+	// 	OrderType: 0,
+	// 	Rflag: true,
+	// }
+	// if isNew := db.NewRecord(a); isNew {
+	// 	fmt.Println("是新纪录")
+	// } else {
+	// 	fmt.Println("不是新纪录")
+	// }
+	// if mydb := db.Create(&a); mydb.Error != nil {
+	// 	log.Fatal(mydb.Error)
+	// }
+	// if isNew := db.NewRecord(a); isNew {
+	// 	fmt.Println("是新纪录")
+	// } else {
+	// 	fmt.Println("不是新纪录")
+	// }
+
+	var as []TestA
+	db.Not("name", "").Where("name = ?", "uio").Find(&as)
+	fmt.Println(as)
 }
 
 
