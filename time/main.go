@@ -22,5 +22,5 @@ func main() {
 	now := time.Now()
 	//h := now.Hour()
 	t := now.Add(-3*time.Hour)
-	fmt.Println(t)
+	fmt.Println(now.Sub(t))
 }

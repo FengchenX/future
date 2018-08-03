@@ -80,6 +80,12 @@ func main() {
 	// for _, v := range profiles {
 	// 	db.Create(&v)
 	// 
+	// gorm 外键终极知识
+	// var us []User
+	// db.Where("id = ?", 2).Preload("profile").Find(&us)
+	// if len(us) > 0 {
+	// 	fmt.Println("************", us)
+	// }
 	
 	//排序分页
 	//db.CreateTable(&TestD{})
@@ -151,6 +157,7 @@ func main() {
 	// 	fmt.Println("不是新纪录")
 	// }
 
+	// not测试
 	var as []TestA
 	db.Not("name", "").Where("name = ?", "uio").Find(&as)
 	fmt.Println(as)
