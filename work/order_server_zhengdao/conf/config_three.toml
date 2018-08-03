@@ -1,0 +1,20 @@
+Operate_timeout = 10                 # 用户操作超时，单位秒
+LocalAddress   = "localhost"         # 本机地址
+ConfAddress    = "192.168.83.165"    # 配置地址
+ApiAddress     = "localhost"
+
+ThreePort       = ":8888"             # 端口
+WebPort         = ":7777"             # 端口
+ApiPort         = ":8899"             # 端口
+ConfPort        = ":9999"             # 端口
+
+AccAddress     = "56a58d378fd5647de22bf10007ab2f49e47d83b7"
+EthAddress     = "http://39.108.80.66:8546"                    #eth地址
+IpcDir          = "http://39.108.80.66:8546/root/work/launch_pf/src/ethbase/geth.ipc"
+ServerId        = "10001"
+ManagerKey     = '{"address":"56a58d378fd5647de22bf10007ab2f49e47d83b7","crypto":{"cipher":"aes-128-ctr","ciphertext":"01b960ea11abb9baa2d9f5e4f8cec0eaaa2a6165f6a3c63b1fb3a767e86ad729","cipherparams":{"iv":"20f30ca3334be401de850a6fd912aa4f"},"kdf":"scrypt","kdfparams":{"dklen":32,"n":262144,"p":1,"r":8,"salt":"2e219cc58e1468cc95863f62ce9d1bf5bbdec467f13ed4ecd2bc996f11c56822"},"mac":"6faf19ee181fbfd076a446854e2348020408b34e120824edc69085f2306bfa26"},"id":"44e95601-9851-422e-ae00-c0a481436fe6","version":3}'
+ManagerPhrase  = 'dev3_apple1'
+KeyDir          = "/root/work/launch_pf/src/ethbase/keystore"   #ethbase key dir
+
+#MysqlStr="root:root@tcp(120.78.195.103:3306)/api_oder?charset=utf8&parseTime=true&loc=Local"
+MysqlStr="znfz:launch*2018@tcp(120.78.195.103:3306)/api_oder?charset=utf8&parseTime=true&loc=Local"

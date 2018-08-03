@@ -1,0 +1,11 @@
+Operate_timeout = 10                  # 用户操作超时，单位秒
+LocalAddress   = "localhost"     # 本机地址
+ConfAddress    = "localhost"     # 配置地址
+ApiAddress     = "120.79.219.255"       # api地址
+
+ThreePort       = ":8888"             # 端口
+WebPort         = ":1111"             # 端口
+ApiPort         = ":8899"             # 端口
+ConfPort        = ":9999"             # 端口
+
+MysqlStr="znfz:launch*2018@tcp(120.78.195.103:3306)/api_oder?charset=utf8&parseTime=true&loc=Local"

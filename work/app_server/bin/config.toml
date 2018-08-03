@@ -1,0 +1,21 @@
+# api服务配置
+Operate_timeout = 10                                              # 用户操作超时，单位秒
+LocalAddress    = "localhost"                                     # 本机地址
+LocalPort       = ":7699"                                         # 端口
+
+#ApiAddress      = "localhost"
+ApiAddress      = "119.23.10.215"
+ApiPort         = ":7799"
+
+FinanceAddress  = "0x35e803774176607ad7794170B251586534eCB05A"
+FinanceKeyStore = "{\"address\":\"35e803774176607ad7794170b251586534ecb05a\",\"crypto\":{\"cipher\":\"aes-128-ctr\",\"ciphertext\":\"949d7b3e0bf7251d49a1009165f648297c276c4b801da3eb2eeed69b8c23a29e\",\"cipherparams\":{\"iv\":\"fb191092ae4f573eea9ecd37bc3ad558\"},\"kdf\":\"scrypt\",\"kdfparams\":{\"dklen\":32,\"n\":262144,\"p\":1,\"r\":8,\"salt\":\"f8902fe8364ce84067f934a62aa797bcf99b90c094af97613ec7e37df55b3a42\"},\"mac\":\"455acd4a8fba6335c18db670eccba5c817ff85c85576d499c1c3185518a2ac70\"},\"id\":\"a96b2f2e-1247-4939-afd3-bbf50a54706b\",\"version\":3}"
+FinancePhrase   = "1"
+
+UpdateDate      = 30
+CheckLimit      = 10
+Mysql           = "root:root@tcp(120.78.195.103:3306)/api_order?charset=utf8&parseTime=true&loc=Local"
+#Mysql           = "root:root@tcp(39.108.80.66:3306)/api_order?charset=utf8&parseTime=true&loc=Local"
+
+OrderAddress    = "120.78.195.103:9898"
+AppId           = "10001"
+Devlop_key      = "15327e20ad4bffbbfbed16ca13daf295"

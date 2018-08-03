@@ -1,0 +1,7 @@
+#扫描间隔
+ScanInterval=5
+
+AddOrderUrl="http://39.108.80.66:7788/orders/save"
+GetLatestOrderNoUrl="http://39.108.80.66:7788/orders/getLatestOrderNo"
+
+SqlServerUrl="driver={SQL Server};Server=192.168.226.129;Database=jxc2010_v9;uid=sa;pwd=123456;charset=gbk;"

@@ -1,0 +1,17 @@
+Port         = "7788"             # 监听端口
+
+PaySwitch 		= 1 				  #是否转账
+ReTransferTime  = 2					  #定时重新转账时间（小时）
+AliPayAddress   = "jia.tang@cnlaunch.com"		  #收款方账号
+AliPayName 		= "yuanzheng"		  #收款方用户名
+
+TimeTicker2     = 10                  #从数据库获取 添加到编号系统失败 的交易流水，重新添加
+
+
+MysqlStr="root:launch*2018@tcp(120.79.34.238:3306)/order_server_test?charset=utf8&parseTime=true&loc=Local"
+
+#MysqlStr="znfz:launch*2018@tcp(120.78.195.103:3306)/api_oder?charset=utf8&parseTime=true&loc=Local"
+
+#MysqlStr="root:123456@tcp(localhost:3306)/api_order_dev?charset=utf8&parseTime=true&loc=Local"
+
+AutoMigrate=true  #auto create table

@@ -1,0 +1,31 @@
+# api服务配置
+Operate_timeout = 10                                              # 用户操作超时，单位秒
+LocalAddress    = "localhost"                                     # 本机地址
+LocalPort       = ":7699"                                         # 端口
+
+#ApiAddress      = "192.168.83.79"
+#ApiAddress      = "120.79.34.238"
+#ApiAddress      = "119.23.10.215"
+ApiAddress      = "39.108.80.66"
+ApiPort         = ":7799"
+
+#to do delete
+#FinanceAddress  = "0x35e803774176607ad7794170B251586534eCB05A"
+KeyStore =  '{"address":"56a58d378fd5647de22bf10007ab2f49e47d83b7","crypto":{"cipher":"aes-128-ctr","ciphertext":"01b960ea11abb9baa2d9f5e4f8cec0eaaa2a6165f6a3c63b1fb3a767e86ad729","cipherparams":{"iv":"20f30ca3334be401de850a6fd912aa4f"},"kdf":"scrypt","kdfparams":{"dklen":32,"n":262144,"p":1,"r":8,"salt":"2e219cc58e1468cc95863f62ce9d1bf5bbdec467f13ed4ecd2bc996f11c56822"},"mac":"6faf19ee181fbfd076a446854e2348020408b34e120824edc69085f2306bfa26"},"id":"44e95601-9851-422e-ae00-c0a481436fe6","version":3}'
+
+Phrase   = 'dev3_apple1'
+
+UpdateDate      = 30
+CheckLimit      = 10
+#Mysql           = "root:root@tcp(120.78.195.103:3306)/api_order?charset=utf8&parseTime=true&loc=Local"
+#Mysql           = "root:root@tcp(39.108.80.66:3306)/api_order?charset=utf8&parseTime=true&loc=Local"
+#Mysql           = "root:launch*2018@tcp(120.79.34.238:3306)/app_server?charset=utf8&parseTime=true&loc=Local"
+Mysql           = "launch:root@tcp(192.168.83.79:3306)/app_server?charset=utf8&parseTime=true&loc=Local"
+
+OrderAddress    = "39.108.80.66:9898"
+AppId           = "10001"
+Devlop_key      = "15327e20ad4bffbbfbed16ca13daf295"
+DumpNum         = 20
+OrderNum        = 20
+GetBookTime     = 10
+ResetQuoTime    = 1000

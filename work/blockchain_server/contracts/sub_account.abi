@@ -1,0 +1,836 @@
+[
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "name",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getAllAccountsAddr",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "payer",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "issueCode",
+				"type": "string"
+			},
+			{
+				"name": "roles",
+				"type": "bytes32[]"
+			},
+			{
+				"name": "rtaios",
+				"type": "uint256[]"
+			},
+			{
+				"name": "subWays",
+				"type": "uint256[]"
+			},
+			{
+				"name": "quotaWays",
+				"type": "uint256[]"
+			},
+			{
+				"name": "resetTimes",
+				"type": "uint256[]"
+			}
+		],
+		"name": "issueSubCxt",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "balances",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "accountAddr",
+				"type": "address"
+			},
+			{
+				"name": "name",
+				"type": "string"
+			},
+			{
+				"name": "bankCard",
+				"type": "string"
+			},
+			{
+				"name": "weChat",
+				"type": "string"
+			},
+			{
+				"name": "alipay",
+				"type": "string"
+			},
+			{
+				"name": "telephone",
+				"type": "string"
+			}
+		],
+		"name": "addAccount",
+		"outputs": [
+			{
+				"name": "success",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "totalConsume",
+				"type": "uint256"
+			},
+			{
+				"name": "ratio",
+				"type": "uint256"
+			}
+		],
+		"name": "calculateByRatio",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "source",
+				"type": "string"
+			}
+		],
+		"name": "StringToBytesVer1",
+		"outputs": [
+			{
+				"name": "result",
+				"type": "bytes"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "decimals",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint8"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "issueCode",
+				"type": "string"
+			},
+			{
+				"name": "totalConsume",
+				"type": "uint256"
+			},
+			{
+				"name": "transferId",
+				"type": "string"
+			}
+		],
+		"name": "settleAccounts",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "joiner",
+				"type": "address"
+			},
+			{
+				"name": "ratio",
+				"type": "uint256"
+			},
+			{
+				"name": "subWay",
+				"type": "uint256"
+			},
+			{
+				"name": "calculate",
+				"type": "uint256"
+			},
+			{
+				"name": "issueCode",
+				"type": "string"
+			},
+			{
+				"name": "transferId",
+				"type": "string"
+			},
+			{
+				"name": "c_totalConsume",
+				"type": "uint256"
+			}
+		],
+		"name": "insertLedgerCxt",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "subCode",
+				"type": "string"
+			},
+			{
+				"name": "setAddr",
+				"type": "address"
+			}
+		],
+		"name": "resetSubCodeQuotaData",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "uaddr",
+				"type": "address"
+			},
+			{
+				"name": "transferId",
+				"type": "string"
+			}
+		],
+		"name": "getOneLedgerCxt",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "bool"
+			},
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "telephone",
+				"type": "string"
+			}
+		],
+		"name": "getOneAddress",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "totalConsume",
+				"type": "uint256"
+			},
+			{
+				"name": "ratio",
+				"type": "uint256"
+			},
+			{
+				"name": "c_ratio",
+				"type": "uint256"
+			}
+		],
+		"name": "afterCalculateByRatio",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "subCode",
+				"type": "string"
+			},
+			{
+				"name": "setAddr",
+				"type": "address"
+			},
+			{
+				"name": "num",
+				"type": "uint256"
+			}
+		],
+		"name": "setSubCodeQuotaData",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "postscript",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getSubAccountKeysLen",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "faddr",
+				"type": "address"
+			}
+		],
+		"name": "getbindIssueToAddr",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bytes32[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "owner",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "subCode",
+				"type": "string"
+			},
+			{
+				"name": "setAddr",
+				"type": "address"
+			}
+		],
+		"name": "getSubCodeQuotaData",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "symbol",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "uaddr",
+				"type": "address"
+			},
+			{
+				"name": "transferId",
+				"type": "string"
+			},
+			{
+				"name": "transferDetails",
+				"type": "string"
+			}
+		],
+		"name": "updateCalulateLedger",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "issueCode",
+				"type": "string"
+			}
+		],
+		"name": "getIssueSubCxt",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bytes32[]"
+			},
+			{
+				"name": "",
+				"type": "uint256[]"
+			},
+			{
+				"name": "",
+				"type": "uint256[]"
+			},
+			{
+				"name": "",
+				"type": "uint256[]"
+			},
+			{
+				"name": "",
+				"type": "uint256[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "issueCode",
+				"type": "string"
+			},
+			{
+				"name": "roles",
+				"type": "bytes32[]"
+			},
+			{
+				"name": "joiners",
+				"type": "address[]"
+			}
+		],
+		"name": "IssueScheduling",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "sender",
+				"type": "address"
+			},
+			{
+				"name": "joiner",
+				"type": "address"
+			},
+			{
+				"name": "calculate",
+				"type": "uint256"
+			},
+			{
+				"name": "transferId",
+				"type": "string"
+			}
+		],
+		"name": "updateOneLedger",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "transferId",
+				"type": "string"
+			}
+		],
+		"name": "checkLedgerById",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "subAccountKeys",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "transferId",
+				"type": "string"
+			}
+		],
+		"name": "getLedgerSubAddrs",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "Accounts",
+		"outputs": [
+			{
+				"name": "accountAddr",
+				"type": "address"
+			},
+			{
+				"name": "name",
+				"type": "string"
+			},
+			{
+				"name": "telephone",
+				"type": "string"
+			},
+			{
+				"name": "bankCard",
+				"type": "string"
+			},
+			{
+				"name": "weChat",
+				"type": "string"
+			},
+			{
+				"name": "alipay",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "source",
+				"type": "string"
+			}
+		],
+		"name": "stringToBytesVer2",
+		"outputs": [
+			{
+				"name": "result",
+				"type": "bytes32"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "issueCode",
+				"type": "string"
+			}
+		],
+		"name": "GetSchedulingCxt",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bytes32[]"
+			},
+			{
+				"name": "",
+				"type": "address[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getAllSubKeysLen",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "account",
+				"type": "address"
+			}
+		],
+		"name": "getBalance",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "accountAddr",
+				"type": "address"
+			}
+		],
+		"name": "getAccount",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"name": "tokenName",
+				"type": "string"
+			},
+			{
+				"name": "tokenSymbol",
+				"type": "string"
+			},
+			{
+				"name": "initpayer",
+				"type": "address"
+			},
+			{
+				"name": "init_postscript",
+				"type": "string"
+			},
+			{
+				"name": "decimalUnits",
+				"type": "uint8"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "from",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "Transfer",
+		"type": "event"
+	}
+]
