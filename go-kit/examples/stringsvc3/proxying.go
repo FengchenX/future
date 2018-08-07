@@ -109,7 +109,7 @@ func makeUppercaseProxy(ctx context.Context, instance string) endpoint.Endpoint 
 }
 
 func split(s string) []string {
-	a := strings.Split(s, ",")
+	a := strings.Split(s, " ")
 	for i := range a {
 		a[i] = strings.TrimSpace(a[i])
 	}
