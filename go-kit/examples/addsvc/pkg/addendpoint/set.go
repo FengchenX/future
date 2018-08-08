@@ -18,7 +18,7 @@ import (
 	"github.com/go-kit/kit/tracing/opentracing"
 	"github.com/go-kit/kit/tracing/zipkin"
 
-	"github.com/go-kit/kit/examples/addsvc/pkg/addservice"
+	"github.com/feng/future/go-kit/examples/addsvc/pkg/addservice"
 )
 
 // Set collects all of the endpoints that compose an add service. It's meant to

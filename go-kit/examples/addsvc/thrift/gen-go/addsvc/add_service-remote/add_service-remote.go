@@ -14,7 +14,7 @@ import (
         "strconv"
         "strings"
         "github.com/apache/thrift/lib/go/thrift"
-        "github.com/go-kit/kit/examples/addsvc/thrift/gen-go/addsvc"
+        "github.com/feng/future/go-kit/examples/addsvc/thrift/gen-go/addsvc"
 )
 
 

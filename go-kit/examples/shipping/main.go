@@ -16,14 +16,14 @@ import (
 	"github.com/go-kit/kit/log"
 	kitprometheus "github.com/go-kit/kit/metrics/prometheus"
 
-	"github.com/go-kit/kit/examples/shipping/booking"
-	"github.com/go-kit/kit/examples/shipping/cargo"
-	"github.com/go-kit/kit/examples/shipping/handling"
-	"github.com/go-kit/kit/examples/shipping/inmem"
-	"github.com/go-kit/kit/examples/shipping/inspection"
-	"github.com/go-kit/kit/examples/shipping/location"
-	"github.com/go-kit/kit/examples/shipping/routing"
-	"github.com/go-kit/kit/examples/shipping/tracking"
+	"github.com/feng/future/go-kit/examples/shipping/booking"
+	"github.com/feng/future/go-kit/examples/shipping/cargo"
+	"github.com/feng/future/go-kit/examples/shipping/handling"
+	"github.com/feng/future/go-kit/examples/shipping/inmem"
+	"github.com/feng/future/go-kit/examples/shipping/inspection"
+	"github.com/feng/future/go-kit/examples/shipping/location"
+	"github.com/feng/future/go-kit/examples/shipping/routing"
+	"github.com/feng/future/go-kit/examples/shipping/tracking"
 )
 
 const (
