@@ -28,7 +28,7 @@ func MakeHandler(svc service.AppService, logger kitlog.Logger) http.Handler {
 
 	r := mux.NewRouter()
 
-	r.Handle("appserver/getaccount", getAccountHandler).Methods("POST")
+	r.Handle("/appserver/getaccount", getAccountHandler).Methods("POST")
 
 	return r
 }

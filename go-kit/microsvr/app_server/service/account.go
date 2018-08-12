@@ -8,5 +8,5 @@ import (
 //GetAccount 获取账号信息
 func (AppSvr) GetAccount(userAddr string) (uint32, string, model.UserAccount) {
 	
-	return 1, "", model.UserAccount{}
+	return 1, "msg success", model.UserAccount{}
 }
