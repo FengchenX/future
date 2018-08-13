@@ -21,7 +21,7 @@ var std *AppConf
 func AppInst() *AppConf {
 	if std == nil {
 		temp := new(AppConf)
-		_, err := toml.DecodeFile("./static/default_conf.toml", temp)
+		_, err := toml.DecodeFile("app-server/config/static/default-conf.toml", temp)
 		if err != nil {
 			log.Fatal(err)	
 		}

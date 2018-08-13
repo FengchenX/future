@@ -4,9 +4,9 @@ import (
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"os"
 	"flag"
-	"github.com/feng/future/go-kit/microsvr/app_server/service"
+	"github.com/feng/future/go-kit/microsvr/app-server/service"
 	"net/http"
-	"github.com/feng/future/go-kit/microsvr/app_server/transport"
+	"github.com/feng/future/go-kit/microsvr/app-server/transport"
 	"github.com/go-kit/kit/log"
 )
 

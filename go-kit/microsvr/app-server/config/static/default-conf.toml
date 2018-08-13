@@ -1,3 +1,3 @@
 
-APIAddr = "localhost"
-APIPost = ":7799"
+APIAddr = "39.108.80.66"
+APIPort = ":7799"

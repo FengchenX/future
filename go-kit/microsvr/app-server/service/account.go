@@ -18,7 +18,7 @@ func (AppSvr) GetAccount(userAddr string) (uint32, string, model.UserAccount) {
 	}
 	if err := doPost("/getaccount", req, &resp); err != nil {
 		resp.Msg = err.Error()
-		resp.StatusCode = 10001
+		resp.StatusCode = AccountDoPostErr
 	}
 	return resp.StatusCode, resp.Msg, resp.UserAccount
 }
