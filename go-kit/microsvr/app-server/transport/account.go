@@ -1,10 +1,10 @@
 package transport
 
 import (
-	"github.com/feng/future/go-kit/microsvr/app_server/service"
+	"github.com/feng/future/go-kit/microsvr/app-server/service"
 	"github.com/go-kit/kit/endpoint"
 	"context"
-	"github.com/feng/future/go-kit/microsvr/app_server/model"
+	"github.com/feng/future/go-kit/microsvr/app-server/model"
 	"net/http"
 	"encoding/json"
 )

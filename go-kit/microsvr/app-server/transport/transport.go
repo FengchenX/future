@@ -1,7 +1,7 @@
 package transport
 
 import (
-	"github.com/feng/future/go-kit/microsvr/app_server/service"
+	"github.com/feng/future/go-kit/microsvr/app-server/service"
 	kitlog "github.com/go-kit/kit/log"
 	"net/http"
 	kithttp "github.com/go-kit/kit/transport/http"
