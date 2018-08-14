@@ -6,7 +6,7 @@ import (
 
 
 //GetAccount 获取账号信息
-func (AppSvr) GetAccount(userAddr string) (uint32, string, model.UserAccount) {
+func (AppSvc) GetAccount(userAddr string) (uint32, string, model.UserAccount) {
 	var req struct {
 		UserAddress string
 	}

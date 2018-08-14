@@ -12,12 +12,12 @@ type AppService interface {
 	GetAccount(userAddr string) (uint32, string, model.UserAccount)
 }
 
-//AppSvr app服务实例
-type AppSvr struct{}
+//AppSvc app服务实例
+type AppSvc struct{}
 
 
 //SvrMiddleware is a chainable behavior modifier for appservice
-type SvrMiddleware func(AppService) AppService
+type SvcMiddleware func(AppService) AppService
 
 func doPost(url string, reqobj interface{}, respobj interface{}) error {
 	url = "http://" + config.AppInst().APIAddr + config.AppInst().APIPort + url
