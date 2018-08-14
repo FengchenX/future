@@ -75,6 +75,5 @@ func main() {
 }
 
 func consulCheck(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("**********************")
 	fmt.Fprintln(w, "consulCheck")
 }
