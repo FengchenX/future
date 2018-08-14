@@ -87,7 +87,8 @@ func main() {
 		// leverage the addsvc.Make{Sum,Concat}Endpoint constructors to convert
 		// the complete service to specific endpoint.
 		var (
-			tags        = []string{}
+			//tags        = []string{}
+			tags        = []string{"stringsvc"}
 			passingOnly = true
 			endpoints   = addendpoint.Set{}
 			instancer   = consulsd.NewInstancer(client, logger, "addsvc", tags, passingOnly)
@@ -123,7 +124,8 @@ func main() {
 		// proxying to a remote service.
 
 		var (
-			tags        = []string{}
+			//tags        = []string{}
+			tags        = []string{"stringsvc"}
 			passingOnly = true
 			uppercase   endpoint.Endpoint
 			count       endpoint.Endpoint

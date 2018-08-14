@@ -12,11 +12,13 @@ import (
 	"github.com/go-kit/kit/log"
 	kitprometheus "github.com/go-kit/kit/metrics/prometheus"
 	httptransport "github.com/go-kit/kit/transport/http"
+	"fmt"
 )
 
 func main() {
 	var (
-		listen = flag.String("listen", ":8080", "HTTP listen address")
+		//listen = flag.String("listen", ":8080", "HTTP listen address")
+		listen = flag.String("listen", ":9527", "HTTP listen address")
 		proxy  = flag.String("proxy", "", "Optional comma-separated list of URLs to proxy uppercase requests")
 	)
 	flag.Parse()
@@ -64,7 +66,15 @@ func main() {
 
 	http.Handle("/uppercase", uppercaseHandler)
 	http.Handle("/count", countHandler)
+
+	http.HandleFunc("/check", consulCheck)
+
 	http.Handle("/metrics", promhttp.Handler())
 	logger.Log("msg", "HTTP", "addr", *listen)
 	logger.Log("err", http.ListenAndServe(*listen, nil))
+}
+
+func consulCheck(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("**********************")
+	fmt.Fprintln(w, "consulCheck")
 }
