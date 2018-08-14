@@ -1,6 +1,10 @@
 package main
 
 import (
+	"syscall"
+	"os/signal"
+	"net/url"
+	"strings"
 	"io"
 	"github.com/gorilla/mux"
 	"flag"
@@ -19,6 +23,13 @@ import (
 	"github.com/go-kit/kit/sd"
 	"google.golang.org/grpc"
 	"github.com/go-kit/kit/sd/lb"
+	"net/http"
+	httptransport "github.com/go-kit/kit/transport/http"
+	"bytes"
+	"encoding/json"
+	"io/ioutil"
+	"github.com/feng/future/go-kit/microsvr/app-server/model"
+	"fmt"
 )
 
 func main() {
@@ -76,7 +87,48 @@ func main() {
 			retry := lb.Retry(*retryMax, *retryTimeout, balancer)
 			endpoints.SumEndpoint = retry
 		}
+		{
+			factory := addsvcFactory(addendpoint.MakeConcatEndpoint, tracer, zipkinTracer, logger)
+			endpointer := sd.NewEndpointer(instancer, factory, logger)
+			balancer := lb.NewRoundRobin(endpointer)
+			retry := lb.Retry(*retryMax, *retryTimeout, balancer)
+			endpoints.ConcatEndpoint = retry
+		}
+		r.PathPrefix("/addsvc").Handler(http.StripPrefix("/addsvc", addtransport.NewHTTPHandler(endpoints, tracer, zipkinTracer, logger)))
 	}
+
+	{
+		var (
+			tags = []string{"appsvc"}
+			passingOnly = true
+			getAccount endpoint.Endpoint
+
+			instancer = consulsd.NewInstancer(client, logger, "appsvc", tags, passingOnly)
+		)
+		{
+			factory := appsvcFactory(ctx, "GET", "/getaccount") 
+			endpointer := sd.NewEndpointer(instancer, factory, logger)
+			balancer := lb.NewRoundRobin(endpointer)
+			retry := lb.Retry(*retryMax, *retryTimeout, balancer)
+			getAccount = retry
+		}
+
+		r.Handle("/appsvc/getaccount", httptransport.NewServer(getAccount, decodeGetAccountRequest, encodeJSONResponse))
+	}
+
+	errc := make(chan error)
+	go func() {
+		c := make(chan os.Signal)
+		signal.Notify(c, syscall.SIGINT, syscall.SIGTERM)
+		errc <- fmt.Errorf("%s", <-c) 
+	}()
+
+	go func() {
+		logger.Log("transport", "HTTP", "addr", *httpAddr)
+		errc <- http.ListenAndServe(*httpAddr, r)
+	}()
+
+	logger.Log("exit", <-errc)
 }
 
 func addsvcFactory(makeEndpoint func(addservice.Service) endpoint.Endpoint, tracer stdopentracing.Tracer, zipkinTracer *stdzipkin.Tracer, logger log.Logger) sd.Factory {
@@ -91,3 +143,66 @@ func addsvcFactory(makeEndpoint func(addservice.Service) endpoint.Endpoint, trac
 	}
 }
 
+func appsvcFactory(ctx context.Context, method, path string) sd.Factory {
+	return func(instance string) (endpoint.Endpoint, io.Closer, error) {
+		if !strings.HasPrefix(instance, "http") {
+			instance = "http://" + instance
+		}
+		tgt, err := url.Parse(instance)
+		if err != nil {
+			return nil, nil, err
+		}
+		tgt.Path = path
+
+		var (
+			enc httptransport.EncodeRequestFunc
+			dec httptransport.DecodeResponseFunc
+		)
+		switch path {
+		case "/":
+			enc, dec = encodeJSONRequest, decodeGetAccountResponse
+		default:
+			return nil, nil, fmt.Errorf("unknown stringsvc path %q", path)
+		}
+		return httptransport.NewClient(method, tgt, enc, dec).Endpoint(), nil, nil
+	}
+}
+
+
+func encodeJSONRequest(_ context.Context, req *http.Request, request interface{}) error {
+	// Both uppercase and count requests are encoded in the same way:
+	// simple JSON serialization to the request body.
+	var buf bytes.Buffer
+	if err := json.NewEncoder(&buf).Encode(request); err != nil {
+		return err
+	}
+	req.Body = ioutil.NopCloser(&buf)
+	return nil
+}
+
+func encodeJSONResponse(_ context.Context, w http.ResponseWriter, response interface{}) error {
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	return json.NewEncoder(w).Encode(response)
+}
+
+func decodeGetAccountResponse(ctx context.Context, resp *http.Response) (interface{}, error) {
+	var response struct {
+		StatusCode  uint32
+		UserAccount model.UserAccount
+		Msg         string
+	}
+	if err := json.NewDecoder(resp.Body).Decode(&response); err != nil {
+		return nil, err
+	}
+	return response, nil
+}
+
+func decodeGetAccountRequest(ctx context.Context, req *http.Request) (interface{}, error) {
+	var request struct {
+		UserAddress string
+	}
+	if err := json.NewDecoder(req.Body).Decode(&request); err != nil {
+		return nil, err
+	}
+	return request, nil
+}
