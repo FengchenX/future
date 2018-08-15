@@ -37,11 +37,13 @@ func MakeHandler(svc service.AppService, logger kitlog.Logger) http.Handler {
 // encode errors from business-logic
 func encodeError(_ context.Context, err error, w http.ResponseWriter) {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
-	switch err {
-		//todo
-	default:
-		w.WriteHeader(http.StatusInternalServerError)
-	}
+	// switch err {
+	// 	//todo
+	// default:
+	// 	w.WriteHeader(http.StatusInternalServerError)
+	// }
+
+	w.WriteHeader(http.StatusInternalServerError)
 	json.NewEncoder(w).Encode(map[string]interface{}{
 		"error": err.Error(),
 	})

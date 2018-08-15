@@ -26,7 +26,7 @@ func makeHandler(svc GatewayService, logger kitlog.Logger) http.Handler {
 	)
 	r := mux.NewRouter()
 
-	r.Handle("gateway/v1/getaccount", getAccountHandler).Methods("POST")
+	r.Handle("/gateway/v1/getaccount", getAccountHandler).Methods("POST")
 
 	return r
 } 
@@ -34,11 +34,14 @@ func makeHandler(svc GatewayService, logger kitlog.Logger) http.Handler {
 // encode errors from business-logic
 func encodeError(_ context.Context, err error, w http.ResponseWriter) {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
-	switch err {
-		//todo
-	default:
-		w.WriteHeader(http.StatusInternalServerError)
-	}
+	// switch err {
+	// 	//todo
+	// default:
+	// 	w.WriteHeader(http.StatusInternalServerError)
+	// }
+	
+	w.WriteHeader(http.StatusInternalServerError)
+
 	json.NewEncoder(w).Encode(map[string]interface{}{
 		"error": err.Error(),
 	})
