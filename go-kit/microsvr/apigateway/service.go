@@ -1,6 +1,10 @@
 package apigateway
 
 import (
+	"fmt"
+	"net/url"
+	"strings"
+	"io"
 	"github.com/go-kit/kit/endpoint"
 	consulsd "github.com/go-kit/kit/sd/consul"
 	"flag"
@@ -12,6 +16,10 @@ import (
 	stdzipkin "github.com/openzipkin/zipkin-go"
 	"context"
 	"os"
+	"github.com/go-kit/kit/sd"
+	httptransport "github.com/go-kit/kit/transport/http"
+	
+	"github.com/go-kit/kit/sd/lb"
 )
 var (
 	// httpAddr     = flag.String("http.addr", ":8000", "Address for HTTP (JSON) server")
@@ -68,6 +76,35 @@ func (GatewaySvc) GetAccount() endpoint.Endpoint {
 		instancer = consulsd.NewInstancer(client, logger, "appsvc", tags, passingOnly)
 	)
 	{
-		
+		factory := appsvcFactory(ctx, "GET", "/getaccount")
+		endpointer := sd.NewEndpointer(instancer, factory, logger)
+		balancer := lb.NewRoundRobin(endpointer)
+		retry := lb.Retry(*retryMax, *retryTimeout, balancer)
+		getAccount = retry
+	}
+	return getAccount
+}
+
+func appsvcFactory(ctx context.Context, method, path string) sd.Factory {
+	return func(instance string) (endpoint.Endpoint, io.Closer, error) {
+		if !strings.HasPrefix(instance, "http") {
+			instance = "http://" + instance
+		}
+		tgt, err := url.Parse(instance)
+		if err != nil {
+			return nil, nil, err
+		}
+		tgt.Path = path
+		var (
+			enc httptransport.EncodeRequestFunc
+			dec httptransport.DecodeResponseFunc
+		)
+		switch path {
+		case "/getaccount":
+			enc, dec = encodeJSONRequest, decodeGetAccountResponse
+		default:
+			return nil, nil, fmt.Errorf("unknown appsvc path %q", path)
+		}
+		return httptransport.NewClient(method, tgt, enc, dec).Endpoint(), nil, nil
 	}
 }

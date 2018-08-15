@@ -11,6 +11,7 @@ import (
 	"encoding/json"
 	"bytes"
 	"io/ioutil"
+	"github.com/feng/future/go-kit/microsvr/app-server/endpoint"
 )
 
 //MakeHandler 创建handler
@@ -20,7 +21,7 @@ func MakeHandler(svc service.AppService, logger kitlog.Logger) http.Handler {
 		kithttp.ServerErrorEncoder(encodeError),
 	}
 	getAccountHandler := kithttp.NewServer(
-		makeGetAccountEndpoint(svc),
+		endpoint.MakeGetAccountEndpoint(svc),
 		decodeGetAccountRequest,
 		encodeResponse,
 		opts...,
