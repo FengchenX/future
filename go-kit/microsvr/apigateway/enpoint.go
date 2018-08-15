@@ -1,4 +1,4 @@
-package apigateway
+package main
 
 import (
 	"github.com/go-kit/kit/endpoint"

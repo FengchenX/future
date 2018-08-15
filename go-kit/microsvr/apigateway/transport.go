@@ -1,4 +1,4 @@
-package apigateway
+package main
 
 import (
 	"github.com/gorilla/mux"
@@ -12,8 +12,8 @@ import (
 	"github.com/feng/future/go-kit/microsvr/app-server/model"
 )
 
-//MakeHandler 创建handler
-func MakeHandler(svc GatewayService, logger kitlog.Logger) http.Handler {
+//makeHandler 创建handler
+func makeHandler(svc GatewayService, logger kitlog.Logger) http.Handler {
 	opts := []kithttp.ServerOption{
 		kithttp.ServerErrorLogger(logger),
 		kithttp.ServerErrorEncoder(encodeError),

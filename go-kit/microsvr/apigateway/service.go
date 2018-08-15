@@ -1,4 +1,4 @@
-package apigateway
+package main
 
 import (
 	"fmt"
@@ -24,7 +24,6 @@ import (
 var (
 	// httpAddr     = flag.String("http.addr", ":8000", "Address for HTTP (JSON) server")
 	// consulAddr   = flag.String("consul.addr", "", "Consul agent address")
-	httpAddr     = flag.String("httpaddr", ":8000", "Address for HTTP (JSON) server")
 	consulAddr   = flag.String("consuladdr", "", "Consul agent address")
 	retryMax     = flag.Int("retry.max", 3, "per-request retries to different instances")
 	//retryTimeout = flag.Duration("retry.timeout", 500*time.Millisecond, "per-request timeout, including retries")
