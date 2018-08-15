@@ -69,13 +69,13 @@ type SvcMiddleware func(GatewayService) GatewayService
 
 func (GatewaySvc) GetAccount() endpoint.Endpoint {
 	var (
-		tags = []string{"appsvc"}
+		tags = []string{"appserver"}
 		passingOnly = true
 		getAccount endpoint.Endpoint
-		instancer = consulsd.NewInstancer(client, logger, "appsvc", tags, passingOnly)
+		instancer = consulsd.NewInstancer(client, logger, "appserver", tags, passingOnly)
 	)
 	{
-		factory := appsvcFactory(ctx, "GET", "/getaccount")
+		factory := appsvcFactory(ctx, "GET", "/appserver/getaccount")
 		endpointer := sd.NewEndpointer(instancer, factory, logger)
 		balancer := lb.NewRoundRobin(endpointer)
 		retry := lb.Retry(*retryMax, *retryTimeout, balancer)
@@ -99,7 +99,7 @@ func appsvcFactory(ctx context.Context, method, path string) sd.Factory {
 			dec httptransport.DecodeResponseFunc
 		)
 		switch path {
-		case "/getaccount":
+		case "/appserver/getaccount":
 			enc, dec = encodeJSONRequest, decodeGetAccountResponse
 		default:
 			return nil, nil, fmt.Errorf("unknown appsvc path %q", path)
