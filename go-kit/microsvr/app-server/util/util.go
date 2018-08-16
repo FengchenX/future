@@ -13,6 +13,7 @@ import (
 	"time"
 
 	"github.com/sirupsen/logrus"
+	"math"
 )
 
 
@@ -129,4 +130,11 @@ func MoneyP(in float64) float64 {
 	fmt.Println(float64(num) / 100)
 
 	return float64(num) / 100
+}
+
+//MIN 自定义比较精度
+const MIN = 0.0001
+//IsEqual 两个浮点型是否相等
+func IsEqual(f1, f2 float64) bool {
+	return math.Dim(f1, f2) < MIN
 }

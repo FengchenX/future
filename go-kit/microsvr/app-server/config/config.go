@@ -13,6 +13,7 @@ func init() {
 type AppConf struct {
 	APIAddr string
 	APIPort string
+	MysqlAddr string
 }
 
 var std *AppConf

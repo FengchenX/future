@@ -12,6 +12,14 @@ type AppService interface {
 	GetAccount(userAddr string) (uint32, string, model.UserAccount)
 	SetAccount(userKeyStore, userParse, keyString string, userAccount model.UserAccount) (uint32, string)
 	GetEthBalance(userAddr string) (uint32, string, string)
+	SetSchedule(userAddress, 
+		userKeyStore, 
+		userParse, 
+		keyString, 
+		scheduleName string, 
+		Rss []model.Rs, 
+		message string) (uint32, string, string, string)
+	
 }
 
 //AppSvc app服务实例
