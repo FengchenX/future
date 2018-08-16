@@ -28,3 +28,16 @@ func (mw logmw) GetAccount(userAddr string) (status uint32, msg string, userAcco
 	status, msg, userAccount = mw.AppService.GetAccount(userAddr)
 	return
 }
+
+func (mw logmw) SetAccount(userKeyStore, userParse, keyString string, userAccount model.UserAccount) (status uint32, msg string) {
+	defer func(begin time.Time) {
+		logrus.Infoln(
+			"method", "SetAccount",
+			"input", userKeyStore, userParse, keyString,
+			"output", status, msg,
+			"took", time.Since(begin),
+		)
+	}(time.Now())
+	status, msg = mw.AppService.SetAccount(userKeyStore, userParse, keyString, userAccount)
+	return
+}
