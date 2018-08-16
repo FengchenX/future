@@ -2,7 +2,7 @@ package service
 
 import (
 	"github.com/feng/future/go-kit/microsvr/app-server/model"
-
+	"github.com/sirupsen/logrus"
 )
 
 
@@ -25,14 +25,16 @@ func (AppSvc) GetAccount(userAddr string) (uint32, string, model.UserAccount) {
 }
 
 //SetAccount 设置账户
-// func SetAccount(userKeyStore, userParse, keyString string, userAccount model.UserAccount) (uint32, string) {
-// 	var req struct {
-// 		UserKeyStore string
-// 		UserParse string
-// 		KeyString string
-// 		UserAccount model.UserAccount
-// 	}
-	
+func SetAccount(userKeyStore, userParse, keyString string, userAccount model.UserAccount) (uint32, string) {
+	var req struct {
+		UserKeyStore string
+		UserParse string
+		KeyString string
+		UserAccount model.UserAccount
+	}
+	if keyString == "" {
+		keyString = 
+	}	
 
-// }
+}
 

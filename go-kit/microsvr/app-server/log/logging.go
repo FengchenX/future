@@ -19,7 +19,7 @@ type logmw struct {
 func (mw logmw) GetAccount(userAddr string) (status uint32, msg string, userAccount model.UserAccount) {
 	defer func(begin time.Time) {
 		logrus.Infoln(
-			"method", "getaccount",
+			"method", "GetAccount",
 			"input", userAddr,
 			"output", status, msg, userAccount,
 			"took", time.Since(begin),
