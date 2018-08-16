@@ -51,37 +51,101 @@ func (AppSvc) SetSchedule(userAddress,
 			sn = respNewSchedule.ScheduleName
 		}
 
-		sum := float64(0)
-		allByCount := true
+		if status, msg := checkRss(Rss); status != 0 {
+			return status, msg, "", ""
+		}
+
+		var newJobs []string
 		for _, rs := range Rss {
-			if rs.SubWay == 0 {
-				sum += rs.Radios
-				allByCount = false
+			newJobs = append(newJobs, rs.Job)
+		}
+
+		clearSubPaiBan(scheduleName, newJobs)
+
+	}
+
+func checkRss(Rss []model.Rs) (uint32, string) {
+	sum := float64(0)
+	allByCount := true
+	for _, rs := range Rss {
+		if rs.SubWay == 0 {
+			sum += rs.Radios
+			allByCount = false
+		}
+	}
+	if !util.IsEqual(sum, 100) {
+		logrus.Errorln("SetSchedule************* sum is not 100, sum:", sum)
+		return 10001, "比例之和要等于100"
+	}
+
+	if allByCount {
+		logrus.Errorln("SetSchedule***********cannot all are quota, Rss: ", Rss)
+		return 10001, "不可以全部是定额"
+	}
+	if len(Rss) == 0 {
+		logrus.Errorln("SetSchedule***************no set job, rss: ", Rss)
+		return 10001, "没有设置工作"
+	}
+
+	for i := 0; i < len(Rss); i++ {
+		for j := i + 1; j < len(Rss); j++ {
+			if Rss[i].Job == Rss[j].Job {
+				return 10001, "不能设置两个相同名字的工作"
 			}
 		}
-		if !util.IsEqual(sum, 100) {
-			logrus.Errorln("SetSchedule************* sum is not 100, sum:", sum)
-			return 10001, "比例之和要等于100", "", ""
-		}
+	}
+	return 0, ""
+}
 
-		if allByCount {
-			logrus.Errorln("SetSchedule***********cannot all are quota, Rss: ", Rss)
-			return 10001, "不可以全部是定额", "", ""
-		}
-		if len(Rss) == 0 {
-			logrus.Errorln("SetSchedule***************no set job, rss: ", Rss)
-			return 10001, "没有设置工作", "", ""
-		}
-
-		for i := 0; i < len(Rss); i++ {
-			for j := i + 1; j < len(Rss); j++ {
-				if Rss[i].Job == Rss[j].Job {
-					return 10001, "不能设置两个相同名字的工作", "", ""
+//清除减少的排班
+func clearSubPaiBan(subCode string, newJobs []string) {
+	var oldJobs []string
+	if subCode == "" {
+		return
+	}
+	var scheID uint
+	var rss []model.Rs
+	var sqlstr string
+	var params []interface{}
+	sqlstr += "sub_code = ?"
+	params = append(params, subCode)
+	rss = dao.GetRss(sqlstr, params...)
+	if len(rss) == 0 {
+		return
+	}
+	scheID = rss[0].ScheID
+	for _, rs := range rss {
+		oldJobs = append(oldJobs, rs.Job)
+	}
+	var needDeletes []string
+	if len(newJobs) < len(oldJobs) {
+		for _, old := range oldJobs {
+			had := false
+			for _, newjob := range newJobs {
+				if newjob == old {
+					had = true
+					continue
 				}
 			}
+			if !had {
+				needDeletes = append(needDeletes, old)
+			}
 		}
-
-		
 	}
+
+	var paiBans []model.PaiBan
+	var sqlPaiBan string
+	var paramsPaiBan []interface{}
+	sqlPaiBan += "sche_id = ?"
+	paramsPaiBan = append(paramsPaiBan, scheID)
+	paiBans = dao.GetPaiBans(sqlPaiBan, paramsPaiBan...)
+	for _, paiBan := range paiBans {
+		for _, job := range needDeletes {
+			if job == paiBan.JobName {
+				dao.DelOne(&paiBan)
+			}
+		}
+	}
+}
 
 	
