@@ -7,6 +7,7 @@ import (
 	"github.com/feng/future/go-kit/microsvr/app-server/model"
 )
 
+//LoggingMiddleware 日志中间件
 func LoggingMiddleware() service.SvcMiddleware {
 	return func(next service.AppService) service.AppService {
 		return logmw{next}
