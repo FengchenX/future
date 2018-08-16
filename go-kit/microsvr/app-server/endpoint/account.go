@@ -1,7 +1,6 @@
 package endpoint
 
 import (
-	"fmt"
 	"github.com/feng/future/go-kit/microsvr/app-server/service"
 	"github.com/go-kit/kit/endpoint"
 	"github.com/feng/future/go-kit/microsvr/app-server/model"
@@ -11,7 +10,6 @@ import (
 
 func MakeGetAccountEndpoint(svc service.AppService) endpoint.Endpoint {
 	return func(ctx context.Context, request interface{}) (interface{}, error) {
-		fmt.Println("11111111111111111111111")
 		req := request.(ReqGetAccount)
 		statusCode, msg, userAccount := svc.GetAccount(req.UserAddress)
 		return RespGetAccount{

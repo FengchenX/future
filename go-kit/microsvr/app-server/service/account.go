@@ -1,14 +1,12 @@
 package service
 
 import (
-	"fmt"
 	"github.com/feng/future/go-kit/microsvr/app-server/model"
 )
 
 
 //GetAccount 获取账号信息
 func (AppSvc) GetAccount(userAddr string) (uint32, string, model.UserAccount) {
-	fmt.Println("111111111111111111111111111111111")
 	var req struct {
 		UserAddress string
 	}
