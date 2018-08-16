@@ -2,7 +2,6 @@ package transport
 
 import (
 	"github.com/feng/future/go-kit/microsvr/app-server/service"
-	kitlog "github.com/go-kit/kit/log"
 	"net/http"
 	kithttp "github.com/go-kit/kit/transport/http"
 
@@ -15,9 +14,8 @@ import (
 )
 
 //MakeHandler 创建handler
-func MakeHandler(svc service.AppService, logger kitlog.Logger) http.Handler {
+func MakeHandler(svc service.AppService) http.Handler {
 	opts := []kithttp.ServerOption{
-		kithttp.ServerErrorLogger(logger),
 		kithttp.ServerErrorEncoder(encodeError),
 	}
 	getAccountHandler := kithttp.NewServer(

@@ -7,10 +7,24 @@ import (
 	"github.com/feng/future/go-kit/microsvr/app-server/service"
 	"net/http"
 	"github.com/feng/future/go-kit/microsvr/app-server/transport"
-	"github.com/go-kit/kit/log"
-
+	kitlogmw "github.com/feng/future/go-kit/microsvr/app-server/log"
+	"github.com/sirupsen/logrus"
 	"fmt"
 )
+
+func init() {
+	// Log as JSON instead of the default ASCII formatter.
+	logrus.SetFormatter(&logrus.JSONFormatter{})
+  
+	// Output to stdout instead of the default stderr
+	// Can be any io.Writer, see below for File example
+	logrus.SetOutput(os.Stdout)
+	//go log.RenameLogFile()
+  
+	// Only log the warning severity or above.
+	//logrus.SetLevel(logrus.WarnLevel)
+	logrus.SetLevel(logrus.InfoLevel)
+}
 
 func main() {
 	var (
@@ -19,16 +33,14 @@ func main() {
 	)
 	flag.Parse()
 
-	var logger log.Logger
-	logger = log.NewLogfmtLogger(os.Stderr)
-	logger = log.With(logger, "listen", *listen, "caller", log.DefaultCaller)
-
 	var svc service.AppService
 	svc = service.AppSvc{}
+	svc = kitlogmw.LoggingMiddleware()(svc)
+
 
 	mux := http.NewServeMux()
 
-	mux.Handle("/appserver/", transport.MakeHandler(svc, logger))
+	mux.Handle("/appserver/", transport.MakeHandler(svc))
 
 	http.HandleFunc("/check", consulCheck)
 
@@ -37,10 +49,10 @@ func main() {
 
 	errs := make(chan error, 1)
 	go func() {
-		logger.Log("transport", "http", "address", *listen, "msg", "listening")
+		logrus.Infoln("transport", "http", "address", *listen, "msg", "listening")
 		errs <- http.ListenAndServe(*listen, nil)
 	}()
-	logger.Log("terminated", <- errs)
+	logrus.Infoln("terminated", <- errs)
 }
 
 func accessControl(h http.Handler) http.Handler {
