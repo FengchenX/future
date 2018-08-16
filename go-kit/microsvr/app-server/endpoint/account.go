@@ -8,6 +8,7 @@ import (
 )
 
 
+//MakeGetAccountEndpoint 生成getAccount断点
 func MakeGetAccountEndpoint(svc service.AppService) endpoint.Endpoint {
 	return func(ctx context.Context, request interface{}) (interface{}, error) {
 		req := request.(ReqGetAccount)
@@ -32,6 +33,7 @@ type RespGetAccount struct {
 	Msg         string
 }
 
+//MakeSetAccountEndpoint 生成setAccount端点
 func MakeSetAccountEndpoint(svc service.AppService) endpoint.Endpoint {
 	return func(ctx context.Context, request interface{}) (interface{}, error) {
 		req := request.(ReqSetAccount)

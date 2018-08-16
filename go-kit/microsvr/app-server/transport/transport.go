@@ -30,11 +30,18 @@ func MakeHandler(svc service.AppService) http.Handler {
 		encodeResponse,
 		opts...,
 	)
+	getEthBalanceHandler := kithttp.NewServer(
+		endpoint.MakeGetEthBalanceEndpoint(svc),
+		decodeGetEthBalanceRequest,
+		encodeResponse,
+		opts...,
+	)
 
 	r := mux.NewRouter()
 
 	r.Handle("/appserver/getaccount", getAccountHandler).Methods("POST")
 	r.Handle("/appserver/setaccount", setAccountHandler).Methods("POST")
+	r.Handle("/appserver/getethbalance", getEthBalanceHandler).Methods("POST")
 
 	return r
 }

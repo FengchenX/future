@@ -11,6 +11,7 @@ import (
 type AppService interface {
 	GetAccount(userAddr string) (uint32, string, model.UserAccount)
 	SetAccount(userKeyStore, userParse, keyString string, userAccount model.UserAccount) (uint32, string)
+	GetEthBalance(userAddr string) (uint32, string, string)
 }
 
 //AppSvc app服务实例
