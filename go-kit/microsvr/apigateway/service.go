@@ -46,8 +46,6 @@ func init() {
 		logger = kitlog.With(logger, "ts", kitlog.DefaultTimestampUTC)
 		logger = kitlog.With(logger, "caller", kitlog.DefaultCaller)
 	}
-
-	
 }
 
 var logger kitlog.Logger
@@ -75,7 +73,7 @@ func (GatewaySvc) GetAccount() endpoint.Endpoint {
 		instancer = consulsd.NewInstancer(client, logger, "appserver", tags, passingOnly)
 	)
 	{
-		factory := appsvcFactory(ctx, "GET", "/appserver/getaccount")
+		factory := appsvcFactory(ctx, "POST", "/appserver/getaccount")
 		endpointer := sd.NewEndpointer(instancer, factory, logger)
 		balancer := lb.NewRoundRobin(endpointer)
 		retry := lb.Retry(*retryMax, *retryTimeout, balancer)
@@ -86,6 +84,7 @@ func (GatewaySvc) GetAccount() endpoint.Endpoint {
 
 func appsvcFactory(ctx context.Context, method, path string) sd.Factory {
 	return func(instance string) (endpoint.Endpoint, io.Closer, error) {
+		fmt.Println("11111111111111", instance, path)
 		if !strings.HasPrefix(instance, "http") {
 			instance = "http://" + instance
 		}
@@ -100,7 +99,8 @@ func appsvcFactory(ctx context.Context, method, path string) sd.Factory {
 		)
 		switch path {
 		case "/appserver/getaccount":
-			enc, dec = encodeJSONRequest, decodeGetAccountResponse
+			//enc, dec = encodeJSONRequest, decodeGetAccountResponse
+			enc, dec = httptransport.EncodeJSONRequest, decodeGetAccountResponse
 		default:
 			return nil, nil, fmt.Errorf("unknown appsvc path %q", path)
 		}
