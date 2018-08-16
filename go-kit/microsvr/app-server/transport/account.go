@@ -14,3 +14,11 @@ func decodeGetAccountRequest(_ context.Context, r *http.Request) (interface{}, e
 	}
 	return request, nil
 }
+
+func decodeSetAccountRequest(_ context.Context, r *http.Request) (interface{}, error) {
+	var request endpoint.ReqGetAccount
+	if err := json.NewDecoder(r.Body).Decode(&request); err != nil {
+		return nil, err
+	}
+	return request, nil
+}

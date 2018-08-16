@@ -24,10 +24,17 @@ func MakeHandler(svc service.AppService) http.Handler {
 		encodeResponse,
 		opts...,
 	)
+	setAccountHandler := kithttp.NewServer(
+		endpoint.MakeSetAccountEndpoint(svc),
+		decodeSetAccountRequest,
+		encodeResponse,
+		opts...,
+	)
 
 	r := mux.NewRouter()
 
 	r.Handle("/appserver/getaccount", getAccountHandler).Methods("POST")
+	r.Handle("/appserver/setaccount", setAccountHandler).Methods("POST")
 
 	return r
 }
