@@ -13,26 +13,24 @@ func (AppSvc) SetSchedule(userAddress,
 	userKeyStore, 
 	userParse, 
 	keyString, 
-	scheduleName string, 
+	subCode string, 
 	Rss []model.Rs, 
 	message string) (uint32, string, string, string) {
 		if keyString == "" {
 			keyString = util.KeyMap.Calc(userKeyStore, userParse)
 		}
-		scheduleName = strings.Trim(scheduleName, " ")
+		subCode = strings.Trim(subCode, " ")
 
 		var sqlstr string
 		var params []interface{}
 		sqlstr += "sub_code = ?"
-		params = append(params, scheduleName)
-		sn := ""
-		if scheduleName != "" {
+		params = append(params, subCode)
+		if subCode != "" {
 			schedules := dao.GetSchedules(sqlstr, params...)
 			if len(schedules) == 0 {
-				logrus.Errorln("SetSchedule****************ScheduleName:", scheduleName)	
+				logrus.Errorln("SetSchedule****************subCode:", subCode)	
 				return 10001, "not find schedule name", "", ""
 			}
-			sn = scheduleName
 		} else {
 			var reqNewSchedule struct {
 				Index string
@@ -48,11 +46,44 @@ func (AppSvc) SetSchedule(userAddress,
 				logrus.Errorln("SetSchedlule***************doPost", err)
 				return 10001, "doPost err", "", ""
 			}
-			sn = respNewSchedule.ScheduleName
+			//注意这是思昊留下的坑名字取错了，改名字会影响线上环境
+			subCode = respNewSchedule.ScheduleName
 		}
 
 		if status, msg := checkRss(Rss); status != 0 {
 			return status, msg, "", ""
+		}
+
+		var reqSchedule struct {
+			UserAddress  string
+			UserKeyStore string
+			UserParse    string
+			KeyString    string
+			ScheduleName string
+			Rss          []model.Rs
+			Message      string
+		} 
+		reqSchedule.KeyString = keyString
+		reqSchedule.Message = message
+		reqSchedule.Rss = Rss
+		reqSchedule.ScheduleName = subCode
+		reqSchedule.UserAddress = userAddress
+		reqSchedule.UserKeyStore = userKeyStore
+		reqSchedule.UserParse = userParse
+		var respSchedule struct {
+			StatusCode   uint32
+			Hash         string
+			ScheduleName string
+			Msg          string
+		}
+		logrus.Infoln("SetSchedule*****************req:", reqSchedule)
+		if err := doPost("/setschedule", reqSchedule, &respSchedule); err != nil {
+			logrus.Errorln("SetSchedule****************doPost", err)
+			return 10001, "do post err", "", ""
+		}
+		logrus.Infoln("SetSchedule****************doPost", respSchedule)
+		if respSchedule.StatusCode != 0 {
+			return respSchedule.StatusCode, respSchedule.Msg, respSchedule.Hash, respSchedule.ScheduleName
 		}
 
 		var newJobs []string
@@ -60,7 +91,28 @@ func (AppSvc) SetSchedule(userAddress,
 			newJobs = append(newJobs, rs.Job)
 		}
 
-		clearSubPaiBan(scheduleName, newJobs)
+		clearSubPaiBan(subCode, newJobs)
+		clearRs(subCode)
+
+		sqlstr = ""
+		params = params[:0]
+		sqlstr += "sub_code = ?"
+		params = append(params, subCode)
+		schedules := dao.GetSchedules(sqlstr, params...)
+		if len(schedules) > 0 {
+			//do update
+			for _, sche := range schedules {
+				temp := model.Schedule {
+					SubCode: subCode,
+					Publisher: userAddress,
+					Hash: respSchedule.Hash,
+					Menthon: message,
+				}
+				
+			}
+		}
+
+		
 
 	}
 
@@ -109,7 +161,7 @@ func clearSubPaiBan(subCode string, newJobs []string) {
 	var params []interface{}
 	sqlstr += "sub_code = ?"
 	params = append(params, subCode)
-	rss = dao.GetRss(sqlstr, params...)
+	rss = dao.GetRssConnSchedule(sqlstr, params...)
 	if len(rss) == 0 {
 		return
 	}
@@ -146,6 +198,21 @@ func clearSubPaiBan(subCode string, newJobs []string) {
 			}
 		}
 	}
+}
+
+func clearRs(subCode string) {
+	if subCode == "" {
+		return
+	}
+	var rss []model.Rs	
+	var sqlstr string
+	var params []interface{}
+	sqlstr += "sub_code = ?"
+	params = append(params, subCode)
+	rss = dao.GetRssConnSchedule(sqlstr, params...)
+	for _, rs := range rss {
+		dao.DelOne(&rs)
+	}	
 }
 
 	
