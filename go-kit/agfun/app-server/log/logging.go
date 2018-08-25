@@ -43,15 +43,3 @@ func (mw logmw) SetAccount(userKeyStore, userParse, keyString string, userAccoun
 	return
 }
 
-func (mw logmw) GetEthBalance(userAddr string) (status uint32, msg string, balance string) {
-	defer func(begin time.Time) {
-		logrus.Infoln(
-			"method", "GetEthBalance",
-			"input", userAddr,
-			"output", status, msg, balance,
-			"took", time.Since(begin),
-		)
-	}(time.Now())
-	status, msg, balance = mw.AppService.GetEthBalance(userAddr)
-	return
-}
