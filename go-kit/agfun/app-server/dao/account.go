@@ -13,3 +13,14 @@ func CreateAccount(account *model.UserAccount) error {
 	}
 	return nil
 }
+
+const accountSQL = "account = ?"
+//Account 获取账户
+func Account(account string) (model.UserAccount, error) {
+	var myAccount model.UserAccount
+	if mydb := DBInst().Where(accountSQL, account).First(&myAccount); mydb.Error != nil {
+		logrus.Errorln("Account ", mydb.Error)
+		return myAccount, mydb.Error
+	}
+	return myAccount, nil
+}

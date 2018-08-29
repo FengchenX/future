@@ -25,7 +25,18 @@ func (app *AppSvc)CreateAccount(account, password string) (int, string) {
 	return code, msg
 }
 func (app *AppSvc)Account(account string) (int, string, model.UserAccount) {
-	return 0, "", model.UserAccount{}
+	logrus.Info("***************", account)
+	var code int
+	var msg string
+	var userAccount model.UserAccount
+	if userAccount, err := dao.Account(account); err != nil {
+		code = 11100
+		msg = err.Error()
+		return code, msg, userAccount
+	}
+	code = 11100
+	msg = "success"
+	return code, msg, userAccount
 }
 func (app *AppSvc)UpdateAccount(account string, userAccount model.UserAccount) (int, string) {
 	return 0, ""

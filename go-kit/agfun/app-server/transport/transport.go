@@ -32,7 +32,7 @@ func MakeHandler(svc service.AppService) http.Handler {
 	)
 	r := mux.NewRouter()
 
-	r.Handle("/appserver/getaccount", getAccountHandler).Methods("POST")
+	r.Handle("/appserver/getaccount", getAccountHandler).Methods("GET")
 	r.Handle("/appserver/setaccount", setAccountHandler).Methods("POST")
 
 	return r

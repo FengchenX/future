@@ -23,20 +23,21 @@ var DB *gorm.DB
 func DBInst() *gorm.DB {
 	if DB == nil {
 		logrus.Infoln("starting db", config.AppInst().MysqlAddr)
-		DB, err := gorm.Open("mysql", config.AppInst().MysqlAddr)
+		temp, err := gorm.Open("mysql", config.AppInst().MysqlAddr)
 		if err != nil {
 			logrus.Errorln("db initing fail******", err)
 			return nil
 		}
-		err = DB.DB().Ping()
+		err = temp.DB().Ping()
 		if err != nil {
 			logrus.Errorln("db initing fail******", err)
 			return nil
 		}
 		logrus.Infoln("InitDB**************connect db success!")
-		DB.DB().SetMaxIdleConns(10)
-		DB.DB().SetMaxOpenConns(100)
-		DB.LogMode(false)
+		temp.DB().SetMaxIdleConns(10)
+		temp.DB().SetMaxOpenConns(100)
+		temp.LogMode(false)
+		DB = temp
 	}
 	return DB
 }

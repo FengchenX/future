@@ -1,17 +1,23 @@
 package transport
 
 import (
+	"fmt"
 	"context"
 	"net/http"
 	"encoding/json"
 	"github.com/feng/future/go-kit/agfun/app-server/protocol/api"
+	"github.com/gorilla/mux"
 )
 
 func decodeAccountRequest(_ context.Context, r *http.Request) (interface{}, error) {
 	var request api.AccountReq
-	if err := json.NewDecoder(r.Body).Decode(&request); err != nil {
-		return nil, err
-	}
+	// if err := json.NewDecoder(r.Body).Decode(&request); err != nil {
+	// 	return nil, err
+	// }
+	vars :=  mux.Vars(r)
+	fmt.Println("decodeAccountRequest", vars)
+
+	request.Account = vars["Account"]
 	return request, nil
 }
 

@@ -7,7 +7,7 @@ import (
 	"github.com/feng/future/go-kit/agfun/app-server/service"
 	"net/http"
 	"github.com/feng/future/go-kit/agfun/app-server/transport"
-	kitlogmw "github.com/feng/future/go-kit/agfun/app-server/log"
+	//kitlogmw "github.com/feng/future/go-kit/agfun/app-server/log"
 	"github.com/sirupsen/logrus"
 	"fmt"
 )
@@ -34,8 +34,8 @@ func main() {
 	flag.Parse()
 
 	var svc service.AppService
-	svc = service.AppSvc{}
-	svc = kitlogmw.LoggingMiddleware()(svc)
+	svc = &service.AppSvc{}
+	//svc = kitlogmw.LoggingMiddleware()(svc)
 
 
 	mux := http.NewServeMux()
