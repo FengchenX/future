@@ -11,8 +11,6 @@ func init() {
 
 //AppConf 默认配置文件
 type AppConf struct {
-	APIAddr string
-	APIPort string
 	MysqlAddr string
 }
 
