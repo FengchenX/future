@@ -41,7 +41,6 @@ func MakeHandler(svc service.AppService) http.Handler {
 
 	r.Handle("/appserver/getaccount", getAccountHandler).Methods("POST")
 	r.Handle("/appserver/setaccount", setAccountHandler).Methods("POST")
-	r.Handle("/appserver/getethbalance", getEthBalanceHandler).Methods("POST")
 
 	return r
 }
