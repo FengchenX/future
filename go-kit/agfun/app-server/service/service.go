@@ -10,8 +10,8 @@ import (
 // AppService app服务接口
 type AppService interface {
 	CreateAccount(account, password string) (int, string)
-	Account(account string) model.UserAccount
-	UpdateAccount(account string, model.UserAccount) (int, string)
+	Account(account string) (int, string, model.UserAccount)
+	UpdateAccount(account string, userAccount model.UserAccount) (int, string)
 	DeleteAccount(account string) (int, string)
 }
 

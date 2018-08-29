@@ -8,7 +8,13 @@ import (
 	"github.com/feng/future/go-kit/agfun/app-server/config"
 	"github.com/jinzhu/gorm"
 	"github.com/sirupsen/logrus"
+	"github.com/feng/future/go-kit/agfun/app-server/model"
 )
+
+func init() {
+	DBInst()
+	autoMigrate()	
+}
 
 //DB 数据库对象
 var DB *gorm.DB
@@ -31,12 +37,21 @@ func DBInst() *gorm.DB {
 		DB.DB().SetMaxIdleConns(10)
 		DB.DB().SetMaxOpenConns(100)
 		DB.LogMode(false)
-		autoMigrate()		
 	}
 	return DB
 }
 
 func autoMigrate() {
-
+	if mydb := DBInst().AutoMigrate(&model.UserAccount{}); mydb.Error != nil {
+		logrus.Error("autoMigrate UserAccount", mydb.Error)
+	}
 }
 
+func createModel(value interface{}) error {
+	if DBInst().NewRecord(value) {
+		if mydb := DBInst().Create(value); mydb.Error != nil {
+			return mydb.Error
+		}
+	}
+	return nil
+}
