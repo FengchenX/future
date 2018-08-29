@@ -4,19 +4,19 @@ import (
 	"context"
 	"net/http"
 	"encoding/json"
-	"github.com/feng/future/go-kit/agfun/app-server/endpoint"
+	"github.com/feng/future/go-kit/agfun/app-server/protocol/api"
 )
 
-func decodeGetAccountRequest(_ context.Context, r *http.Request) (interface{}, error) {
-	var request endpoint.ReqGetAccount
+func decodeAccountRequest(_ context.Context, r *http.Request) (interface{}, error) {
+	var request api.AccountReq
 	if err := json.NewDecoder(r.Body).Decode(&request); err != nil {
 		return nil, err
 	}
 	return request, nil
 }
 
-func decodeSetAccountRequest(_ context.Context, r *http.Request) (interface{}, error) {
-	var request endpoint.ReqGetAccount
+func decodeCreateAccountRequest(_ context.Context, r *http.Request) (interface{}, error) {
+	var request api.CreateAccountReq
 	if err := json.NewDecoder(r.Body).Decode(&request); err != nil {
 		return nil, err
 	}

@@ -19,24 +19,17 @@ func MakeHandler(svc service.AppService) http.Handler {
 		kithttp.ServerErrorEncoder(encodeError),
 	}
 	getAccountHandler := kithttp.NewServer(
-		endpoint.MakeGetAccountEndpoint(svc),
-		decodeGetAccountRequest,
+		endpoint.MakeAccountEndpoint(svc),
+		decodeAccountRequest,
 		encodeResponse,
 		opts...,
 	)
 	setAccountHandler := kithttp.NewServer(
-		endpoint.MakeSetAccountEndpoint(svc),
-		decodeSetAccountRequest,
+		endpoint.MakeCreateAccountEndpoint(svc),
+		decodeCreateAccountRequest,
 		encodeResponse,
 		opts...,
 	)
-	getEthBalanceHandler := kithttp.NewServer(
-		endpoint.MakeGetEthBalanceEndpoint(svc),
-		decodeGetEthBalanceRequest,
-		encodeResponse,
-		opts...,
-	)
-
 	r := mux.NewRouter()
 
 	r.Handle("/appserver/getaccount", getAccountHandler).Methods("POST")

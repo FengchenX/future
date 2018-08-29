@@ -3,58 +3,38 @@ package endpoint
 import (
 	"github.com/feng/future/go-kit/agfun/app-server/service"
 	"github.com/go-kit/kit/endpoint"
-	"github.com/feng/future/go-kit/agfun/app-server/model"
 	"context"
+	"github.com/feng/future/go-kit/agfun/app-server/protocol/api"
 )
 
 
-//MakeGetAccountEndpoint 生成getAccount断点
-func MakeGetAccountEndpoint(svc service.AppService) endpoint.Endpoint {
+//MakeAccountEndpoint 生成Account断点
+func MakeAccountEndpoint(svc service.AppService) endpoint.Endpoint {
 	return func(ctx context.Context, request interface{}) (interface{}, error) {
-		req := request.(ReqGetAccount)
-		statusCode, msg, userAccount := svc.GetAccount(req.UserAddress)
-		return RespGetAccount{
-			StatusCode: statusCode,
-			UserAccount: userAccount,
-			Msg: msg,
-		}, nil
+		req := request.(api.AccountReq)
+		var resp api.AccountResp
+		statusCode, msg, userAccount := svc.Account(req.Account)
+		resp.Code = statusCode
+		resp.Msg = msg
+		resp.Name = userAccount.Name
+		resp.BankCard = userAccount.BankCard
+		resp.WeChat = userAccount.WeChat
+		resp.Alipay = userAccount.Alipay
+		resp.Telephone = userAccount.Telephone
+		resp.Email = userAccount.Email
+		return resp, nil
 	}
 }
 
-//ReqGetAccount 客户端 查询支付账号
-type ReqGetAccount struct {
-	UserAddress string
-}
-
-//RespGetAccount 服务端 查询支付账号
-type RespGetAccount struct {
-	StatusCode  uint32
-	UserAccount model.UserAccount
-	Msg         string
-}
-
-//MakeSetAccountEndpoint 生成setAccount端点
-func MakeSetAccountEndpoint(svc service.AppService) endpoint.Endpoint {
+//MakeCreateAccountEndpoint 生成CreateAccount端点
+func MakeCreateAccountEndpoint(svc service.AppService) endpoint.Endpoint {
 	return func(ctx context.Context, request interface{}) (interface{}, error) {
-		req := request.(ReqSetAccount)
-		statusCode, msg := svc.SetAccount(req.UserKeyStore, req.UserParse, req.KeyString, req.UserAccount)
-		return RespSetAccount{
-			StatusCode: statusCode,
-			Msg: msg,
-		}, nil
+		req := request.(api.CreateAccountReq)
+		statusCode, msg := svc.CreateAccount(req.Account, req.Password)
+		var resp api.CreateAccountResp
+		resp.Code = statusCode
+		resp.Msg = msg
+		return resp, nil
 	}
 }
 
-//ReqSetAccount 客户端 绑定支付账户
-type ReqSetAccount struct {
-	UserKeyStore string
-	UserParse    string
-	KeyString    string
-	UserAccount  model.UserAccount
-}
-
-//RespSetAccount 服务端 绑定支付账户
-type RespSetAccount struct {
-	StatusCode uint32
-	Msg        string
-}

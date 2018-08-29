@@ -14,3 +14,19 @@ type CreateAccountReq struct {
 type CreateAccountResp struct {
 	RespBase
 }
+
+//AccountReq 查询账户请求
+type AccountReq struct {
+	Account string
+}
+
+//AccountResp 查询账户响应
+type AccountResp struct {
+	RespBase
+	Name      string
+	BankCard  string
+	WeChat    string
+	Alipay    string
+	Telephone string
+	Email     string
+}
