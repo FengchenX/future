@@ -24,3 +24,18 @@ func Account(account string) (model.UserAccount, error) {
 	}
 	return myAccount, nil
 }
+
+const updateAccountSQL = "account = ?"
+//UpdateAccount 更新账户
+func UpdateAccount(account string, userAccount model.UserAccount) error {
+	var myAccount model.UserAccount
+	if mydb := DBInst().Where(updateAccountSQL, account).First(&myAccount); mydb.Error != nil {
+		logrus.Errorln("UpdateAccount First", mydb.Error)
+		return mydb.Error
+	}
+	if mydb := DBInst().Model(&myAccount).Updates(userAccount); mydb.Error != nil {
+		logrus.Errorln("UpdateAccount Updates", mydb.Error)
+		return mydb.Error
+	}
+	return nil
+}

@@ -44,8 +44,14 @@ func (app *AppSvc)Account(account string) (int, string, model.UserAccount) {
 func (app *AppSvc)UpdateAccount(account string, userAccount model.UserAccount) (int, string) {
 	var code int
 	var msg string
-	
-	return 0, ""
+	if err := dao.UpdateAccount(account, userAccount); err != nil {
+		code = 11100
+		msg = err.Error()
+		return code, msg
+	}
+	code = 0
+	msg = "success"
+	return code, msg
 }
 
 //DeleteAccount 删除账户
