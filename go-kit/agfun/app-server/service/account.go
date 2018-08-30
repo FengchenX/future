@@ -34,7 +34,7 @@ func (app *AppSvc)Account(account string) (int, string, model.UserAccount) {
 		msg = err.Error()
 		return code, msg, userAccount
 	}
-	code = 11100
+	code = 0
 	msg = "success"
 	return code, msg, userAccount
 }

@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"encoding/json"
 	"github.com/feng/future/go-kit/agfun/app-server/protocol/api"
-	"github.com/gorilla/mux"
+	//"github.com/gorilla/mux"
 )
 
 func decodeAccountRequest(_ context.Context, r *http.Request) (interface{}, error) {
@@ -14,10 +14,11 @@ func decodeAccountRequest(_ context.Context, r *http.Request) (interface{}, erro
 	// if err := json.NewDecoder(r.Body).Decode(&request); err != nil {
 	// 	return nil, err
 	// }
-	vars :=  mux.Vars(r)
+	// vars :=  mux.Vars(r)
+	vars := r.URL.Query()
 	fmt.Println("decodeAccountRequest", vars)
 
-	request.Account = vars["Account"]
+	request.Account = vars["Account"][0]
 	return request, nil
 }
 
