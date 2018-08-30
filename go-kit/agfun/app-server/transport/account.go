@@ -31,5 +31,9 @@ func decodeCreateAccountRequest(_ context.Context, r *http.Request) (interface{}
 }
 
 func decodeUpdateAccountRequest(_ context.Context, r *http.Request) (interface{}, error) {
-	var request 
+	var request api.UpdateAccountReq
+	if err := json.NewDecoder(r.Body).Decode(&request); err != nil {
+		return nil, err
+	}
+	return request, nil
 }

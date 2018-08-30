@@ -5,6 +5,7 @@ import (
 	"github.com/go-kit/kit/endpoint"
 	"context"
 	"github.com/feng/future/go-kit/agfun/app-server/protocol/api"
+	"github.com/feng/future/go-kit/agfun/app-server/model"
 )
 
 
@@ -33,6 +34,26 @@ func MakeCreateAccountEndpoint(svc service.AppService) endpoint.Endpoint {
 		statusCode, msg := svc.CreateAccount(req.Account, req.Password)
 		var resp api.CreateAccountResp
 		resp.Code = statusCode
+		resp.Msg = msg
+		return resp, nil
+	}
+}
+
+//MakeUpdateAccountEndpoint 更新账户端点
+func MakeUpdateAccountEndpoint(svc service.AppService) endpoint.Endpoint {
+	return func(ctx context.Context, request interface{}) (interface{}, error) {
+		req := request.(api.UpdateAccountReq)
+		userAccount := model.UserAccount {
+			Name: req.Name,
+			BankCard: req.BankCard,
+			WeChat: req.WeChat,
+			Alipay: req.Alipay,
+			Telephone: req.Telephone,
+			Email: req.Email,
+		}
+		code, msg := svc.UpdateAccount(req.Account, userAccount)
+		var resp api.UpdateAccountResp
+		resp.Code = code
 		resp.Msg = msg
 		return resp, nil
 	}
