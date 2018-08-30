@@ -42,6 +42,8 @@ func (app *AppSvc)Account(account string) (int, string, model.UserAccount) {
 
 //UpdateAccount 更新账户
 func (app *AppSvc)UpdateAccount(account string, userAccount model.UserAccount) (int, string) {
+	var code int
+	var msg string
 	
 	return 0, ""
 }

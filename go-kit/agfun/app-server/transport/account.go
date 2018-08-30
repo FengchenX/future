@@ -29,3 +29,7 @@ func decodeCreateAccountRequest(_ context.Context, r *http.Request) (interface{}
 	}
 	return request, nil
 }
+
+func decodeUpdateAccountRequest(_ context.Context, r *http.Request) (interface{}, error) {
+	var request 
+}

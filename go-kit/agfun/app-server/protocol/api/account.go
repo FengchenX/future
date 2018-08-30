@@ -30,3 +30,19 @@ type AccountResp struct {
 	Telephone string
 	Email     string
 }
+
+//UpdateAccountReq 更新账户请求
+type UpdateAccountReq struct {
+	Account string
+	Name      string
+	BankCard  string
+	WeChat    string
+	Alipay    string
+	Telephone string
+	Email     string
+}
+
+//UpdateAccountResp 更新账户请求响应
+type UpdateAccountResp struct {
+	RespBase
+}
