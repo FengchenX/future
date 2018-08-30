@@ -24,8 +24,9 @@ func (app *AppSvc)CreateAccount(account, password string) (int, string) {
 	msg = "success"
 	return code, msg
 }
+
+//Account 获取账户信息
 func (app *AppSvc)Account(account string) (int, string, model.UserAccount) {
-	logrus.Info("***************", account)
 	var code int
 	var msg string
 	var userAccount model.UserAccount
@@ -38,9 +39,14 @@ func (app *AppSvc)Account(account string) (int, string, model.UserAccount) {
 	msg = "success"
 	return code, msg, userAccount
 }
+
+//UpdateAccount 更新账户
 func (app *AppSvc)UpdateAccount(account string, userAccount model.UserAccount) (int, string) {
+	
 	return 0, ""
 }
+
+//DeleteAccount 删除账户
 func (app *AppSvc)DeleteAccount(account string) (int, string) {
 	return 0, ""
 }
