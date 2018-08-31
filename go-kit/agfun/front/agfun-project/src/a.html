@@ -15,7 +15,22 @@
 <body>
     <!--这是我们的View-->
     <div id="app">
-        {{ message }}
+      <table>
+          <thead>
+              <tr>
+                  <th>Name</th>
+                  <th>Age</th>
+                  <th>Sex</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr v-for = "person in people">
+                  <td>{{ person.name}}</td>
+                  <td>{{ person.age}}</td>
+                  <td>{{ person.sex}}</td>
+              </tr>
+          </tbody>
+      </table>
     </div>
     <script src="./main.js"></script>
 </body>
