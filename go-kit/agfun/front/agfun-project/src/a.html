@@ -4,7 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--link rel="stylesheet" type="text/css" media="screen" href="main.css" /-->
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
     <!-- 开发环境版本，包含了有帮助的命令行警告 -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <!-- 因为 AJAX 库和通用工具的生态已经相当丰富，Vue 核心代码没有重复 -->
@@ -14,23 +14,9 @@
 </head>
 <body>
     <!--这是我们的View-->
-    <div id="app">
-      <table>
-          <thead>
-              <tr>
-                  <th>Name</th>
-                  <th>Age</th>
-                  <th>Sex</th>
-              </tr>
-          </thead>
-          <tbody>
-              <tr v-for = "person in people">
-                  <td>{{ person.name}}</td>
-                  <td>{{ person.age}}</td>
-                  <td>{{ person.sex}}</td>
-              </tr>
-          </tbody>
-      </table>
+    <div id="editor">
+        <textarea :value="input" @input="update"></textarea>
+        <div v-html="compiledMarkdown"></div>
     </div>
     <script src="./main.js"></script>
 </body>
