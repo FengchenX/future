@@ -10,6 +10,7 @@ type AppService interface {
 	Account(account string) (int, string, model.UserAccount)
 	UpdateAccount(account string, userAccount model.UserAccount) (int, string)
 	DeleteAccount(account string) (int, string)
+	Login()
 }
 
 //AppSvc app服务实例

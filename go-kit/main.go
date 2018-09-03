@@ -7,24 +7,31 @@ import (
 )
 
 func main() {
-	
+
+	now := time.Now().Unix()
+	sdfs := time.Unix(now, 0)
+	fmt.Println(sdfs)
 	assigner := Assigner {
 		LastTime: "2018-08-31 00:04:05",
 		Quota: 0,
 		QuotaWay: 1,
 		ResetTime: 5,
 	}
-	quota := Quota {
-		Money: 10,
+	var allocation Allocation
+	allocation.Assigners = append(allocation.Assigners, assigner)
+	for i := range allocation.Assigners {
+		quota := Quota {
+			Money: 10,
+		}
+		nowTime := "2018-09-01 11:04:05"
+		_, err := quotaAlgorithm(&allocation.Assigners[i], &quota, nowTime)
+		if err != nil {
+			fmt.Println(err)
+		}
+		
 	}
-	nowTime := "2018-09-01 11:04:05"
-	change, err := quotaAlgorithm(&assigner, &quota, nowTime)
-	if err != nil {
-		fmt.Println(err)
-	}
-	if change {
-		fmt.Println("change")
-		fmt.Println(assigner.LastTime)
+	for _, allo := range allocation.Assigners {
+		fmt.Println("################", allo.LastTime)
 	}
 	fmt.Println("*************")
 }
@@ -43,10 +50,11 @@ func quotaAlgorithm(assigner *Assigner, quota *Quota,  nowTime string) (bool, er
 		//按天重置
 		fmt.Println(now.Hour(), assigner.ResetTime)
 		if now.Hour() >= int(assigner.ResetTime) {
-			if math.Abs(float64(now.Day()-time.Unix(formToUnix(assigner.LastTime), 0).Day())) >= 1 {
+			lastTime, _ := time.Parse("2006-01-02 15:04:05", assigner.LastTime)
+			if math.Abs(float64(now.Day() - lastTime.Day())) >= 1 {
 				//发起重置
 				fmt.Println("resetQuo*********day start")
-				assigner.LastTime = unixToForm(now.Unix())
+				assigner.LastTime = nowTime
 				assigner.Quota = 0
 
 				quota.Money = 0
@@ -54,14 +62,14 @@ func quotaAlgorithm(assigner *Assigner, quota *Quota,  nowTime string) (bool, er
 				hadChange = true
 				return hadChange, nil
 			}
-
 		}
 	} else if assigner.QuotaWay == 2 {
 		//按月重置
-		if math.Abs(float64(now.Month()-time.Unix(formToUnix(assigner.LastTime), 0).Month())) >= 1 {
+		lastTime, _ := time.Parse("2006-01-02 15:04:05", assigner.LastTime)
+		if math.Abs(float64(now.Month()-lastTime.Month())) >= 1 {
 			//发起重置
 			fmt.Println("resetQuo*********month start")
-			assigner.LastTime = unixToForm(now.Unix())
+			assigner.LastTime = nowTime
 			assigner.Quota = 0
 
 			quota.Money = 0
@@ -73,6 +81,10 @@ func quotaAlgorithm(assigner *Assigner, quota *Quota,  nowTime string) (bool, er
 	return hadChange, nil
 }
 
+type Allocation struct {
+	Assigners []Assigner
+}
+
 type Assigner struct {
 	LastTime string
 	Quota float64
@@ -82,22 +94,4 @@ type Assigner struct {
 
 type Quota struct {
 	Money float64
-}
-
-func formToUnix(t string) int64 {
-	timeLayout := "2006-01-02 15:04:05" //转化所需模板
-	//获取本地location
-	loc, _ := time.LoadLocation("Local")                   //重要：获取时区
-	theTime, _ := time.ParseInLocation(timeLayout, t, loc) //使用模板在对应时区转化为time.time类型
-	sr := theTime.Unix()                                   //转化为时间戳 类型是int64
-	return sr
-}
-
-func unixToForm(t int64) string {
-	//获取本地location
-	timeLayout := "2006-01-02 15:04:05" //转化所需模板
-
-	//时间戳转日期
-	dataTimeStr := time.Unix(t, 0).Format(timeLayout) //设置时间戳 使用模板格式化为日期字符串
-	return dataTimeStr
 }
