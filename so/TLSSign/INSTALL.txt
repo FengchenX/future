@@ -1,0 +1,2 @@
+1、将libsigcheck.so复制到ld的搜索目录中
+2、将TLSSign复制到 $GOPATH/src/
