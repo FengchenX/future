@@ -1,7 +1,7 @@
 package mystring
 
 import (
-	"github.com/gorilla/mux"
+	//"github.com/gorilla/mux"
 	"bytes"
 	"context"
 	"encoding/json"
@@ -11,6 +11,8 @@ import (
 	"github.com/go-kit/kit/endpoint"
 	kitlog "github.com/go-kit/kit/log"
 	kithttp "github.com/go-kit/kit/transport/http"
+	
+
 )
 
 // MakeHandler returns a handler for the strservice
@@ -25,19 +27,22 @@ func MakeHandler(svc StringService, logger kitlog.Logger) http.Handler {
 		encodeResponse,
 		opts...,
 	)
-	countHandler := kithttp.NewServer(
-		makeCountEndpoint(svc),
-		decodeCountRequest,
-		encodeResponse,
-		opts...,
-	)
+	// countHandler := kithttp.NewServer(
+	// 	makeCountEndpoint(svc),
+	// 	decodeCountRequest,
+	// 	encodeResponse,
+	// 	opts...,
+	// )
 
-	r := mux.NewRouter()
+	temp := http.NewServeMux()
+	temp.Handle("/mystring/uppercase", uppercaseHandler)
 
-	r.Handle("/mystring/uppercase", uppercaseHandler).Methods("POST")
-	r.Handle("/mystring/count", countHandler).Methods("POST")
+	// r := mux.NewRouter()
 
-	return r
+	// r.Handle("/mystring/uppercase", uppercaseHandler).Methods("POST")
+	// r.Handle("/mystring/count", countHandler).Methods("POST")
+
+	return temp
 }
 
 func makeUppercaseEndpoint(svc StringService) endpoint.Endpoint {
