@@ -1,6 +1,6 @@
 
 #include "util.h"
-#include "goc/util/sub/sub.h"
+#include "util/sub/sub.h"
 
 int sum(int a, int b){
     return (a+b);

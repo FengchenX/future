@@ -2,6 +2,7 @@ package util
  
 /*
 #include "util.h"
+#include "sub/sub.h"
 */
 import "C"
  
