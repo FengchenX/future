@@ -6,5 +6,6 @@ import (
 
 
 func main() {
-	util.GoSum(4,5)
+	util.GoSum(4, 5)
+	util.GoSub(5, 1)
 }
