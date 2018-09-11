@@ -1,8 +1,9 @@
 
 #include "util.h"
-#include "util/sub/sub.h"
+#include "sub/sub.h"
 
-int sum(int a, int b){
+
+int sum(int a, int b) {
     return (a+b);
 }
 
