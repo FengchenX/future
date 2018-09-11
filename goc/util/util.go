@@ -2,7 +2,6 @@ package util
  
 /*
 #include "util.h"
-#include "sub/sub.h"
 */
 import "C"
  
@@ -14,8 +13,3 @@ func GoSum(a,b int) int {
 	return int(s)
 }
 
-func GoSub(a, b int) int {
-	s := C.sub(C.int(a), C.int(b))
-	fmt.Println(s)
-	return int(s)
-}
