@@ -10,7 +10,7 @@ func LoggingMiddleware() service.SvcMiddleware {
 		return logmw{next}
 	}
 }
+
 type logmw struct {
 	service.AppService
 }
-

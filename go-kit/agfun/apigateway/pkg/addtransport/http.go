@@ -25,8 +25,8 @@ import (
 	"github.com/go-kit/kit/tracing/zipkin"
 	httptransport "github.com/go-kit/kit/transport/http"
 
-	"github.com/feng/future/go-kit/agfun/apigateway/pkg/addservice"
 	"github.com/feng/future/go-kit/agfun/apigateway/pkg/addendpoint"
+	"github.com/feng/future/go-kit/agfun/apigateway/pkg/addservice"
 )
 
 // NewHTTPHandler returns an HTTP handler that makes a set of endpoints

@@ -1,13 +1,11 @@
 package api
 
-import (
-	
-)
+import ()
 
 //CreateAccountReq 创建账户请求
 type CreateAccountReq struct {
-	Account       string
-	Password  string
+	Account  string
+	Password string
 }
 
 //CreateAccountResp 创建账户响应
@@ -33,7 +31,7 @@ type AccountResp struct {
 
 //UpdateAccountReq 更新账户请求
 type UpdateAccountReq struct {
-	Account string
+	Account   string
 	Name      string
 	BankCard  string
 	WeChat    string

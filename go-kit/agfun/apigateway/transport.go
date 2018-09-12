@@ -1,15 +1,15 @@
 package main
 
 import (
-	"github.com/gorilla/mux"
-	kitlog "github.com/go-kit/kit/log"
-	"net/http"
+	"bytes"
 	"context"
 	"encoding/json"
-	kithttp "github.com/go-kit/kit/transport/http"
-	"bytes"
-	"io/ioutil"
 	"github.com/feng/future/go-kit/agfun/app-server/model"
+	kitlog "github.com/go-kit/kit/log"
+	kithttp "github.com/go-kit/kit/transport/http"
+	"github.com/gorilla/mux"
+	"io/ioutil"
+	"net/http"
 )
 
 //makeHandler 创建handler
@@ -29,7 +29,7 @@ func makeHandler(svc GatewayService, logger kitlog.Logger) http.Handler {
 	r.Handle("/gateway/v1/getaccount", getAccountHandler).Methods("POST")
 
 	return r
-} 
+}
 
 // encode errors from business-logic
 func encodeError(_ context.Context, err error, w http.ResponseWriter) {
@@ -39,15 +39,13 @@ func encodeError(_ context.Context, err error, w http.ResponseWriter) {
 	// default:
 	// 	w.WriteHeader(http.StatusInternalServerError)
 	// }
-	
+
 	w.WriteHeader(http.StatusInternalServerError)
 
 	json.NewEncoder(w).Encode(map[string]interface{}{
 		"error": err.Error(),
 	})
 }
-
-
 
 func encodeJSONRequest(_ context.Context, req *http.Request, request interface{}) error {
 	// Both uppercase and count requests are encoded in the same way:

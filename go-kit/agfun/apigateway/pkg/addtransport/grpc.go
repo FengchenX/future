@@ -21,9 +21,9 @@ import (
 	"github.com/go-kit/kit/tracing/zipkin"
 	grpctransport "github.com/go-kit/kit/transport/grpc"
 
-	"github.com/feng/future/go-kit/examples/addsvc/pb"
-	"github.com/feng/future/go-kit/agfun/apigateway/pkg/addservice"
 	"github.com/feng/future/go-kit/agfun/apigateway/pkg/addendpoint"
+	"github.com/feng/future/go-kit/agfun/apigateway/pkg/addservice"
+	"github.com/feng/future/go-kit/examples/addsvc/pb"
 )
 
 type grpcServer struct {

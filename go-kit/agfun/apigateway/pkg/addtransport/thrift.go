@@ -12,8 +12,8 @@ import (
 	"github.com/go-kit/kit/endpoint"
 	"github.com/go-kit/kit/ratelimit"
 
-	"github.com/feng/future/go-kit/agfun/apigateway/pkg/addservice"
 	"github.com/feng/future/go-kit/agfun/apigateway/pkg/addendpoint"
+	"github.com/feng/future/go-kit/agfun/apigateway/pkg/addservice"
 	addthrift "github.com/feng/future/go-kit/examples/addsvc/thrift/gen-go/addsvc"
 )
 

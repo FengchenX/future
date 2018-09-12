@@ -5,13 +5,12 @@ import (
 	//"time"
 )
 
-
 // UserAccount 用户账户信息结构体
 type UserAccount struct {
 	gorm.Model
-	
-	Account       string
-	Password  string
+
+	Account  string
+	Password string
 
 	Name      string
 	BankCard  string

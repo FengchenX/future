@@ -1,17 +1,17 @@
 package service
 
 import (
-	"github.com/feng/future/go-kit/agfun/app-server/model"
 	"github.com/feng/future/go-kit/agfun/app-server/dao"
+	"github.com/feng/future/go-kit/agfun/app-server/model"
 	"github.com/sirupsen/logrus"
 )
 
 //CreateAccount 创建账户
-func (app *AppSvc)CreateAccount(account, password string) (int, string) {
+func (app *AppSvc) CreateAccount(account, password string) (int, string) {
 	var code int
 	var msg string
-	newAccount := model.UserAccount {
-		Account: account,
+	newAccount := model.UserAccount{
+		Account:  account,
 		Password: password,
 	}
 	if err := dao.CreateAccount(&newAccount); err != nil {
@@ -26,7 +26,7 @@ func (app *AppSvc)CreateAccount(account, password string) (int, string) {
 }
 
 //Account 获取账户信息
-func (app *AppSvc)Account(account string) (int, string, model.UserAccount) {
+func (app *AppSvc) Account(account string) (int, string, model.UserAccount) {
 	var code int
 	var msg string
 	var userAccount model.UserAccount
@@ -41,7 +41,7 @@ func (app *AppSvc)Account(account string) (int, string, model.UserAccount) {
 }
 
 //UpdateAccount 更新账户
-func (app *AppSvc)UpdateAccount(account string, userAccount model.UserAccount) (int, string) {
+func (app *AppSvc) UpdateAccount(account string, userAccount model.UserAccount) (int, string) {
 	var code int
 	var msg string
 	if err := dao.UpdateAccount(account, userAccount); err != nil {
@@ -55,7 +55,6 @@ func (app *AppSvc)UpdateAccount(account string, userAccount model.UserAccount) (
 }
 
 //DeleteAccount 删除账户
-func (app *AppSvc)DeleteAccount(account string) (int, string) {
+func (app *AppSvc) DeleteAccount(account string) (int, string) {
 	return 0, ""
 }
-

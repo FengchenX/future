@@ -1,13 +1,12 @@
 package endpoint
 
 import (
+	"context"
+	"github.com/feng/future/go-kit/agfun/app-server/model"
+	"github.com/feng/future/go-kit/agfun/app-server/protocol/api"
 	"github.com/feng/future/go-kit/agfun/app-server/service"
 	"github.com/go-kit/kit/endpoint"
-	"context"
-	"github.com/feng/future/go-kit/agfun/app-server/protocol/api"
-	"github.com/feng/future/go-kit/agfun/app-server/model"
 )
-
 
 //MakeAccountEndpoint 生成Account断点
 func MakeAccountEndpoint(svc service.AppService) endpoint.Endpoint {
@@ -43,13 +42,13 @@ func MakeCreateAccountEndpoint(svc service.AppService) endpoint.Endpoint {
 func MakeUpdateAccountEndpoint(svc service.AppService) endpoint.Endpoint {
 	return func(ctx context.Context, request interface{}) (interface{}, error) {
 		req := request.(api.UpdateAccountReq)
-		userAccount := model.UserAccount {
-			Name: req.Name,
-			BankCard: req.BankCard,
-			WeChat: req.WeChat,
-			Alipay: req.Alipay,
+		userAccount := model.UserAccount{
+			Name:      req.Name,
+			BankCard:  req.BankCard,
+			WeChat:    req.WeChat,
+			Alipay:    req.Alipay,
 			Telephone: req.Telephone,
-			Email: req.Email,
+			Email:     req.Email,
 		}
 		code, msg := svc.UpdateAccount(req.Account, userAccount)
 		var resp api.UpdateAccountResp
@@ -58,4 +57,3 @@ func MakeUpdateAccountEndpoint(svc service.AppService) endpoint.Endpoint {
 		return resp, nil
 	}
 }
-

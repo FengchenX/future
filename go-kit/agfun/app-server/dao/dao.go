@@ -4,16 +4,16 @@ import (
 	// mysql 驱动
 	_ "github.com/go-sql-driver/mysql"
 	//gorm 驱动
-	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"github.com/feng/future/go-kit/agfun/app-server/config"
-	"github.com/jinzhu/gorm"
-	"github.com/sirupsen/logrus"
 	"github.com/feng/future/go-kit/agfun/app-server/model"
+	"github.com/jinzhu/gorm"
+	_ "github.com/jinzhu/gorm/dialects/mysql"
+	"github.com/sirupsen/logrus"
 )
 
 func init() {
 	DBInst()
-	autoMigrate()	
+	autoMigrate()
 }
 
 //DB 数据库对象

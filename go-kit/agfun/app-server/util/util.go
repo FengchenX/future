@@ -1,14 +1,13 @@
 package util
 
 import (
-	"io/ioutil"
 	"bytes"
-	"fmt"
 	"encoding/json"
-	"net/http"
+	"fmt"
+	"io/ioutil"
 	"math"
+	"net/http"
 )
-
 
 //DoPost 发送json post 对象
 func DoPost(url string, reqobj interface{}, respobj interface{}) error {
@@ -47,6 +46,7 @@ func DoPost(url string, reqobj interface{}, respobj interface{}) error {
 
 //MIN 自定义比较精度
 const MIN = 0.0001
+
 //IsEqual 两个浮点型是否相等
 func IsEqual(f1, f2 float64) bool {
 	return math.Dim(f1, f2) < MIN

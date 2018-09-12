@@ -1,26 +1,26 @@
 package main
 
 import (
-	"github.com/prometheus/client_golang/prometheus/promhttp"
-	"os"
 	"flag"
 	"github.com/feng/future/go-kit/agfun/app-server/service"
-	"net/http"
 	"github.com/feng/future/go-kit/agfun/app-server/transport"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
+	"net/http"
+	"os"
 	//kitlogmw "github.com/feng/future/go-kit/agfun/app-server/log"
-	"github.com/sirupsen/logrus"
 	"fmt"
+	"github.com/sirupsen/logrus"
 )
 
 func init() {
 	// Log as JSON instead of the default ASCII formatter.
 	logrus.SetFormatter(&logrus.JSONFormatter{})
-  
+
 	// Output to stdout instead of the default stderr
 	// Can be any io.Writer, see below for File example
 	logrus.SetOutput(os.Stdout)
 	//go log.RenameLogFile()
-  
+
 	// Only log the warning severity or above.
 	//logrus.SetLevel(logrus.WarnLevel)
 	logrus.SetLevel(logrus.InfoLevel)
@@ -37,7 +37,6 @@ func main() {
 	svc = &service.AppSvc{}
 	//svc = kitlogmw.LoggingMiddleware()(svc)
 
-
 	mux := http.NewServeMux()
 
 	mux.Handle("/appserver/", transport.MakeHandler(svc))
@@ -52,7 +51,7 @@ func main() {
 		logrus.Infoln("transport", "http", "address", *listen, "msg", "listening")
 		errs <- http.ListenAndServe(*listen, nil)
 	}()
-	logrus.Infoln("terminated", <- errs)
+	logrus.Infoln("terminated", <-errs)
 }
 
 func accessControl(h http.Handler) http.Handler {

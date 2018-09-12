@@ -16,7 +16,6 @@ type AppService interface {
 //AppSvc app服务实例
 type AppSvc struct{}
 
-
 //SvcMiddleware is a chainable behavior modifier for appservice
 type SvcMiddleware func(AppService) AppService
 

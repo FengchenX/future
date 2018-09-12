@@ -2,15 +2,15 @@ package transport
 
 import (
 	"github.com/feng/future/go-kit/agfun/app-server/service"
-	"net/http"
 	kithttp "github.com/go-kit/kit/transport/http"
+	"net/http"
 
-	"github.com/gorilla/mux"
+	"bytes"
 	"context"
 	"encoding/json"
-	"bytes"
-	"io/ioutil"
 	"github.com/feng/future/go-kit/agfun/app-server/endpoint"
+	"github.com/gorilla/mux"
+	"io/ioutil"
 )
 
 //MakeHandler 创建handler

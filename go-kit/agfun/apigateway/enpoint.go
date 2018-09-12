@@ -6,4 +6,4 @@ import (
 
 func makeGetAccountEndpoint(s GatewayService) endpoint.Endpoint {
 	return s.GetAccount()
-} 
+}

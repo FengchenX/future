@@ -1,13 +1,13 @@
 package main
 
 import (
+	"flag"
 	"net/http"
-	"flag"	
 )
 
 func main() {
 	var (
-		httpAddr     = flag.String("httpaddr", ":8000", "Address for HTTP (JSON) server")
+		httpAddr = flag.String("httpaddr", ":8000", "Address for HTTP (JSON) server")
 	)
 	flag.Parse()
 
@@ -24,9 +24,8 @@ func main() {
 		logger.Log("transport", "http", "address", *httpAddr, "msg", "listening")
 		errs <- http.ListenAndServe(*httpAddr, nil)
 	}()
-	logger.Log("terminated", <- errs)
+	logger.Log("terminated", <-errs)
 }
-
 
 func accessControl(h http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -41,5 +40,3 @@ func accessControl(h http.Handler) http.Handler {
 		h.ServeHTTP(w, r)
 	})
 }
-
-

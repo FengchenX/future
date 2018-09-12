@@ -22,7 +22,7 @@ func AppInst() *AppConf {
 		temp := new(AppConf)
 		_, err := toml.DecodeFile("config/static/default-conf.toml", temp)
 		if err != nil {
-			log.Fatal(err)	
+			log.Fatal(err)
 		}
 		std = temp
 		return std

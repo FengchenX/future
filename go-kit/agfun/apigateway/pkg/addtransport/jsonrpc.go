@@ -10,10 +10,10 @@ import (
 
 	"golang.org/x/time/rate"
 
+	"github.com/feng/future/go-kit/agfun/apigateway/pkg/addendpoint"
+	"github.com/feng/future/go-kit/agfun/apigateway/pkg/addservice"
 	"github.com/go-kit/kit/circuitbreaker"
 	"github.com/go-kit/kit/endpoint"
-	"github.com/feng/future/go-kit/agfun/apigateway/pkg/addservice"
-	"github.com/feng/future/go-kit/agfun/apigateway/pkg/addendpoint"
 	"github.com/go-kit/kit/log"
 	"github.com/go-kit/kit/ratelimit"
 	"github.com/go-kit/kit/tracing/opentracing"
