@@ -1,0 +1,124 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input should support maxLength 1`] = `
+<Input
+  disabled={false}
+  maxLength="3"
+  prefixCls="ant-input"
+  type="text"
+>
+  <input
+    className="ant-input"
+    disabled={false}
+    maxLength="3"
+    onKeyDown={[Function]}
+    type="text"
+  />
+</Input>
+`;
+
+exports[`Input.Search should support suffix 1`] = `
+<Search
+  enterButton={false}
+  inputPrefixCls="ant-input"
+  prefixCls="ant-input-search"
+  suffix="suffix"
+>
+  <Input
+    className="ant-input-search"
+    disabled={false}
+    onPressEnter={[Function]}
+    prefixCls="ant-input"
+    suffix={
+      Array [
+        "suffix",
+        <Icon
+          className="ant-input-search-icon"
+          onClick={[Function]}
+          type="search"
+        />,
+      ]
+    }
+    type="text"
+  >
+    <span
+      className="ant-input-search ant-input-affix-wrapper"
+    >
+      <input
+        className="ant-input"
+        disabled={false}
+        onKeyDown={[Function]}
+        style={null}
+        type="text"
+      />
+      <span
+        className="ant-input-suffix"
+      >
+        suffix
+        <Icon
+          className="ant-input-search-icon"
+          key="searchIcon"
+          onClick={[Function]}
+          type="search"
+        >
+          <i
+            className="anticon anticon-search ant-input-search-icon"
+            onClick={[Function]}
+          >
+            <IconReact
+              className=""
+              type="search-o"
+            >
+              <svg
+                aria-hidden="true"
+                className=""
+                data-icon="search"
+                fill="currentColor"
+                height="1em"
+                key="svg-search"
+                viewBox="64 64 896 896"
+                width="1em"
+              >
+                <path
+                  d="M608 112c-167.9 0-304 136.1-304 304 0 70.3 23.9 135 63.9 186.5L114.3 856.1a8.03 8.03 0 0 0 0 11.3l42.3 42.3c3.1 3.1 8.2 3.1 11.3 0l253.6-253.6C473 696.1 537.7 720 608 720c167.9 0 304-136.1 304-304S775.9 112 608 112zm161.2 465.2C726.2 620.3 668.9 644 608 644s-118.2-23.7-161.2-66.8C403.7 534.2 380 476.9 380 416s23.7-118.2 66.8-161.2c43-43.1 100.3-66.8 161.2-66.8s118.2 23.7 161.2 66.8c43.1 43 66.8 100.3 66.8 161.2s-23.7 118.2-66.8 161.2z"
+                  key="svg-search-svg-0"
+                />
+              </svg>
+            </IconReact>
+          </i>
+        </Icon>
+      </span>
+    </span>
+  </Input>
+</Search>
+`;
+
+exports[`TextArea should support disabled 1`] = `
+<TextArea
+  disabled={true}
+  prefixCls="ant-input"
+>
+  <textarea
+    className="ant-input ant-input-disabled"
+    disabled={true}
+    onChange={[Function]}
+    onKeyDown={[Function]}
+    style={Object {}}
+  />
+</TextArea>
+`;
+
+exports[`TextArea should support maxLength 1`] = `
+<TextArea
+  maxLength="10"
+  prefixCls="ant-input"
+>
+  <textarea
+    className="ant-input"
+    maxLength="10"
+    onChange={[Function]}
+    onKeyDown={[Function]}
+    style={Object {}}
+  />
+</TextArea>
+`;
