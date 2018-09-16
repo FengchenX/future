@@ -5,6 +5,14 @@
       <source src="../assets/movie.mp4" type="video/mp4">
       <!-- source src="../assets/movie.ogg" type="video/ogg"-->
     </video>
+    <video width="320" height="240" controls>
+      <source src="../assets/movie.mp4" type="video/mp4">
+      <!-- source src="../assets/movie.ogg" type="video/ogg"-->
+    </video>
+    <video width="320" height="240" controls>
+      <source src="../assets/movie.mp4" type="video/mp4">
+      <!-- source src="../assets/movie.ogg" type="video/ogg"-->
+    </video>
     <button v-on:click="myClick">点我</button>
     <p> {{resp}} </p>
   </div>

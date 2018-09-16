@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
+    <!--img alt="Vue logo" src="./assets/logo.png"-->
     <MyVue msg="Welcome to Your Vue.js App"/>
     <router-link to="/view1">Go to view1</router-link>
     <router-link to="/view2">Go to view2</router-link>
