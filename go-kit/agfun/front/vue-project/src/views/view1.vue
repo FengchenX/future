@@ -1,15 +1,20 @@
 <template>
     <div >
-        <h1>我是View1</h1>
-        <a> 我是View1 </a>
+        <MyVue msg="Welcome to Your Vue.js App"/>
     </div>
 </template>
  
-<script type="text/javascript">
-    export default {
-        name: 'view1',
+<script>
+import MyVue from '../components/MyVue.vue'
+
+export default {
+    name: 'view1',
+    components: {
+        MyVue
     }
+}
 </script>
  
 <style>
+    
 </style>

@@ -20,6 +20,7 @@
 
 <script>
 import axios from 'axios'
+
 export default {
   name: 'MyVue',
   props: {
@@ -66,5 +67,8 @@ li {
 }
 a {
   color: #42b983;
+}
+video {
+  margin: 10px 10px;
 }
 </style>
