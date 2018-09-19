@@ -81,11 +81,11 @@ func main() {
 	// 	db.Create(&v)
 	// 
 	// gorm 外键终极知识
-	var us []User
-	db.Where("id = ?", 1).Preload("Profiles").Find(&us)
-	if len(us) > 0 {
-		fmt.Println("************", us)
-	}
+	// var us []User
+	// db.Where("id = ?", 1).Preload("Profiles").Find(&us)
+	// if len(us) > 0 {
+	// 	fmt.Println("************", us)
+	// }
 	
 	//排序分页
 	//db.CreateTable(&TestD{})
@@ -156,6 +156,18 @@ func main() {
 	// } else {
 	// 	fmt.Println("不是新纪录")
 	// }
+	var a TestA
+	db.Where("name = ?", "xya").First(&a)
+	a.Age = 0
+	a.Name = ""
+	a.Rflag = false
+	if mydb := db.Model(&a).Updates(map[string]interface{}{
+		"age": a.Age,
+		"name": a.Name,
+		"rflag": a.Rflag,
+	}); mydb.Error != nil {
+		fmt.Println(mydb.Error)
+	}
 
 	// not测试
 	// var as []TestA
