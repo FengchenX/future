@@ -1,32 +1,47 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <video width="320" height="240" controls>
-      <source src="../assets/movie.mp4" type="video/mp4">
-      <!-- source src="../assets/movie.ogg" type="video/ogg"-->
-    </video>
-    <video width="320" height="240" controls>
-      <source src="../assets/movie.mp4" type="video/mp4">
-      <!-- source src="../assets/movie.ogg" type="video/ogg"-->
-    </video>
-    <video width="320" height="240" controls>
-      <source src="../assets/movie.mp4" type="video/mp4">
-      <!-- source src="../assets/movie.ogg" type="video/ogg"-->
-    </video>
-    <video width="320" height="240" controls>
-      <source src="../assets/movie.mp4" type="video/mp4">
-      <!-- source src="../assets/movie.ogg" type="video/ogg"-->
-    </video>
-    <video width="320" height="240" controls>
-      <source src="../assets/movie.mp4" type="video/mp4">
-      <!-- source src="../assets/movie.ogg" type="video/ogg"-->
-    </video>
-    <video width="320" height="240" controls>
-      <source src="../assets/movie.mp4" type="video/mp4">
-      <!-- source src="../assets/movie.ogg" type="video/ogg"-->
-    </video>
-    <button v-on:click="myClick">点我</button>
-    <p> {{resp}} </p>
+    <!-- <h2>{{ msg }}</h2> -->
+    <div class="body">
+      <video width="320" height="240" controls>
+        <source src="../assets/movie.mp4" type="video/mp4">
+        <!-- source src="../assets/movie.ogg" type="video/ogg"-->
+      </video>
+      <video width="320" height="240" controls>
+        <source src="../assets/movie.mp4" type="video/mp4">
+        <!-- source src="../assets/movie.ogg" type="video/ogg"-->
+      </video>
+      <video width="320" height="240" controls>
+        <source src="../assets/movie.mp4" type="video/mp4">
+        <!-- source src="../assets/movie.ogg" type="video/ogg"-->
+      </video>
+      <video width="320" height="240" controls>
+        <source src="../assets/movie.mp4" type="video/mp4">
+        <!-- source src="../assets/movie.ogg" type="video/ogg"-->
+      </video>
+      <video width="320" height="240" controls>
+        <source src="../assets/movie.mp4" type="video/mp4">
+        <!-- source src="../assets/movie.ogg" type="video/ogg"-->
+      </video>
+      <video width="320" height="240" controls>
+        <source src="../assets/movie.mp4" type="video/mp4">
+        <!-- source src="../assets/movie.ogg" type="video/ogg"-->
+      </video>
+        <video width="320" height="240" controls>
+        <source src="../assets/movie.mp4" type="video/mp4">
+        <!-- source src="../assets/movie.ogg" type="video/ogg"-->
+      </video>
+      <video width="320" height="240" controls>
+        <source src="../assets/movie.mp4" type="video/mp4">
+        <!-- source src="../assets/movie.ogg" type="video/ogg"-->
+      </video>
+      <video width="320" height="240" controls>
+        <source src="../assets/movie.mp4" type="video/mp4">
+        <!-- source src="../assets/movie.ogg" type="video/ogg"-->
+      </video>
+      <button v-on:click="myClick">点我</button>
+      <p> {{resp}} </p>
+    </div>
+    
   </div>
 </template>
 
@@ -66,21 +81,14 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
 video {
   margin: 10px 10px;
+}
+.hello {
+  text-align: center;
+}
+.body {
+  width: 80%;
+  text-align: center;
 }
 </style>
