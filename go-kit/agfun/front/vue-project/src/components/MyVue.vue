@@ -84,11 +84,10 @@ export default {
 video {
   margin: 10px 10px;
 }
-.hello {
-  text-align: center;
-}
+
 .body {
   width: 80%;
-  text-align: center;
+  text-align: left;
+  margin-left: 10%;
 }
 </style>
