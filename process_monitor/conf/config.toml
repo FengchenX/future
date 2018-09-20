@@ -1,0 +1,17 @@
+localPort=7111
+#间隔,单位秒
+interval=30
+#邮件发送者
+[emailSender]
+host="smtp.163.com"
+port=465
+userName="m13823584264@163.com"
+pwd="ZHOUyuhan324579"
+#要监控的程序
+[process]
+    [process.order_server]
+        receivers=["xb25321990@163.com","546211495@qq.com","bing.xin@cnlaunch.com"]#收件人
+        startScript="/root/sub_account_service/order_server/start.sh"
+    [process.order_server_mock]
+        receivers=["xb25321990@163.com","546211495@qq.com","bing.xin@cnlaunch.com"]#收件人
+        startScript="/root/sub_account_service/order_server_mock/start.sh"
