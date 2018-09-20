@@ -1,7 +1,8 @@
 <template>
-    <div >
-        <h1>我是View2</h1>
-        <a> 我是View2</a>
+    <div id="box">
+            <div class="inner"></div>
+            <div class="inner"></div>
+            <div class="inner"></div>
     </div>
 </template>
  
@@ -11,5 +12,18 @@
     }
 </script>
  
-<style>
+<style <style scoped>
+     #box{
+                display: flex;
+                flex-direction: row;
+            }
+        .inner{
+            width: 100px;
+            height: 100px;
+            background: #8a4182;
+            margin: 10px;
+
+        }
+</style>
+>
 </style>
