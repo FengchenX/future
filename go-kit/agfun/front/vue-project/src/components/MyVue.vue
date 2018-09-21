@@ -87,7 +87,9 @@ video {
 
 .body {
   width: 80%;
-  text-align: left;
   margin-left: 10%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
 }
 </style>
