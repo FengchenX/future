@@ -93,6 +93,7 @@ video {
   justify-content: space-between;
 }
 #btn1{
-  flex: none;
+  width: 60px;
+  height: 60px;
 }
 </style>
