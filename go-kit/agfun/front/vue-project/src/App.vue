@@ -72,7 +72,7 @@ export default {
   .router {
     color: black;
     text-decoration: none;
-    line-height: 60px;
+    /* line-height: 60px; */
   }
 
   .el-header {
@@ -116,6 +116,7 @@ export default {
    /* display: inline-block; */
    display: flex;
   }
+
   .headerRight{
     width: 5%;
     height: 60px;
