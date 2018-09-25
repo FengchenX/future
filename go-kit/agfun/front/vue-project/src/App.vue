@@ -18,8 +18,13 @@
           
           <div class="headerRight">
             <el-menu-item index="3">
-              <router-link class="router" to="/view3">
+              <router-link class="router" to="/login">
                 <div>登录</div>
+              </router-link>
+            </el-menu-item>
+            <el-menu-item index="4">
+              <router-link class="router" to="/register">
+                <div>注册</div>
               </router-link>
             </el-menu-item>
           </div>
@@ -115,6 +120,7 @@ export default {
    height: 60px;
    /* display: inline-block; */
    display: flex;
+   outline: none;
   }
 
   .headerRight{
