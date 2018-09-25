@@ -38,7 +38,7 @@
         <source src="../assets/movie.mp4" type="video/mp4">
         <!-- source src="../assets/movie.ogg" type="video/ogg"-->
       </video>
-      <button id="btn1" v-on:click="myClick">点我</button>
+      <!-- <button id="btn1" v-on:click="myClick">点我</button> -->
       <p> {{resp}} </p>
     </div>
     
@@ -92,8 +92,8 @@ video {
   flex-flow: row wrap;
   justify-content: space-between;
 }
-#btn1{
+/* #btn1{
   width: 60px;
   height: 60px;
-}
+} */
 </style>

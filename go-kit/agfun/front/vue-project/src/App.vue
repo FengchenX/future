@@ -3,16 +3,26 @@
     <el-container>
       <el-header>
         <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
-          <el-menu-item index="1">
-            <router-link class="router" to="/view1">
-              <div>主页</div>
-            </router-link>
-          </el-menu-item>
-          <el-menu-item index="2">
-            <router-link class="router" to="/view2">
-              <div>处理中心</div>
-            </router-link>
-          </el-menu-item>
+          <div class="headerLeft">
+            <el-menu-item index="1">
+              <router-link class="router" to="/view1">
+                <div>主页</div>
+              </router-link>
+            </el-menu-item>
+            <el-menu-item index="2">
+              <router-link class="router" to="/view2">
+                <div>处理中心</div>
+              </router-link>
+            </el-menu-item>
+          </div>
+          
+          <div class="headerRight">
+            <el-menu-item index="3">
+              <router-link class="router" to="/view3">
+                <div>登录</div>
+              </router-link>
+            </el-menu-item>
+          </div>
         </el-menu>
       </el-header>
 
@@ -50,14 +60,14 @@ export default {
 </script>
 
 <style scoped>
-#app {
+/* #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
   margin-top: 0px;
-}
+} */
   .router {
     color: black;
     text-decoration: none;
@@ -67,8 +77,13 @@ export default {
   .el-header {
     background-color: #B3C0D1;
     color: #333;
-    text-align: center;
+    /* text-align: center; */
     line-height: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    /* flex-wrap: nowrap; */
   }
 
   .el-footer {
@@ -94,12 +109,15 @@ export default {
   .router div {
     width: 60px;
   }
-  /* .el-aside {
-    background-color: #D3DCE6;
-    color: #333;
-    text-align: center;
-    line-height: 200px;
-  } */
-  
+  .headerLeft{
+   width: 60%;
+   height: 60px;
+   /* display: inline-block; */
+  }
+  .headerRight{
+    height: 60px;
+    width: 20%;
+    /* display: inline-block; */
+  }
   
 </style>
