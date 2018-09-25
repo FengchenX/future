@@ -41,7 +41,8 @@ func main() {
 	// on, but we do it here for demonstration purposes.
 	fs := flag.NewFlagSet("addsvc", flag.ExitOnError)
 	var (
-		debugAddr      = fs.String("debug.addr", ":8080", "Debug and metrics listen address")
+		// debugAddr      = fs.String("debug.addr", ":8080", "Debug and metrics listen address")
+		debugAddr      = fs.String("debug.addr", ":8085", "Debug and metrics listen address")
 		httpAddr       = fs.String("http-addr", ":8081", "HTTP listen address")
 		grpcAddr       = fs.String("grpc-addr", ":8082", "gRPC listen address")
 		thriftAddr     = fs.String("thrift-addr", ":8083", "Thrift listen address")

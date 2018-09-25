@@ -79,9 +79,11 @@ export default {
     color: #333;
     /* text-align: center; */
     line-height: 60px;
+
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    /* flex-direction: row;
+    justify-content: space-between; */
+    flex-flow: row space-between;
     align-items: baseline;
     /* flex-wrap: nowrap; */
   }
@@ -110,13 +112,13 @@ export default {
     width: 60px;
   }
   .headerLeft{
-   width: 60%;
+   width: 60px;
    height: 60px;
    /* display: inline-block; */
   }
   .headerRight{
+    width: 60px;
     height: 60px;
-    width: 20%;
     /* display: inline-block; */
   }
   
