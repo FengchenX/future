@@ -60,14 +60,15 @@ export default {
 </script>
 
 <style scoped>
-/* #app {
+#app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
   margin-top: 0px;
-} */
+
+}
   .router {
     color: black;
     text-decoration: none;
@@ -79,13 +80,6 @@ export default {
     color: #333;
     /* text-align: center; */
     line-height: 60px;
-
-    display: flex;
-    /* flex-direction: row;
-    justify-content: space-between; */
-    flex-flow: row space-between;
-    align-items: baseline;
-    /* flex-wrap: nowrap; */
   }
 
   .el-footer {
@@ -99,27 +93,34 @@ export default {
     background-color: #E9EEF3;
     color: #333;
     text-align: center;
-    line-height: 160px;
+    line-height: 60px;
   }
   .el-menu {
     background-color: #B3C0D1;
     color: #333;
-    text-align: center;
     line-height: 60px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: nowrap;
   }
   
   .router div {
     width: 60px;
   }
   .headerLeft{
-   width: 60px;
+   width: 80%;
    height: 60px;
    /* display: inline-block; */
+   display: flex;
   }
   .headerRight{
-    width: 60px;
+    width: 5%;
     height: 60px;
     /* display: inline-block; */
+    display: flex;
   }
   
 </style>
