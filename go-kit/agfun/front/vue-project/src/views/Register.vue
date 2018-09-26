@@ -39,6 +39,7 @@ export default {
     methods: {
         register: function(){
             console.log('register', this.userName, this.password1, this.password2);
+            this.open()
             axios.post('/my-app/register', {
                 FirstName: 'Fred',
                 LastName: 'Flintstone'
@@ -64,6 +65,13 @@ export default {
             console.log('login')
             this.$router.push({path:'/login'});
         },
+        open: function(){
+            this.$notify({
+                title: '成功',
+                message: '这是一条成功的提示消息',
+                type: 'success'
+            })
+        }
         
     }
 }
@@ -84,3 +92,4 @@ export default {
 
 }
 </style>
+
