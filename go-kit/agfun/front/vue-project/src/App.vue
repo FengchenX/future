@@ -52,8 +52,8 @@ export default {
   },
   data() {
       return {
-        activeIndex: '1',
-        activeIndex2: '1'
+        activeIndex: '1'
+        // activeIndex2: '1'
       };
     },
   methods: {
@@ -65,7 +65,7 @@ export default {
 </script>
 
 <style scoped>
-#app {
+/* #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -73,11 +73,14 @@ export default {
   color: #2c3e50;
   margin-top: 0px;
 
-}
+} */
 .router {
   color: black;
   text-decoration: none;
   /* line-height: 60px; */
+}
+.router.router-link-exact-active.active {
+  color: #409EFF;
 }
 
 .el-header {
@@ -129,5 +132,6 @@ export default {
   /* display: inline-block; */
   display: flex;
 }
-  
+
+
 </style>
