@@ -7,6 +7,7 @@
  
 <script>
 // import MyVue from '../components/MyVue.vue'
+import axios from 'axios'
 
 export default {
     name: 'login',

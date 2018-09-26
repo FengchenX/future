@@ -21,6 +21,7 @@
  
 <script>
 // import MyVue from '../components/MyVue.vue'
+import axios from 'axios'
 
 export default {
     name: 'register',
@@ -31,17 +32,39 @@ export default {
         return {
             userName: '',
             password1: '',
-            password2: ''
+            password2: '',
+            resp: ''
         }
     },
     methods: {
         register: function(){
-            console.log('register', this.userName, this.password1, this.password2, this);
-            this.$router.push({path:'/view1'});
+            console.log('register', this.userName, this.password1, this.password2);
+            axios.post('/my-app/register', {
+                FirstName: 'Fred',
+                LastName: 'Flintstone'
+                })
+                .then(response => {
+                    console.log(response);
+                    this.resp = response.data;
+                })
+                .catch(response => {
+                    console.log(response);
+                });
+            const { code, msg } = this.resp
+            if(code === 0) {
+                //success
+                this.$router.push({path:'/view1'});
+
+            } else {
+                //fail
+                console.log('fail')
+            }
         },
         login: function(){
             console.log('login')
-        }
+            this.$router.push({path:'/login'});
+        },
+        
     }
 }
 </script>
