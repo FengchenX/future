@@ -74,60 +74,60 @@ export default {
   margin-top: 0px;
 
 }
-  .router {
-    color: black;
-    text-decoration: none;
-    /* line-height: 60px; */
-  }
+.router {
+  color: black;
+  text-decoration: none;
+  /* line-height: 60px; */
+}
 
-  .el-header {
-    background-color: #B3C0D1;
-    color: #333;
-    /* text-align: center; */
-    line-height: 60px;
-  }
+.el-header {
+  background-color: #B3C0D1;
+  color: #333;
+  /* text-align: center; */
+  line-height: 60px;
+}
 
-  .el-footer {
-    background-color: #B3C0D1;
-    color: #333;
-    text-align: center;
-    line-height: 60px;
-  }
+.el-footer {
+  background-color: #B3C0D1;
+  color: #333;
+  text-align: center;
+  line-height: 60px;
+}
 
-  .el-main {
-    background-color: #E9EEF3;
-    color: #333;
-    text-align: center;
-    line-height: 60px;
-  }
-  .el-menu {
-    background-color: #B3C0D1;
-    color: #333;
-    line-height: 60px;
+.el-main {
+  background-color: #E9EEF3;
+  color: #333;
+  text-align: center;
+  line-height: 60px;
+}
+.el-menu {
+  background-color: #B3C0D1;
+  color: #333;
+  line-height: 60px;
 
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: baseline;
-    flex-wrap: nowrap;
-  }
-  
-  .router div {
-    width: 60px;
-  }
-  .headerLeft{
-   width: 80%;
-   height: 60px;
-   /* display: inline-block; */
-   display: flex;
-   outline: none;
-  }
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: nowrap;
+}
 
-  .headerRight{
-    width: 5%;
-    height: 60px;
-    /* display: inline-block; */
-    display: flex;
-  }
+.router div {
+  width: 60px;
+}
+.headerLeft{
+  width: 80%;
+  height: 60px;
+  /* display: inline-block; */
+  display: flex;
+  outline: none;
+}
+
+.headerRight{
+  width: 5%;
+  height: 60px;
+  /* display: inline-block; */
+  display: flex;
+}
   
 </style>
