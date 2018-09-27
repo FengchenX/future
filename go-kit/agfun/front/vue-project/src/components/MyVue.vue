@@ -38,6 +38,28 @@
         <source src="../assets/movie.mp4" type="video/mp4">
         <!-- source src="../assets/movie.ogg" type="video/ogg"-->
       </video>
+
+
+       <div class="videoPlayer" id="videoContainer">
+            <video id="video"
+                  width="600" height="360"
+                  preload controls
+            >
+              <source src="http://nettuts.s3.amazonaws.com/763_sammyJSIntro/trailer_test.mp4" type='video/mp4'>
+              <source src="http://nettuts.s3.amazonaws.com/763_sammyJSIntro/trailer_test.ogg" type='video/ogg'>
+            </video>
+            <div id="videoControls">
+              <div id="progressWrap">
+                <div id="playProgress">
+                  <span id="showProgress">0</span>
+                </div>
+              </div>
+              <div>
+                <button id="playBtn" title="Play"> 播放 </button>
+                <button id="fullScreenBtn" title="FullScreen Toggle">  全屏 </button>
+              </div>
+            </div>
+        </div>
       <!-- <button id="btn1" v-on:click="myClick">点我</button> -->
       <p> {{resp}} </p>
     </div>
