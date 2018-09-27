@@ -1,7 +1,7 @@
 package service
 
 import (
-	"github.com/feng/future/go-kit/agfun/app-server/model"
+	"github.com/feng/future/go-kit/agfun/app-server/entity"
 )
 
 // AppService app服务接口

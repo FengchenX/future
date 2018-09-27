@@ -5,7 +5,7 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 	//gorm 驱动
 	"github.com/feng/future/go-kit/agfun/app-server/config"
-	"github.com/feng/future/go-kit/agfun/app-server/model"
+	"github.com/feng/future/go-kit/agfun/app-server/entity"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"github.com/sirupsen/logrus"
