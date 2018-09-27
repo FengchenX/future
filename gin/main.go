@@ -20,7 +20,7 @@ func main() {
 		if err := c.BindJSON(&req); err != nil {
 			panic(err)
 		}
-		c.String(http.StatusOK, "test")
+		c.JSON(http.StatusOK, nil)
 	})
     router.Run(":8000")
 }
