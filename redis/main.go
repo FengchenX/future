@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/garyburd/redigo/redis"
 	"log"
+	"time"
 )
 
 func main() {
@@ -11,7 +12,8 @@ func main() {
 	//args()
 	//fbool()
 	//sortset()
-	sortset1()
+	//sortset1()
+	expireTime()
 }
 
 func normal() {
@@ -42,24 +44,24 @@ func args() {
 	defer conn.Close()
 
 	var p1, p2 struct {
-		Title string `redis:"title"`
+		Title  string `redis:"title"`
 		Author string `redis:"author"`
-		Body string `redis:"body"`
+		Body   string `redis:"body"`
 	}
 	p1.Title = "Example"
 	p1.Author = "Gary"
 	p1.Body = "Hello"
-	
+
 	if _, err := conn.Do("HMSET", redis.Args{}.Add("id1").AddFlat(&p1)...); err != nil {
 
 		fmt.Println(err)
 		return
 	}
 
-	m := map[string]string {
-		"title": "Example2",
+	m := map[string]string{
+		"title":  "Example2",
 		"author": "Steve",
-		"body": "Map",
+		"body":   "Map",
 	}
 	if _, err := conn.Do("HMSET", redis.Args{}.Add("id2").AddFlat(m)...); err != nil {
 		fmt.Println(err)
@@ -81,7 +83,7 @@ func args() {
 }
 
 func fbool() {
-	c, err := redis.Dial("tcp", "127.0.0.1:6379")	
+	c, err := redis.Dial("tcp", "127.0.0.1:6379")
 	if err != nil {
 		fmt.Println(err)
 		return
@@ -94,7 +96,7 @@ func fbool() {
 }
 
 func sortset() {
-	c, err := redis.Dial("tcp", "127.0.0.1:6379")	
+	c, err := redis.Dial("tcp", "127.0.0.1:6379")
 	if err != nil {
 		fmt.Println(err)
 		return
@@ -103,7 +105,7 @@ func sortset() {
 
 	for i, member := range []string{"red", "blue", "green"} {
 		c.Do("ZADD", "zset", i, member)
-	}	
+	}
 	c.Do("ZADD", "zset", 1, "uio")
 	resp, err := c.Do("ZCARD", "zset")
 	if err != nil {
@@ -157,9 +159,72 @@ func sortset1() {
 }
 
 type book struct {
-	Title string
+	Title  string
 	Author string
-	Body string
+	Body   string
 }
 
 
+//only set support expiretime
+func expireTime() {
+	conn, err := redis.Dial("tcp", "39.108.80.66:6379")
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer conn.Close()
+
+	conn.Do("AUTH", "launch*2018")
+	var p1, p2 struct {
+		Title  string `redis:"title"`
+		Author string `redis:"author"`
+		Body   string `redis:"body"`
+	}
+	p1.Title = "Example"
+	p1.Author = "Gary"
+	p1.Body = "Hello"
+
+	_, err = conn.Do("SET", redis.Args{}.Add("go-key").Add("go-value").Add("EX").Add(3)...)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	if _, err := conn.Do("HMSET", redis.Args{}.Add("id10").AddFlat(&p1).Add("EX").Add(3)...); err != nil {
+
+		fmt.Println(err)
+		return
+	}
+
+	fmt.Println(redis.Args{}.Add("id10").AddFlat(&p1).Add("EX").Add(3))
+	m := map[string]string{
+		"title":  "Example2",
+		"author": "Steve",
+		"body":   "Map",
+	}
+	if _, err := conn.Do("HMSET", redis.Args{}.Add("id11").AddFlat(m)...); err != nil {
+		fmt.Println(err)
+		return
+	}
+	s, e := redis.String(conn.Do("GET", "go-key"))
+	if e != nil {
+		fmt.Println(e)
+		return
+	}
+	fmt.Println("1111", s) 
+	time.Sleep(4 * time.Second)
+	fmt.Println("****************************")
+	s, _ = redis.String(conn.Do("GET", "go-key")) 
+	fmt.Println("1111", s)
+	for _, id := range []string{"id10", "id11"} {
+		v, err := redis.Values(conn.Do("HGETALL", id))
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		if err := redis.ScanStruct(v, &p2); err != nil {
+			fmt.Println(err)
+			return
+		}
+		fmt.Printf("%+v\n", p2)
+	}
+}
