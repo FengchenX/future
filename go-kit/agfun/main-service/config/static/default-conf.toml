@@ -1,2 +1,3 @@
 
-MysqlAddr = "launch:root@tcp(192.168.83.79:3306)/app_server?charset=utf8&parseTime=true&loc=Local"
+# MysqlAddr = "launch:root@tcp(192.168.83.79:3306)/app_server?charset=utf8&parseTime=true&loc=Local"
+MysqlAddr = "root:feng@tcp(localhost:3306)/app-server?charset=utf8&parseTime=true&loc=Local"
