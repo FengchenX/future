@@ -6,11 +6,11 @@ import (
 
 // AppService app服务接口
 type AppService interface {
-	CreateAccount(req api.CreateAccountReq) (api.CreateAccountResp, error)
+	CreateAccount(req api.CreateAccountReq) (api.Resp, error)
 	// Account(req api.AccountReq) (api.CreateAccountResp, error)
 	// UpdateAccount(req api.UpdateAccountReq) (api.UpdateAccountResp, error)
 	// DeleteAccount(req api.) (int, string)
-	// Login()
+	Login(req api.LoginReq) (api.Resp, error)
 }
 
 //AppSvc app服务实例
