@@ -1,6 +1,7 @@
 package service
 
 import (
+	"fmt"
 	// "github.com/feng/future/go-kit/agfun/main-service/dao"
 	// "github.com/feng/future/go-kit/agfun/main-service/entity"
 	// "github.com/sirupsen/logrus"
@@ -9,22 +10,12 @@ import (
 
 //CreateAccount 创建账户
 func (app *AppSvc) CreateAccount(req api.CreateAccountReq) (api.CreateAccountResp, error) {
-	// var resp api.CreateAccountResp
-	// var err error
-	// newAccount := entity.UserAccount{
-	// 	Account:  req.Account,
-	// 	Password: req.Password,
-	// }
-	// if err = dao.CreateAccount(&newAccount); err != nil {
-	// 	logrus.Errorln("CreateAccount newAccount", newAccount)
-	// 	resp.Code = 11100
-	// 	resp.Msg = err.Error()
-	// 	return resp, err
-	// }
-	// resp.Code = 0
-	// resp.Msg = "success"
-	// return resp, err
-	panic("todo")
+	var resp api.CreateAccountResp
+	var err error
+	fmt.Println("CreateAccount")
+	resp.Code = 0
+	resp.Msg = "success"
+	return resp, err
 }
 
 //Account 获取账户信息

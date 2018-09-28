@@ -5,6 +5,7 @@ import (
 	// "fmt"
 	"github.com/gin-gonic/gin"
 	// "net/http"
+	"github.com/feng/future/go-kit/agfun/main-service/service"
 )
 
 func init() {
@@ -12,7 +13,6 @@ func init() {
 	router.Use(gin.Logger())
 	router.Use(gin.Recovery())
 	router.Use(loginCheckMidWare)
-	initUserRouter()
 }
 
 var router *gin.Engine
@@ -30,6 +30,8 @@ func loginCheckMidWare(ctx *gin.Context) {
 	// ctx.Next()
 }
 
-func Start() {
-	router.Run(":8080")
+func Start(svc service.AppService) {
+	initUserRouter(svc)
+	router.Run(":8081")
+
 }

@@ -1,51 +1,51 @@
 package transport
 
 import (
-	"github.com/feng/future/go-kit/agfun/main-service/service"
-	kithttp "github.com/go-kit/kit/transport/http"
+	// "github.com/feng/future/go-kit/agfun/main-service/service"
+	// kithttp "github.com/go-kit/kit/transport/http"
 	"net/http"
 
 	"bytes"
 	"context"
 	"encoding/json"
-	"github.com/feng/future/go-kit/agfun/main-service/endpoint"
-	"github.com/gorilla/mux"
+	// "github.com/feng/future/go-kit/agfun/main-service/endpoint"
+	// "github.com/gorilla/mux"
 	"io/ioutil"
 	
 )
 
 //MakeHandler 创建handler
-func MakeHandler(svc service.AppService) http.Handler {
-	opts := []kithttp.ServerOption{
-		kithttp.ServerErrorEncoder(encodeError),
-	}
-	getAccountHandler := kithttp.NewServer(
-		endpoint.MakeAccountEndpoint(svc),
-		decodeAccountRequest,
-		encodeResponse,
-		opts...,
-	)
-	createAccountHandler := kithttp.NewServer(
-		endpoint.MakeCreateAccountEndpoint(svc),
-		decodeCreateAccountRequest,
-		encodeResponse,
-		opts...,
-	)
+// func MakeHandler(svc service.AppService) http.Handler {
+// 	opts := []kithttp.ServerOption{
+// 		kithttp.ServerErrorEncoder(encodeError),
+// 	}
+// 	getAccountHandler := kithttp.NewServer(
+// 		endpoint.MakeAccountEndpoint(svc),
+// 		decodeAccountRequest,
+// 		encodeResponse,
+// 		opts...,
+// 	)
+// 	createAccountHandler := kithttp.NewServer(
+// 		endpoint.MakeCreateAccountEndpoint(svc),
+// 		decodeCreateAccountRequest,
+// 		encodeResponse,
+// 		opts...,
+// 	)
 
-	updateAccountHandler := kithttp.NewServer(
-		endpoint.MakeUpdateAccountEndpoint(svc),
-		decodeUpdateAccountRequest,
-		encodeResponse,
-		opts...,
-	)
-	r := mux.NewRouter()
+// 	updateAccountHandler := kithttp.NewServer(
+// 		endpoint.MakeUpdateAccountEndpoint(svc),
+// 		decodeUpdateAccountRequest,
+// 		encodeResponse,
+// 		opts...,
+// 	)
+// 	r := mux.NewRouter()
 
-	r.Handle("/appserver/query-account", getAccountHandler).Methods("GET")
-	r.Handle("/appserver/create-account", createAccountHandler).Methods("POST")
-	r.Handle("/appserver/update-account", updateAccountHandler).Methods("POST")
+// 	r.Handle("/appserver/query-account", getAccountHandler).Methods("GET")
+// 	r.Handle("/appserver/create-account", createAccountHandler).Methods("POST")
+// 	r.Handle("/appserver/update-account", updateAccountHandler).Methods("POST")
 
-	return r
-}
+// 	return r
+// }
 
 // encode errors from business-logic
 func encodeError(_ context.Context, err error, w http.ResponseWriter) {
