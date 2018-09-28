@@ -27,11 +27,27 @@ func decodeUpdateAccountRequest(ctx *gin.Context) (interface{}, error) {
 	panic("todo")
 }
 
+func decodeLoginRequest(ctx *gin.Context) (interface{}, error) {
+	var request api.LoginReq
+	if err := ctx.BindJSON(&request); err != nil {
+		return nil, err
+	}
+	return request, nil
+}
+
 //CreateAccount 创建账户
 func CreateAccount(svc service.AppService) gin.HandlerFunc {
 	return func(ctx *gin.Context) {
 		req, _ := decodeCreateAccountRequest(ctx)
 		resp, _ := endpoint.MakeCreateAccountEndpoint(svc)(context.Background(), req)
+		ctx.JSON(http.StatusOK, resp)
+	}
+}
+
+func Login(svc service.AppService) gin.HandlerFunc {
+	return func(ctx *gin.Context) {
+		req, _ := decodeLoginRequest(ctx)
+		resp, _ := endpoint.MakeLoginEndpoint(svc)(context.Background(), req)
 		ctx.JSON(http.StatusOK, resp)
 	}
 }

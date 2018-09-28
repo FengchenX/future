@@ -23,7 +23,7 @@ func MakeAccountEndpoint(svc service.AppService) Endpoint {
 func MakeCreateAccountEndpoint(svc service.AppService) Endpoint {
 	return func(ctx context.Context, request interface{}) (interface{}, error) {
 		req := request.(api.CreateAccountReq)
-		var resp api.CreateAccountResp
+		var resp api.Resp
 		resp, _ = svc.CreateAccount(req)
 
 		return resp, nil
@@ -34,8 +34,18 @@ func MakeCreateAccountEndpoint(svc service.AppService) Endpoint {
 func MakeUpdateAccountEndpoint(svc service.AppService) Endpoint {
 	return func(ctx context.Context, request interface{}) (interface{}, error) {
 		req := request.(api.UpdateAccountReq)
-		var resp api.UpdateAccountResp
+		var resp api.Resp
 		fmt.Println(req)
+		return resp, nil
+	}
+}
+
+//MakeLoginEndpoint 登录端点
+func MakeLoginEndpoint(svc service.AppService) Endpoint {
+	return func(ctx context.Context, request interface{}) (interface{}, error) {
+		req := request.(api.LoginReq)
+		var resp api.Resp
+		resp, _ = svc.Login(req)
 		return resp, nil
 	}
 }

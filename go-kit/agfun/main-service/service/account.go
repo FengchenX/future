@@ -1,21 +1,28 @@
 package service
 
 import (
-	"fmt"
 	"github.com/feng/future/go-kit/agfun/main-service/dao"
-	// "github.com/feng/future/go-kit/agfun/main-service/entity"
+	"github.com/feng/future/go-kit/agfun/main-service/entity"
 	// "github.com/sirupsen/logrus"
-	"github.com/feng/future/go-kit/agfun/main-service/protocol/api"
 	"common-utilities/encrypt"
 	"common-utilities/utilities"
+	"github.com/feng/future/go-kit/agfun/main-service/protocol/api"
+	"github.com/feng/future/go-kit/agfun/main-service/store"
 )
 
 //CreateAccount 创建账户
 func (app *AppSvc) CreateAccount(req api.CreateAccountReq) (api.Resp, error) {
 	var resp api.Resp
 	var err error
-	fmt.Println("CreateAccount")
-	resp.Success("success", nil)
+	userAccount := entity.UserAccount{
+		Account:  req.Account,
+		Password: req.Password,
+	}
+	if err = dao.CreateAccount(&userAccount); err != nil {
+		panic(err)
+	}
+	createResp := api.CreateAccountResp{}
+	resp.Success("success", createResp)
 	return resp, err
 }
 
@@ -60,15 +67,18 @@ func (app *AppSvc) UpdateAccount(req api.UpdateAccountReq) (api.Resp, error) {
 
 func (app *AppSvc) Login(req api.LoginReq) (api.Resp, error) {
 	var resp api.Resp
-	myAccount, err := dao.Account(req.UserName)
-	if err != nil {
+	var err error
+	var loginResp api.LoginResp
+
+	myAccount, e := dao.Account(req.UserName)
+	if e != nil {
 		panic(err)
 	}
 	if myAccount.ID == 0 || req.Pwd != myAccount.Password {
-		return resp.Failed("用户名或密码错误"), nil
+		return resp.Failed("用户名或密码错误"), err
 	}
 	accessToken := encrypt.SHA1(utilities.GetRandomStr(32) + req.Pwd)
-	
-	panic("todo")
-
+	store.CacheUser(accessToken, myAccount.ID)
+	loginResp.AccessToken = accessToken
+	return resp.Success("success", loginResp), err
 }
