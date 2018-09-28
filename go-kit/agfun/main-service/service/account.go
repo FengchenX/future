@@ -6,6 +6,8 @@ import (
 	// "github.com/feng/future/go-kit/agfun/main-service/entity"
 	// "github.com/sirupsen/logrus"
 	"github.com/feng/future/go-kit/agfun/main-service/protocol/api"
+	"common-utilities/encrypt"
+	"common-utilities/utilities"
 )
 
 //CreateAccount 创建账户
@@ -65,7 +67,8 @@ func (app *AppSvc) Login(req api.LoginReq) (api.Resp, error) {
 	if myAccount.ID == 0 || req.Pwd != myAccount.Password {
 		return resp.Failed("用户名或密码错误"), nil
 	}
-	accessToken := 
+	accessToken := encrypt.SHA1(utilities.GetRandomStr(32) + req.Pwd)
+	
 	panic("todo")
 
 }
