@@ -44,6 +44,7 @@ func CreateAccount(svc service.AppService) gin.HandlerFunc {
 	}
 }
 
+//Login 登录
 func Login(svc service.AppService) gin.HandlerFunc {
 	return func(ctx *gin.Context) {
 		req, _ := decodeLoginRequest(ctx)
