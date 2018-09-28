@@ -1,16 +1,16 @@
 package service
 
 import (
-	"github.com/feng/future/go-kit/agfun/app-server/entity"
+	"github.com/feng/future/go-kit/agfun/app-server/protocol/api"
 )
 
 // AppService app服务接口
 type AppService interface {
-	CreateAccount(account, password string) (int, string)
-	Account(account string) (int, string, model.UserAccount)
-	UpdateAccount(account string, userAccount model.UserAccount) (int, string)
-	DeleteAccount(account string) (int, string)
-	Login()
+	CreateAccount(req api.CreateAccountReq) (api.CreateAccountResp, error)
+	Account(req api.AccountReq) (api.CreateAccountResp, error)
+	UpdateAccount(req api.UpdateAccountReq) (api.UpdateAccountResp, error)
+	// DeleteAccount(req api.) (int, string)
+	// Login()
 }
 
 //AppSvc app服务实例

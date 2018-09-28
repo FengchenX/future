@@ -1,0 +1,12 @@
+Port="7791"
+#日志
+LogPath="./logs"
+LogFileName="saas_background"
+LogMaxAge=365
+LogRotationTime=24
+#redis
+RedisAddr="39.108.80.66:6379"
+RedisPwd="launch*2018"
+RedisDB=1
+MySqlAddr="root:launch*CS2018@tcp(39.108.80.66:3306)/saas_test?charset=utf8&parseTime=true&loc=Local"
+OrderServerMySqlAddr="root:launch*CS2018@tcp(39.108.80.66:3306)/order_server_test?charset=utf8&parseTime=true&loc=Local"

@@ -42,7 +42,7 @@ func MakeCreateAccountEndpoint(svc service.AppService) endpoint.Endpoint {
 func MakeUpdateAccountEndpoint(svc service.AppService) endpoint.Endpoint {
 	return func(ctx context.Context, request interface{}) (interface{}, error) {
 		req := request.(api.UpdateAccountReq)
-		userAccount := model.UserAccount{
+		userAccount := entity.UserAccount{
 			Name:      req.Name,
 			BankCard:  req.BankCard,
 			WeChat:    req.WeChat,

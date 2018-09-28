@@ -43,7 +43,7 @@ func DBInst() *gorm.DB {
 }
 
 func autoMigrate() {
-	if mydb := DBInst().AutoMigrate(&model.UserAccount{}); mydb.Error != nil {
+	if mydb := DBInst().AutoMigrate(&entity.UserAccount{}); mydb.Error != nil {
 		logrus.Error("autoMigrate UserAccount", mydb.Error)
 	}
 }
