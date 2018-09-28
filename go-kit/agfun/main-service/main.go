@@ -1,16 +1,13 @@
 package main
 
 import (
-	"flag"
+	"fmt"
+	kitlogmw "github.com/feng/future/go-kit/agfun/main-service/middleware/log"
+	"github.com/feng/future/go-kit/agfun/main-service/router"
 	"github.com/feng/future/go-kit/agfun/main-service/service"
-	// "github.com/feng/future/go-kit/agfun/main-service/transport"
-	// "github.com/prometheus/client_golang/prometheus/promhttp"
+	"github.com/sirupsen/logrus"
 	"net/http"
 	"os"
-	kitlogmw "github.com/feng/future/go-kit/agfun/main-service/middleware/log"
-	"fmt"
-	"github.com/sirupsen/logrus"
-	"github.com/feng/future/go-kit/agfun/main-service/router"
 )
 
 func init() {
@@ -28,45 +25,12 @@ func init() {
 }
 
 func main() {
-	// var (
-	// 	listen = flag.String("listen", ":8080", "http listen address")
-	// 	//proxy =flag.String("proxy", "", "Optional comma-separated list of URLs to proxy uppercase requests")
-	// )
-	flag.Parse()
 
 	var svc service.AppService
 	svc = &service.AppSvc{}
 	svc = kitlogmw.LoggingMiddleware()(svc)
 	router.Start(svc)
-	// mux := http.NewServeMux()
 
-	// mux.Handle("/appserver/", transport.MakeHandler(svc))
-
-	// http.HandleFunc("/check", consulCheck)
-
-	// http.Handle("/metrics", promhttp.Handler())
-	// http.Handle("/", accessControl(mux))
-
-	// errs := make(chan error, 1)
-	// go func() {
-	// 	logrus.Infoln("transport", "http", "address", *listen, "msg", "listening")
-	// 	errs <- http.ListenAndServe(*listen, nil)
-	// }()
-	// logrus.Infoln("terminated", <-errs)
-}
-
-func accessControl(h http.Handler) http.Handler {
-	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Set("Access-Control-Allow-Origin", "*")
-		w.Header().Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
-		w.Header().Set("Access-Control-Allow-Headers", "Origin, Content-Type")
-
-		if r.Method == "OPTIONS" {
-			return
-		}
-
-		h.ServeHTTP(w, r)
-	})
 }
 
 func consulCheck(w http.ResponseWriter, r *http.Request) {

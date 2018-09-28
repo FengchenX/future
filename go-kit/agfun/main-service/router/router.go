@@ -1,4 +1,3 @@
-
 package router
 
 import (
@@ -16,7 +15,6 @@ func init() {
 }
 
 var router *gin.Engine
-
 
 func loginCheckMidWare(ctx *gin.Context) {
 	// uri := ctx.Request.RequestURI

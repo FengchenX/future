@@ -11,7 +11,6 @@ import (
 	// "github.com/feng/future/go-kit/agfun/main-service/endpoint"
 	// "github.com/gorilla/mux"
 	"io/ioutil"
-	
 )
 
 //MakeHandler 创建handler

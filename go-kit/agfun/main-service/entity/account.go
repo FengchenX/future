@@ -12,8 +12,6 @@ type UserAccount struct {
 	Account  string
 	Password string
 
-	PermanentID string //用户所有操作使用此ID
-
 	Name      string
 	BankCard  string
 	WeChat    string

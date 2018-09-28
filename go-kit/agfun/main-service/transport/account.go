@@ -2,15 +2,15 @@ package transport
 
 import (
 	"context"
-	"github.com/feng/future/go-kit/agfun/main-service/protocol/api"
-	"net/http"
-	"github.com/gin-gonic/gin"
 	"github.com/feng/future/go-kit/agfun/main-service/endpoint"
+	"github.com/feng/future/go-kit/agfun/main-service/protocol/api"
 	"github.com/feng/future/go-kit/agfun/main-service/service"
+	"github.com/gin-gonic/gin"
+	"net/http"
 )
 
 func decodeAccountRequest(ctx *gin.Context) (interface{}, error) {
-	
+
 	panic("todo")
 }
 
@@ -23,10 +23,9 @@ func decodeCreateAccountRequest(ctx *gin.Context) (interface{}, error) {
 }
 
 func decodeUpdateAccountRequest(ctx *gin.Context) (interface{}, error) {
-	
+
 	panic("todo")
 }
-
 
 //CreateAccount 创建账户
 func CreateAccount(svc service.AppService) gin.HandlerFunc {

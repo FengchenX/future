@@ -39,7 +39,7 @@ func (app *AppSvc) UpdateAccount(req api.UpdateAccountReq) (api.UpdateAccountRes
 	// var resp api.UpdateAccountResp
 	// var err error
 	// userAccount := entity.UserAccount{
-		
+
 	// }
 	// if err := dao.UpdateAccount(req.Account, req.); err != nil {
 	// 	code = 11100

@@ -1,8 +1,8 @@
 package endpoint
 
 import (
-	"fmt"
 	"context"
+	"fmt"
 	// "github.com/feng/future/go-kit/agfun/main-service/entity"
 	"github.com/feng/future/go-kit/agfun/main-service/protocol/api"
 	"github.com/feng/future/go-kit/agfun/main-service/service"
@@ -25,7 +25,7 @@ func MakeCreateAccountEndpoint(svc service.AppService) Endpoint {
 		req := request.(api.CreateAccountReq)
 		var resp api.CreateAccountResp
 		resp, _ = svc.CreateAccount(req)
-		
+
 		return resp, nil
 	}
 }
