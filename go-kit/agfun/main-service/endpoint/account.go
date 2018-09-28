@@ -2,9 +2,9 @@ package endpoint
 
 import (
 	"context"
-	"github.com/feng/future/go-kit/agfun/app-server/entity"
-	"github.com/feng/future/go-kit/agfun/app-server/protocol/api"
-	"github.com/feng/future/go-kit/agfun/app-server/service"
+	"github.com/feng/future/go-kit/agfun/main-service/entity"
+	"github.com/feng/future/go-kit/agfun/main-service/protocol/api"
+	"github.com/feng/future/go-kit/agfun/main-service/service"
 	"github.com/go-kit/kit/endpoint"
 )
 

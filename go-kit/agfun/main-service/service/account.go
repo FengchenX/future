@@ -1,10 +1,10 @@
 package service
 
 import (
-	"github.com/feng/future/go-kit/agfun/app-server/dao"
-	"github.com/feng/future/go-kit/agfun/app-server/entity"
+	"github.com/feng/future/go-kit/agfun/main-service/dao"
+	"github.com/feng/future/go-kit/agfun/main-service/entity"
 	"github.com/sirupsen/logrus"
-	"github.com/feng/future/go-kit/agfun/app-server/protocol/api"
+	"github.com/feng/future/go-kit/agfun/main-service/protocol/api"
 )
 
 //CreateAccount 创建账户

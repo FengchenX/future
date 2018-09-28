@@ -1,14 +1,14 @@
 package transport
 
 import (
-	"github.com/feng/future/go-kit/agfun/app-server/service"
+	"github.com/feng/future/go-kit/agfun/main-service/service"
 	kithttp "github.com/go-kit/kit/transport/http"
 	"net/http"
 
 	"bytes"
 	"context"
 	"encoding/json"
-	"github.com/feng/future/go-kit/agfun/app-server/endpoint"
+	"github.com/feng/future/go-kit/agfun/main-service/endpoint"
 	"github.com/gorilla/mux"
 	"io/ioutil"
 )

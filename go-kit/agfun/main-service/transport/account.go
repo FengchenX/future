@@ -4,7 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"github.com/feng/future/go-kit/agfun/app-server/protocol/api"
+	"github.com/feng/future/go-kit/agfun/main-service/protocol/api"
 	"net/http"
 	//"github.com/gorilla/mux"
 )

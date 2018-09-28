@@ -1,7 +1,7 @@
 package log
 
 import (
-	"github.com/feng/future/go-kit/agfun/app-server/service"
+	"github.com/feng/future/go-kit/agfun/main-service/service"
 )
 
 //LoggingMiddleware 日志中间件

@@ -2,12 +2,12 @@ package main
 
 import (
 	"flag"
-	"github.com/feng/future/go-kit/agfun/app-server/service"
-	"github.com/feng/future/go-kit/agfun/app-server/transport"
+	"github.com/feng/future/go-kit/agfun/main-service/service"
+	"github.com/feng/future/go-kit/agfun/main-service/transport"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"net/http"
 	"os"
-	//kitlogmw "github.com/feng/future/go-kit/agfun/app-server/log"
+	//kitlogmw "github.com/feng/future/go-kit/agfun/main-service/log"
 	"fmt"
 	"github.com/sirupsen/logrus"
 )
