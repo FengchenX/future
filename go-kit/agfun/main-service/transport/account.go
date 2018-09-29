@@ -54,7 +54,7 @@ func Login(svc service.AppService) gin.HandlerFunc {
 	}
 }
 
-func Account(svc service.AppService) gin.HandlerFunc{
+func Account(svc service.AppService) gin.HandlerFunc {
 	return func(ctx *gin.Context) {
 		req, _ := decodeAccountRequest(ctx)
 		resp, _ := endpoint.MakeAccountEndpoint(svc)(context.Background(), req)

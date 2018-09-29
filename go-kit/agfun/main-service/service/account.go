@@ -23,7 +23,7 @@ func (app *AppSvc) CreateAccount(req api.CreateAccountReq) (api.Resp, error) {
 		panic(err)
 	}
 	createResp := api.CreateAccountResp{}
-	
+
 	return resp.Success("success", createResp), err
 }
 
@@ -40,10 +40,10 @@ func (app *AppSvc) Account(req api.AccountReq) (api.Resp, error) {
 		return resp.Failed("no this user"), e
 	}
 	accountResp := api.AccountResp{
-		UserAccount: entity.UserAccount {
-			Name: myAccount.Name,
-			BankCard: myAccount.BankCard,
-			WeChat: myAccount.WeChat,
+		UserAccount: entity.UserAccount{
+			Name:      myAccount.Name,
+			BankCard:  myAccount.BankCard,
+			WeChat:    myAccount.WeChat,
 			Telephone: myAccount.Telephone,
 		},
 	}

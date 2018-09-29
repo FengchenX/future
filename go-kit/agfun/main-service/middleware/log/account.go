@@ -1,9 +1,9 @@
 package log
 
 import (
-	"time"
 	"github.com/feng/future/go-kit/agfun/main-service/protocol/api"
 	"github.com/sirupsen/logrus"
+	"time"
 )
 
 func (mw logmw) CreateAccount(req api.CreateAccountReq) (resp api.Resp, err error) {

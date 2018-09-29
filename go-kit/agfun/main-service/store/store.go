@@ -2,8 +2,8 @@ package store
 
 import (
 	"fmt"
-	"github.com/gin-gonic/gin"
 	"github.com/garyburd/redigo/redis"
+	"github.com/gin-gonic/gin"
 	"time"
 )
 
