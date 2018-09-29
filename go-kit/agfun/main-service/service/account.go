@@ -1,7 +1,6 @@
 package service
 
 import (
-	"fmt"
 	"github.com/feng/future/go-kit/agfun/main-service/dao"
 	"github.com/feng/future/go-kit/agfun/main-service/entity"
 	// "github.com/sirupsen/logrus"
@@ -88,6 +87,5 @@ func (app *AppSvc) Login(req api.LoginReq) (api.Resp, error) {
 	accessToken := encrypt.SHA1(utilities.GetRandomStr(32) + req.Pwd)
 	store.CacheUser(accessToken, myAccount.ID)
 	loginResp.AccessToken = accessToken
-	fmt.Println("11111111111111111", accessToken)
 	return resp.Success("success", loginResp), err
 }
