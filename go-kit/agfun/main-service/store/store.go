@@ -26,7 +26,10 @@ func redisUserIdKey(accessToken string) string {
 }
 func CacheUser(accessToken string, userId uint) {
 	// db.RedisClient.Set(redisUserIdKey(accessToken), userId, 30 * time.Minute)
-	conn.Do("SET", redis.Args{}.Add(redisUserIdKey(accessToken)).Add(userId).Add("EX").Add(30*time.Minute)...)
+	_, err := conn.Do("SET", redis.Args{}.Add(redisUserIdKey(accessToken)).Add(int(userId)).Add("EX").Add(int(30*time.Minute))...)
+	if err != nil {
+		fmt.Println(err)
+	}
 }
 
 func RemoveUser(ctx *gin.Context) {
@@ -54,6 +57,15 @@ func GetCurrUserId(ctx *gin.Context) uint {
 	// CacheUser(token, retId)
 	// return retId
 	panic("todo")
+}
+
+func GetUserId(token string) uint {
+	id, err := redis.Int(conn.Do("GET", redisUserIdKey(token)))
+	if err != nil {
+		return 0
+	}
+	CacheUser(token, uint(id))
+	return uint(id)
 }
 
 func CacheUserMenus() {

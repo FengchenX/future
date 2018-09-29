@@ -13,8 +13,8 @@ import (
 func MakeAccountEndpoint(svc service.AppService) Endpoint {
 	return func(ctx context.Context, request interface{}) (interface{}, error) {
 		req := request.(api.AccountReq)
-		var resp api.AccountResp
-		fmt.Println(req)
+		var resp api.Resp
+		resp, _ = svc.Account(req)
 		return resp, nil
 	}
 }

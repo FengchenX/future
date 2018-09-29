@@ -10,8 +10,9 @@ import (
 )
 
 func decodeAccountRequest(ctx *gin.Context) (interface{}, error) {
-
-	panic("todo")
+	var request api.AccountReq
+	request.Accesstoken = ctx.Query("AccessToken")
+	return request, nil
 }
 
 func decodeCreateAccountRequest(ctx *gin.Context) (interface{}, error) {
@@ -49,6 +50,14 @@ func Login(svc service.AppService) gin.HandlerFunc {
 	return func(ctx *gin.Context) {
 		req, _ := decodeLoginRequest(ctx)
 		resp, _ := endpoint.MakeLoginEndpoint(svc)(context.Background(), req)
+		ctx.JSON(http.StatusOK, resp)
+	}
+}
+
+func Account(svc service.AppService) gin.HandlerFunc{
+	return func(ctx *gin.Context) {
+		req, _ := decodeAccountRequest(ctx)
+		resp, _ := endpoint.MakeAccountEndpoint(svc)(context.Background(), req)
 		ctx.JSON(http.StatusOK, resp)
 	}
 }
