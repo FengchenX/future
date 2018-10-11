@@ -26,6 +26,15 @@ func Account(account string) (entity.UserAccount, error) {
 	return myAccount, nil
 }
 
+//AccountById 通过id查账户
+func AccountById(id uint) (entity.UserAccount, error) {
+	var myAccount entity.UserAccount
+	if mydb := DBInst().Where("id = ?", id).First(&myAccount); mydb.Error != nil {
+		return myAccount, mydb.Error
+	}
+	return myAccount, nil
+}
+
 const updateAccountSQL = "account = ?"
 
 //UpdateAccount 更新账户

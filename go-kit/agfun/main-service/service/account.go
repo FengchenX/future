@@ -22,24 +22,31 @@ func (app *AppSvc) CreateAccount(req api.CreateAccountReq) (api.Resp, error) {
 		panic(err)
 	}
 	createResp := api.CreateAccountResp{}
-	resp.Success("success", createResp)
-	return resp, err
+
+	return resp.Success("success", createResp), err
 }
 
 //Account 获取账户信息
 func (app *AppSvc) Account(req api.AccountReq) (api.Resp, error) {
-	// var resp api.CreateAccountResp
-	// var err error
-	// var userAccount entity.UserAccount
-	// if userAccount, err = dao.Account(req.Account); err != nil {
-	// 	resp.Code = 11100
-	// 	resp.Msg = err.Error()
-	// 	return resp, err
-	// }
-	// resp.Code = 0
-	// resp.Msg = "success"
-	// return resp, err
-	panic("todo")
+	var resp api.Resp
+	var err error
+	id := store.GetUserId(req.Accesstoken)
+	if id == 0 {
+		return resp.Failed("no this user"), err
+	}
+	myAccount, e := dao.AccountById(id)
+	if e != nil {
+		return resp.Failed("no this user"), e
+	}
+	accountResp := api.AccountResp{
+		UserAccount: entity.UserAccount{
+			Name:      myAccount.Name,
+			BankCard:  myAccount.BankCard,
+			WeChat:    myAccount.WeChat,
+			Telephone: myAccount.Telephone,
+		},
+	}
+	return resp.Success("success", accountResp), nil
 }
 
 //UpdateAccount 更新账户

@@ -7,7 +7,7 @@ import (
 // AppService app服务接口
 type AppService interface {
 	CreateAccount(req api.CreateAccountReq) (api.Resp, error)
-	// Account(req api.AccountReq) (api.CreateAccountResp, error)
+	Account(req api.AccountReq) (api.Resp, error)
 	// UpdateAccount(req api.UpdateAccountReq) (api.UpdateAccountResp, error)
 	// DeleteAccount(req api.) (int, string)
 	Login(req api.LoginReq) (api.Resp, error)

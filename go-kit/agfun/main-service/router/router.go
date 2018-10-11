@@ -30,6 +30,6 @@ func loginCheckMidWare(ctx *gin.Context) {
 
 func Start(svc service.AppService) {
 	initUserRouter(svc)
-	router.Run(":8081")
+	router.Run(":8080")
 
 }

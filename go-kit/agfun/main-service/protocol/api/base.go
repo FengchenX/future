@@ -10,6 +10,7 @@ type Resp struct {
 func (p Resp) Success(msg string, data interface{}) Resp {
 	p.Code = 0
 	p.Msg = msg
+	p.Data = data
 	return p
 }
 
