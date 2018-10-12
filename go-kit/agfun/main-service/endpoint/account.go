@@ -3,8 +3,9 @@ package endpoint
 import (
 	"context"
 	"fmt"
+
 	// "github.com/feng/future/go-kit/agfun/main-service/entity"
-	"github.com/feng/future/go-kit/agfun/main-service/protocol/api"
+	"github.com/feng/future/go-kit/agfun/main-service/protocol"
 	"github.com/feng/future/go-kit/agfun/main-service/service"
 	// "github.com/go-kit/kit/endpoint"
 )
@@ -12,8 +13,8 @@ import (
 //MakeAccountEndpoint 生成Account断点
 func MakeAccountEndpoint(svc service.AppService) Endpoint {
 	return func(ctx context.Context, request interface{}) (interface{}, error) {
-		req := request.(api.AccountReq)
-		var resp api.Resp
+		req := request.(protocol.AccountReq)
+		var resp protocol.Resp
 		resp, _ = svc.Account(req)
 		return resp, nil
 	}
@@ -22,8 +23,8 @@ func MakeAccountEndpoint(svc service.AppService) Endpoint {
 //MakeCreateAccountEndpoint 生成CreateAccount端点
 func MakeCreateAccountEndpoint(svc service.AppService) Endpoint {
 	return func(ctx context.Context, request interface{}) (interface{}, error) {
-		req := request.(api.CreateAccountReq)
-		var resp api.Resp
+		req := request.(protocol.CreateAccountReq)
+		var resp protocol.Resp
 		resp, _ = svc.CreateAccount(req)
 
 		return resp, nil
@@ -33,8 +34,8 @@ func MakeCreateAccountEndpoint(svc service.AppService) Endpoint {
 //MakeUpdateAccountEndpoint 更新账户端点
 func MakeUpdateAccountEndpoint(svc service.AppService) Endpoint {
 	return func(ctx context.Context, request interface{}) (interface{}, error) {
-		req := request.(api.UpdateAccountReq)
-		var resp api.Resp
+		req := request.(protocol.UpdateAccountReq)
+		var resp protocol.Resp
 		fmt.Println(req)
 		return resp, nil
 	}
@@ -43,8 +44,8 @@ func MakeUpdateAccountEndpoint(svc service.AppService) Endpoint {
 //MakeLoginEndpoint 登录端点
 func MakeLoginEndpoint(svc service.AppService) Endpoint {
 	return func(ctx context.Context, request interface{}) (interface{}, error) {
-		req := request.(api.LoginReq)
-		var resp api.Resp
+		req := request.(protocol.LoginReq)
+		var resp protocol.Resp
 		resp, _ = svc.Login(req)
 		return resp, nil
 	}

@@ -1,4 +1,4 @@
-package api
+package protocol
 
 import (
 	"github.com/feng/future/go-kit/agfun/main-service/entity"

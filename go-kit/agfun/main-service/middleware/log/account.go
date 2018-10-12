@@ -1,12 +1,13 @@
 package log
 
 import (
-	"github.com/feng/future/go-kit/agfun/main-service/protocol/api"
-	"github.com/sirupsen/logrus"
 	"time"
+
+	"github.com/feng/future/go-kit/agfun/main-service/protocol"
+	"github.com/sirupsen/logrus"
 )
 
-func (mw logmw) CreateAccount(req api.CreateAccountReq) (resp api.Resp, err error) {
+func (mw logmw) CreateAccount(req protocol.CreateAccountReq) (resp protocol.Resp, err error) {
 	defer func(begin time.Time) {
 		logrus.Infof(
 			"method:%s, input:%+v, output: %+v, err: %v, took:%d",
@@ -17,7 +18,7 @@ func (mw logmw) CreateAccount(req api.CreateAccountReq) (resp api.Resp, err erro
 	return
 }
 
-func (mw logmw) Login(req api.LoginReq) (resp api.Resp, err error) {
+func (mw logmw) Login(req protocol.LoginReq) (resp protocol.Resp, err error) {
 	defer func(begin time.Time) {
 		logrus.Infof(
 			"method:%s, input:%+v, output: %+v, err: %v, took:%d",
@@ -28,7 +29,7 @@ func (mw logmw) Login(req api.LoginReq) (resp api.Resp, err error) {
 	return
 }
 
-func (mw logmw) Account(req api.AccountReq) (resp api.Resp, err error) {
+func (mw logmw) Account(req protocol.AccountReq) (resp protocol.Resp, err error) {
 	defer func(begin time.Time) {
 		logrus.Infof(
 			"method:%s, input:%+v, output: %+v, err: %v, took:%d",

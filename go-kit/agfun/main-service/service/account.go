@@ -3,16 +3,18 @@ package service
 import (
 	"github.com/feng/future/go-kit/agfun/main-service/dao"
 	"github.com/feng/future/go-kit/agfun/main-service/entity"
+
 	// "github.com/sirupsen/logrus"
 	"common-utilities/encrypt"
 	"common-utilities/utilities"
-	"github.com/feng/future/go-kit/agfun/main-service/protocol/api"
+
+	"github.com/feng/future/go-kit/agfun/main-service/protocol"
 	"github.com/feng/future/go-kit/agfun/main-service/store"
 )
 
 //CreateAccount 创建账户
-func (app *AppSvc) CreateAccount(req api.CreateAccountReq) (api.Resp, error) {
-	var resp api.Resp
+func (app *AppSvc) CreateAccount(req protocol.CreateAccountReq) (protocol.Resp, error) {
+	var resp protocol.Resp
 	var err error
 	userAccount := entity.UserAccount{
 		Account:  req.Account,
@@ -21,14 +23,14 @@ func (app *AppSvc) CreateAccount(req api.CreateAccountReq) (api.Resp, error) {
 	if err = dao.CreateAccount(&userAccount); err != nil {
 		panic(err)
 	}
-	createResp := api.CreateAccountResp{}
+	createResp := protocol.CreateAccountResp{}
 
 	return resp.Success("success", createResp), err
 }
 
 //Account 获取账户信息
-func (app *AppSvc) Account(req api.AccountReq) (api.Resp, error) {
-	var resp api.Resp
+func (app *AppSvc) Account(req protocol.AccountReq) (protocol.Resp, error) {
+	var resp protocol.Resp
 	var err error
 	id := store.GetUserId(req.Accesstoken)
 	if id == 0 {
@@ -38,7 +40,7 @@ func (app *AppSvc) Account(req api.AccountReq) (api.Resp, error) {
 	if e != nil {
 		return resp.Failed("no this user"), e
 	}
-	accountResp := api.AccountResp{
+	accountResp := protocol.AccountResp{
 		UserAccount: entity.UserAccount{
 			Name:      myAccount.Name,
 			BankCard:  myAccount.BankCard,
@@ -50,8 +52,8 @@ func (app *AppSvc) Account(req api.AccountReq) (api.Resp, error) {
 }
 
 //UpdateAccount 更新账户
-func (app *AppSvc) UpdateAccount(req api.UpdateAccountReq) (api.Resp, error) {
-	// var resp api.UpdateAccountResp
+func (app *AppSvc) UpdateAccount(req protocol.UpdateAccountReq) (protocol.Resp, error) {
+	// var resp protocol.UpdateAccountResp
 	// var err error
 	// userAccount := entity.UserAccount{
 
@@ -72,10 +74,10 @@ func (app *AppSvc) UpdateAccount(req api.UpdateAccountReq) (api.Resp, error) {
 // 	return 0, ""
 // }
 
-func (app *AppSvc) Login(req api.LoginReq) (api.Resp, error) {
-	var resp api.Resp
+func (app *AppSvc) Login(req protocol.LoginReq) (protocol.Resp, error) {
+	var resp protocol.Resp
 	var err error
-	var loginResp api.LoginResp
+	var loginResp protocol.LoginResp
 
 	myAccount, e := dao.Account(req.UserName)
 	if e != nil {

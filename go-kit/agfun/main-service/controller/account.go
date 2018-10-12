@@ -2,21 +2,22 @@ package transport
 
 import (
 	"context"
+	"net/http"
+
 	"github.com/feng/future/go-kit/agfun/main-service/endpoint"
-	"github.com/feng/future/go-kit/agfun/main-service/protocol/api"
+	"github.com/feng/future/go-kit/agfun/main-service/protocol"
 	"github.com/feng/future/go-kit/agfun/main-service/service"
 	"github.com/gin-gonic/gin"
-	"net/http"
 )
 
 func decodeAccountRequest(ctx *gin.Context) (interface{}, error) {
-	var request api.AccountReq
+	var request protocol.AccountReq
 	request.Accesstoken = ctx.Query("AccessToken")
 	return request, nil
 }
 
 func decodeCreateAccountRequest(ctx *gin.Context) (interface{}, error) {
-	var request api.CreateAccountReq
+	var request protocol.CreateAccountReq
 	if err := ctx.BindJSON(&request); err != nil {
 		return nil, err
 	}
@@ -29,7 +30,7 @@ func decodeUpdateAccountRequest(ctx *gin.Context) (interface{}, error) {
 }
 
 func decodeLoginRequest(ctx *gin.Context) (interface{}, error) {
-	var request api.LoginReq
+	var request protocol.LoginReq
 	if err := ctx.BindJSON(&request); err != nil {
 		return nil, err
 	}
