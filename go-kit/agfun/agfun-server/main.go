@@ -2,12 +2,13 @@ package main
 
 import (
 	"fmt"
-	kitlogmw "github.com/feng/future/go-kit/agfun/agfun-server/middleware/log"
+	"net/http"
+	"os"
+
+	logmw "github.com/feng/future/go-kit/agfun/agfun-server/middleware/log"
 	"github.com/feng/future/go-kit/agfun/agfun-server/router"
 	"github.com/feng/future/go-kit/agfun/agfun-server/service"
 	"github.com/sirupsen/logrus"
-	"net/http"
-	"os"
 )
 
 func init() {
@@ -28,7 +29,7 @@ func main() {
 
 	var svc service.AppService
 	svc = &service.AppSvc{}
-	svc = kitlogmw.LoggingMiddleware()(svc)
+	svc = logmw.LoggingMiddleware()(svc)
 	router.Start(svc)
 
 }
