@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"github.com/garyburd/redigo/redis"
 	"github.com/gin-gonic/gin"
-	// "time"
 )
 
 var conn redis.Conn
@@ -48,5 +47,4 @@ func GetUserId(token string) uint {
 }
 
 func CacheUserMenus() {
-
 }

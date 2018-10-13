@@ -74,6 +74,7 @@ func (app *AppSvc) UpdateAccount(req protocol.UpdateAccountReq) (protocol.Resp, 
 // 	return 0, ""
 // }
 
+//Login 登录
 func (app *AppSvc) Login(req protocol.LoginReq) (protocol.Resp, error) {
 	var resp protocol.Resp
 	var err error
