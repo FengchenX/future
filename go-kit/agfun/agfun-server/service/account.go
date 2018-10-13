@@ -17,8 +17,8 @@ func (app *AppSvc) CreateAccount(req protocol.CreateAccountReq) (protocol.Resp, 
 	var resp protocol.Resp
 	var err error
 	userAccount := entity.UserAccount{
-		Account:  req.Account,
-		Password: req.Password,
+		Account: req.Account,
+		Pwd:     req.Pwd,
 	}
 	if err = dao.CreateAccount(&userAccount); err != nil {
 		panic(err)
@@ -79,11 +79,11 @@ func (app *AppSvc) Login(req protocol.LoginReq) (protocol.Resp, error) {
 	var err error
 	var loginResp protocol.LoginResp
 
-	myAccount, e := dao.Account(req.UserName)
+	myAccount, e := dao.Account(req.Account)
 	if e != nil {
 		panic(err)
 	}
-	if myAccount.ID == 0 || req.Pwd != myAccount.Password {
+	if myAccount.ID == 0 || req.Pwd != myAccount.Pwd {
 		return resp.Failed("用户名或密码错误"), err
 	}
 	accessToken := encrypt.SHA1(utilities.GetRandomStr(32) + req.Pwd)

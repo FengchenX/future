@@ -9,8 +9,8 @@ import (
 type UserAccount struct {
 	gorm.Model
 
-	Account  string
-	Password string
+	Account string
+	Pwd     string
 
 	Name      string
 	BankCard  string

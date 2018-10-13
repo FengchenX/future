@@ -6,8 +6,7 @@ import (
 
 //CreateAccountReq 创建账户请求
 type CreateAccountReq struct {
-	Account  string
-	Password string
+	entity.UserAccount
 }
 
 //CreateAccountResp 创建账户响应
@@ -34,8 +33,7 @@ type UpdateAccountResp struct {
 }
 
 type LoginReq struct {
-	UserName string
-	Pwd      string
+	entity.UserAccount
 }
 
 type LoginResp struct {
