@@ -1,7 +1,7 @@
 package service
 
 import (
-	"github.com/feng/future/go-kit/agfun/main-service/protocol"
+	"github.com/feng/future/go-kit/agfun/agfun-server/protocol"
 )
 
 // AppService app服务接口

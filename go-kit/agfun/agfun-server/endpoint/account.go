@@ -4,9 +4,9 @@ import (
 	"context"
 	"fmt"
 
-	// "github.com/feng/future/go-kit/agfun/main-service/entity"
-	"github.com/feng/future/go-kit/agfun/main-service/protocol"
-	"github.com/feng/future/go-kit/agfun/main-service/service"
+	// "github.com/feng/future/go-kit/agfun/agfun-server/entity"
+	"github.com/feng/future/go-kit/agfun/agfun-server/protocol"
+	"github.com/feng/future/go-kit/agfun/agfun-server/service"
 	// "github.com/go-kit/kit/endpoint"
 )
 

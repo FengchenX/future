@@ -3,8 +3,8 @@ package router
 import (
 	"fmt"
 
-	"github.com/feng/future/go-kit/agfun/main-service/controller"
-	"github.com/feng/future/go-kit/agfun/main-service/service"
+	"github.com/feng/future/go-kit/agfun/agfun-server/controller"
+	"github.com/feng/future/go-kit/agfun/agfun-server/service"
 )
 
 func initUserRouter(svc service.AppService) {

@@ -1,7 +1,7 @@
 package protocol
 
 import (
-	"github.com/feng/future/go-kit/agfun/main-service/entity"
+	"github.com/feng/future/go-kit/agfun/agfun-server/entity"
 )
 
 //CreateAccountReq 创建账户请求

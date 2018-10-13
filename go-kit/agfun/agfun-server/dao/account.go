@@ -1,7 +1,7 @@
 package dao
 
 import (
-	"github.com/feng/future/go-kit/agfun/main-service/entity"
+	"github.com/feng/future/go-kit/agfun/agfun-server/entity"
 	"github.com/sirupsen/logrus"
 )
 

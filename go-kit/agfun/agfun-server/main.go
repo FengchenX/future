@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
-	kitlogmw "github.com/feng/future/go-kit/agfun/main-service/middleware/log"
-	"github.com/feng/future/go-kit/agfun/main-service/router"
-	"github.com/feng/future/go-kit/agfun/main-service/service"
+	kitlogmw "github.com/feng/future/go-kit/agfun/agfun-server/middleware/log"
+	"github.com/feng/future/go-kit/agfun/agfun-server/router"
+	"github.com/feng/future/go-kit/agfun/agfun-server/service"
 	"github.com/sirupsen/logrus"
 	"net/http"
 	"os"

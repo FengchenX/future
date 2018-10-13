@@ -4,7 +4,7 @@ import (
 	// "fmt"
 	"github.com/gin-gonic/gin"
 	// "net/http"
-	"github.com/feng/future/go-kit/agfun/main-service/service"
+	"github.com/feng/future/go-kit/agfun/agfun-server/service"
 )
 
 func init() {

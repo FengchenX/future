@@ -3,7 +3,7 @@ package log
 import (
 	"time"
 
-	"github.com/feng/future/go-kit/agfun/main-service/protocol"
+	"github.com/feng/future/go-kit/agfun/agfun-server/protocol"
 	"github.com/sirupsen/logrus"
 )
 

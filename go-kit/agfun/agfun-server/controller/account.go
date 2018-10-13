@@ -4,9 +4,9 @@ import (
 	"context"
 	"net/http"
 
-	"github.com/feng/future/go-kit/agfun/main-service/endpoint"
-	"github.com/feng/future/go-kit/agfun/main-service/protocol"
-	"github.com/feng/future/go-kit/agfun/main-service/service"
+	"github.com/feng/future/go-kit/agfun/agfun-server/endpoint"
+	"github.com/feng/future/go-kit/agfun/agfun-server/protocol"
+	"github.com/feng/future/go-kit/agfun/agfun-server/service"
 	"github.com/gin-gonic/gin"
 )
 

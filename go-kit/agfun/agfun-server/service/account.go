@@ -1,15 +1,15 @@
 package service
 
 import (
-	"github.com/feng/future/go-kit/agfun/main-service/dao"
-	"github.com/feng/future/go-kit/agfun/main-service/entity"
+	"github.com/feng/future/go-kit/agfun/agfun-server/dao"
+	"github.com/feng/future/go-kit/agfun/agfun-server/entity"
 
 	// "github.com/sirupsen/logrus"
 	"common-utilities/encrypt"
 	"common-utilities/utilities"
 
-	"github.com/feng/future/go-kit/agfun/main-service/protocol"
-	"github.com/feng/future/go-kit/agfun/main-service/store"
+	"github.com/feng/future/go-kit/agfun/agfun-server/protocol"
+	"github.com/feng/future/go-kit/agfun/agfun-server/store"
 )
 
 //CreateAccount 创建账户
