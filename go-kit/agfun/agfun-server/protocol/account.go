@@ -26,13 +26,7 @@ type AccountResp struct {
 
 //UpdateAccountReq 更新账户请求
 type UpdateAccountReq struct {
-	Account   string
-	Name      string
-	BankCard  string
-	WeChat    string
-	Alipay    string
-	Telephone string
-	Email     string
+	entity.UserAccount
 }
 
 //UpdateAccountResp 更新账户请求响应
