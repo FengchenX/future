@@ -2,33 +2,24 @@ package main
 
 import (
 	"fmt"
-	"github.com/garyburd/redigo/redis"
-	"time"
+	"regexp"
 )
 
-var conn redis.Conn
-
-func init() {
-	c, err := redis.Dial("tcp", "127.0.0.1:6379")
-	if err != nil {
-		fmt.Println("Connect to redis error", err)
-		panic(err)
-	}
-	conn = c
-	// defer c.Close()
-}
-
 func main() {
-	CacheUser("mykey", 16)
-}
-func redisUserIdKey(accessToken string) string {
-	return accessToken
+	a := "suio"
+	if !IsTecentAccount(a) {
+		fmt.Println("bushi")
+	}
+	fmt.Println("shi")
 }
 
-func CacheUser(accessToken string, userId uint) {
-	// db.RedisClient.Set(redisUserIdKey(accessToken), userId, 30 * time.Minute)
-	_, err := conn.Do("SET", redis.Args{}.Add(redisUserIdKey(accessToken)).Add(int(userId)).Add("EX").Add(int(30*time.Minute))...)
-	if err != nil {
-		fmt.Println(err)
+const tecentAccountRe = "^ibs.+"
+
+//IsTecentAccount 判断是否是腾讯账户
+func IsTecentAccount(account string) bool {
+	re := regexp.MustCompile(tecentAccountRe)
+	if account == "" {
+		return false
 	}
+	return re.MatchString(account)
 }

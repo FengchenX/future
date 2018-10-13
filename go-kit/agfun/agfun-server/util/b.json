@@ -1,0 +1,24 @@
+
+  {
+    "task": {
+      "name": "task1",
+      "dao_id": "1",        
+      "app_id": "101",        
+      "creator": "creator",     
+      "start_time": 1538120370, 
+      "end_time": 1538120370,        
+      "task_user_accounts": [
+        {
+            "no":"1"    
+        },
+        {
+            "no":"1"
+        }
+      ], 
+      "task_type": 1,     
+      "target_amount": 100.0, 
+      "reward_amount": 100.0, 
+      "pay_type":0,  
+      "detail": "test"          
+    }
+  }
