@@ -7,6 +7,7 @@ import (
 	opentracing "github.com/opentracing/opentracing-go"
 	"net/url"
 	"github.com/feng/future/go-kit/agfun/trace/middleware"
+	"io/ioutil"
 )
 
 type client struct {
@@ -29,6 +30,31 @@ func (c *client) Concat(ctx context.Context, a, b string) (string, error) {
 		return "", err
 	}
 
-	fmt.Println(req, err)
+	req = c.traceRequest(req.WithContext(ctx))
+	resp, err := c.httpClient.Do(req)
+	if err != nil {
+		span.SetTag("error", err.Error())
+		return "", err
+	}
+	defer resp.Body.Close()
+
+	data, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		span.SetTag("error", err.Error())
+		return "", err
+	}
+	return string(data), nil
+}
+
+func (c *client) Sum(ctx context.Context, a, b int64) (int64, error) {
 	panic("todo")
+}
+
+func NewHTTPClient(tracer opentracing.Tracer, baseURL string) Service {
+	return &client{
+		baseURL: baseURL,
+		httpClient: &http.Client{},
+		tracer: tracer,
+		traceRequest: middleware.ToHTTPRequest(tracer),
+	}
 }
