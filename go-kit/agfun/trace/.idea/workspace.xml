@@ -2,10 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="61e7ce9d-6046-4775-8be0-0ed43303c972" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front/vue-project/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../front/vue-project/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../examples/addsvc/cmd/addsvc/addsvc.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../examples/addsvc/cmd/addsvc/addsvc.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/middleware/http.go" beforeDir="false" afterPath="$PROJECT_DIR$/middleware/http.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mycli/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/mycli/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/svc11/cmd/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/svc11/cmd/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/svc11/httpclient.go" beforeDir="false" afterPath="$PROJECT_DIR$/svc11/httpclient.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/svc11/httpserver.go" beforeDir="false" afterPath="$PROJECT_DIR$/svc11/httpserver.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/svc11/implementation.go" beforeDir="false" afterPath="$PROJECT_DIR$/svc11/implementation.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/svc11/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/svc11/service.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,10 +21,10 @@
     <session id="1834711196">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
-          <entry key="project.open.time.0" value="1" />
+          <entry key="project.closed" value="3" />
+          <entry key="project.open.time.0" value="2" />
           <entry key="project.open.time.21" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -46,17 +50,7 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/main.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="26" column="58" selection-start-line="26" selection-start-column="58" selection-end-line="26" selection-end-column="58" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="GOROOT" path="C:\Go" />
   <component name="Git.Settings">
@@ -83,10 +77,21 @@
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
-    <navigator proportions="" version="1">
+    <navigator currentView="Scope" currentSubView="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope" proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
+            <path>
+              <item name="trace" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -98,13 +103,12 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="go.gopath.indexing.explicitly.defined" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../../ibs_service/fabric-app/app-server" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -123,7 +127,7 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10554371" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.10660981" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />

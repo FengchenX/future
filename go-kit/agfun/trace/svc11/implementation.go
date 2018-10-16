@@ -10,7 +10,7 @@ type svc11 struct {
 }
 
 func (s *svc11) Concat(ctx context.Context, a, b string) (string, error) {
-	if len(a) + len(b) > StrMaxSize {
+	if len(a)+len(b) > StrMaxSize {
 		span := opentracing.SpanFromContext(ctx)
 		span.SetTag("error", ErrMaxSize.Error())
 		return "", ErrMaxSize

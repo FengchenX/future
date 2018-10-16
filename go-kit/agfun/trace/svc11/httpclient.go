@@ -1,13 +1,13 @@
 package svc11
 
 import (
-	"fmt"
 	"context"
-	"net/http"
-	opentracing "github.com/opentracing/opentracing-go"
-	"net/url"
+	"fmt"
 	"github.com/feng/future/go-kit/agfun/trace/middleware"
+	opentracing "github.com/opentracing/opentracing-go"
 	"io/ioutil"
+	"net/http"
+	"net/url"
 )
 
 type client struct {
@@ -52,9 +52,9 @@ func (c *client) Sum(ctx context.Context, a, b int64) (int64, error) {
 
 func NewHTTPClient(tracer opentracing.Tracer, baseURL string) Service {
 	return &client{
-		baseURL: baseURL,
-		httpClient: &http.Client{},
-		tracer: tracer,
+		baseURL:      baseURL,
+		httpClient:   &http.Client{},
+		tracer:       tracer,
 		traceRequest: middleware.ToHTTPRequest(tracer),
 	}
 }

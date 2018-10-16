@@ -7,8 +7,8 @@ import (
 
 	opentracing "github.com/opentracing/opentracing-go"
 
-	zipkin "github.com/openzipkin-contrib/zipkin-go-opentracing"
 	"github.com/feng/future/go-kit/agfun/trace/svc11"
+	zipkin "github.com/openzipkin-contrib/zipkin-go-opentracing"
 )
 
 func main() {
@@ -37,7 +37,7 @@ func main() {
 	span.LogEvent("Call Concat")
 	res1, err := client.Concat(ctx, "Hello", "World!")
 	fmt.Printf("Concat: %s Err: %+v\n", res1, err)
-	
+
 	span.Finish()
 	collector.Close()
 }

@@ -27,7 +27,7 @@ func main() {
 	}
 
 	opentracing.InitGlobalTracer(tracer)
-	
+
 }
 
 const (

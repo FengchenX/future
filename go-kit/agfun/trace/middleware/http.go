@@ -2,10 +2,10 @@ package middleware
 
 import (
 	"fmt"
+	"github.com/gin-gonic/gin"
 	"net"
 	"net/http"
 	"strconv"
-	"github.com/gin-gonic/gin"
 
 	opentracing "github.com/opentracing/opentracing-go"
 	"github.com/opentracing/opentracing-go/ext"
