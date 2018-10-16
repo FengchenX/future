@@ -4,9 +4,9 @@ import (
 	"fmt"
 	opentracing "github.com/opentracing/opentracing-go"
 
+	"github.com/feng/future/go-kit/agfun/trace/svc11"
 	zipkin "github.com/openzipkin-contrib/zipkin-go-opentracing"
 	"os"
-	"github.com/feng/future/go-kit/agfun/trace/svc11"
 )
 
 func main() {

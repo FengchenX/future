@@ -2,10 +2,10 @@ package svc11
 
 import (
 	"fmt"
-	"github.com/gin-gonic/gin"
-	"net/http"
-	opentracing "github.com/opentracing/opentracing-go"
 	"github.com/feng/future/go-kit/agfun/trace/middleware"
+	"github.com/gin-gonic/gin"
+	opentracing "github.com/opentracing/opentracing-go"
+	"net/http"
 )
 
 type httpService struct {

@@ -23,7 +23,5 @@ func (s *svc11) Sum(ctx context.Context, a, b int64) (int64, error) {
 }
 
 func NewService() Service {
-	return &svc11{
-		
-	}
+	return &svc11{}
 }
