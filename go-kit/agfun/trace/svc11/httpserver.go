@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"net/http"
+	opentracing "github.com/opentracing/opentracing-go"
+	"github.com/feng/future/go-kit/agfun/trace/middleware"
 )
 
 type httpService struct {
@@ -23,4 +25,16 @@ func (s *httpService) concatHandler(c *gin.Context) {
 
 func (s *httpService) sumHandler(c *gin.Context) {
 	panic("todo")
+}
+
+func RouterInit(hostPort string, tracer opentracing.Tracer, service Service) {
+	svc := &httpService{service: service}
+	concatHandler := gin.HandlerFunc(svc.concatHandler)
+	concatHandler = middleware.FromHTTPRequest(tracer, "Concat")(concatHandler)
+	sumHandler := gin.HandlerFunc(svc.sumHandler)
+	sumHandler = middleware.FromHTTPRequest(tracer, "Sum")(sumHandler)
+	router := gin.New()
+	router.GET("/concat/", concatHandler)
+	router.POST("/sum/", sumHandler)
+	router.Run(hostPort)
 }

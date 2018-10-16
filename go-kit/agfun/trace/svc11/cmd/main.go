@@ -6,12 +6,13 @@ import (
 
 	zipkin "github.com/openzipkin-contrib/zipkin-go-opentracing"
 	"os"
+	"github.com/feng/future/go-kit/agfun/trace/svc11"
 )
 
 func main() {
 	collector, err := zipkin.NewHTTPCollector(zipkinHTTPEndpoint)
 	if err != nil {
-		fmt.Printf("unable to create Zipkin HTTP collector: %+v\n", err)
+		fmt.Printf("unable to create Zipkin HTTP collector: %+v/n", err)
 		os.Exit(-1)
 	}
 	recorder := zipkin.NewRecorder(collector, debug, hostPort, serviceName)
@@ -22,12 +23,13 @@ func main() {
 		zipkin.TraceID128Bit(traceID128Bit),
 	)
 	if err != nil {
-		fmt.Printf("unable to create Zipkin tracer: %+v\n", err)
+		fmt.Printf("unable to create Zipkin tracer: %+v/n", err)
 		os.Exit(-1)
 	}
 
 	opentracing.InitGlobalTracer(tracer)
-
+	service := svc11.NewService()
+	svc11.RouterInit(hostPort, tracer, service)
 }
 
 const (

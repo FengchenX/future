@@ -21,3 +21,9 @@ func (s *svc11) Concat(ctx context.Context, a, b string) (string, error) {
 func (s *svc11) Sum(ctx context.Context, a, b int64) (int64, error) {
 	panic("todo")
 }
+
+func NewService() Service {
+	return &svc11{
+		
+	}
+}
