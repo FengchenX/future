@@ -1,0 +1,87 @@
+# ReplicaSet
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: data-importer
+  namespace: titangrm-dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: data-importer
+  template:
+    metadata:
+      labels:
+        app: data-importer
+    spec:
+      nodeSelector: pole
+      containers:
+      - name: data-importer
+        image: 192.168.1.149:5000/data-importer
+        imagePullPolicy: Always
+        volumeMounts:
+          - name: tz-config
+            mountPath: /etc/localtime
+            readOnly: true
+          - name: titangrm-config
+            mountPath: /opt/titangrm/config
+          - name: titangrm-data
+            mountPath: /opt/titangrm/data
+        env:
+        - name: GRM_SERVER_ADDRESS
+          value: :8080
+        - name: GRM_SERVER_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: GRM_REGISTRY_ADDRESS
+          value: consul-ttmi68.consul-ttmi68:8500
+        command: ["/usr/local/bin/titan-grm"]
+        args:
+          - data-importer
+          - "-registry_address"
+          - $(GRM_REGISTRY_ADDRESS)
+          - "-server_namespace"
+          - $(GRM_SERVER_NAMESPACE)
+        ports:
+        - containerPort: 8080
+      volumes:
+        - name: tz-config
+          hostPath:
+            path: /etc/localtime
+        - name: titangrm-config
+          persistentVolumeClaim:
+            claimName: titangrm-config-pvc
+        - name: titangrm-data
+          persistentVolumeClaim:
+            claimName: titangrm-data-pvc
+
+---
+# Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: data-importer
+  namespace: titangrm-dev
+spec:
+  ports:
+  - port: 8444
+    targetPort: 8080
+  selector:
+    app: data-importer
+
+---
+# NodePort
+apiVersion: v1
+kind: Service
+metadata:
+  name: data-importer-nodeport
+  namespace: titangrm-dev
+spec:
+  type: NodePort
+  ports:
+  - port: 8444
+    targetPort: 8080
+    #nodePort: 30001
+  selector:
+    app: data-importer

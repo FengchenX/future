@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: titangrm-config-pvc
+  namespace: titangrm-dev
+spec:
+  resources:
+    requests:
+      storage: 49Gi
+  accessModes:
+     - ReadWriteMany
+  selector:
+    matchLabels:
+      pv: titangrm-config-pv
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: titangrm-data-pvc
+  namespace: titangrm-dev
+spec:
+  resources:
+    requests:
+      storage: 200Gi
+  accessModes:
+  - ReadOnlyMany
+  selector:
+    matchLabels:
+      pv: titangrm-data-pv

@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: titangrm-config-pv
+  labels:
+    pv: titangrm-config-pv
+spec:
+  capacity:
+    storage: 50Gi
+  accessModes:
+     - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  nfs:
+    server: 192.168.1.149
+    path: "/sdc/grm/config"
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: titangrm-data-pv
+  labels:
+    pv: titangrm-data-pv
+spec:
+  capacity:
+    storage: 200Gi
+  accessModes:
+  - ReadOnlyMany
+  persistentVolumeReclaimPolicy: Retain
+  nfs:
+    server: 192.168.1.149
+    path: "/sdc/grm/data"

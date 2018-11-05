@@ -1,0 +1,759 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c867f2f4-4acb-4039-bcbe-b797057b9e4e" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-667910847">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="10" />
+          <entry key="project.open.time.0" value="2" />
+          <entry key="project.open.time.4" value="1" />
+          <entry key="project.open.time.5" value="7" />
+          <entry key="project.open.time.6" value="2" />
+          <entry key="project.opened" value="12" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="Dockerfile" value="6" />
+          <entry key="go" value="375" />
+          <entry key="json" value="1" />
+          <entry key="md" value="1" />
+          <entry key="yaml" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="Dockerfile" value="2" />
+          <entry key="Go" value="375" />
+          <entry key="JSON" value="1" />
+          <entry key="PLAIN_TEXT" value="5" />
+          <entry key="YAML" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="dummy" value="8" />
+          <entry key="go" value="23709" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="Go" value="23709" />
+          <entry key="PLAIN_TEXT" value="8" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.go.postfix.template.usages.trigger">
+        <counts>
+          <entry key=".p" value="1" />
+          <entry key=".par" value="1" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/grm-service/service/grm_service.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="380">
+              <caret line="152" column="5" lean-forward="true" selection-start-line="152" selection-start-column="5" selection-end-line="152" selection-end-column="5" />
+              <folding>
+                <element signature="e#17#370#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../third_party/src/github.com/emicklei/go-restful-openapi/spec_resource.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="228">
+              <caret line="15" column="29" lean-forward="true" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../third_party/src/github.com/emicklei/go-restful/cors_filter.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="72">
+              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="18" selection-end-column="84" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>authDB</find>
+      <find>Publish(</find>
+      <find>dataScan</find>
+      <find>Publish</find>
+      <find>launchTask</find>
+      <find>Consume(</find>
+      <find>ConsumeMessage(</find>
+      <find>`update</find>
+      <find>ST_GeomFromGeo</find>
+      <find>ST_GeomFromGeoJSON</find>
+      <find>http://192.168.1.149:7070</find>
+      <find>7070</find>
+      <find>logrus.</find>
+      <find>log</find>
+      <find>GetRoleInfoByName</find>
+      <find>UserSvc</find>
+      <find>DELETE(</find>
+      <find>e.Cli.Delete(</find>
+      <find>WithSort</find>
+      <find>session</find>
+      <find>DataType(&quot;</find>
+      <find>common.UserInfo, error</find>
+      <find>UserInfo, error</find>
+      <find>edit</find>
+      <find>el</find>
+      <find>query</find>
+      <find>apidocs.json</find>
+      <find>tile-manager</find>
+      <find>Handle(</find>
+      <find>APIPath</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>GroupSvc</replace>
+      <replace>e1</replace>
+    </replaceStrings>
+  </component>
+  <component name="GOROOT" path="C:\Go" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/src/github.com/fortytw2/leaktest" />
+  </component>
+  <component name="GoLibraries">
+    <option name="urls">
+      <list>
+        <option value="file://$PROJECT_DIR$" />
+      </list>
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/grm-service/mq/mq.go" />
+        <option value="$PROJECT_DIR$/src/data-importer/mq/dataworker/taskinfo.go" />
+        <option value="$PROJECT_DIR$/src/data-importer/tasks/handler.go" />
+        <option value="$PROJECT_DIR$/src/titan-auth/user/types.go" />
+        <option value="$PROJECT_DIR$/src/titan-auth/types/common.go" />
+        <option value="$PROJECT_DIR$/src/titan-auth/types/role.go" />
+        <option value="$PROJECT_DIR$/src/titan-auth/group/types.go" />
+        <option value="$PROJECT_DIR$/src/titan-auth/group/util.go" />
+        <option value="$PROJECT_DIR$/src/titan-auth/user/dto.go" />
+        <option value="$PROJECT_DIR$/src/titan-auth/user/handler.go" />
+        <option value="$PROJECT_DIR$/src/titan-auth/comamnd/command.go" />
+        <option value="$PROJECT_DIR$/src/titan-auth/user/service.go" />
+        <option value="$PROJECT_DIR$/src/titan-auth/types/group.go" />
+        <option value="$PROJECT_DIR$/src/titan-auth/group/dto.go" />
+        <option value="$PROJECT_DIR$/src/titan-auth/dbcentral/pg/group.go" />
+        <option value="$PROJECT_DIR$/src/titan-auth/dbcentral/etcd/user.go" />
+        <option value="$PROJECT_DIR$/src/titan-auth/dbcentral/pg/group-user.go" />
+        <option value="$PROJECT_DIR$/src/titan-auth/dbcentral/pg/role.go" />
+        <option value="$PROJECT_DIR$/src/titan-auth/group/service.go" />
+        <option value="$PROJECT_DIR$/src/titan-auth/group/handler.go" />
+        <option value="$PROJECT_DIR$/src/data-manager/types/comment.go" />
+        <option value="$PROJECT_DIR$/src/data-manager/dbcentral/etcd/dynamic.go" />
+        <option value="$PROJECT_DIR$/src/grm-service/dbcentral/etcd/dynamic.go" />
+        <option value="$PROJECT_DIR$/src/data-manager/datas/service.go" />
+        <option value="$PROJECT_DIR$/src/data-manager/datas/dto.go" />
+        <option value="$PROJECT_DIR$/src/data-manager/dbcentral/etcd/comment.go" />
+        <option value="$PROJECT_DIR$/src/data-manager/datas/handler.go" />
+        <option value="$PROJECT_DIR$/src/tile-manager/dbcentral/etcd/dynamic.go" />
+        <option value="$PROJECT_DIR$/src/titan-grm/command/commands.go" />
+        <option value="$PROJECT_DIR$/src/tile-manager/types/common.go" />
+        <option value="$PROJECT_DIR$/src/tile-manager/dbcentral/pg/tiledb.go" />
+        <option value="$PROJECT_DIR$/src/tile-manager/dbcentral/pg/authdb.go" />
+        <option value="$PROJECT_DIR$/src/tile-manager/theme/service.go" />
+        <option value="$PROJECT_DIR$/src/tile-manager/command/command.go" />
+        <option value="$PROJECT_DIR$/src/grm-service/util/test/main.go" />
+        <option value="$PROJECT_DIR$/src/grm-service/util/util.go" />
+        <option value="$PROJECT_DIR$/src/tile-manager/dbcentral/pg/theme.go" />
+        <option value="$PROJECT_DIR$/src/tile-manager/theme/types.go" />
+        <option value="$PROJECT_DIR$/src/tile-manager/theme/handler.go" />
+        <option value="$PROJECT_DIR$/src/tile-manager/test/main.go" />
+        <option value="$PROJECT_DIR$/src/grm-service/service/grm_service.go" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-10" />
+    <option name="y" value="76" />
+    <option name="width" value="1231" />
+    <option name="height" value="1100" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State />
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>CSS</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="titangrm2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="titangrm2" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="titangrm2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="titangrm2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="titangrm2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="titangrm2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="grm-service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="titangrm2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="titangrm2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="grm-service" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="titangrm2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="titangrm2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="tile-manager" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="titangrm2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="titangrm2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="tile-manager" type="462c0819:PsiDirectoryNode" />
+              <item name="command" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="titangrm2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="titangrm2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="titan-grm" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="titangrm2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="titangrm2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="titan-grm" type="462c0819:PsiDirectoryNode" />
+              <item name="command" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultGoTemplateProperty" value="Go File" />
+    <property name="configurable.Global.GOPATH.is.expanded" value="true" />
+    <property name="configurable.Module.GOPATH.is.expanded" value="true" />
+    <property name="configurable.Project.GOPATH.is.expanded" value="true" />
+    <property name="go.gopath.indexing.explicitly.defined" value="true" />
+    <property name="go.sdk.automatically.set" value="true" />
+    <property name="last_opened_file_path" value="$USER_HOME$/go/src/github.com/feng/future/gin" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="standardjs.codestyle.accepted" value="true" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Go Build.tile-manager">
+    <configuration name="data-manager" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="titangrm2" />
+      <working_directory value="$PROJECT_DIR$/" />
+      <go_parameters value="-i" />
+      <parameters value="data-manager -registry_address 192.168.1.189:8500" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/src/titan-grm/main.go" />
+      <directory value="$PROJECT_DIR$/" />
+      <method v="2" />
+    </configuration>
+    <configuration name="storage-manager" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="titangrm2" />
+      <working_directory value="$PROJECT_DIR$/" />
+      <parameters value="storage-manager -registry_address 192.168.1.189:8500" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/src/titan-grm/main.go" />
+      <directory value="$PROJECT_DIR$/" />
+      <method v="2" />
+    </configuration>
+    <configuration name="tile-manager" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="titangrm2" />
+      <working_directory value="$PROJECT_DIR$/" />
+      <go_parameters value="-i" />
+      <parameters value="tile-manager -registry_address 192.168.1.189:8500" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/src/titan-grm/main.go" />
+      <directory value="$PROJECT_DIR$/" />
+      <method v="2" />
+    </configuration>
+    <configuration name="titan-auth" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="titangrm2" />
+      <working_directory value="$PROJECT_DIR$/" />
+      <parameters value="titan-auth -registry_address 192.168.1.189:8500" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/src/titan-grm/main.go" />
+      <directory value="$PROJECT_DIR$/" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Go Build.storage-manager" />
+      <item itemvalue="Go Build.tile-manager" />
+      <item itemvalue="Go Build.data-manager" />
+      <item itemvalue="Go Build.titan-auth" />
+    </list>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12793177" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32858709" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49946696" visible="true" weight="0.30368763" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39868566" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.32899022" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50053304" side_tool="true" weight="0.30368763" />
+      <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/src/github.com/VividCortex/gohistogram" />
+      <path value="$PROJECT_DIR$/src/github.com/aws/aws-sdk-go" />
+      <path value="$PROJECT_DIR$/src/github.com/fortytw2/leaktest" />
+      <path value="$PROJECT_DIR$/src/github.com/google/uuid" />
+      <path value="$PROJECT_DIR$/src/github.com/olivere/elastic" />
+      <path value="$PROJECT_DIR$/src/github.com/olivere/env" />
+      <path value="$PROJECT_DIR$/src/github.com/opentracing/opentracing-go" />
+      <path value="$PROJECT_DIR$/src/github.com/smartystreets/go-aws-auth" />
+      <path value="$PROJECT_DIR$/src/github.com/uber/jaeger-client-go" />
+      <path value="$PROJECT_DIR$/src/github.com/uber/jaeger-client-go/idl" />
+      <path value="$PROJECT_DIR$/src/github.com/uber/jaeger-lib" />
+      <path value="$PROJECT_DIR$/src/go.opencensus.io" />
+      <path value="$PROJECT_DIR$/src/gopkg.in/olivere/elastic.v6" />
+    </ignored-roots>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/../third_party/src/github.com/coreos/etcd/clientv3/sort.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="589">
+          <caret line="31" column="1" lean-forward="true" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../third_party/src/github.com/coreos/etcd/clientv3/op.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="338" column="24" selection-start-line="338" selection-start-column="24" selection-end-line="338" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data-manager/datas/dto.go" />
+    <entry file="file://$PROJECT_DIR$/src/titan-auth/titan-auth-deploy.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" column="16" lean-forward="true" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/grm-service/log/log.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="91" lean-forward="true" selection-start-line="91" selection-end-line="91" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/titan-auth/dbcentral/etcd/dynamic.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="834">
+          <caret line="150" column="49" selection-start-line="150" selection-start-column="49" selection-end-line="150" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/titan-grm/Dockerfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="19" column="35" selection-start-line="19" selection-start-column="35" selection-end-line="19" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data-manager/dbcentral/etcd/comment.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="549">
+          <caret line="52" selection-start-line="52" selection-end-line="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data-manager/types/common.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="492">
+          <caret line="165" selection-start-line="165" selection-end-line="165" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data-manager/datas/types.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="608">
+          <caret line="34" column="29" selection-start-line="34" selection-start-column="29" selection-end-line="34" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/grm-service/dbcentral/pg/systemdb.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="14" column="17" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/grm-service/dbcentral/pg/authdb.go">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data-manager/dbcentral/etcd/dynamic.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/titan-auth/group/handler.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="849">
+          <caret line="245" column="18" selection-start-line="245" selection-start-column="18" selection-end-line="245" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tile-manager/types/common.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="8" column="42" lean-forward="true" selection-start-line="8" selection-start-column="42" selection-end-line="8" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/titan-auth/group/service.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/titan-auth/dbcentral/pg/group.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="125" column="86" lean-forward="true" selection-start-line="125" selection-start-column="86" selection-end-line="125" selection-end-column="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data-manager/datas/handler.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="344" column="9" lean-forward="true" selection-start-line="344" selection-start-column="9" selection-end-line="344" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data-manager/dbcentral/pg/systemdb.go">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data-manager/datas/service.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="16" column="21" lean-forward="true" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/go/src/github.com/feng/future/saas_background/service/user_service.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/grm-service/common/types.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1064">
+          <caret line="56" column="5" selection-start-line="56" selection-start-column="5" selection-end-line="56" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../third_party/src/github.com/emicklei/go-restful/request.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="54" column="18" selection-start-line="54" selection-start-column="18" selection-end-line="54" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../titantile/src/titan-tile/command/handler.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2657" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data-manager/dbcentral/pg/metadb.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="15" column="17" lean-forward="true" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data-manager/dbcentral/pg/datadb.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1028">
+          <caret line="15" column="68" lean-forward="true" selection-start-line="15" selection-start-column="68" selection-end-line="15" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tile-manager/dbcentral/pg/systemdb.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data-manager/command/command.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="43" column="17" lean-forward="true" selection-start-line="43" selection-start-column="17" selection-end-line="43" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/titan-auth/comamnd/command.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="44" column="4" selection-start-line="44" selection-start-column="4" selection-end-line="46" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/grm-service/util/baseUtil.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8406">
+          <caret line="640" column="25" selection-start-line="640" selection-start-column="25" selection-end-line="640" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/grm-service/util/test/main.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" column="18" lean-forward="true" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
+          <folding>
+            <element signature="e#14#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/grm-service/dbcentral/etcd/dynamic.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="60" column="24" lean-forward="true" selection-start-line="60" selection-start-column="24" selection-end-line="60" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/grm-service/util/util.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="110" column="39" selection-start-line="110" selection-start-column="39" selection-end-line="110" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/grm-searcher/dbcentral/es/es.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tile-manager/test/main.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="549">
+          <caret line="134" column="58" lean-forward="true" selection-start-line="134" selection-start-column="58" selection-end-line="134" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Documents/util/swagger-editor-master/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="426">
+          <caret line="152" column="22" lean-forward="true" selection-start-line="152" selection-start-column="22" selection-end-line="152" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tile-manager/theme/handler.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1841">
+          <caret line="172" column="72" selection-start-line="172" selection-start-column="72" selection-end-line="172" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tile-manager/theme/types.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="34" column="42" selection-start-line="34" selection-start-column="42" selection-end-line="34" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tile-manager/theme/service.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="38" column="40" lean-forward="true" selection-start-line="38" selection-start-column="40" selection-end-line="38" selection-end-column="40" />
+          <folding>
+            <element signature="e#15#187#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tile-manager/dbcentral/pg/theme.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="95" column="19" selection-start-line="95" selection-start-column="19" selection-end-line="95" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tile-manager/dbcentral/pg/authdb.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tile-manager/dbcentral/etcd/dynamic.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="23" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/titan-grm/main.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="35" column="11" selection-start-line="35" selection-start-column="11" selection-end-line="35" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/titan-grm/command/commands.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-705">
+          <caret line="4" column="10" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Go/src/net/http/fs.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="712" column="5" selection-start-line="712" selection-start-column="5" selection-end-line="712" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/grm-service/service/service.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="269">
+          <caret line="42" column="6" selection-start-line="42" selection-start-column="6" selection-end-line="42" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tile-manager/command/command.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1672">
+          <caret line="99" column="14" selection-start-line="99" selection-start-column="14" selection-end-line="99" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Go/src/net/http/server.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="1991" column="5" selection-start-line="1991" selection-start-column="5" selection-end-line="1991" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../third_party/src/github.com/emicklei/go-restful/cors_filter.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="18" selection-end-column="84" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../third_party/src/github.com/emicklei/go-restful-openapi/spec_resource.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="15" column="29" lean-forward="true" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/grm-service/service/grm_service.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="152" column="5" lean-forward="true" selection-start-line="152" selection-start-column="5" selection-end-line="152" selection-end-column="5" />
+          <folding>
+            <element signature="e#17#370#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

@@ -1,0 +1,820 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: titangrm\n"
+"POT-Creation-Date: 2018-10-31 16:10+0800\n"
+"PO-Revision-Date: 2018-10-31 16:12+0800\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2\n"
+"X-Poedit-Basepath: ../../../..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: TR\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: titan-grm/translation/zh_CN/LC_MESSAGES\n"
+"X-Poedit-SearchPath-1: .\n"
+
+#: applications/data-collection/collector/handler.go:33
+msgid "Invalid collection info"
+msgstr "不正确的调查"
+
+#: applications/data-collection/collector/service.go:33
+msgid "data collection"
+msgstr "数据采集"
+
+#: applications/data-collection/collector/service.go:37
+msgid "new collection"
+msgstr "新建采集任务"
+
+#: applications/data-collection/collector/service.go:46
+msgid "get collections"
+msgstr "获取所有采集任务"
+
+#: applications/data-collection/collector/service.go:55
+msgid "delete collection"
+msgstr "移除采集任务"
+
+#: applications/data-collection/collector/service.go:64
+msgid "update collection"
+msgstr "更新采集任务"
+
+#: applications/data-collection/collector/service.go:74
+msgid "add collection data"
+msgstr "添加采集数据"
+
+#: applications/data-collection/collector/service.go:84
+msgid "del collection data"
+msgstr "移除采集数据"
+
+#: applications/data-collection/collector/service.go:94
+msgid "update collection data"
+msgstr "更新采集数据"
+
+#: applications/data-collection/collector/service.go:105
+msgid "get collection data"
+msgstr "获取采集数据"
+
+#: applications/data-collection/collector/service.go:118
+msgid "search collection data"
+msgstr "检索采集数据"
+
+#: data-importer/importer/handler.go:79
+msgid "Layer"
+msgstr "图层"
+
+#: data-importer/importer/handler.go:279
+#, c-format
+msgid "Invalid dataset type(%s) for data scan(%s)"
+msgstr "数据集类型（%s）和数据类型（%s）不匹配"
+
+#: data-importer/importer/handler.go:478
+msgid "Invalid scan task id"
+msgstr "不正确的任务标识"
+
+#: data-importer/importer/handler.go:543
+#, fuzzy, c-format
+#| msgid "Invalid dataset type(%s) for data scan(%s)"
+msgid "Invalid dataset type(%s) for data load(%s)"
+msgstr "数据集类型（%s）和数据类型（%s）不匹配"
+
+#: data-importer/importer/service.go:40
+msgid "data importer"
+msgstr "数据导入"
+
+#: data-importer/importer/service.go:44
+msgid "get file system domain"
+msgstr "获取文件系统目录"
+
+#: data-importer/importer/service.go:45
+msgid "file sysdomain path"
+msgstr "文件路径"
+
+#: data-importer/importer/service.go:51
+msgid "data scan"
+msgstr "数据扫描"
+
+#: data-importer/importer/service.go:53 data-importer/importer/service.go:61
+msgid "user session"
+msgstr "用户session"
+
+#: data-importer/importer/service.go:59
+msgid "data scan result"
+msgstr "数据扫描结果"
+
+#: data-importer/importer/service.go:62
+msgid "scan task id"
+msgstr "扫描任务id"
+
+#: data-importer/importer/service.go:67
+msgid "file name"
+msgstr "文件名"
+
+#: data-importer/importer/service.go:68
+msgid "file size min"
+msgstr "文件大小（最小值）"
+
+#: data-importer/importer/service.go:69
+msgid "file size max"
+msgstr "文件大小（最大值）"
+
+#: data-importer/importer/service.go:70
+msgid "create time min"
+msgstr "创建时间（最小值）"
+
+#: data-importer/importer/service.go:71
+msgid "create time max"
+msgstr "创建时间（最大值）"
+
+#: data-importer/importer/service.go:76
+msgid "data load"
+msgstr "数据导入"
+
+#: data-importer/importer/service.go:84
+#, fuzzy
+#| msgid "data load"
+msgid "data upload"
+msgstr "数据导入"
+
+#: data-importer/tasks/handler.go:23 data-importer/tasks/handler.go:96
+msgid "Invalid task type"
+msgstr "非法任务类型"
+
+#: data-importer/tasks/handler.go:68 data-importer/tasks/handler.go:113
+msgid "Invalid task id"
+msgstr "非法任务id"
+
+#: data-importer/tasks/service.go:32
+msgid "data importer tasks"
+msgstr "数据导入任务"
+
+#: data-importer/tasks/service.go:36
+msgid "get task(s) info"
+msgstr "获取任务信息"
+
+#: data-importer/tasks/service.go:37 data-importer/tasks/service.go:54
+msgid "task type"
+msgstr "任务类型"
+
+#: data-importer/tasks/service.go:47
+msgid "terminate task by id"
+msgstr "终止任务"
+
+#: data-importer/tasks/service.go:48 data-importer/tasks/service.go:55
+#: data-importer/tasks/service.go:63
+msgid "task id"
+msgstr "任务id"
+
+#: data-importer/tasks/service.go:53
+msgid "delete task by task id or a range of time"
+msgstr "根据任务id或时间区间删除任务"
+
+#: data-importer/tasks/service.go:56
+msgid "start time"
+msgstr "开始时间"
+
+#: data-importer/tasks/service.go:57
+msgid "end time"
+msgstr "结束时间"
+
+#: data-importer/tasks/service.go:62
+msgid "get task logs"
+msgstr "获取任务日志"
+
+#: data-importer/tasks/service.go:64
+msgid "log type: stdout/stderr"
+msgstr "日志类型：stdout/stderr"
+
+#: data-importer/types/common.go:10
+msgid "id of new dataset is null"
+msgstr "新建数据集id为空"
+
+#: data-importer/types/common.go:11
+msgid "scan data dir is empty or not exists"
+msgstr "扫描目录为空或不存在"
+
+#: data-importer/types/common.go:12
+msgid "invalid data type"
+msgstr "无效数据类型"
+
+#: data-importer/types/common.go:13
+msgid "invalid dataset"
+msgstr "无效数据集"
+
+#: data-importer/types/common.go:14
+msgid "id of task is null"
+msgstr "任务标识为空"
+
+#: data-importer/types/common.go:15
+msgid "invalid scan task id"
+msgstr "无效扫描任务id"
+
+#: data-importer/types/common.go:16
+msgid "no selected data for load"
+msgstr "无有效数据进行入库"
+
+#: data-importer/types/common.go:17
+#, fuzzy
+#| msgid "invalid data type"
+msgid "invalid data info"
+msgstr "无效数据类型"
+
+#: data-manager/datas/handler.go:148 data-manager/layers/handler.go:234
+msgid "Invalid snapshot image"
+msgstr "不正确的快视图文件"
+
+#: data-manager/datas/handler.go:267
+msgid "Don't have permission to perform this action"
+msgstr "没有权限执行此项操作"
+
+#: data-manager/datas/service.go:31
+msgid "data object"
+msgstr "数据对象"
+
+#: data-manager/datas/service.go:35
+msgid "get data info"
+msgstr "获取数据信息"
+
+#: data-manager/datas/service.go:43
+msgid "update data info"
+msgstr "更新数据信息"
+
+#: data-manager/datas/service.go:51
+msgid "get data metas"
+msgstr "获取数据元数据信息"
+
+#: data-manager/datas/service.go:59
+msgid "update data meta info"
+msgstr "更新数据元数据信息"
+
+#: data-manager/datas/service.go:67
+msgid "update data snapshot"
+msgstr "更新数据快视图"
+
+#: data-manager/datas/service.go:77
+msgid "delete data object"
+msgstr "移除数据"
+
+#: data-manager/datas/service.go:84
+msgid "get data content"
+msgstr "获取数据内容"
+
+#: data-manager/dataset/handler.go:29 data-manager/layers/handler.go:82
+msgid "Invalid dataset name or user id"
+msgstr "无效数据集名称或用户标识"
+
+#: data-manager/dataset/handler.go:148
+msgid "Failed to add data, maybe already exists."
+msgstr ""
+
+#: data-manager/dataset/service.go:25
+msgid "dataset"
+msgstr "数据集"
+
+#: data-manager/dataset/service.go:29
+msgid "create dataset"
+msgstr "创建数据集"
+
+#: data-manager/dataset/service.go:37
+msgid "get dataset list"
+msgstr "获取数据集列表"
+
+#: data-manager/dataset/service.go:45
+msgid "delete dataset"
+msgstr "移除数据集"
+
+#: data-manager/dataset/service.go:52
+msgid "update dataset"
+msgstr "更新数据集"
+
+#: data-manager/dataset/service.go:60
+msgid "remove data of dataset"
+msgstr "移除数据集数据"
+
+#: data-manager/dataset/service.go:68
+msgid "add data of dataset"
+msgstr "添加数据集数据"
+
+#: data-manager/dataset/service.go:76
+msgid "truncate dataset"
+msgstr "清空数据集"
+
+#: data-manager/dataset/service.go:83
+msgid "copy dataset"
+msgstr "复制整个数据集数据"
+
+#: data-manager/datatype/handler.go:72 data-manager/datatype/handler.go:94
+#: data-manager/datatype/handler.go:116
+msgid "Invalid type meta info"
+msgstr "元数据信息有误"
+
+#: data-manager/datatype/service.go:24
+msgid "data type"
+msgstr "数据类型"
+
+#: data-manager/datatype/service.go:28
+msgid "get all data types"
+msgstr "获取所有类型"
+
+#: data-manager/datatype/service.go:34
+msgid "update information of data type"
+msgstr "更新数据类型元元数据"
+
+#: data-manager/datatype/service.go:41
+msgid "get meta of data type"
+msgstr "获取类型元元数据"
+
+#: data-manager/datatype/service.go:48
+msgid "update meta field"
+msgstr "更新元元数据字段信息"
+
+#: data-manager/datatype/service.go:55
+msgid "add meta field"
+msgstr "添加元元数据字段"
+
+#: data-manager/datatype/service.go:62
+msgid "delete meta field"
+msgstr "删除元元数据字段"
+
+#: data-manager/dbcentral/etcd/dynamic.go:22
+msgid "Failed to get explorer: "
+msgstr "获取资源目录失败： "
+
+#: data-manager/dbcentral/etcd/dynamic.go:42
+msgid "Failed to set explorer: "
+msgstr "更新资源目录失败： "
+
+#: data-manager/dbcentral/pg/metadb.go:143
+msgid "images"
+msgstr "测区影像"
+
+#: data-manager/dbcentral/pg/metadb.go:145
+msgid "no group"
+msgstr "其他文件"
+
+#: data-manager/dbcentral/pg/systemdb.go:199
+msgid "Basic Information"
+msgstr "基本信息"
+
+#: data-manager/dbcentral/pg/systemdb.go:353
+#, c-format
+msgid "Dataset is not empty:%d"
+msgstr "数据集非空：%d"
+
+#: data-manager/explorer/handler.go:28 data-manager/explorer/handler.go:64
+msgid "Failed to get user explorer, maybe user session is timeout"
+msgstr "获取用户资源目录失败，可能用户session过期"
+
+#: data-manager/explorer/service.go:25
+msgid "data explorer"
+msgstr "资源目录"
+
+#: data-manager/explorer/service.go:29
+msgid "get explorer of market/user"
+msgstr "获取用户或数据集市资源管理目录"
+
+#: data-manager/explorer/service.go:36
+msgid "update explorer of market/user"
+msgstr "更新用户或数据集市资源管理目录"
+
+#: data-manager/layers/service.go:34
+msgid "data layer"
+msgstr "数据图层"
+
+#: data-manager/layers/service.go:38
+msgid "add layer"
+msgstr "添加图层"
+
+#: data-manager/layers/service.go:46
+msgid "get data layers"
+msgstr "获取数据图层"
+
+#: data-manager/layers/service.go:54
+msgid "delete user layer"
+msgstr "移除数据图层"
+
+#: data-manager/layers/service.go:62
+msgid "update user layer"
+msgstr "更新数据图层信息"
+
+#: data-manager/layers/service.go:71
+msgid "get user layer"
+msgstr "获取用户图层列表"
+
+#: data-manager/layers/service.go:80
+msgid "update layer snapshot"
+msgstr "更新图层快视图"
+
+#: data-manager/styles/handler.go:28 data-manager/styles/handler.go:155
+msgid "Invalid style info"
+msgstr "不正确的样式信息"
+
+#: data-manager/styles/service.go:30
+msgid "layer style"
+msgstr "图层样式"
+
+#: data-manager/styles/service.go:34
+msgid "add user style"
+msgstr "添加样式"
+
+#: data-manager/styles/service.go:41 data-manager/styles/service.go:49
+msgid "get user styles"
+msgstr "获取样式列表"
+
+#: data-manager/styles/service.go:56
+msgid "update user styles"
+msgstr "更新样式信息"
+
+#: data-manager/styles/service.go:64
+msgid "get style"
+msgstr "获取样式"
+
+#: grm-labelmgr/config/handler.go:15 grm-labelmgr/config/handler.go:41
+#: grm-labelmgr/config/handler.go:68 grm-labelmgr/config/handler.go:94
+#: grm-searcher/history/handler.go:37 grm-searcher/history/handler.go:51
+#: grm-searcher/history/handler.go:72 titan-statistics/statistics/handler.go:31
+#: titan-statistics/statistics/handler.go:75
+#, c-format
+msgid "Invalid user id: %s"
+msgstr "不正确的用户标识：%s"
+
+#: grm-labelmgr/config/handler.go:26 titan-statistics/aggregation/handler.go:46
+#, fuzzy
+#| msgid "Invalid user id: %s"
+msgid "Invalid input"
+msgstr "不正确的用户标识：%s"
+
+#: grm-labelmgr/config/handler.go:47 grm-labelmgr/config/handler.go:74
+#: grm-labelmgr/config/handler.go:100
+#: titan-statistics/aggregation/handler.go:20
+#: titan-statistics/aggregation/handler.go:35
+#: titan-statistics/aggregation/handler.go:61
+#, fuzzy, c-format
+#| msgid "invalid data type"
+msgid "Invalid data type: %s"
+msgstr "无效数据类型"
+
+#: grm-labelmgr/config/handler.go:53 grm-labelmgr/config/handler.go:80
+#, fuzzy, c-format
+#| msgid "Invalid user id: %s"
+msgid "Invalid data name: %s"
+msgstr "不正确的用户标识：%s"
+
+#: grm-labelmgr/config/service.go:26
+#, fuzzy
+#| msgid "auth management"
+msgid "user data management"
+msgstr "用户管理"
+
+#: grm-labelmgr/config/service.go:31
+msgid "add user data"
+msgstr "添加用户数据"
+
+#: grm-labelmgr/config/service.go:37
+#, fuzzy
+#| msgid "get user list"
+msgid "get user data"
+msgstr "获取系统用户列表"
+
+#: grm-labelmgr/config/service.go:45
+#, fuzzy
+#| msgid "get user list"
+msgid "get user data list by type"
+msgstr "获取系统用户列表"
+
+#: grm-labelmgr/config/service.go:52
+#, fuzzy
+#| msgid "delete dataset"
+msgid "delete user data"
+msgstr "移除数据集"
+
+#: grm-labelmgr/dbcentral/etcd/dynamic.go:80
+msgid "Failed to set user data: "
+msgstr "设置用户数据失败： "
+
+#: grm-searcher/dbcentral/etcd/dynamic.go:80
+msgid "Failed to set history: "
+msgstr ""
+
+#: grm-searcher/history/handler.go:20
+#, fuzzy
+#| msgid "Invalid user id: %s"
+msgid "Invalid history input"
+msgstr "不正确的用户标识：%s"
+
+#: grm-searcher/history/handler.go:57 grm-searcher/history/handler.go:78
+#, fuzzy, c-format
+#| msgid "Invalid user id: %s"
+msgid "Invalid id: %s"
+msgstr "不正确的用户标识：%s"
+
+#: grm-searcher/history/service.go:26
+#, fuzzy
+#| msgid "dataset management"
+msgid "search history management"
+msgstr "数据集管理"
+
+#: grm-searcher/history/service.go:31
+msgid "add search history"
+msgstr ""
+
+#: grm-searcher/history/service.go:37
+msgid "get user search history list"
+msgstr ""
+
+#: grm-searcher/history/service.go:43
+msgid "get one user search history"
+msgstr ""
+
+#: grm-searcher/history/service.go:50
+msgid "delete user dashboard"
+msgstr ""
+
+#: grm-searcher/searcher/handler.go:28 grm-searcher/searcher/handler.go:67
+#, fuzzy
+#| msgid "Invalid user id: %s"
+msgid "Invalid Request"
+msgstr "不正确的用户标识：%s"
+
+#: grm-searcher/searcher/handler.go:137
+#, fuzzy, c-format
+#| msgid "Invalid user id: %s"
+msgid "Invalid type_name: %s"
+msgstr "不正确的用户标识：%s"
+
+#: grm-searcher/searcher/handler.go:187
+#, fuzzy
+#| msgid "Invalid user id: %s"
+msgid "Invalid key"
+msgstr "不正确的用户标识：%s"
+
+#: grm-searcher/searcher/handler.go:210
+msgid "Invalid data_id"
+msgstr ""
+
+#: grm-searcher/searcher/handler.go:227
+#, fuzzy
+#| msgid "Invalid user id: %s"
+msgid "Invalid market Id"
+msgstr "不正确的用户标识：%s"
+
+#: grm-searcher/searcher/handler.go:262
+#, fuzzy
+#| msgid "Invalid user id: %s"
+msgid "Invalid dataset Id"
+msgstr "不正确的用户标识：%s"
+
+#: grm-searcher/searcher/service.go:36
+msgid "searcher"
+msgstr ""
+
+#: grm-searcher/searcher/service.go:40
+msgid "data fileter"
+msgstr ""
+
+#: grm-searcher/searcher/service.go:47
+msgid "data search"
+msgstr ""
+
+#: grm-searcher/searcher/service.go:59
+msgid "meta id search"
+msgstr ""
+
+#: grm-searcher/searcher/service.go:66
+msgid "meta key search"
+msgstr ""
+
+#: grm-searcher/searcher/service.go:76
+msgid "dataset id search"
+msgstr ""
+
+#: grm-searcher/searcher/service.go:88
+msgid "marketplace dataset id search"
+msgstr ""
+
+#: grm-searcher/searcher/service.go:99
+msgid "meta type search"
+msgstr ""
+
+#: grm-service/dbcentral/etcd/dynamic.go:67
+#, fuzzy, c-format
+#| msgid "Invalid user id: %s"
+msgid "Invalid user session:%s"
+msgstr "不正确的用户标识：%s"
+
+#: grm-service/dbcentral/etcd/dynamic.go:73
+#, c-format
+msgid "Failed to get user id (%s):"
+msgstr "获取用户标识(%s)失败:"
+
+#: grm-service/dbcentral/etcd/dynamic.go:76
+#, c-format
+msgid "Session is timeout:%s"
+msgstr ""
+
+#: grm-service/dbcentral/etcd/dynamic.go:84
+#, fuzzy, c-format
+#| msgid "Invalid user id: %s"
+msgid "Invalid user id:%s"
+msgstr "不正确的用户标识：%s"
+
+#: grm-service/dbcentral/etcd/dynamic.go:94
+msgid "Invalid user id:"
+msgstr "不正确的用户标识:"
+
+#: grm-service/dbcentral/pg/systemdb.go:128
+#, c-format
+msgid "Invalid database connection info:%s"
+msgstr ""
+
+#: grm-service/dbcentral/pg/systemdb.go:142
+#, c-format
+msgid "Invalid nfs file system info :%s"
+msgstr ""
+
+#: storage-manager/storage/service.go:31
+msgid "storage manager"
+msgstr "存储管理"
+
+#: storage-manager/storage/service.go:35
+msgid "device registry"
+msgstr ""
+
+#: storage-manager/storage/service.go:42
+msgid "get device list"
+msgstr ""
+
+#: storage-manager/storage/service.go:48 storage-manager/storage/service.go:54
+#, fuzzy
+#| msgid "update data info"
+msgid "update device info"
+msgstr "更新数据信息"
+
+#: storage-manager/types/common.go:10
+msgid "Invalid database connection info"
+msgstr ""
+
+#: storage-manager/types/common.go:11
+msgid "Invalid nfs file system info"
+msgstr ""
+
+#: storage-manager/types/common.go:12
+msgid "device name already exists"
+msgstr ""
+
+#: storage-manager/types/common.go:13
+msgid "invalid volume size"
+msgstr ""
+
+#: titan-auth/dbcentral/etcd/dynamic.go:165
+msgid "Invalid user password or user is not active"
+msgstr "用户密码不正确或处于未激活状态"
+
+#: titan-auth/dbcentral/etcd/dynamic.go:170
+msgid "Invalid user name for login"
+msgstr "用户名不正确"
+
+#: titan-auth/group/handler.go:23 titan-auth/group/handler.go:87
+msgid "User authority is not enough"
+msgstr ""
+
+#: titan-auth/group/handler.go:129
+msgid "Group's child is not empty"
+msgstr ""
+
+#: titan-auth/group/service.go:23
+msgid "group management"
+msgstr "组织管理"
+
+#: titan-auth/group/service.go:26
+msgid "create group"
+msgstr "创建组织"
+
+#: titan-auth/group/service.go:32
+msgid "query groups"
+msgstr "获取组织列表"
+
+#: titan-auth/group/service.go:38
+msgid "update group info"
+msgstr "更新组织信息"
+
+#: titan-auth/group/service.go:41 titan-auth/group/service.go:48
+#: titan-auth/group/service.go:53 titan-auth/group/service.go:60
+#: titan-auth/group/service.go:66
+msgid "group id"
+msgstr "组织id"
+
+#: titan-auth/group/service.go:51
+msgid "add group users"
+msgstr "添加组织成员"
+
+#: titan-auth/group/service.go:58
+msgid "query group users"
+msgstr "获取组织成员列表"
+
+#: titan-auth/group/service.go:64
+msgid "delete group users"
+msgstr "移除组织成员"
+
+#: titan-auth/group/service.go:67
+msgid "user id"
+msgstr "用户id"
+
+#: titan-auth/user/handler.go:51
+msgid "Invalid captcha"
+msgstr "验证码错误"
+
+#: titan-auth/user/handler.go:55
+#, c-format
+msgid "Invalid captcha:%s"
+msgstr "验证码错误：%s"
+
+#: titan-auth/user/handler.go:94
+msgid "Invalid user info"
+msgstr "不正确的用户信息"
+
+#: titan-auth/user/handler.go:106
+msgid "User is already exists"
+msgstr "该用户已经存在"
+
+#: titan-auth/user/service.go:23
+msgid "auth management"
+msgstr "用户管理"
+
+#: titan-auth/user/service.go:26
+msgid "get captcha"
+msgstr "获取验证码"
+
+#: titan-auth/user/service.go:30
+msgid "user login"
+msgstr "用户登录"
+
+#: titan-auth/user/service.go:34
+msgid "user logout"
+msgstr "用户登出"
+
+#: titan-auth/user/service.go:39
+msgid "user registry"
+msgstr "用户注册"
+
+#: titan-auth/user/service.go:43
+msgid "user activation"
+msgstr "用户激活"
+
+#: titan-auth/user/service.go:49
+msgid "get user list"
+msgstr "获取系统用户列表"
+
+#: titan-statistics/aggregation/handler.go:67
+#, fuzzy, c-format
+#| msgid "Invalid user id: %s"
+msgid "Invalid field: %s"
+msgstr "不正确的用户标识：%s"
+
+#: titan-statistics/aggregation/service.go:32
+msgid "aggregation info manage"
+msgstr ""
+
+#: titan-statistics/aggregation/service.go:36
+#: titan-statistics/aggregation/service.go:42
+#, fuzzy
+#| msgid "invalid data type"
+msgid "aggregation by data type"
+msgstr "无效数据类型"
+
+#: titan-statistics/dbcentral/etcd/dynamic.go:40
+#, fuzzy
+#| msgid "Failed to set explorer: "
+msgid "Failed to set type aggr: "
+msgstr "更新资源目录失败： "
+
+#: titan-statistics/statistics/handler.go:54
+#: titan-statistics/statistics/handler.go:69
+#, fuzzy, c-format
+#| msgid "Invalid user id: %s"
+msgid "Invalid type name: %s"
+msgstr "不正确的用户标识：%s"
+
+#: titan-statistics/statistics/service.go:32
+msgid "statistic info manage"
+msgstr ""
+
+#: titan-statistics/statistics/service.go:37
+#, fuzzy
+#| msgid "invalid data type"
+msgid "statistic by data type"
+msgstr "无效数据类型"
+
+#: titan-statistics/statistics/service.go:43
+msgid "statistic by data sub type"
+msgstr ""
+
+#: titan-statistics/statistics/service.go:57
+msgid "statistic by user data type"
+msgstr ""
+
+#: titan-statistics/statistics/service.go:63
+msgid "statistic by user data sub type"
+msgstr ""
